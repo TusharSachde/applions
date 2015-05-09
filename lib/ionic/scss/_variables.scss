@@ -4,19 +4,19 @@
 
 $light:                           #fff !default;
 $stable:                          #f8f8f8 !default;
-$positive:                        #387ef5 !default;
-$calm:                            #11c1f3 !default;
-$balanced:                        #33cd5f !default;
-$energized:                       #ffc900 !default;
-$assertive:                       #ef473a !default;
-$royal:                           #886aea !default;
+$positive:                        #3498db !default;
+$calm:                            #28c0c6 !default;
+$balanced:                        #2ecc71 !default;
+$energized:                       #f4cd2e !default;
+$assertive:                       #fb6758 !default;
+$royal:                           #ad6ac8 !default;
 $dark:                            #444 !default;
 
 
 // Base
 // -------------------------------
 
-$font-family-sans-serif:          "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !default;
+$font-family-sans-serif:          "PT Sans","Helvetica Neue", "Roboto", "Segoe UI", sans-serif !default;
 $font-family-light-sans-serif:    "HelveticaNeue-Light", "Roboto-Light", "Segoe UI-Light", sans-serif-light !default;
 $font-family-serif:               serif !default;
 $font-family-monospace:           monospace !default;
@@ -32,13 +32,13 @@ $line-height-large:               1.33 !default;
 $line-height-small:               1.5 !default;
 
 $headings-font-family:            $font-family-base !default;
-$headings-font-weight:            500 !default;
+$headings-font-weight:            700 !default;
 $headings-line-height:            1.2 !default;
 
-$base-background-color:           #fff !default;
-$base-color:                      #000 !default;
+$base-background-color:           #e7e7e7 !default;
+$base-color:                      #424242 !default;
 
-$link-color:                      $positive !default;
+$link-color:                      $balanced !default;
 $link-hover-color:                darken($link-color, 15%) !default;
 
 $content-padding:                 10px !default;
@@ -52,9 +52,9 @@ $padding-large-horizontal:        16px !default;
 $padding-small-vertical:          5px !default;
 $padding-small-horizontal:        10px !default;
 
-$border-radius-base:              4px !default;
-$border-radius-large:             6px !default;
-$border-radius-small:             3px !default;
+$border-radius-base:              0px !default;
+$border-radius-large:             0px !default;
+$border-radius-small:             0px !default;
 
 
 // Content
@@ -232,7 +232,7 @@ $bar-default-active-border:       $bar-light-active-border !default;
 
 $tabs-height:                     49px !default;
 $tabs-text-font-size:             14px !default;
-$tabs-text-font-size-side-icon:   10px !default;
+$tabs-text-font-size-side-icon:   12px !default;
 $tabs-icon-size:                  32px !default;
 $tabs-badge-padding:              1px 6px !default;
 $tabs-badge-font-size:            12px !default;
