@@ -1,0 +1,147 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-balanced bar-header" align-title="center">
+        <h1 class="title">Select Location</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closeModal()">Close</button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <div class="row block-down blockmodal">
+            <div class="col text-center blockss">
+                <div ng-class="myhome" ng-click="changemyhome()">
+                    My Home
+                </div>
+            </div>
+            <div class="col text-center blockss">
+                <div ng-class="myoffice" ng-click="changemyoffice()">
+                    My Office
+                </div>
+            </div>
+            <div class="col text-center blockss">
+                <div ng-class="addnew" ng-click="changeaddnew()">
+                    Add New
+                </div>
+            </div>
+        </div>
+        <div class="list" ng-if="myhome=='bold'">
+            <label class="item item-input">
+                <span class="input-label">Location*</span>
+                <input type="text" required>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Pincode*</span>
+                <input type="text" required>
+            </label>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    District/City*
+                </div>
+                <select>
+                    <option></option>
+                    <option>Mumbai</option>
+                    <option>Delhi</option>
+                    <option>Bangluru</option>
+                </select>
+            </label>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    State*
+                </div>
+                <select>
+                    <option></option>
+                    <option>Maharashtra</option>
+                    <option>Delhi</option>
+                    <option>Karnataka</option>
+                </select>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Address</span>
+                <textarea required>
+                </textarea>
+            </label>
+            <div class="item withlist pull-right">
+                <a class="button button-outline icon-right button-balanced" ng-click="myPopup();">Select</a>
+            </div>
+        </div>
+        <div class="list" ng-if="myoffice=='bold'">
+            <label class="item item-input">
+                <span class="input-label">Location*</span>
+                <input type="text" required>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Pincode*</span>
+                <input type="text" required>
+            </label>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    District/City*
+                </div>
+                <select>
+                    <option></option>
+                    <option>Mumbai</option>
+                    <option>Delhi</option>
+                    <option>Bangluru</option>
+                </select>
+            </label>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    State*
+                </div>
+                <select>
+                    <option></option>
+                    <option>Maharashtra</option>
+                    <option>Delhi</option>
+                    <option>Karnataka</option>
+                </select>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Address</span>
+                <textarea required>
+                </textarea>
+            </label>
+            <div class="item withlist pull-right">
+                <a class="button button-outline icon-right button-balanced" ng-click="myPopup();">Select</a>
+            </div>
+        </div>
+        <div class="list" ng-if="addnew=='bold'">
+            <label class="item item-input">
+                <span class="input-label">Location*</span>
+                <input type="text" required>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Pincode*</span>
+                <input type="text" required>
+            </label>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    District/City*
+                </div>
+                <select>
+                    <option></option>
+                    <option>Mumbai</option>
+                    <option>Delhi</option>
+                    <option>Bangluru</option>
+                </select>
+            </label>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    State*
+                </div>
+                <select>
+                    <option></option>
+                    <option>Maharashtra</option>
+                    <option>Delhi</option>
+                    <option>Karnataka</option>
+                </select>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Address</span>
+                <textarea required>
+                </textarea>
+            </label>
+            <div class="item withlist pull-right">
+                <a class="button button-outline icon-right button-balanced" ng-click="myPopup();">Select</a>
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

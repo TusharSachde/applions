@@ -1,0 +1,60 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-balanced bar-header" align-title="center">
+        <h1 class="title">Addtional Warranty / AMC</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closeModal()">Close</button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <div class="list">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Cover Type*
+                </div>
+                <select>
+                    <option></option>
+                    <option>AMC</option>
+                    <option>Extended Warranty</option>
+                    <option>Component Warranty</option>
+                </select>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Start Date*</span>
+                <input type="date" required>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Cover Period*</span>
+                <input type="text" required>
+                <span class="input-label">Months</span>
+            </label>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Cover Includes
+                </div>
+                <select>
+                    <option></option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Purchased From</span>
+                <input type="text" placeholder="Cover Purchased From">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Contact No.</span>
+                <input type="text" placeholder="Contact No. of Seller">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Purchase Price</span>
+                <input type="text" placeholder="Purchase Price">
+            </label>
+            <div class="item withlist pull-right">
+                <a class="button button-outline icon-right button-balanced" ng-click="myPopup();">Skip</a>
+                <a class="button button-outline icon-right button-balanced" ng-click="myPopup();">Save &#38; <br> Add More</a>
+                <a class="button button-outline icon-right button-balanced" ng-click="myPopup();">Save  &#38; <br> Exit</a>
+            </div>
+        </div>
+    </ion-content>
