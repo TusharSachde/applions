@@ -1,4 +1,5 @@
 /* Empty. Add your own CSS if you like */
+
 /* PT Sans */
 
 @font-face {
@@ -6,19 +7,16 @@
     src: url('../fonts/PT_Sans-Web-Regular.ttf');
     font-weight: normal;
 }
-
 @font-face {
     font-family: 'PT Sans';
     src: url('../fonts/PT_Sans-Web-bold.ttf');
     font-weight: 700;
 }
-
 .icon.small-icon {
     margin: 4px auto 0 !important;
     height: 26px;
     font-size: 26px;
 }
-
 .picture {
     width: 70px;
     height: 70px;
@@ -37,30 +35,25 @@
     top: 11.5px;
     left: 10px;
 }
-
 .item-picture.item h2 {
     font-weight: 700;
     line-height: normal;
     margin: 0;
 }
-
 .item-picture.item p {
     line-height: normal;
     margin: 0;
     margin-top: 3px;
 }
-
 .item-picture.item .item-content {
     padding-left: 95px;
     max-height: 97px;
 }
-
 .blocks h3 {
     margin: 0;
     color: #5F5F5F;
     font-size: 20px;
 }
-
 .blocks {
     min-width: 60px;
     display: inline-block;
@@ -69,7 +62,6 @@
     font-size: 12px;
     border-right: 1px solid #DDD;
 }
-
 .flex-block {
     display: -webkit-box;
     display: -webkit-flex;
@@ -77,100 +69,92 @@
     display: -ms-flexbox;
     display: flex;
 }
-
 .withlist .picture {
     position: static;
     margin: 0 auto;
     width: 100px;
     height: 100px;
 }
-
 .stickyScroll {
     top: 44px;
     z-index: 9;
     border-bottom: 1px solid #ddd;
 }
-
 .scroll-above {
     top: 89px;
 }
-
 .content-holder h4 {
     margin-bottom: 5px;
 }
-
 .popover {
     height: 225px;
 }
-
 .blockss {
-    border: 1px solid #2ECC71;
+    border: 0px solid #2ECC71;
     margin-top: 5px;
-    padding: 8px 5px;
-    background: #fff;
-    border-bottom: 2px solid #2ECC71;
+    padding: 8px 10px;
+    border-bottom: 1px solid #2ECC71;
+    opacity: 0.6;
+    border-right: 1px solid #dcdcdc;
+    font-size: 12px;
+    line-height: 100%;
 }
-
+.blockss {
+    opacity: 1;
+    background: white;
+}
 .item.withlist.pull-right {
     text-align: right;
 }
-
 .item.withlist.pull-right a {
     margin-right: 10px;
 }
-
 .row.block-down {
     padding: 0;
 }
-
 .item.pur-btn a {
     line-height: 20px;
     padding: 2px 4px 0 5px;
     width: 110px
 }
 
-a.button.save-exits {
-    padding-top: 12px;
-}
-
 .item.product-wrnnty {
     padding: 10px 15px;
-    background: #fff;
-    color: #2ECC71;
-    font-size: 18px;
-    border-color: #2ECC71;
-    border-bottom: 3px solid;
+    background: #EFEFEF;
+    color: #4F4F4F;
+    font-size: 16px;
+    border-bottom: 0px solid;
 }
-
 .item-radio.radio-div .item-content {
     padding-right: 64px;
     padding: 16px 49px 16px 10px;
 }
-
 .blockss .bold {
     color: #2ECC71;
 }
-
 label.item.add-warnty a {
     float: right;
     padding-right: 2px;
     text-decoration: none;
     color: #2ECC71;
 }
-
 .upload.button.icon-right:before {
     padding-left: 0.8em;
 }
-
 a.button.upload {
     padding: 11px 20px;
     line-height: 21px;
 }
-
 .blockmodal .blockss {
     margin: 0px;
 }
-
 input[type="date"] {
     text-align: right;
+}
+.bbar-white .button-bar {
+    padding: 15px 5px;
+}
+.bbar-white .button-bar .button {
+    font-size: 14px;
+    line-height:50px;
 }
