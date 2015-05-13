@@ -150,6 +150,7 @@ a.button.upload {
 }
 input[type="date"] {
     text-align: right;
+    padding-right: 10px;
 }
 .bbar-white .button-bar {
     padding: 15px 5px;
