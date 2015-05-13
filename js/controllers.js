@@ -1,7 +1,8 @@
 angular.module('starter.controllers', [])
 
-.controller('HomeCtrl', function ($scope, $ionicModal,$ionicPopup,$timeout) {
+.controller('HomeCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout) {
     $ionicModal.fromTemplateUrl('templates/location.html', {
+        id: '1',
         scope: $scope,
         animation: 'slide-in-up'
     }).then(function (modal) {
@@ -16,28 +17,45 @@ angular.module('starter.controllers', [])
         $scope.modals.hide();
     };
 
-    
-     $ionicModal.fromTemplateUrl('templates/addwarranty.html', {
+
+    $ionicModal.fromTemplateUrl('templates/addwarranty.html', {
+        id: '2',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.modals = modal;
     });
 
-    $scope.openpswd = function() {
+    $scope.openpswd = function () {
         $scope.modals.show();
     };
 
-    $scope.closeModal = function() {
+    $scope.closeModal = function () {
         $scope.modals.hide();
     };
-    
 
-//    $scope.appliance = "active";   
-    $scope.appliance = "bold";   
-    $scope.profile = "";  
-    $scope.warranty = "";  
-    $scope.documents = "";  
+    $ionicModal.fromTemplateUrl('templates/modal-filter.html', {
+        id: '3',
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function (modal) {
+        $scope.oModal1 = modal;
+    });
+
+    $scope.openfilter = function () {
+        $scope.oModal1.show();
+    }
+    $scope.closefilter = function () {
+        $scope.oModal1.hide();
+    };
+
+
+
+    //    $scope.appliance = "active";   
+    $scope.appliance = "bold";
+    $scope.profile = "";
+    $scope.warranty = "";
+    $scope.documents = "";
     $scope.user = [];
 
     //  DESIGN CODE
@@ -54,60 +72,113 @@ angular.module('starter.controllers', [])
         $scope.purchase = "bold";
         $scope.warranty = "";
         $scope.documents = "";
-    }  
-    
+    }
+
     $scope.changewarranty = function () {
         $scope.appliance = "";
         $scope.purchase = "";
         $scope.warranty = "bold";
         $scope.documents = "";
-    }   
+    }
     $scope.changedocuments = function () {
         $scope.appliance = "";
         $scope.purchase = "";
         $scope.warranty = "";
         $scope.documents = "bold";
     }
-    
-    
-    
+
+
+
     //    $scope.appliance = "active";   
-    $scope.myhome = "bold";   
-    $scope.myoffice = "";  
-    $scope.addnew = "";  
+    $scope.myhome = "bold";
+    $scope.myoffice = "";
+    $scope.addnew = "";
     $scope.user = [];
 
     //  DESIGN CODE
     $scope.changemyhome = function () {
-     $scope.myhome = "bold";   
-    $scope.myoffice = "";  
-    $scope.addnew = "";
+        $scope.myhome = "bold";
+        $scope.myoffice = "";
+        $scope.addnew = "";
 
     }
 
     $scope.changemyoffice = function () {
-     $scope.myhome = "";   
-    $scope.myoffice = "bold";  
-    $scope.addnew = "";
-    }  
+        $scope.myhome = "";
+        $scope.myoffice = "bold";
+        $scope.addnew = "";
+    }
     $scope.changeaddnew = function () {
-     $scope.myhome = "";   
-    $scope.myoffice = "";  
-    $scope.addnew = "bold";
-    }  
+        $scope.myhome = "";
+        $scope.myoffice = "";
+        $scope.addnew = "bold";
+    } 
+    
+    //    tab3   
+    $scope.myhome = "bold";
+    $scope.myoffice = "";
+    $scope.addnew = "";
+    $scope.user = [];
+
+    //  DESIGN CODE
+    $scope.changemyhome = function () {
+        $scope.myhome = "bold";
+        $scope.myoffice = "";
+        $scope.addnew = "";
+
+    }
+
+    $scope.changemyoffice = function () {
+        $scope.myhome = "";
+        $scope.myoffice = "bold";
+        $scope.addnew = "";
+    }
+    $scope.changeaddnew = function () {
+        $scope.myhome = "";
+        $scope.myoffice = "";
+        $scope.addnew = "bold";
+    }
     
     
-    
-      function purchaseoverlimit() {
-            var myPopup = $ionicPopup.show({
+ //    tab4  
+    $scope.appstatus = "bold";
+    $scope.apptype = "";
+    $scope.location = "";
+    $scope.coverstatus = "";
+    $scope.coverstatus = "";
+    $scope.user = [];
+
+    //  DESIGN CODE
+    $scope.changemyhome = function () {
+        $scope.myhome = "bold";
+        $scope.myoffice = "";
+        $scope.addnew = "";
+
+    }
+
+    $scope.changemyoffice = function () {
+        $scope.myhome = "";
+        $scope.myoffice = "bold";
+        $scope.addnew = "";
+    }
+    $scope.changeaddnew = function () {
+        $scope.myhome = "";
+        $scope.myoffice = "";
+        $scope.addnew = "bold";
+    }
+
+
+
+    function purchaseoverlimit() {
+        var myPopup = $ionicPopup.show({
             template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Appliance has been update successfully!!</p>',
             title: 'Alert!',
             scope: $scope,
         });
-        $timeout(function() {
+        $timeout(function () {
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
-      }
+    }
 
 
 })

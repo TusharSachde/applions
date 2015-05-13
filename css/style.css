@@ -1,5 +1,4 @@
 /* Empty. Add your own CSS if you like */
-
 /* PT Sans */
 
 @font-face {
@@ -7,16 +6,19 @@
     src: url('../fonts/PT_Sans-Web-Regular.ttf');
     font-weight: normal;
 }
+
 @font-face {
     font-family: 'PT Sans';
     src: url('../fonts/PT_Sans-Web-bold.ttf');
     font-weight: 700;
 }
+
 .icon.small-icon {
     margin: 4px auto 0 !important;
     height: 26px;
     font-size: 26px;
 }
+
 .picture {
     width: 70px;
     height: 70px;
@@ -35,25 +37,30 @@
     top: 11.5px;
     left: 10px;
 }
+
 .item-picture.item h2 {
     font-weight: 700;
     line-height: normal;
     margin: 0;
 }
+
 .item-picture.item p {
     line-height: normal;
     margin: 0;
     margin-top: 3px;
 }
+
 .item-picture.item .item-content {
     padding-left: 95px;
     max-height: 97px;
 }
+
 .blocks h3 {
     margin: 0;
     color: #5F5F5F;
     font-size: 20px;
 }
+
 .blocks {
     min-width: 60px;
     display: inline-block;
@@ -62,6 +69,7 @@
     font-size: 12px;
     border-right: 1px solid #DDD;
 }
+
 .flex-block {
     display: -webkit-box;
     display: -webkit-flex;
@@ -69,26 +77,32 @@
     display: -ms-flexbox;
     display: flex;
 }
+
 .withlist .picture {
     position: static;
     margin: 0 auto;
     width: 100px;
     height: 100px;
 }
+
 .stickyScroll {
     top: 44px;
     z-index: 9;
     border-bottom: 1px solid #ddd;
 }
+
 .scroll-above {
     top: 89px;
 }
+
 .content-holder h4 {
     margin-bottom: 5px;
 }
+
 .popover {
     height: 225px;
 }
+
 .blockss {
     border: 0px solid #2ECC71;
     margin-top: 5px;
@@ -99,19 +113,24 @@
     font-size: 12px;
     line-height: 100%;
 }
+
 .blockss {
     opacity: 1;
     background: white;
 }
+
 .item.withlist.pull-right {
     text-align: right;
 }
+
 .item.withlist.pull-right a {
     margin-right: 10px;
 }
+
 .row.block-down {
     padding: 0;
 }
+
 .item.pur-btn a {
     line-height: 20px;
     padding: 2px 4px 0 5px;
@@ -125,37 +144,135 @@
     font-size: 16px;
     border-bottom: 0px solid;
 }
+
 .item-radio.radio-div .item-content {
     padding-right: 64px;
     padding: 16px 49px 16px 10px;
 }
+
 .blockss .bold {
     color: #2ECC71;
 }
+
 label.item.add-warnty a {
     float: right;
     padding-right: 2px;
     text-decoration: none;
     color: #2ECC71;
 }
+
 .upload.button.icon-right:before {
     padding-left: 0.8em;
 }
+
 a.button.upload {
     padding: 11px 20px;
     line-height: 21px;
 }
+
 .blockmodal .blockss {
     margin: 0px;
 }
+
 input[type="date"] {
     text-align: right;
     padding-right: 10px;
 }
+
 .bbar-white .button-bar {
     padding: 15px 5px;
 }
+
 .bbar-white .button-bar .button {
     font-size: 14px;
-    line-height:50px;
+    line-height: 50px;
+}
+
+.filter-modal .item {
+    padding: 10px 5px;
+    font-size: 14px;
+    border: 0;
+    border-bottom: 1px solid #DDD;
+    margin: 0;
+    background: transparent;
+}
+.filter-modal .right .item {
+    padding: 0px;
+}
+.filter-modal .right label {
+    padding: 10px 5px;
+    width: 100%;
+    display: block;
+}
+.row.filter-modal .col {
+    padding: 0px 5px;
+}
+.bg-filter {
+    background: -webkit-linear-gradient(0deg, white 49.5%, #ccc 50%, #EFEFEF 50%);
+    background: -o-linear-gradient(0deg, white 49.5%, #ccc 50%, #EFEFEF 50%);
+    background: -moz-linear-gradient(0deg, white 49.5%, #ccc 50%, #EFEFEF 50%);
+    background: linear-gradient(90deg, white 49.5%, #ccc 50%, #EFEFEF 50%);
+}
+.filter-modal input[type="checkbox"] {
+    background: transparent;
+    border: 1px rgb(46, 204, 113) solid;
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    vertical-align: middle;
+    margin-right: 5px;
+    color: #2ECC71;
+    font-family: Ionicons;
+    text-align: center;
+}
+.filter-modal .col {
+    top: 44px;
+    position: absolute;
+    left: 0;
+    width: 50%;
+    bottom: 30px;
+    height: auto;
+    overflow-y: scroll;
+}
+.filter-modal .col.right {
+    right: 0;
+    left: auto;
+}
+.bottom-stick {
+    position: absolute;
+    bottom: 0px;
+    z-index: 9;
+    right: 0px;
+}
+.filter-modal input[type="checkbox"]:before {
+    content: '\f121';
+    opacity: 0;
+    -webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+    -moz-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+    -o-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+    transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+}
+.filter-modal input[type="checkbox"]:checked:before {
+    opacity: 1;
+}
+.filter-modal .active.item {
+    color: #2ECC71;
+    font-weight: 600;
+}
+.bar.item-input-inset.search-app  .item-input-wrapper input {
+  padding-left: 0px;
+  width: 75%;
+}
+.bar.item-input-inset.search-app {
+  padding: 0;
+}
+
+.search-app .placeholder-icon:first-child {
+  padding-right: 6px;
+  float: left;
+}
+
+.search-app  .ion-ios-search:before
+{
+   line-height: 2; 
 }
