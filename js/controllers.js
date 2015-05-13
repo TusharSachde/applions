@@ -1,20 +1,33 @@
 angular.module('starter.controllers', [])
 
+.controller('AppCtrl', function ($scope, $ionicPopup, $location, MyServices) {
+//    var readsmsCallback = function (otp) {
+//        if (!otp) {
+//            conole.log("No Otp");
+//        } else {
+//            $scope.otp = otp;
+//            $scope.$apply();
+//            $location.path("/profile");
+//        }
+//    };
+//    MyServices.readsms(readsmsCallback);
+})
+
 .controller('HomeCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout) {
     $ionicModal.fromTemplateUrl('templates/location.html', {
         id: '1',
         scope: $scope,
         animation: 'slide-in-up'
     }).then(function (modal) {
-        $scope.modals = modal;
+        $scope.oModal1 = modal;
     });
 
     $scope.openedit = function () {
-        $scope.modals.show();
+        $scope.oModal1.show();
     };
 
     $scope.closeModal = function () {
-        $scope.modals.hide();
+        $scope.oModal1.hide();
     };
 
 
@@ -23,15 +36,15 @@ angular.module('starter.controllers', [])
         scope: $scope,
         animation: 'slide-in-up'
     }).then(function (modal) {
-        $scope.modals = modal;
+        $scope.oModal2 = modal;
     });
 
     $scope.openpswd = function () {
-        $scope.modals.show();
+        $scope.oModal2.show();
     };
 
     $scope.closeModal = function () {
-        $scope.modals.hide();
+        $scope.oModal2.hide();
     };
 
     $ionicModal.fromTemplateUrl('templates/modal-filter.html', {
@@ -39,15 +52,45 @@ angular.module('starter.controllers', [])
         scope: $scope,
         animation: 'slide-in-up'
     }).then(function (modal) {
-        $scope.oModal1 = modal;
+        $scope.oModal3 = modal;
     });
 
     $scope.openfilter = function () {
-        $scope.oModal1.show();
+        $scope.oModal3.show();
     }
     $scope.closefilter = function () {
-        $scope.oModal1.hide();
-    };
+        $scope.oModal3.hide();
+    };  
+    
+    $ionicModal.fromTemplateUrl('templates/modal-filter.html', {
+        id: '4',
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function (modal) {
+        $scope.oModal4 = modal;
+    });
+
+    $scope.openfilter = function () {
+        $scope.oModal4.show();
+    }
+    $scope.closefilter = function () {
+        $scope.oModal4.hide();
+    };  
+    
+//    $ionicModal.fromTemplateUrl('templates/modal-sortby.html', {
+//        id: '4',
+//        scope: $scope,
+//        animation: 'slide-in-up'
+//    }).then(function (modal) {
+//        $scope.oModal4 = modal;
+//    });
+//
+//    $scope.opensort = function () {
+//        $scope.oModal4.show();
+//    }
+//    $scope.opensort = function () {
+//        $scope.oModal4.hide();
+//    };
 
 
 
@@ -112,8 +155,8 @@ angular.module('starter.controllers', [])
         $scope.myhome = "";
         $scope.myoffice = "";
         $scope.addnew = "bold";
-    } 
-    
+    }
+
     //    tab3   
     $scope.myhome = "bold";
     $scope.myoffice = "";
@@ -138,36 +181,56 @@ angular.module('starter.controllers', [])
         $scope.myoffice = "";
         $scope.addnew = "bold";
     }
-    
-    
- //    tab4  
+
+
+    //    tab4  
     $scope.appstatus = "bold";
     $scope.apptype = "";
     $scope.location = "";
     $scope.coverstatus = "";
-    $scope.coverstatus = "";
+    $scope.covertype = "";
     $scope.user = [];
 
     //  DESIGN CODE
-    $scope.changemyhome = function () {
-        $scope.myhome = "bold";
-        $scope.myoffice = "";
-        $scope.addnew = "";
-
+    $scope.changeappstatus = function () {
+        $scope.appstatus = "bold";
+        $scope.apptype = "";
+        $scope.location = "";
+        $scope.coverstatus = "";
+        $scope.covertype = "";
     }
 
-    $scope.changemyoffice = function () {
-        $scope.myhome = "";
-        $scope.myoffice = "bold";
-        $scope.addnew = "";
-    }
-    $scope.changeaddnew = function () {
-        $scope.myhome = "";
-        $scope.myoffice = "";
-        $scope.addnew = "bold";
+    $scope.changetype = function () {
+        $scope.appstatus = "";
+        $scope.apptype = "bold";
+        $scope.location = "";
+        $scope.coverstatus = "";
+        $scope.covertype = "";
     }
 
+    $scope.changelocation = function () {
+        $scope.appstatus = "";
+        $scope.apptype = "";
+        $scope.location = "bold";
+        $scope.coverstatus = "";
+        $scope.covertype = "";
+    }
 
+    $scope.changecoverstatus = function () {
+        $scope.appstatus = "";
+        $scope.apptype = "";
+        $scope.location = "";
+        $scope.coverstatus = "bold";
+        $scope.covertype = "";
+    }
+
+    $scope.changecovertype = function () {
+        $scope.appstatus = "";
+        $scope.apptype = "";
+        $scope.location = "";
+        $scope.coverstatus = "";
+        $scope.covertype = "bold";
+    }
 
     function purchaseoverlimit() {
         var myPopup = $ionicPopup.show({
@@ -200,4 +263,6 @@ angular.module('starter.controllers', [])
 
 .controller('StoreCtrl', function ($scope) {})
 
-.controller('AboutCtrl', function ($scope) {});
+.controller('AboutCtrl', function ($scope) {})
+    
+.controller('RegisterCtrl', function ($scope) {});

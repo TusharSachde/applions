@@ -276,3 +276,15 @@ input[type="date"] {
 {
    line-height: 2; 
 }
+
+
+.bar-balanced .button.btn-sort.button-icon {
+  border-color: transparent;
+  background: none;
+  transform: rotate(90deg);
+}
+
+.small-icon:before {
+  font-size: 23px !important;
+  line-height: 28px !important;
+}

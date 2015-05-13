@@ -30,7 +30,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         url: "/tab",
         abstract: true,
         templateUrl: "templates/tabs.html"
-    })
+    })   
+            .state('app', {
+            url: "/app",
+            abstract: true,
+            controller: 'AppCtrl',
+            templateUrl: "templates/otp.html"
+        })
 
     // Each tab has its own nav history stack:
 
@@ -79,6 +85,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 templateUrl: 'templates/tab-about.html',
                 controller: 'AboutCtrl'
             }
+        }
+    })
+      .state('app.otp', {
+        url: '/otp',
+        views: {
+                templateUrl: 'templates/otp.html',
+                controller: 'RegisterCtrl'
         }
     });
 
