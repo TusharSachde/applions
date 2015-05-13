@@ -196,23 +196,28 @@ input[type="date"] {
     margin: 0;
     background: transparent;
 }
+
 .filter-modal .right .item {
     padding: 0px;
 }
+
 .filter-modal .right label {
     padding: 10px 5px;
     width: 100%;
     display: block;
 }
+
 .row.filter-modal .col {
     padding: 0px 5px;
 }
+
 .bg-filter {
     background: -webkit-linear-gradient(0deg, white 49.5%, #ccc 50%, #EFEFEF 50%);
     background: -o-linear-gradient(0deg, white 49.5%, #ccc 50%, #EFEFEF 50%);
     background: -moz-linear-gradient(0deg, white 49.5%, #ccc 50%, #EFEFEF 50%);
     background: linear-gradient(90deg, white 49.5%, #ccc 50%, #EFEFEF 50%);
 }
+
 .filter-modal input[type="checkbox"] {
     background: transparent;
     border: 1px rgb(46, 204, 113) solid;
@@ -225,6 +230,7 @@ input[type="date"] {
     font-family: Ionicons;
     text-align: center;
 }
+
 .filter-modal .col {
     top: 44px;
     position: absolute;
@@ -234,16 +240,19 @@ input[type="date"] {
     height: auto;
     overflow-y: scroll;
 }
+
 .filter-modal .col.right {
     right: 0;
     left: auto;
 }
+
 .bottom-stick {
     position: absolute;
     bottom: 0px;
     z-index: 9;
     right: 0px;
 }
+
 .filter-modal input[type="checkbox"]:before {
     content: '\f121';
     opacity: 0;
@@ -252,39 +261,92 @@ input[type="date"] {
     -o-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
     transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
 }
+
 .filter-modal input[type="checkbox"]:checked:before {
     opacity: 1;
 }
+
 .filter-modal .active.item {
     color: #2ECC71;
     font-weight: 600;
 }
-.bar.item-input-inset.search-app  .item-input-wrapper input {
-  padding-left: 0px;
-  width: 75%;
+
+.bar.item-input-inset.search-app .item-input-wrapper input {
+    padding-left: 0px;
+    width: 75%;
 }
+
 .bar.item-input-inset.search-app {
-  padding: 0;
+    padding: 0;
 }
 
 .search-app .placeholder-icon:first-child {
-  padding-right: 6px;
-  float: left;
+    padding-right: 6px;
+    float: left;
 }
 
-.search-app  .ion-ios-search:before
-{
-   line-height: 2; 
+.search-app .ion-ios-search:before {
+    line-height: 2;
 }
-
 
 .bar-balanced .button.btn-sort.button-icon {
-  border-color: transparent;
-  background: none;
-  transform: rotate(90deg);
+    border-color: transparent;
+    background: none;
+    transform: rotate(90deg);
 }
 
 .small-icon:before {
-  font-size: 23px !important;
-  line-height: 28px !important;
+    font-size: 23px !important;
+    line-height: 28px !important;
+}
+
+.title p {
+    text-align: center;
+    padding-top: 10px;
+    font-size: 16px;
+}
+
+.title p {
+    text-align: center;
+    padding-top: 10px;
+    font-size: 16px;
+}
+
+.otp-title {
+    padding: 25px;
+}
+
+.otp-title ion-item.item .item-input {
+    border: 0;
+    padding-left: 0;
+}
+
+.otp-title ion-item.item {
+    padding: 0;
+    border: 0;
+}
+
+.otp-title ion-item.item {
+    border-bottom: 1px solid #2ECC71;
+}
+.otp-title ion-item.item .item-input input[type="text"] {
+     padding-left: 10px;
+}
+
+.otpbg {
+    background: #fff;
+}
+
+.otpnote button {
+    color: #2ECC71!important;
+    border-color: #2ECC71!important;
+}
+
+.otpnote p span {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.otpnote p {
+  padding-bottom: 10px;
 }

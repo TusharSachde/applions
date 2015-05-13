@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function ($scope, $ionicPopup, $location, MyServices) {
+.controller('AppCtrl', function ($scope, $ionicPopup, $location) {
 //    var readsmsCallback = function (otp) {
 //        if (!otp) {
 //            conole.log("No Otp");

@@ -7,8 +7,8 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
-.run(function($ionicPlatform) {
-    $ionicPlatform.ready(function() {
+.run(function ($ionicPlatform) {
+    $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
         if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
@@ -21,23 +21,30 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.tabs.position('bottom');
     $stateProvider
 
     // setup an abstract state for the tabs directive
-    .state('tab', {
+        .state('tab', {
         url: "/tab",
         abstract: true,
         templateUrl: "templates/tabs.html"
-    })   
-            .state('app', {
-            url: "/app",
-            abstract: true,
-            controller: 'AppCtrl',
-            templateUrl: "templates/otp.html"
-        })
+    })
 
+    .state('otp', {
+        url: "/otp",
+        abstract: true,
+        controller: 'AppCtrl',
+        templateUrl: "templates/otp.html"
+    })
+        .state('otp.otp', {
+            url: '/otp',
+            views: {
+                templateUrl: 'templates/otp.html',
+                controller: 'RegisterCtrl'
+            }
+        })
     // Each tab has its own nav history stack:
 
     .state('tab.home', {
@@ -79,21 +86,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     })
 
     .state('tab.about', {
-        url: '/about',
-        views: {
-            'tab-about': {
-                templateUrl: 'templates/tab-about.html',
-                controller: 'AboutCtrl'
+            url: '/about',
+            views: {
+                'tab-about': {
+                    templateUrl: 'templates/tab-about.html',
+                    controller: 'AboutCtrl'
+                }
             }
-        }
-    })
-      .state('app.otp', {
-        url: '/otp',
-        views: {
-                templateUrl: 'templates/otp.html',
-                controller: 'RegisterCtrl'
-        }
-    });
+        });
+
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/tab/home');
