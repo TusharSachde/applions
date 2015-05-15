@@ -55,7 +55,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 controller: 'HomeCtrl'
             }
         }
-    }).state('tab.edit', {
+    })
+        .state('tab.addappliance', {
+        url: '/home/addappliance',
+        views: {
+              'tab-home': {
+                templateUrl: 'templates/addappliance.html',
+                controller: 'HomeCtrl'
+              }
+        }
+    })
+.state('tab.edit', {
         url: '/home/edit',
         views: {
             'tab-home': {

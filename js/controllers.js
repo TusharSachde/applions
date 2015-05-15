@@ -62,7 +62,7 @@ angular.module('starter.controllers', [])
         $scope.oModal3.hide();
     };  
     
-    $ionicModal.fromTemplateUrl('templates/modal-filter.html', {
+    $ionicModal.fromTemplateUrl('templates/modal-sortby.html', {
         id: '4',
         scope: $scope,
         animation: 'slide-in-up'
@@ -70,11 +70,68 @@ angular.module('starter.controllers', [])
         $scope.oModal4 = modal;
     });
 
-    $scope.openfilter = function () {
+    $scope.opensort = function () {
         $scope.oModal4.show();
     }
-    $scope.closefilter = function () {
+    $scope.closesort = function () {
         $scope.oModal4.hide();
+    };   
+    
+    $ionicModal.fromTemplateUrl('templates/modal-conformarchive.html', {
+        id: '5',
+        scope: $scope,
+        animation: 'pop-up'
+    }).then(function (modal) {
+        $scope.oModal5 = modal;
+    });
+
+    $scope.openarchive = function () {
+        $scope.oModal5.show();
+    }
+    $scope.closearchive = function () {
+        $scope.oModal5.hide();
+    };  
+      $ionicModal.fromTemplateUrl('templates/modal-transfer.html', {
+        id: '6',
+        scope: $scope,
+        animation: 'pop-up'
+    }).then(function (modal) {
+        $scope.oModal6 = modal;
+    });
+
+    $scope.opentransfer = function () {
+        $scope.oModal6.show();
+    }
+    $scope.closetransfer = function () {
+        $scope.oModal6.hide();
+    };  
+    $ionicModal.fromTemplateUrl('templates/modal-delete.html', {
+        id: '7',
+        scope: $scope,
+        animation: 'pop-up'
+    }).then(function (modal) {
+        $scope.oModal7 = modal;
+    });
+
+    $scope.opendelete = function () {
+        $scope.oModal7.show();
+    }
+    $scope.closedelete = function () {
+        $scope.oModal7.hide();
+    };   
+    $ionicModal.fromTemplateUrl('templates/modal-services.html', {
+        id: '8',
+        scope: $scope,
+        animation: 'pop-up'
+    }).then(function (modal) {
+        $scope.oModal8 = modal;
+    });
+
+    $scope.openservice = function () {
+        $scope.oModal8.show();
+    }
+    $scope.closeservice = function () {
+        $scope.oModal8.hide();
     };  
     
 //    $ionicModal.fromTemplateUrl('templates/modal-sortby.html', {
@@ -232,7 +289,7 @@ angular.module('starter.controllers', [])
         $scope.covertype = "bold";
     }
 
-    function purchaseoverlimit() {
+    function save() {
         var myPopup = $ionicPopup.show({
             template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Appliance has been update successfully!!</p>',
             title: 'Alert!',
@@ -242,8 +299,6 @@ angular.module('starter.controllers', [])
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     }
-
-
 })
 
 .controller('ProfileCtrl', function ($scope, $ionicPopover) {
