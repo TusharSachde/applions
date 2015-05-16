@@ -26,7 +26,7 @@ angular.module('starter.controllers', [])
         $scope.oModal1.show();
     };
 
-    $scope.closeModal = function () {
+    $scope.closeModalss = function () {
         $scope.oModal1.hide();
     };
 
@@ -119,8 +119,22 @@ angular.module('starter.controllers', [])
     $scope.closedelete = function () {
         $scope.oModal7.hide();
     };   
-    $ionicModal.fromTemplateUrl('templates/modal-services.html', {
+    $ionicModal.fromTemplateUrl('templates/modal-report.html', {
         id: '8',
+        scope: $scope,
+        animation: 'pop-up'
+    }).then(function (modal) {
+        $scope.oModal8 = modal;
+    });
+
+    $scope.openreport = function () {
+        $scope.oModal8.show();
+    }
+    $scope.closereport = function () {
+        $scope.oModal8.hide();
+    };    
+    $ionicModal.fromTemplateUrl('templates/modal-services.html', {
+        id: '9',
         scope: $scope,
         animation: 'pop-up'
     }).then(function (modal) {
@@ -134,22 +148,6 @@ angular.module('starter.controllers', [])
         $scope.oModal8.hide();
     };  
     
-//    $ionicModal.fromTemplateUrl('templates/modal-sortby.html', {
-//        id: '4',
-//        scope: $scope,
-//        animation: 'slide-in-up'
-//    }).then(function (modal) {
-//        $scope.oModal4 = modal;
-//    });
-//
-//    $scope.opensort = function () {
-//        $scope.oModal4.show();
-//    }
-//    $scope.opensort = function () {
-//        $scope.oModal4.hide();
-//    };
-
-
 
     //    $scope.appliance = "active";   
     $scope.appliance = "bold";
@@ -287,6 +285,23 @@ angular.module('starter.controllers', [])
         $scope.location = "";
         $scope.coverstatus = "";
         $scope.covertype = "bold";
+    }
+
+    
+        //    tab3   
+    $scope.newreport = "";
+    $scope.previousreport = "bold";
+    $scope.user = [];
+
+    //  DESIGN CODE
+    $scope.changereport = function () {
+    $scope.newreport = "bold";
+    $scope.previousreport = "";
+    }
+
+    $scope.changeprvsreport = function () {
+    $scope.newreport = "";
+    $scope.previousreport = "bold";
     }
 
     function save() {

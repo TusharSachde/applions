@@ -1,0 +1,180 @@
+<ion-modal-view class="bg-sortby">
+    <ion-header-bar class="bar-balanced">
+        <h1 class="title">Service Report</h1>
+        <div class="buttons button-right">
+            <button class="button button-clear" ng-click="closereport();">Close</button>
+        </div>
+    </ion-header-bar>
+<ion-content>
+    <div class="row report-tab">
+        <div class="col text-center head-report" ng-click="changereport();">
+            New Report
+        </div>    
+               <div class="col text-center head-report" ng-click="changeprvsreport();">
+            Previous Report
+        </div>
+    </div>
+    <div class="new-details" ng-if="newreport=='bold'">
+    <div class="list list-tab">
+        <div class="item product-Report">
+              Appliance Details
+            </div>
+    </div>
+    <div class="row">
+        <div class="col-33">
+          <div class="pictures assertive-bg" style="background-image: url('img/icons/Mobile.png');"></div>
+        </div>
+           <div class="col-67">
+           <h5>Appliance Type</h5>
+           <p>Mobile Phones</p>
+        </div> 
+    </div>  
+            <div class="app-details">
+                           <div class="list list-tab">
+            <label class="item item-input">
+                <span class="input-label">Brand</span>
+                <input type="text" value="Sony Ericsson" disabled>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Model No</span>
+                <input type="text" value="X6" disabled>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Serial No</span>
+                <input type="text" value="1234" disabled>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Tag</span>
+                <input type="text" value="My 2nd Mobile" disabled>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Location</span>
+                <input type="text" value="Location" disabled>
+            </label>
+    </div>
+    <div class="call-details">
+            <div class="list list-tab">
+        <div class="item product-Report">
+              Call Details
+            </div>
+            <label class="item item-input">
+                <span class="input-label">Date</span>
+                <input type="Date">
+            </label>   
+                        <label class="item item-input">
+                <span class="input-label">Time</span>
+                <input type="time">
+            </label>          
+    <label class="item item-input item-select">
+    <div class="input-label">
+      Call Type
+    </div>
+    <select>
+      <option selected>AMC</option>
+      <option>Warranty</option>
+      <option>Other</option>
+    </select>
+  </label>
+             <label class="item item-input">
+                <span class="input-label">Agency Name</span>
+                <input type="text" placeholder="Enter Agency Name">
+            </label>    
+                      <label class="item item-input">
+                <span class="input-label">Service Enginner</span>
+                <input type="text" placeholder="Enter Enginner Name">
+            </label>   
+        </div>
+    </div>  
+           <div class="service-details">
+            <div class="list list-tab">
+        <div class="item product-Report">
+              Service Details
+            </div>
+            <label class="item item-input">
+                <span class="input-label">Problem Details</span>
+                <input type="text" placeholder="Enter Details of Probelms">
+            </label>         
+                    <label class="item item-input">
+                <span class="input-label">Service Rendered</span>
+                <input type="text" placeholder="Enter Details of Probelms">
+            </label>   
+                              
+    <label class="item item-input item-select">
+    <div class="input-label">
+      Call Status
+    </div>
+    <select>
+      <option selected>Completed</option>
+      <option>Incompleted</option>
+      <option>Pending For Spares</option>
+      <option>Under Observation</option>
+    </select>
+  </label>
+             <label class="item item-input">
+                <span class="input-label">Amount Paid</span>
+                <input type="text" placeholder="Amount Paid">
+            </label>    
+                      <label class="item item-input">
+                <span class="input-label">Service Enginner</span>
+                <input type="text" placeholder="Enter Enginner Name">
+            </label>   
+        </div>
+    </div>
+               <div class="feedback">
+            <div class="list list-tab">
+                                  <div class="item product-Report">
+              FeedBack
+            </div>
+                          <label class="item item-input">
+                <span class="input-label">Service Quality</span>
+                <div class="start input">
+                <i class="ion-android-star actived"></i>
+                <i class="ion-android-star"></i>
+                <i class="ion-android-star"></i>
+                <i class="ion-android-star"></i>
+                <i class="ion-android-star"></i>
+                              </div>
+            </label>   
+                       <label class="item item-input">
+                <span class="input-label">Timely Service</span>
+                <div class="start input">
+                <i class="ion-android-star actived"></i>
+                <i class="ion-android-star"></i>
+                <i class="ion-android-star"></i>
+                <i class="ion-android-star"></i>
+                <i class="ion-android-star"></i>
+                              </div>
+            </label> 
+                <label class="item item-input">
+                <span class="input-label">Service Charges</span>
+                <div class="start input">
+                <i class="ion-android-star actived"></i>
+                <i class="ion-android-star"></i>
+                <i class="ion-android-star"></i>
+                <i class="ion-android-star"></i>
+                <i class="ion-android-star"></i>
+                              </div>
+            </label>  
+                         <label class="item item-input">
+                <span class="input-label">Feedback Title</span>
+                <input type="text" placeholder="Enter FeedBack Title">
+            </label>   
+                <label class="item item-input">
+                <span class="input-label">Feedback Review</span>
+                <input type="text" placeholder="Enter Review">
+            </label> 
+                   </div>
+                </div>
+                <div class="btn-newreport">
+                <a class="button button-outline button-balanced button-small">Submit</a>
+                </div>
+        </div>
+        <div class="prv-report" ng-if="previousreport=='bold'">
+            <div class="card">
+  <a class="item" href="#">
+    Butterfinger
+  </a>
+</div>
+        </div>
+</ion-content>
+</ion-view>
