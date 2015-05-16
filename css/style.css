@@ -552,3 +552,7 @@ i.ion-android-star.actived {
 .reports .item {
   padding: 5px;
 }
+
+.modal-backdrop-bg {
+  background: rgba(0, 0, 0, 0.4);
+}
