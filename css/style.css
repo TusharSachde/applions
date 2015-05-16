@@ -85,14 +85,29 @@
     display: flex;
 }
 
-/*
-.withlist .picture {
-    position: static;
-    width: 70px;
+.picturess.assertive-bg {
     height: 70px;
-    float: left;
+    width: 70px;
+    -webkit-border-radius: 50%;  
+    -moz-border-radius: 50%; 
+    border-radius: 50%;  
+    overflow: hidden;  
+    background-position: center center;  
+    background-repeat: no-repeat; 
+    position: absolute;  
+    text-align: center;  
+    -webkit-background-size: cover; 
+    -moz-background-size: cover;  
+    -o-background-size: cover;  
+    background-size: cover;   
+    top: 13.5px;  
+    left: 10px;
 }
-*/
+
+.wish {
+    padding-left: 95px;
+    position: relative;
+}
 
 .stickyScroll {
     top: 44px;
@@ -508,8 +523,8 @@ i.ion-android-star.actived {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
-  height: 30px;
-  width: 30px;
+  height: 50px;
+  width: 50px;
   -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.35);
   -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.35);
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.35);
