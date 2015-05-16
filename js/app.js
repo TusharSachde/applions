@@ -7,12 +7,12 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
-.run(function ($ionicPlatform) {
-    $ionicPlatform.ready(function () {
+.run(function($ionicPlatform) {
+    $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
         if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
         }
         if (window.StatusBar) {
             // org.apache.cordova.statusbar required
@@ -21,12 +21,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     });
 })
 
-.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.tabs.position('bottom');
+    $ionicConfigProvider.scrolling.jsScrolling(false);
     $stateProvider
 
     // setup an abstract state for the tabs directive
-        .state('tab', {
+    .state('tab', {
         url: "/tab",
         abstract: true,
         templateUrl: "templates/tabs.html"
@@ -57,23 +58,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
     })
         .state('tab.addappliance', {
-        url: '/home/addappliance',
-        views: {
-              'tab-home': {
-                templateUrl: 'templates/addappliance.html',
-                controller: 'HomeCtrl'
-              }
-        }
-    })
-.state('tab.edit', {
-        url: '/home/edit',
-        views: {
-            'tab-home': {
-                templateUrl: 'templates/home-edit.html',
-                controller: 'HomeCtrl'
+            url: '/home/addappliance',
+            views: {
+                'tab-home': {
+                    templateUrl: 'templates/addappliance.html',
+                    controller: 'HomeCtrl'
+                }
             }
-        }
-    })
+        })
+        .state('tab.edit', {
+            url: '/home/edit',
+            views: {
+                'tab-home': {
+                    templateUrl: 'templates/home-edit.html',
+                    controller: 'HomeCtrl'
+                }
+            }
+        })
 
     .state('tab.profile', {
         url: '/profile',
@@ -96,14 +97,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     })
 
     .state('tab.about', {
-            url: '/about',
-            views: {
-                'tab-about': {
-                    templateUrl: 'templates/tab-about.html',
-                    controller: 'AboutCtrl'
-                }
+        url: '/about',
+        views: {
+            'tab-about': {
+                templateUrl: 'templates/tab-about.html',
+                controller: 'AboutCtrl'
             }
-        });
+        }
+    });
 
 
     // if none of the above states are matched, use this as the fallback
