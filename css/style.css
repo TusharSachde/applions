@@ -87,9 +87,9 @@
 
 .withlist .picture {
     position: static;
-    margin: 0 auto;
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
+    float: left;
 }
 
 .stickyScroll {
@@ -171,7 +171,10 @@ label.item.add-warnty a {
 .upload.button.icon-right:before {
     padding-left: 0.8em;
 }
-
+.blocks a {
+  color: #5F5F5F;
+  text-decoration: none;
+}
 a.button.upload {
     padding: 11px 20px;
     line-height: 21px;
@@ -498,4 +501,54 @@ i.ion-android-star.actived {
 
 .btn-newreport .button {
     padding: 0px 15px;
+}
+.button-round {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.35);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.35);
+  font-size: 40px;
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+.button-round.ion-plus-round:before {
+  padding-top: 8px;
+}
+.add-app {
+  position: absolute;
+  right: 10px;
+  bottom: -70px;
+}
+
+.list.list-tabs {
+  margin-bottom: -1px;
+}
+.feedback {
+    margin-bottom: 10px;
+}
+
+.item.withlist {
+    position: relative;
+}
+
+.item.withlist label {
+    width: 72%;
+    float: left;
+    margin-left: 10px;
+    border: 0px;
+    padding: 2px 0;
+}
+
+.item.withlist label input {
+    border-bottom: 1px solid #ddd;
+}
+.reports .item {
+  padding: 5px;
 }

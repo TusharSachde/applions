@@ -6,17 +6,7 @@
         </div>
     </ion-header-bar>
     <ion-content>
-
-        <div class="row report-tab">
-            <div class="col text-center head-report" ng-click="showreport=1;">
-                New Report
-            </div>
-            <div class="col text-center head-report" ng-click="showreport=2;">
-                Previous Report
-            </div>
-        </div>
-        <div class="new-details" ng-if="showreport==1">
-            <div class="list list-tabs">
+              <div class="list list-tabs">
                 <div class="item product-Report">
                     Appliance Details
                 </div>
@@ -30,7 +20,7 @@
                     <p>Mobile Phones</p>
                 </div>
             </div>
-                       <div class="app-details">
+   <div class="app-details">
                 <div class="list list-tabs">
                     <label class="item item-input">
                         <span class="input-label">Brand</span>
@@ -60,29 +50,25 @@
                         </div>
                         <label class="item item-input">
                             <span class="input-label">Date</span>
-                            <input type="Date">
+                            <input type="Date" disabled>
                         </label>
                         <label class="item item-input">
                             <span class="input-label">Time</span>
-                            <input type="time">
+                            <input type="time" disabled>
                         </label>
                         <label class="item item-input item-select">
                             <div class="input-label">
                                 Call Type
                             </div>
-                            <select>
-                                <option selected>AMC</option>
-                                <option>Warranty</option>
-                                <option>Other</option>
-                            </select>
+                            <input type="text" placeholder="Warranty" disabled>
                         </label>
                         <label class="item item-input">
                             <span class="input-label">Agency Name</span>
-                            <input type="text" placeholder="Enter Agency Name">
+                            <input type="text" placeholder="Enter Agency Name" disabled>
                         </label>
                         <label class="item item-input">
                             <span class="input-label">Service Enginner</span>
-                            <input type="text" placeholder="Enter Enginner Name">
+                            <input type="text" placeholder="Enter Enginner Name" disabled>
                         </label>
                     </div>
                 </div>
@@ -93,31 +79,26 @@
                         </div>
                         <label class="item item-input">
                             <span class="input-label">Problem Details</span>
-                            <input type="text" placeholder="Enter Details of Probelms">
+                            <input type="text" placeholder="Enter Details of Probelms" disabled>
                         </label>
                         <label class="item item-input">
                             <span class="input-label">Service Rendered</span>
-                            <input type="text" placeholder="Enter Details of Probelms">
+                            <input type="text" placeholder="Enter Details of Probelms" disabled>
                         </label>
 
                         <label class="item item-input item-select">
                             <div class="input-label">
                                 Call Status
                             </div>
-                            <select>
-                                <option selected>Completed</option>
-                                <option>Incompleted</option>
-                                <option>Pending For Spares</option>
-                                <option>Under Observation</option>
-                            </select>
+                             <input type="text" value="Completed" disabled>
                         </label>
                         <label class="item item-input">
                             <span class="input-label">Amount Paid</span>
-                            <input type="text" placeholder="Amount Paid">
+                            <input type="text" value="Amount Paid" disabled>
                         </label>
                         <label class="item item-input">
                             <span class="input-label">Service Enginner</span>
-                            <input type="text" placeholder="Enter Enginner Name">
+                            <input type="text" value="Enter Enginner Name" disabled>
                         </label>
                     </div>
                 </div>
@@ -158,36 +139,14 @@
                         </label>
                         <label class="item item-input">
                             <span class="input-label">Feedback Title</span>
-                            <input type="text" placeholder="Enter FeedBack Title">
+                            <input type="text" value="Enter FeedBack Title" disabled>
                         </label>
                         <label class="item item-input">
                             <span class="input-label">Feedback Review</span>
-                            <input type="text" placeholder="Enter Review">
+                            <input type="text" value="Enter Review" disabled>
                         </label>
                     </div>
                 </div>
-                <div class="btn-newreport">
-                    <a class="button button-outline button-balanced button-small">Submit</a>
-                </div>
-            </div>
-        </div>
-        <div class="prv-report" ng-if="showreport==2;">
-           <div class="reports">
-            <div class="card" ng-click="openprevreports();">
-                <a class="item" href="#">
-                <div class="row">
-                   <div class="col">
-                       <span>Service Call Date</span><br>
-                       <span>Service Call Type</span>
-                   </div> 
-                                       <div class="col">
-                                           <span> 2015-05-13</span><br>
-                                           <span>AMC</span>
-                   </div>    
-                </div>
-  </a>
-            </div>
-        </div>
         </div>
     </ion-content>
-    </ion-view>
+</ion-modal-view>

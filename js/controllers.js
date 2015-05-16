@@ -138,14 +138,28 @@ angular.module('starter.controllers', [])
         scope: $scope,
         animation: 'slide-in-up'
     }).then(function(modal) {
-        $scope.oModal8 = modal;
+        $scope.oModal9 = modal;
     });
 
     $scope.openservice = function() {
-        $scope.oModal8.show();
+        $scope.oModal9.show();
     }
     $scope.closeservice = function() {
-        $scope.oModal8.hide();
+        $scope.oModal9.hide();
+    };
+    $ionicModal.fromTemplateUrl('templates/modal-prevreports.html', {
+        id: '10',
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.oModal10 = modal;
+    });
+
+    $scope.openprevreports = function() {
+        $scope.oModal10.show();
+    }
+    $scope.closeprevreports = function() {
+        $scope.oModal10.hide();
     };
 
 

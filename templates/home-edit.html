@@ -1,4 +1,9 @@
 <ion-view view-title="Manage Appliance" class="light-bg">
+   <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear small-icon">
+        Save
+        </button> 
+    </ion-nav-buttons>
     <ion-scroll zooming="false" direction="x" class="light-bg stickyScroll">
         <div class="flex-block">
             <div class="blocks text-center" ng-click="openarchive();">
@@ -61,8 +66,7 @@
         <div class="list" ng-if="appliance=='bold'">
             <div class="item withlist">
                 <div class="picture assertive-bg" style="background-image: url('img/icons/Mobile.png');"></div>
-            </div>
-            <label class="item item-input">
+                            <label class="item item-input">
                 <span class="input-label">Product*</span>
                 <input type="text" required>
             </label>
@@ -70,6 +74,8 @@
                 <span class="input-label">Name As*</span>
                 <input type="text" required>
             </label>
+            </div>
+
             <label class="item item-input">
                 <span class="input-label">Brand*</span>
                 <input type="text" required>
@@ -95,7 +101,7 @@
                 <input type="text">
             </label>
             <div class="button-bar">
-                <a class="button button-outline icon-right button-balanced" ng-click="myPopup();">Save &amp; Exit</a>
+<!--                <a class="button button-outline icon-right button-balanced" ng-click="myPopup();">Save &amp; Exit</a>-->
                 <a class="button button-outline icon-right ion-chevron-right button-balanced" ng-class="purchase" ng-click="changepurchase()">Next</a>
             </div>
 
@@ -156,7 +162,7 @@
 
             <div class="button-bar">
                 <a class="button button-outline icon-left ion-chevron-left button-balanced" ng-class="appliance" ng-click="changeapp()">Previous</a>
-                <a class="button button-outline icon-right button-balanced save-exits">Save &amp; Exit</a>
+<!--                <a class="button button-outline icon-right button-balanced save-exits">Save &amp; Exit</a>-->
                 <a class="button button-outline icon-right ion-chevron-right button-balanced" ng-class="warranty" ng-click="changewarranty()">Next</a>
             </div>
         </div>
@@ -199,7 +205,7 @@
             </label>
             <div class="button-bar">
                 <a class="button button-outline icon-left ion-chevron-left button-balanced" ng-class="purchase" ng-click="changepurchase()">Previous</a>
-                <a class="button button-outline icon-right button-balanced save-exits">Save &#38; Exit</a>
+<!--                <a class="button button-outline icon-right button-balanced save-exits">Save &#38; Exit</a>-->
                 <a class="button button-outline icon-right ion-chevron-right button-balanced" ng-class="documents" ng-click="changedocuments()">Next</a>
             </div>
         </div>
@@ -226,7 +232,7 @@
             </label>
             <div class="button-bar">
                 <a class="button button-outline icon-left ion-chevron-left button-balanced" ng-class="warranty" ng-click="changewarranty()">Previous</a>
-                <a class="button button-outline icon-right button-balanced save-exits" ng-click="myPopup();">Save &amp; Exit</a>
+<!--                <a class="button button-outline icon-right button-balanced save-exits" ng-click="myPopup();">Save &amp; Exit</a>-->
             </div>
         </div>
     </ion-content>
