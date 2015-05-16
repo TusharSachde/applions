@@ -1,32 +1,32 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function ($scope, $ionicPopup, $location) {
-//    var readsmsCallback = function (otp) {
-//        if (!otp) {
-//            conole.log("No Otp");
-//        } else {
-//            $scope.otp = otp;
-//            $scope.$apply();
-//            $location.path("/profile");
-//        }
-//    };
-//    MyServices.readsms(readsmsCallback);
+.controller('AppCtrl', function($scope, $ionicPopup, $location) {
+    //    var readsmsCallback = function (otp) {
+    //        if (!otp) {
+    //            conole.log("No Otp");
+    //        } else {
+    //            $scope.otp = otp;
+    //            $scope.$apply();
+    //            $location.path("/profile");
+    //        }
+    //    };
+    //    MyServices.readsms(readsmsCallback);
 })
 
-.controller('HomeCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout) {
+.controller('HomeCtrl', function($scope, $ionicModal, $ionicPopup, $timeout) {
     $ionicModal.fromTemplateUrl('templates/location.html', {
         id: '1',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function (modal) {
+    }).then(function(modal) {
         $scope.oModal1 = modal;
     });
 
-    $scope.openedit = function () {
+    $scope.openedit = function() {
         $scope.oModal1.show();
     };
 
-    $scope.closeModalss = function () {
+    $scope.closeModalss = function() {
         $scope.oModal1.hide();
     };
 
@@ -35,15 +35,15 @@ angular.module('starter.controllers', [])
         id: '2',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function (modal) {
+    }).then(function(modal) {
         $scope.oModal2 = modal;
     });
 
-    $scope.openpswd = function () {
+    $scope.openpswd = function() {
         $scope.oModal2.show();
     };
 
-    $scope.closeModal = function () {
+    $scope.closeModal = function() {
         $scope.oModal2.hide();
     };
 
@@ -51,103 +51,103 @@ angular.module('starter.controllers', [])
         id: '3',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function (modal) {
+    }).then(function(modal) {
         $scope.oModal3 = modal;
     });
 
-    $scope.openfilter = function () {
+    $scope.openfilter = function() {
         $scope.oModal3.show();
     }
-    $scope.closefilter = function () {
+    $scope.closefilter = function() {
         $scope.oModal3.hide();
-    };  
-    
+    };
+
     $ionicModal.fromTemplateUrl('templates/modal-sortby.html', {
         id: '4',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function (modal) {
+    }).then(function(modal) {
         $scope.oModal4 = modal;
     });
 
-    $scope.opensort = function () {
+    $scope.opensort = function() {
         $scope.oModal4.show();
     }
-    $scope.closesort = function () {
+    $scope.closesort = function() {
         $scope.oModal4.hide();
-    };   
-    
+    };
+
     $ionicModal.fromTemplateUrl('templates/modal-conformarchive.html', {
         id: '5',
         scope: $scope,
-        animation: 'pop-up'
-    }).then(function (modal) {
+        animation: 'slide-in-up'
+    }).then(function(modal) {
         $scope.oModal5 = modal;
     });
 
-    $scope.openarchive = function () {
+    $scope.openarchive = function() {
         $scope.oModal5.show();
     }
-    $scope.closearchive = function () {
+    $scope.closearchive = function() {
         $scope.oModal5.hide();
-    };  
-      $ionicModal.fromTemplateUrl('templates/modal-transfer.html', {
+    };
+    $ionicModal.fromTemplateUrl('templates/modal-transfer.html', {
         id: '6',
         scope: $scope,
-        animation: 'pop-up'
-    }).then(function (modal) {
+        animation: 'slide-in-up'
+    }).then(function(modal) {
         $scope.oModal6 = modal;
     });
 
-    $scope.opentransfer = function () {
+    $scope.opentransfer = function() {
         $scope.oModal6.show();
     }
-    $scope.closetransfer = function () {
+    $scope.closetransfer = function() {
         $scope.oModal6.hide();
-    };  
+    };
     $ionicModal.fromTemplateUrl('templates/modal-delete.html', {
         id: '7',
         scope: $scope,
-        animation: 'pop-up'
-    }).then(function (modal) {
+        animation: 'slide-in-up'
+    }).then(function(modal) {
         $scope.oModal7 = modal;
     });
 
-    $scope.opendelete = function () {
+    $scope.opendelete = function() {
         $scope.oModal7.show();
     }
-    $scope.closedelete = function () {
+    $scope.closedelete = function() {
         $scope.oModal7.hide();
-    };   
+    };
     $ionicModal.fromTemplateUrl('templates/modal-report.html', {
         id: '8',
         scope: $scope,
-        animation: 'pop-up'
-    }).then(function (modal) {
+        animation: 'slide-in-up'
+    }).then(function(modal) {
         $scope.oModal8 = modal;
     });
 
-    $scope.openreport = function () {
+    $scope.openreport = function() {
         $scope.oModal8.show();
     }
-    $scope.closereport = function () {
+    $scope.closereport = function() {
         $scope.oModal8.hide();
-    };    
+    };
     $ionicModal.fromTemplateUrl('templates/modal-services.html', {
         id: '9',
         scope: $scope,
-        animation: 'pop-up'
-    }).then(function (modal) {
+        animation: 'slide-in-up'
+    }).then(function(modal) {
         $scope.oModal8 = modal;
     });
 
-    $scope.openservice = function () {
+    $scope.openservice = function() {
         $scope.oModal8.show();
     }
-    $scope.closeservice = function () {
+    $scope.closeservice = function() {
         $scope.oModal8.hide();
-    };  
-    
+    };
+
 
     //    $scope.appliance = "active";   
     $scope.appliance = "bold";
@@ -157,7 +157,7 @@ angular.module('starter.controllers', [])
     $scope.user = [];
 
     //  DESIGN CODE
-    $scope.changeapp = function () {
+    $scope.changeapp = function() {
         $scope.appliance = "bold";
         $scope.purchase = "";
         $scope.warranty = "";
@@ -165,20 +165,20 @@ angular.module('starter.controllers', [])
 
     }
 
-    $scope.changepurchase = function () {
+    $scope.changepurchase = function() {
         $scope.appliance = "";
         $scope.purchase = "bold";
         $scope.warranty = "";
         $scope.documents = "";
     }
 
-    $scope.changewarranty = function () {
+    $scope.changewarranty = function() {
         $scope.appliance = "";
         $scope.purchase = "";
         $scope.warranty = "bold";
         $scope.documents = "";
     }
-    $scope.changedocuments = function () {
+    $scope.changedocuments = function() {
         $scope.appliance = "";
         $scope.purchase = "";
         $scope.warranty = "";
@@ -194,19 +194,19 @@ angular.module('starter.controllers', [])
     $scope.user = [];
 
     //  DESIGN CODE
-    $scope.changemyhome = function () {
+    $scope.changemyhome = function() {
         $scope.myhome = "bold";
         $scope.myoffice = "";
         $scope.addnew = "";
 
     }
 
-    $scope.changemyoffice = function () {
+    $scope.changemyoffice = function() {
         $scope.myhome = "";
         $scope.myoffice = "bold";
         $scope.addnew = "";
     }
-    $scope.changeaddnew = function () {
+    $scope.changeaddnew = function() {
         $scope.myhome = "";
         $scope.myoffice = "";
         $scope.addnew = "bold";
@@ -219,19 +219,19 @@ angular.module('starter.controllers', [])
     $scope.user = [];
 
     //  DESIGN CODE
-    $scope.changemyhome = function () {
+    $scope.changemyhome = function() {
         $scope.myhome = "bold";
         $scope.myoffice = "";
         $scope.addnew = "";
 
     }
 
-    $scope.changemyoffice = function () {
+    $scope.changemyoffice = function() {
         $scope.myhome = "";
         $scope.myoffice = "bold";
         $scope.addnew = "";
     }
-    $scope.changeaddnew = function () {
+    $scope.changeaddnew = function() {
         $scope.myhome = "";
         $scope.myoffice = "";
         $scope.addnew = "bold";
@@ -247,7 +247,7 @@ angular.module('starter.controllers', [])
     $scope.user = [];
 
     //  DESIGN CODE
-    $scope.changeappstatus = function () {
+    $scope.changeappstatus = function() {
         $scope.appstatus = "bold";
         $scope.apptype = "";
         $scope.location = "";
@@ -255,7 +255,7 @@ angular.module('starter.controllers', [])
         $scope.covertype = "";
     }
 
-    $scope.changetype = function () {
+    $scope.changetype = function() {
         $scope.appstatus = "";
         $scope.apptype = "bold";
         $scope.location = "";
@@ -263,7 +263,7 @@ angular.module('starter.controllers', [])
         $scope.covertype = "";
     }
 
-    $scope.changelocation = function () {
+    $scope.changelocation = function() {
         $scope.appstatus = "";
         $scope.apptype = "";
         $scope.location = "bold";
@@ -271,7 +271,7 @@ angular.module('starter.controllers', [])
         $scope.covertype = "";
     }
 
-    $scope.changecoverstatus = function () {
+    $scope.changecoverstatus = function() {
         $scope.appstatus = "";
         $scope.apptype = "";
         $scope.location = "";
@@ -279,7 +279,7 @@ angular.module('starter.controllers', [])
         $scope.covertype = "";
     }
 
-    $scope.changecovertype = function () {
+    $scope.changecovertype = function() {
         $scope.appstatus = "";
         $scope.apptype = "";
         $scope.location = "";
@@ -287,22 +287,10 @@ angular.module('starter.controllers', [])
         $scope.covertype = "bold";
     }
 
-    
-        //    tab3   
-    $scope.newreport = "";
-    $scope.previousreport = "bold";
-    $scope.user = [];
 
-    //  DESIGN CODE
-    $scope.changereport = function () {
-    $scope.newreport = "bold";
-    $scope.previousreport = "";
-    }
+    //    tab3   
+    $scope.showreport = 1;
 
-    $scope.changeprvsreport = function () {
-    $scope.newreport = "";
-    $scope.previousreport = "bold";
-    }
 
     function save() {
         var myPopup = $ionicPopup.show({
@@ -310,29 +298,29 @@ angular.module('starter.controllers', [])
             title: 'Alert!',
             scope: $scope,
         });
-        $timeout(function () {
+        $timeout(function() {
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     }
 })
 
-.controller('ProfileCtrl', function ($scope, $ionicPopover) {
+.controller('ProfileCtrl', function($scope, $ionicPopover) {
     $ionicPopover.fromTemplateUrl('templates/profile-popover.html', {
         scope: $scope
-    }).then(function (popover) {
+    }).then(function(popover) {
         $scope.popover = popover;
     });
 
-    $scope.openPopover = function ($event) {
+    $scope.openPopover = function($event) {
         $scope.popover.show($event);
     };
-    $scope.closePopover = function () {
+    $scope.closePopover = function() {
         $scope.popover.hide();
     };
 })
 
-.controller('StoreCtrl', function ($scope) {})
+.controller('StoreCtrl', function($scope) {})
 
-.controller('AboutCtrl', function ($scope) {})
-    
-.controller('RegisterCtrl', function ($scope) {});
+.controller('AboutCtrl', function($scope) {})
+
+.controller('RegisterCtrl', function($scope) {});
