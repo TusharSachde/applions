@@ -63,10 +63,40 @@
                 </div>
             </div>
         </div>
-        <div class="list" ng-if="appliance=='bold'">
+<!--
+          <div class="list" ng-if="appliance=='bold'">
             <div class="item withlist">
-                <div class="picture assertive-bg" style="background-image: url('img/icons/Mobile.png');"></div>
-                            <label class="item item-input">
+                <div class="picture assertive-bg" style="background-image: url('img/icons/Mobile.png');">
+                                 <label class="item item-input">
+                <span class="input-label">Product*</span>
+                <input type="text" required>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Name As*</span>
+                <input type="text" required>
+            </label>
+                </div>
+            </div>
+        </div>
+-->
+        <div class="appliance" ng-if="appliance=='bold'">
+           
+<!--
+            <div class="item withlist">
+                <div class="picture assertive-bg" style="background-image: url('img/icons/Mobile.png');">
+                                 <label class="item item-input">
+                <span class="input-label">Product*</span>
+                <input type="text" required>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Name As*</span>
+                <input type="text" required>
+            </label>
+                </div>
+            </div>
+-->
+            <div class="list">
+                                    <label class="item item-input">
                 <span class="input-label">Product*</span>
                 <input type="text" required>
             </label>
@@ -75,7 +105,7 @@
                 <input type="text" required>
             </label>
             </div>
-
+<div class="list">
             <label class="item item-input">
                 <span class="input-label">Brand*</span>
                 <input type="text" required>
@@ -104,7 +134,7 @@
 <!--                <a class="button button-outline icon-right button-balanced" ng-click="myPopup();">Save &amp; Exit</a>-->
                 <a class="button button-outline icon-right ion-chevron-right button-balanced" ng-class="purchase" ng-click="changepurchase()">Next</a>
             </div>
-
+            </div>
         </div>
 
 

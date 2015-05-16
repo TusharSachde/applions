@@ -85,12 +85,14 @@
     display: flex;
 }
 
+/*
 .withlist .picture {
     position: static;
     width: 70px;
     height: 70px;
     float: left;
 }
+*/
 
 .stickyScroll {
     top: 44px;
