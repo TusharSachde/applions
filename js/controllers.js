@@ -91,6 +91,7 @@ angular.module('starter.controllers', [])
     $scope.closearchive = function() {
         $scope.oModal5.hide();
     };
+    
     $ionicModal.fromTemplateUrl('templates/modal-transfer.html', {
         id: '6',
         scope: $scope,
@@ -105,6 +106,7 @@ angular.module('starter.controllers', [])
     $scope.closetransfer = function() {
         $scope.oModal6.hide();
     };
+    
     $ionicModal.fromTemplateUrl('templates/modal-delete.html', {
         id: '7',
         scope: $scope,
@@ -119,6 +121,7 @@ angular.module('starter.controllers', [])
     $scope.closedelete = function() {
         $scope.oModal7.hide();
     };
+    
     $ionicModal.fromTemplateUrl('templates/modal-report.html', {
         id: '8',
         scope: $scope,
@@ -133,6 +136,7 @@ angular.module('starter.controllers', [])
     $scope.closereport = function() {
         $scope.oModal8.hide();
     };
+    
     $ionicModal.fromTemplateUrl('templates/modal-services.html', {
         id: '9',
         scope: $scope,
@@ -147,6 +151,7 @@ angular.module('starter.controllers', [])
     $scope.closeservice = function() {
         $scope.oModal9.hide();
     };
+    
     $ionicModal.fromTemplateUrl('templates/modal-prevreports.html', {
         id: '10',
         scope: $scope,
@@ -160,6 +165,36 @@ angular.module('starter.controllers', [])
     }
     $scope.closeprevreports = function() {
         $scope.oModal10.hide();
+    };  
+    
+    $ionicModal.fromTemplateUrl('templates/modal-addservice.html', {
+        id: '11',
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.oModal11 = modal;
+    });
+
+    $scope.openaddservice = function() {
+        $scope.oModal11.show();
+    }
+    $scope.closeaddservice = function() {
+        $scope.oModal11.hide();
+    };  
+    
+    $ionicModal.fromTemplateUrl('templates/modal-viewdetail.html', {
+        id: '12',
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.oModal12 = modal;
+    });
+
+    $scope.openviewdetails = function() {
+        $scope.oModal12.show();
+    }
+    $scope.closeviewdetails = function() {
+        $scope.oModal12.hide();
     };
 
 
@@ -302,10 +337,44 @@ angular.module('starter.controllers', [])
     }
 
 
-    //    tab3   
+    //    tab5   
     $scope.showreport = 1;
 
+    //    tab6
+    $scope.brandcall = "bold";
+    $scope.myservice = "";
+    $scope.seller = "";
+    $scope.details = "";
+    $scope.user = [];
 
+    //  DESIGN CODE
+    $scope.changebrandcall = function() {
+        $scope.brandcall = "bold";
+        $scope.myservice = "";
+        $scope.seller = "";
+        $scope.details = "";
+    }
+    $scope.changemyservice = function() {
+        $scope.brandcall = "";
+        $scope.myservice = "bold";
+        $scope.seller = "";
+        $scope.details = "";
+    }  
+    $scope.changeseller = function() {
+        $scope.brandcall = "";
+        $scope.myservice = "";
+        $scope.seller = "bold";
+         $scope.details = "";
+    }   
+    
+    $scope.changedetails = function() {
+        $scope.brandcall = "";
+        $scope.myservice = "";
+        $scope.seller = "";
+        $scope.details = "bold";
+    }
+   
+    
     function save() {
         var myPopup = $ionicPopup.show({
             template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Appliance has been update successfully!!</p>',
@@ -318,7 +387,7 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller('ProfileCtrl', function($scope, $ionicPopover) {
+.controller('ProfileCtrl', function($scope, $ionicPopover,$ionicModal) {
     $ionicPopover.fromTemplateUrl('templates/profile-popover.html', {
         scope: $scope
     }).then(function(popover) {
@@ -330,6 +399,67 @@ angular.module('starter.controllers', [])
     };
     $scope.closePopover = function() {
         $scope.popover.hide();
+    };
+    
+    
+       $ionicModal.fromTemplateUrl('templates/modal-chngpswd.html', {
+        id: '1',
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.oModal1 = modal;
+    });
+
+    $scope.openchngpswd = function() {
+        $scope.oModal1.show();
+    }
+    $scope.closechngpswd = function() {
+        $scope.oModal1.hide();
+    };
+    
+    $ionicModal.fromTemplateUrl('templates/modal-chngno.html', {
+        id: '2',
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.oModal2 = modal;
+    });
+
+    $scope.openchngno = function() {
+        $scope.oModal2.show();
+    }
+    $scope.closechngno = function() {
+        $scope.oModal2.hide();
+    };   
+    
+    $ionicModal.fromTemplateUrl('templates/modal-stat.html', {
+        id: '3',
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.oModal3 = modal;
+    });
+
+    $scope.openstat = function() {
+        $scope.oModal3.show();
+    }
+    $scope.closestat = function() {
+        $scope.oModal3.hide();
+    };   
+    
+    $ionicModal.fromTemplateUrl('templates/modal-feedback.html', {
+        id: '4',
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.oModal4 = modal;
+    });
+
+    $scope.openfeedback = function() {
+        $scope.oModal4.show();
+    }
+    $scope.closefeedback = function() {
+        $scope.oModal4.hide();
     };
 })
 

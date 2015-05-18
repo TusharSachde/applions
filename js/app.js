@@ -36,13 +36,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     .state('otp', {
         url: "/otp",
         abstract: true,
-        controller: 'AppCtrl',
+//        controller: 'AppCtrl',
         templateUrl: "templates/otp.html"
     })
         .state('otp.otp', {
             url: '/otp',
             views: {
                 templateUrl: 'templates/otp.html',
+                controller: 'RegisterCtrl'
+            }
+        }) 
+        .state('otp.otps', {
+            url: '/otp/otps',
+            views: {
+                templateUrl: 'templates/otps.html',
                 controller: 'RegisterCtrl'
             }
         })

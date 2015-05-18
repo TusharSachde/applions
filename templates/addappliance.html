@@ -1,4 +1,9 @@
 <ion-view view-title="Add Appliance" class="light-bg">
+   <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear small-icon">
+        Save
+        </button> 
+    </ion-nav-buttons>
 <!--
     <ion-scroll zooming="false" direction="x" class="light-bg stickyScroll">
         <div class="flex-block">
@@ -108,8 +113,8 @@
                 <input type="text">
             </label>
             <div class="button-bar">
-                <a class="button button-outline icon-right button-balanced" ng-click="myPopup();">Save &amp; Exit</a>
-                <a class="button button-outline icon-right ion-chevron-right button-balanced" ng-class="purchase" ng-click="changepurchase()">Next</a>
+<!--                <button class="button button-outline icon-right button-balanced" ng-click="myPopup();">Save &amp; Exit</button>-->
+                <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-class="purchase" ng-click="changepurchase()"> Next </button>
             </div>
                 </div>
         </div>
@@ -168,9 +173,9 @@
             </label>
 
             <div class="button-bar">
-                <a class="button button-outline icon-left ion-chevron-left button-balanced" ng-class="appliance" ng-click="changeapp()">Previous</a>
-                <a class="button button-outline icon-right button-balanced save-exits">Save &amp; Exit</a>
-                <a class="button button-outline icon-right ion-chevron-right button-balanced" ng-class="warranty" ng-click="changewarranty()">Next</a>
+                <button class="button button-outline icon-left ion-chevron-left button-balanced" ng-class="appliance" ng-click="changeapp()">Previous</button>
+<!--                <button class="button button-outline icon-right button-balanced save-exits">Save &amp; Exit</button>-->
+                <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-class="warranty" ng-click="changewarranty()"> Next </button>
             </div>
         </div>
 
@@ -211,9 +216,9 @@
                 <a>Additional Warranty / AMC</a>
             </label>
             <div class="button-bar">
-                <a class="button button-outline icon-left ion-chevron-left button-balanced" ng-class="purchase" ng-click="changepurchase()">Previous</a>
-                <a class="button button-outline icon-right button-balanced save-exits">Save &#38; Exit</a>
-                <a class="button button-outline icon-right ion-chevron-right button-balanced" ng-class="documents" ng-click="changedocuments()">Next</a>
+                <button class="button button-outline icon-left ion-chevron-left button-balanced" ng-class="purchase" ng-click="changepurchase()">Previous</button>
+<!--                <button class="button button-outline icon-right button-balanced save-exits">Save &#38; Exit</button>-->
+                <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-class="documents" ng-click="changedocuments()">Next</button>
             </div>
         </div>
 
@@ -224,10 +229,10 @@
             <label class="item" style="padding:0;">
                 <div class="row">
                     <div class="col text-center">
-                        <a class="button button-outline button-balanced button-block button-small" ng-class="warranty" ng-click="changewarranty()">Upload Bill</a>
+                        <button class="button button-outline button-balanced button-block button-small" ng-class="warranty" ng-click="changewarranty()">Upload Bill</button>
                     </div>
                     <div class="col text-center">
-                        <a class="button button-outline button-balanced button-block button-small" ng-class="warranty" ng-click="changewarranty()">Upload Warranty Card</a>
+                        <button class="button button-outline button-balanced button-block button-small" ng-class="warranty" ng-click="changewarranty()">Upload Warranty Card</button>
                     </div>
                 </div>
             </label>
@@ -239,8 +244,8 @@
             </label>
 
             <div class="button-bar">
-                <a class="button button-outline icon-left ion-chevron-left button-balanced" ng-class="warranty" ng-click="changewarranty()">Previous</a>
-                <a class="button button-outline icon-right button-balanced save-exits" ng-click="myPopup();">Save &amp; Exit</a>
+                <button class="button button-outline icon-left ion-chevron-left button-balanced" ng-class="warranty" ng-click="changewarranty()">Previous</button>
+<!--                <button class="button button-outline icon-right button-balanced save-exits" ng-click="myPopup();">Save &amp; Exit</button>-->
             </div>
         </div>
     </ion-content>

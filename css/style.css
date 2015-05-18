@@ -376,17 +376,10 @@ input[type="date"] {
 
 .otpnote p {
   padding-bottom: 10px;
+    text-align: center;
 }
-
-.bg-sortby .list .item-radio .item-content {
-    padding: 5px;
-}
-
-
 
 .bg-sortby .list  i.radio-icon.ion-checkmark {
-    top: -10px;
-    font-size: 18px;
     color: #2ECC71;
 }
 
@@ -572,4 +565,33 @@ i.ion-android-star.actived {
 
 .modal-backdrop-bg {
   background: rgba(0, 0, 0, 0.4);
+}
+
+input[disabled]
+{
+    background: #fff;
+}
+
+.right-btn {
+    text-align: right;
+    padding-right: 20px;
+}
+
+.services {
+  margin-top: 44px;
+  border-bottom: 1px solid #ddd;
+}
+
+.has-header-services {
+  top: 210px;
+}
+
+p.address
+{
+    padding-bottom: 10px;
+}
+
+.wish.services
+{
+    border-bottom: 1px solid #ddd;
 }
