@@ -467,4 +467,10 @@ angular.module('starter.controllers', [])
 
 .controller('AboutCtrl', function($scope) {})
 
-.controller('RegisterCtrl', function($scope) {});
+.controller('RegisterCtrl', function($scope) {
+
+    $scope.next = function () {
+        $ionicSlideBoxDelegate.next();
+    };
+
+});

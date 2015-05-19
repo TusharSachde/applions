@@ -605,3 +605,7 @@ span.linked {
   text-decoration: underline;
   margin-right: 10px;
 }
+
+.slider-pager .slider-pager-page {
+  color: #2ECC71;
+}
