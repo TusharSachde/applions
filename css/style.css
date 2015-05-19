@@ -595,3 +595,13 @@ p.address
 {
     border-bottom: 1px solid #ddd;
 }
+
+.slider {
+  height: 300px;
+}
+span.linked {
+  color: #000;
+  font-weight: 600;
+  text-decoration: underline;
+  margin-right: 10px;
+}
