@@ -1,5 +1,5 @@
 <ion-modal-view class="bg-sortby">
-    <ion-header-bar class="bar-balanced">
+    <ion-header-bar class="bar-balanced" align-title="center">
         <h1 class="title">Service Report</h1>
         <div class="buttons button-right">
             <button class="button button-clear" ng-click="closereport();">Close</button>
@@ -17,7 +17,7 @@
         </div>
         <div class="new-details" ng-if="showreport==1">
             <div class="list list-tabs">
-                <div class="item product-Report">
+                <div class="item product-wrnnty">
                     Appliance Details
                 </div>
             </div>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="call-details">
                     <div class="list list-tabs">
-                        <div class="item product-Report">
+                        <div class="item product-wrnnty">
                             Call Details
                         </div>
                         <label class="item item-input">
@@ -88,7 +88,7 @@
                 </div>
                 <div class="service-details">
                     <div class="list list-tabs">
-                        <div class="item product-Report">
+                        <div class="item product-wrnnty">
                             Service Details
                         </div>
                         <label class="item item-input">
@@ -123,8 +123,8 @@
                 </div>
                 <div class="feedback">
                     <div class="list list-tabs">
-                        <div class="item product-Report">
-                            FeedBack
+                        <div class="item product-wrnnty">
+                            Feedback
                         </div>
                         <label class="item item-input">
                             <span class="input-label">Service Quality</span>
@@ -166,8 +166,8 @@
                         </label>
                     </div>
                 </div>
-                <div class="btn-newreport">
-                    <a class="button button-outline button-balanced button-small">Submit</a>
+                <div class="btn-newreport button-bar padding">
+                    <a class="button button-outline button-balanced">Submit</a>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 <ion-modal-view class="bg-archive bg-delete">
-    <ion-header-bar class="bar-balanced">
+    <ion-header-bar class="bar-balanced" align-title="center">
         <h1 class="title">Confirm Delete</h1>
     </ion-header-bar>
     <ion-content>
@@ -7,11 +7,9 @@
        <p> This appliance will be Delete.You will loose all the information related to this appliance permanently</p>
        <p class="cont-que"> Do you want to Delete this appliance?</p>
     </div>
-    </ion-content>
-    <ion-footer>
-                <div class="button-bar bottom-stick">
-            <button class="button button-balanced button-outline button-small" ng-click="closedelete();">No</button>
-            <button class="button button-balanced button-outline button-small">Yes</button>
+         <div class="button-bar padding-horizontal">
+            <button class="button button-balanced button-outline" ng-click="closedelete();">No</button>
+            <button class="button button-balanced button-outline">Yes</button>
         </div>
-    </ion-footer>
+    </ion-content>
 </ion-modal-view>
