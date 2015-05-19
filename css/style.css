@@ -109,6 +109,10 @@
     position: relative;
 }
 
+.wishs
+{
+    margin-top: 1px;
+}
 .stickyScroll {
     top: 44px;
     z-index: 9;
@@ -121,6 +125,10 @@
 
 .content-holder h4 {
     margin-bottom: 5px;
+}
+
+.col-67.pad {
+  padding-left: 13px;
 }
 
 .popover {
@@ -499,10 +507,11 @@ input[type="time"] {
 
 .start.input i{
 font-size: 20px;
+color: #C1C1C1;
 }
 
 i.ion-android-star.actived {
-    color: #DAA520;
+    color: #2ECC71;
 }
 .btn-newreport {
     text-align: right;
