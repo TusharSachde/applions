@@ -539,6 +539,7 @@ i.ion-android-star.actived {
 
 .button-round.ion-plus-round:before {
   padding-top: 8px;
+    font-size: 18px;
 }
 .add-app {
   position: absolute;
