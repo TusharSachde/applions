@@ -43,8 +43,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             }
         })
 //Request Servies
-    .state('tab.brand-call', {
-        url: '/home/brand-call',
+    .state('tab.services', {
+        url: '/home/services',
         views: {
             'tab-home': {
                 templateUrl: 'templates/brand-callcenter.html',
