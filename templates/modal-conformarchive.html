@@ -1,4 +1,4 @@
-<ion-modal-view class="bg-archive">
+<ion-modal-view class="">
     <ion-header-bar class="bar-balanced" align-title="center">
         <h1 class="title">Confirm Archive</h1>
     </ion-header-bar>
@@ -7,9 +7,11 @@
        <p> This appliance will be archived.You can view this appliance by selecting "Archived" in Status tab of filter.You can also Un-Archived this appliance from there.</p>
        <p class="cont-que"> Do you want to archive this appliance?</p>
     </div>
-          <div class="button-bar padding-horizontal">
+    </ion-content>
+    <ion-footer-bar>
+         <div class="button-bar padding-horizontal">
             <button class="button button-balanced button-outline" ng-click="closearchive();">No</button>
             <button class="button button-balanced button-outline">Yes</button>
         </div>
-    </ion-content>
+    </ion-footer-bar>
 </ion-modal-view>
