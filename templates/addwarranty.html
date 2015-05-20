@@ -2,7 +2,7 @@
     <ion-header-bar class="bar-balanced bar-header" align-title="center">
         <h1 class="title">Additional Warranty / AMC</h1>
         <div class="buttons">
-            <button class="button button-clear" ng-click="closeModal()">Close</button>
+            <button class="button button-clear" ng-click="closeModal()">Skip</button>
         </div>
     </ion-header-bar>
     <ion-content>
@@ -50,10 +50,11 @@
                 <span class="input-label">Purchase Price</span>
                 <input type="text" placeholder="Purchase Price">
             </label>
-            <div class="button-bar">
-                <a class="button button-outline icon-right button-balanced">Skip</a>
-                <a class="button button-outline icon-right button-balanced" >Save &#38; Add More</a>
-                <a class="button button-outline icon-right button-balanced">Save  &#38; Exit</a>
-            </div>
         </div>
+        <ion-footer-bar>
+                           <div class="button-bar bottom-stick">
+            <button class="button button-balanced button-outline">Save &#38; Add More</button>
+            <button class="button button-balanced button-outline">Save  &#38; Exit</button>
+        </div>
+        </ion-footer-bar>
     </ion-content>

@@ -415,6 +415,7 @@ p.cont-que {
 
 .cont-archive p {
     text-align: justify;
+    padding: 0px 0 20px 0;
 }
 
 .btn-trans
@@ -429,7 +430,6 @@ p.cont-que {
 .row.report-tab {
     padding: 0;
 }
-
 .row.report-tab .col {
 /*    color: #2ECC71;*/
     border: 1px solid #ddd;
@@ -456,12 +456,7 @@ p.cont-que {
   font-weight: 700;
 }
 
-.bg-sortby .list .item.product-Report {
-  padding: 10px 0;
-  text-align: center;
-  color: #2ECC71;
-/*  border: 1px solid #2ECC71;*/
-}
+
 .app-details .col-67 p {
     margin-top: 10px;
     padding-left: 20px;
