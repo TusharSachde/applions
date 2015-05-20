@@ -42,12 +42,33 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 controller: 'RegisterCtrl'
             }
         })
+//Request Servies
+    .state('tab.brand-call', {
+        url: '/home/brand-call',
+        views: {
+            'tab-home': {
+                templateUrl: 'templates/brand-callcenter.html',
+                controller: 'HomeCtrl'
+            }
+        }
+    })    
+        
 
-    .state('tab.home', {
+        
+        .state('tab.home', {
         url: '/home',
         views: {
             'tab-home': {
                 templateUrl: 'templates/tab-home.html',
+                controller: 'HomeCtrl'
+            }
+        }
+    }) 
+        .state('tab.service', {
+        url: '/home/service',
+        views: {
+            'tab-home': {
+                templateUrl: 'templates/tab-services.html',
                 controller: 'HomeCtrl'
             }
         }

@@ -104,14 +104,22 @@
                 <span class="input-label">Location</span>
                 <input type="text" readonly>
             </label>
-            <label class="item item-input">
-                <span class="input-label">Cover</span>
-                <input type="text">
+              <label class="item item-input item-select">
+                <div class="input-label">
+               Warranty/AMC
+                </div>
+                <select>
+                    <option></option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
             </label>
+<!--
             <label class="item item-input">
                 <span class="input-label">Expiry</span>
                 <input type="text">
             </label>
+-->
             <div class="button-bar">
 <!--                <button class="button button-outline icon-right button-balanced" ng-click="myPopup();">Save &amp; Exit</button>-->
                 <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-class="purchase" ng-click="changepurchase()"> Next </button>

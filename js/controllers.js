@@ -137,20 +137,20 @@ angular.module('starter.controllers', [])
         $scope.oModal8.hide();
     };
     
-    $ionicModal.fromTemplateUrl('templates/modal-services.html', {
-        id: '9',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.oModal9 = modal;
-    });
-
-    $scope.openservice = function() {
-        $scope.oModal9.show();
-    }
-    $scope.closeservice = function() {
-        $scope.oModal9.hide();
-    };
+//    $ionicModal.fromTemplateUrl('templates/modal-services.html', {
+//        id: '9',
+//        scope: $scope,
+//        animation: 'slide-in-up'
+//    }).then(function(modal) {
+//        $scope.oModal9 = modal;
+//    });
+//
+//    $scope.openservice = function() {
+//        $scope.oModal9.show();
+//    }
+//    $scope.closeservice = function() {
+//        $scope.oModal9.hide();
+//    };
     
     $ionicModal.fromTemplateUrl('templates/modal-prevreports.html', {
         id: '10',
@@ -203,7 +203,6 @@ angular.module('starter.controllers', [])
     $scope.profile = "";
     $scope.warranty = "";
     $scope.documents = "";
-    $scope.user = [];
 
     //  DESIGN CODE
     $scope.changeapp = function() {
@@ -240,7 +239,6 @@ angular.module('starter.controllers', [])
     $scope.myhome = "bold";
     $scope.myoffice = "";
     $scope.addnew = "";
-    $scope.user = [];
 
     //  DESIGN CODE
     $scope.changemyhome = function() {
@@ -293,7 +291,6 @@ angular.module('starter.controllers', [])
     $scope.location = "";
     $scope.coverstatus = "";
     $scope.covertype = "";
-    $scope.user = [];
 
     //  DESIGN CODE
     $scope.changeappstatus = function() {
@@ -345,7 +342,6 @@ angular.module('starter.controllers', [])
     $scope.myservice = "";
     $scope.seller = "";
     $scope.details = "";
-    $scope.user = [];
 
     //  DESIGN CODE
     $scope.changebrandcall = function() {
