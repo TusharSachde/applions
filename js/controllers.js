@@ -1,6 +1,6 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ngAnimate'])
 
-.controller('AppCtrl', function($scope, $ionicPopup, $location) {
+.controller('AppCtrl', function($scope, $ionicPopup, $location, ngAnimate) {
     //    var readsmsCallback = function (otp) {
     //        if (!otp) {
     //            conole.log("No Otp");
@@ -14,6 +14,17 @@ angular.module('starter.controllers', [])
 })
 
 .controller('HomeCtrl', function($scope, $ionicModal, $ionicPopup, $timeout) {
+
+    //toggle
+    $scope.custom = false;
+    $scope.toggleCustom = function() {
+        $scope.custom = $scope.custom === false ? true : false;
+    };
+
+
+
+
+
     $ionicModal.fromTemplateUrl('templates/location.html', {
         id: '1',
         scope: $scope,
@@ -91,7 +102,7 @@ angular.module('starter.controllers', [])
     $scope.closearchive = function() {
         $scope.oModal5.hide();
     };
-    
+
     $ionicModal.fromTemplateUrl('templates/modal-transfer.html', {
         id: '6',
         scope: $scope,
@@ -106,7 +117,7 @@ angular.module('starter.controllers', [])
     $scope.closetransfer = function() {
         $scope.oModal6.hide();
     };
-    
+
     $ionicModal.fromTemplateUrl('templates/modal-delete.html', {
         id: '7',
         scope: $scope,
@@ -121,7 +132,7 @@ angular.module('starter.controllers', [])
     $scope.closedelete = function() {
         $scope.oModal7.hide();
     };
-    
+
     $ionicModal.fromTemplateUrl('templates/modal-report.html', {
         id: '8',
         scope: $scope,
@@ -136,22 +147,22 @@ angular.module('starter.controllers', [])
     $scope.closereport = function() {
         $scope.oModal8.hide();
     };
-    
-//    $ionicModal.fromTemplateUrl('templates/modal-services.html', {
-//        id: '9',
-//        scope: $scope,
-//        animation: 'slide-in-up'
-//    }).then(function(modal) {
-//        $scope.oModal9 = modal;
-//    });
-//
-//    $scope.openservice = function() {
-//        $scope.oModal9.show();
-//    }
-//    $scope.closeservice = function() {
-//        $scope.oModal9.hide();
-//    };
-    
+
+    //    $ionicModal.fromTemplateUrl('templates/modal-services.html', {
+    //        id: '9',
+    //        scope: $scope,
+    //        animation: 'slide-in-up'
+    //    }).then(function(modal) {
+    //        $scope.oModal9 = modal;
+    //    });
+    //
+    //    $scope.openservice = function() {
+    //        $scope.oModal9.show();
+    //    }
+    //    $scope.closeservice = function() {
+    //        $scope.oModal9.hide();
+    //    };
+
     $ionicModal.fromTemplateUrl('templates/modal-prevreports.html', {
         id: '10',
         scope: $scope,
@@ -165,8 +176,8 @@ angular.module('starter.controllers', [])
     }
     $scope.closeprevreports = function() {
         $scope.oModal10.hide();
-    };  
-    
+    };
+
     $ionicModal.fromTemplateUrl('templates/modal-addservice.html', {
         id: '11',
         scope: $scope,
@@ -180,8 +191,8 @@ angular.module('starter.controllers', [])
     }
     $scope.closeaddservice = function() {
         $scope.oModal11.hide();
-    };  
-    
+    };
+
     $ionicModal.fromTemplateUrl('templates/modal-viewdetail.html', {
         id: '12',
         scope: $scope,
@@ -349,28 +360,32 @@ angular.module('starter.controllers', [])
         $scope.myservice = "";
         $scope.seller = "";
         $scope.details = "";
+        $scope.custom = $scope.custom === false ? true : false;
     }
     $scope.changemyservice = function() {
         $scope.brandcall = "";
         $scope.myservice = "bold";
         $scope.seller = "";
         $scope.details = "";
-    }  
+        $scope.custom = $scope.custom === false ? true : false;
+    }
     $scope.changeseller = function() {
         $scope.brandcall = "";
         $scope.myservice = "";
         $scope.seller = "bold";
-         $scope.details = "";
-    }   
-    
+        $scope.details = "";
+        $scope.custom = $scope.custom === false ? true : false;
+    }
+
     $scope.changedetails = function() {
         $scope.brandcall = "";
         $scope.myservice = "";
         $scope.seller = "";
         $scope.details = "bold";
+        $scope.custom = $scope.custom === false ? true : false;
     }
-   
-    
+
+
     function save() {
         var myPopup = $ionicPopup.show({
             template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Appliance has been update successfully!!</p>',
@@ -383,7 +398,7 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller('ProfileCtrl', function($scope, $ionicPopover,$ionicModal) {
+.controller('ProfileCtrl', function($scope, $ionicPopover, $ionicModal) {
     $ionicPopover.fromTemplateUrl('templates/profile-popover.html', {
         scope: $scope
     }).then(function(popover) {
@@ -396,9 +411,9 @@ angular.module('starter.controllers', [])
     $scope.closePopover = function() {
         $scope.popover.hide();
     };
-    
-    
-       $ionicModal.fromTemplateUrl('templates/modal-chngpswd.html', {
+
+
+    $ionicModal.fromTemplateUrl('templates/modal-chngpswd.html', {
         id: '1',
         scope: $scope,
         animation: 'slide-in-up'
@@ -412,7 +427,7 @@ angular.module('starter.controllers', [])
     $scope.closechngpswd = function() {
         $scope.oModal1.hide();
     };
-    
+
     $ionicModal.fromTemplateUrl('templates/modal-chngno.html', {
         id: '2',
         scope: $scope,
@@ -426,8 +441,8 @@ angular.module('starter.controllers', [])
     }
     $scope.closechngno = function() {
         $scope.oModal2.hide();
-    };   
-    
+    };
+
     $ionicModal.fromTemplateUrl('templates/modal-stat.html', {
         id: '3',
         scope: $scope,
@@ -441,8 +456,8 @@ angular.module('starter.controllers', [])
     }
     $scope.closestat = function() {
         $scope.oModal3.hide();
-    };   
-    
+    };
+
     $ionicModal.fromTemplateUrl('templates/modal-feedback.html', {
         id: '4',
         scope: $scope,
@@ -463,12 +478,12 @@ angular.module('starter.controllers', [])
 
 .controller('AboutCtrl', function($scope) {})
 
-.controller('RegisterCtrl', function($scope,$ionicSlideBoxDelegate, $ionicPopup, MyServices) {
+.controller('RegisterCtrl', function($scope, $ionicSlideBoxDelegate, $ionicPopup, MyServices) {
 
-    $scope.next = function () {
+    $scope.next = function() {
         $ionicSlideBoxDelegate.next();
     };
-        var logload = function (data, length) {
+    var logload = function(data, length) {
         for (var i = 0; i < length; i++) {
             console.log(data.item(i));
         }
@@ -476,12 +491,12 @@ angular.module('starter.controllers', [])
 
     MyServices.query("SELECT * FROM LOGS", logload);
 
-    $scope.previous = function () {
+    $scope.previous = function() {
         $ionicSlideBoxDelegate.previous();
     };
 
     // Called each time the slide changes
-    $scope.slideChanged = function (index) {
+    $scope.slideChanged = function(index) {
         $scope.slideIndex = index;
     };
 
