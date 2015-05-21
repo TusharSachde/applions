@@ -602,3 +602,11 @@ i.icon-arrows {
   padding: 0;
   margin: 0;
 }
+
+.start.input.inputs {
+  position: initial;
+}
+
+input.disableds {
+  text-align: left;
+}
