@@ -1,7 +1,12 @@
 <ion-view view-title="Request Service" class="light-bg">
     <ion-nav-buttons side="left">
         <button class="button button-icon icon-right ln-options button-clear small-icon" ng-click="toggleCustom()">
-            <!--        <button class="button button-icon icon-right ln-options button-clear small-icon" ng-click="custom=!custom">-->
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ln-tab btn-sort small-icon" ng-click="opensortservice();" ng-if="brandservice=='bold' || authorizedservice=='bold' || organisedservice=='bold'|| otherservice=='bold'">
+        </button>
+        <button class="button button-icon button-clear ln-funnel small-icon" ng-click="openfilterservice();" ng-if="brandservice=='bold' || authorizedservice=='bold' || organisedservice=='bold'|| otherservice=='bold'">
         </button>
     </ion-nav-buttons>
     <ion-content>
@@ -18,18 +23,18 @@
                     Brand Call Center
                 </div>
 
-                <div class="item">
+                <div class="item" ng-click="brandservice();">
                     Brand Service Center
                 </div>
 
-                <div class="item" href="#">
+                <div class="item" ng-click="authorizedservice();">
                     Authorized Service Center
                 </div>
 
-                <div class="item" href="#">
+                <div class="item" ng-click="organisedservice();">
                     Organized Service Providers
                 </div>
-                <div class="item" href="#" ng-click="changemyservice();">
+                <div class="item" href="#" ng-click="otherservice();">
                     Other Service Providers
                 </div>
 
@@ -56,7 +61,6 @@
                 </button>
             </div>
             <div class="item item-button-right">
-
                 <h4>Phone Number</h4>
                 798989898
                 <button class="button button-balanced button-outline">
@@ -92,43 +96,30 @@
                 <div class="item product-wrnnty">
                     Previous Service Provider
                 </div>
-                 <div class="item item-button-right" ng-click="openviewdetails();">
-                <h3>ASP</h3>
-                Virdavan Society Sion Chunabhatti V N Purav Marg Mumbai-400 022
-              <i class="icons ln-chevron-right icon-arrows"></i>
-                </button>
-            </div>
+                <div class="item item-button-right" ng-click="openviewdetails();">
+                    <h3>ASP</h3>
+                    Virdavan Society Sion Chunabhatti V N Purav Marg Mumbai-400 022
+                    <i class="icons ln-chevron-right icon-arrows"></i>
+                    </button>
+                </div>
                 <div class="item product-wrnnty">
                     My Service Providers
                 </div>
-<!--
-                <div class="item">
-                    <h3>ASP</h3> 
-                    <p class="address"></p>
-                    <div class="right-btn">
-                        <button class="button button-outline button-balanced button-small" ng-click="openviewdetails();">
-                        View Details
-                        </button>
-                    </div>
-                </div>
--->
-                
+
                 <div class="item item-button-right" ng-click="openviewdetails();">
-                <h3>ASP</h3>
-                 Virdavan Society Sion Chunabhatti V N Purav Marg Mumbai-400 022
-<!--                <button class="button button-balanced button-outline" ng-click="openviewdetails();">-->
-                <i class="icons ln-chevron-right icon-arrows"></i>
-<!--                </button>-->
+                    <h3>ASP</h3>
+                    Virdavan Society Sion Chunabhatti V N Purav Marg Mumbai-400 022
+                    <!--                <button class="button button-balanced button-outline" ng-click="openviewdetails();">-->
+                    <i class="icons ln-chevron-right icon-arrows"></i>
+                    <!--                </button>-->
+                </div>
+
+
             </div>
-            
-            
-            </div>
-            <div class="bar-button">
-                <div class="button-bar padding-horizontal">
-                <button class="button button-outline button-balanced" ng-click="openaddservice();">
-                Add Service Provider
+            <div class="padding-horizontal">
+                <button class="button button-outline button-balanced button-block" ng-click="openaddservice();">
+                    Add Service Provider
                 </button>
-            </div>
             </div>
         </div>
 
@@ -138,7 +129,7 @@
                 <div class="item product-wrnnty">
                     Magnet
                 </div>
-                <div class="item item-button-right" ng-click="openviewdetails();">
+                <div class="item item-button-right">
                     <h3>Magnet</h3>
                     <p>Sion Chunabhatti Mumbai, 400022 Maharashtra</p>
                     <button class="button button-balanced button-outline">
@@ -146,60 +137,47 @@
                     </button>
                 </div>
                 <div class="item item-button-right">
-                    <h3>2798983</h3>
-                    <p>Call Timings are not available</p>
+                    <h4>Timings</h4>
+                    Call Timings are between 9am to 6pm.
+                    <button class="button button-balanced button-outline">
+                        <i class="icon ln-clock3"></i>
+                    </button>
+                </div>
+                <div class="item item-button-right">
+                    <h4>Phone Number</h4>
+                    798989898
                     <button class="button button-balanced button-outline">
                         <i class="icon ln-phone"></i>
                     </button>
                 </div>
                 <div class="item item-button-right">
+                    <h4> SMS</h4>
                     Not Avaliable
                     <button class="button button-balanced button-outline">
                         <i class="icon ln-comment"></i>
                     </button>
                 </div>
                 <div class="item item-button-right">
+                    <h4>Email</h4>
                     Not Avaliable
-                    <button class="button button-balanced rights button-outline">
+                    <button class="button button-balanced button-outline">
                         <i class="icon ln-envelope"></i>
                     </button>
                 </div>
             </div>
         </div>
-
-
-        <div class="making" ng-if="details=='bold'">
-            <div class="list req-services">
-                <div class="item product-wrnnty">
-                    ABCD
-                </div>
-                <div class="item item-button-right">
-                    <h3>ABCD</h3>
-                    <p>Sion Chunabhatti Mumbai, 400022 Maharashtra</p>
-                    <button class="button button-balanced">
-                        <i class="icon ln-location"></i>
-                    </button>
-                </div>
-                <div class="item item-button-right">
-                    Not Avaliable
-                    <button class="button button-balanced">
-                        <i class="icon ln-phone"></i>
-                    </button>
-                </div>
-                <div class="item item-button-right">
-                    Not Avaliable
-                    <button class="button button-balanced">
-                        <i class="icon ln-comment"></i>
-                    </button>
-                </div>
-                <div class="item item-button-right">
-                    Not Avaliable
-                    <button class="button button-balanced rights">
-                        <i class="icon ln-envelope"></i>
-                    </button>
-                </div>
-            </div>
+        
+        <div class="making" ng-if="brandservice=='bold'">
+        jkgg
         </div>
-
+        
+        <div class="making" ng-if="authorizedservice=='bold'">
+        </div>
+        
+        <div class="making" ng-if="organisedservice=='bold'">
+        </div>
+        
+        <div class="making" ng-if="otherservice=='bold'">
+        </div>
     </ion-content>
 </ion-view>

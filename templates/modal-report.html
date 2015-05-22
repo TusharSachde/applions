@@ -1,4 +1,4 @@
-<ion-modal-view class="bg-sortby">
+<ion-modal-view class="bg-report">
     <ion-header-bar class="bar-balanced" align-title="center">
         <h1 class="title">Service Report</h1>
         <div class="buttons button-right">
@@ -30,7 +30,7 @@
                     <p>Mobile Phones</p>
                 </div>
             </div>
-                       <div class="app-details">
+            <div class="app-details">
                 <div class="list list-tabs">
                     <label class="item item-input">
                         <span class="input-label">Brand</span>
@@ -111,17 +111,17 @@
                                 <option>Under Observation</option>
                             </select>
                         </label>
-                        
+
                         <label class="item item-input">
                             <span class="input-label">Amount Paid</span>
                             <input type="text" placeholder="Amount Paid">
                         </label>
-                        
+
                         <label class="item item-input">
                             <span class="input-label">Service Enginner</span>
                             <input type="text" placeholder="Enter Enginner Name">
                         </label>
-                        
+
                     </div>
                 </div>
                 <div class="feedback">
@@ -175,37 +175,69 @@
             </div>
         </div>
         <div class="prv-report" ng-if="showreport==2;">
-           <div class="reports">
-            <div class="card" ng-click="openprevreports();">
-                <a class="item" href="#">
-                <div class="row">
-                   <div class="col">
-                       <h3>Service Call Date</h3>
-                       <h3>Service Call Type</h3>
-                   </div> 
-                                       <div class="col">
-                                           <span> 2015-05-13</span><br>
-                                           <span>AMC</span>
-                   </div>    
+            <div class="reports">
+                <!--
+                <div class="card" ng-click="openprevreports();">
+                    <a class="item" href="#">
+                        <div class="row">
+                            <div class="col">
+                                <h3>Service Call Date</h3>
+                                <h3>Service Call Type</h3>
+                            </div>
+                            <div class="col">
+                                <span> 2015-05-13</span>
+                                <br>
+                                <span>AMC</span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-  </a>
-            </div>   
-               
-                             <div class="card" ng-click="openprevreports();">
-                <a class="item" href="#">
-                <div class="row">
-                   <div class="col">
-                       <h3>Service Call Date</h3>
-                       <h3>Service Call Type</h3>
-                   </div> 
-                                       <div class="col">
-                                           <span> 2015-05-13</span><br>
-                                           <span>AMC</span>
-                   </div>    
+-->
+
+
+
+                <div class="list req-services">
+                    <div class="item item-button-right" ng-click="openviewdetails();">
+                        <span class="head">Service Call Date </span>
+                        <span class="item-note">
+      2015-05-13
+    </span>
+                        <br>
+                        <span class="head">Service Call Type </span>
+                        <span class="item-note">
+      AMC
+    </span>
+                        <i class="icons ln-chevron-right icon-arrows"></i>
+                    </div>
+
+                    <div class="item item-button-right" ng-click="openviewdetails();">
+                        <span class="head">Service Call Date </span>
+                        <span class="item-note">
+      2015-05-13
+    </span>
+                        <br>
+                        <span class="head">Service Call Type </span>
+                        <span class="item-note">
+      AMC
+    </span>
+                        <i class="icons ln-chevron-right icon-arrows"></i>
+                    </div>
+
+                    <div class="item item-button-right" ng-click="openviewdetails();">
+                        <span class="head">Service Call Date </span>
+                        <span class="item-note">
+      2015-05-13
+    </span>
+                        <br>
+                        <span class="head">Service Call Type </span>
+                        <span class="item-note">
+      AMC
+    </span>
+                        <i class="icons ln-chevron-right icon-arrows"></i>
+                    </div>
                 </div>
-  </a>
+
             </div>
-        </div>
         </div>
     </ion-content>
     </ion-view>

@@ -1,165 +1,167 @@
 <ion-view class="bg-sortby" view-title="Request Service">
-      <ion-scroll zooming="false" direction="x" class="light-bg stickyScroll">
+    <ion-scroll zooming="false" direction="x" class="light-bg stickyScroll">
         <div class="flex-block">
             <div class="blocks text-center" ng-click="changebrandcall();">
                 Brand Call Center
             </div>
-            <div class="blocks text-center"  ng-click="changemyservice();">
-                 Brand Service Center
+            <div class="blocks text-center" ng-click="changemyservice();">
+                Brand Service Center
             </div>
             <div class="blocks text-center">
-                  Authorized Service Center
+                Authorized Service Center
             </div>
             <div class="blocks text-center">
-                  Organized Service Center
-            </div>  
-                <div class="blocks text-center">
-                  Other Service Provider
+                Organized Service Center
+            </div>
+            <div class="blocks text-center">
+                Other Service Provider
             </div>
             <div class="blocks text-center" ng-click="changemyservice();">
-              My Service Provider
+                My Service Provider
             </div>
             <div class="blocks text-center" ng-click="changeseller();">
-                 Seller
+                Seller
             </div>
         </div>
     </ion-scroll>
-               <div class="wish services">
-                <div class="picturess  assertive-bg" style="background-image: url('img/icons/Mobile.png');"></div>
-                                    <label class="item item-input">
-                <span class="input-label">Product</span>
-                <input type="text" value="XepriaU" disabled>
-            </label>
-            <label class="item item-input">
-                <span class="input-label">Brand</span>
-                <input type="text" value="Sony Xperia" disabled>
-            </label>
-            </div>
-            
-            
+    <div class="wish services">
+        <div class="picturess  assertive-bg" style="background-image: url('img/icons/Mobile.png');"></div>
+        <label class="item item-input">
+            <span class="input-label">Product</span>
+            <input type="text" value="XepriaU" disabled>
+        </label>
+        <label class="item item-input">
+            <span class="input-label">Brand</span>
+            <input type="text" value="Sony Xperia" disabled>
+        </label>
+    </div>
+
+
     <ion-content class="has-header-services">
-                  <div class="brandcall" ng-if="brandcall=='bold'">
-                   <div class="list">
-                    <div class="item product-wrnnty">
-                Sony Ericsson Call Center
+        <div class="brandcall" ng-if="brandcall=='bold'">
+            <div class="list">
+                <div class="item product-wrnnty">
+                    Sony Ericsson Call Center
+                </div>
+                <div class="item item-button-right">
+                    Not Avaliable
+                    <button class="button button-balanced">
+                        <i class="icon ln-phone"></i>
+                    </button>
+                </div>
+                <div class="item item-button-right">
+                    Not Avaliable
+                    <button class="button button-balanced button-outline">
+                        <i class="icon ln-comment"></i>
+                    </button>
+                </div>
+                <div class="item item-button-right">
+                    Not Avaliable
+                    <button class="button button-balanced button-outline">
+                        <i class="icon ln-envelope"></i>
+                    </button>
+                </div>
+                <div class="item item-button-right">
+                    Complaint Form (Coming Soon)
+                    <button class="button button-balanced button-outline">
+                        <i class="icon ln-register"></i>
+                    </button>
+                </div>
             </div>
-  <div class="item item-button-right">
-    Not Avaliable
-    <button class="button button-balanced">
-      <i class="icon ln-phone"></i>
-    </button>
-  </div>
-   <div class="item item-button-right">
-    Not Avaliable
-    <button class="button button-balanced button-outline">
-      <i class="icon ln-comment"></i>
-    </button>
-  </div>
-   <div class="item item-button-right">
-    Not Avaliable
-    <button class="button button-balanced button-outline">
-      <i class="icon ln-envelope"></i>
-    </button>
-  </div>  
-    <div class="item item-button-right">
-    Complaint Form
-    (Coming Soon)
-    <button class="button button-balanced button-outline">
-      <i class="icon ln-register"></i>
-    </button>
-  </div>
         </div>
-        </div>
-        
+
         <div class="making" ng-if="myservice=='bold'">
-             <div class="list">
-                    <div class="item product-wrnnty">
-                Previous Service Provider
+            <div class="list">
+                <div class="item product-wrnnty">
+                    Previous Service Provider
+                </div>
+                <div class="item">
+                    ASP
+                    <div class="right-btn">
+                        <button class="button button-outline button-balanced button-small" ng-click="openviewdetails();">View Details</button>
+                    </div>
+                </div>
+                <div class="item product-wrnnty">
+                    My Service Providers
+                </div>
+                <div class="item">
+                    <h3>ASP</h3> 
+                    <p class="address">Virdavan Society Sion Chunabhatti</p>
+                    <div class="right-btn">
+                        <button class="button button-outline button-balanced button-small" ng-click="openviewdetails();">View Details</button>
+                    </div>
+                </div>
             </div>
-  <div class="item">
-   ASP  <div class="right-btn">
-                <button class="button button-outline button-balanced button-small" ng-click="openviewdetails();">View Details</button>
-    </div>
-  </div>
-                    <div class="item product-wrnnty">
-                My Service Providers
-            </div>
-            <div class="item">
-   <h3>ASP</h3> <p class="address">Virdavan Society Sion Chunabhatti</p> <div class="right-btn">
-                <button class="button button-outline button-balanced button-small" ng-click="openviewdetails();">View Details</button>
-    </div>
-  </div>
-            </div>
-   <div class="right-btn">
+            <div class="right-btn">
                 <button class="button button-outline button-balanced button-small" ng-click="openaddservice();">Add Service Provider</button>
-  </div>
-        </div>
-        
-         <div class="making" ng-if="seller=='bold'">
-          <div class="list">
-                    <div class="item product-wrnnty">
-             Magnet
             </div>
-  <div class="item item-button-right">
-    <h3>Magnet</h3>
-    <p> Sion Chunabhatti Mumbai, 400022 Maharashtra</p>
-    <button class="button button-balanced">
-      <i class="icon ln-location"></i>
-    </button>
-  </div>
-   <div class="item item-button-right">
-    <h3>2798983</h3>
-    <p>Call Timings are not available</p>
-    <button class="button button-balanced">
-      <i class="icon ln-phone"></i>
-    </button>
-  </div>
-   <div class="item item-button-right">
-    Not Avaliable
-    <button class="button button-balanced">
-      <i class="icon ln-comment"></i>
-    </button>
-  </div>
-   <div class="item item-button-right">
-    Not Avaliable
-    <button class="button button-balanced rights">
-      <i class="icon ln-envelope"></i>
-    </button>
-  </div>  
         </div>
-        </div>   
-             
-              <div class="making" ng-if="details=='bold'">
-                          <div class="list">
-                    <div class="item product-wrnnty">
-               ABCD
+
+        <div class="making" ng-if="seller=='bold'">
+            <div class="list">
+                <div class="item product-wrnnty">
+                    Magnet
+                </div>
+                <div class="item item-button-right">
+                    <h3>Magnet</h3>
+                    <p>Sion Chunabhatti Mumbai, 400022 Maharashtra</p>
+                    <button class="button button-balanced">
+                        <i class="icon ln-location"></i>
+                    </button>
+                </div>
+                <div class="item item-button-right">
+                    <h3>2798983</h3>
+                    <p>Call Timings are not available</p>
+                    <button class="button button-balanced">
+                        <i class="icon ln-phone"></i>
+                    </button>
+                </div>
+                <div class="item item-button-right">
+                    Not Avaliable
+                    <button class="button button-balanced">
+                        <i class="icon ln-comment"></i>
+                    </button>
+                </div>
+                <div class="item item-button-right">
+                    Not Avaliable
+                    <button class="button button-balanced rights">
+                        <i class="icon ln-envelope"></i>
+                    </button>
+                </div>
             </div>
-  <div class="item item-button-right">
-    <h3>ABCD</h3>
-    <p> Sion Chunabhatti Mumbai, 400022 Maharashtra</p>
-    <button class="button button-balanced">
-      <i class="icon ln-location"></i>
-    </button>
-  </div>
-   <div class="item item-button-right">
-    Not Avaliable
-    <button class="button button-balanced">
-      <i class="icon ln-phone"></i>
-    </button>
-  </div>
-   <div class="item item-button-right">
-    Not Avaliable
-    <button class="button button-balanced">
-      <i class="icon ln-comment"></i>
-    </button>
-  </div>
-   <div class="item item-button-right">
-    Not Avaliable
-    <button class="button button-balanced rights">
-      <i class="icon ln-envelope"></i>
-    </button>
-  </div>  
         </div>
+
+        <div class="making" ng-if="details=='bold'">
+            <div class="list">
+                <div class="item product-wrnnty">
+                    ABCD
+                </div>
+                <div class="item item-button-right">
+                    <h3>ABCD</h3>
+                    <p>Sion Chunabhatti Mumbai, 400022 Maharashtra</p>
+                    <button class="button button-balanced">
+                        <i class="icon ln-location"></i>
+                    </button>
+                </div>
+                <div class="item item-button-right">
+                    Not Avaliable
+                    <button class="button button-balanced">
+                        <i class="icon ln-phone"></i>
+                    </button>
+                </div>
+                <div class="item item-button-right">
+                    Not Avaliable
+                    <button class="button button-balanced">
+                        <i class="icon ln-comment"></i>
+                    </button>
+                </div>
+                <div class="item item-button-right">
+                    Not Avaliable
+                    <button class="button button-balanced rights">
+                        <i class="icon ln-envelope"></i>
+                    </button>
+                </div>
+            </div>
         </div>
     </ion-content>
 </ion-view>

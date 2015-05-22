@@ -22,26 +22,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         templateUrl: "templates/tabs.html"
     })
 
-    .state('otp', {
-        url: "/otp",
+    .state('login', {
+        url: "/login",
         abstract: true,
-//        controller: 'AppCtrl',
-        templateUrl: "templates/otp.html"
+        templateUrl: "templates/login.html"
     })
-        .state('otp.otp', {
-            url: '/otp',
+        .state('login.login', {
+            url: '/login',
             views: {
-                templateUrl: 'templates/otp.html',
+                templateUrl: 'templates/login.html',
                 controller: 'RegisterCtrl'
             }
         }) 
-        .state('otp.otps', {
-            url: '/otp/otps',
-            views: {
-                templateUrl: 'templates/otps.html',
-                controller: 'RegisterCtrl'
-            }
-        })
 //Request Servies
     .state('tab.services', {
         url: '/home/services',
@@ -123,5 +115,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/otp/otp');
+    $urlRouterProvider.otherwise('/login/login');
 });

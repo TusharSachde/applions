@@ -528,9 +528,16 @@ a.blocks {
 }
 .list.req-services .button.button-balanced.button-outline {
     border: 0px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 .list.req-services .item.item-button-right {
     font-size: 12px;
+    white-space: initial;
+}
+.list.req-services .item p {
+    font-size: 12px;
+    white-space: inherit;
 }
 .list.req-services .item {
     padding: 14px 80px 10px 20px;
@@ -564,9 +571,9 @@ a.blocks {
 .item-lights {
     min-height: 95px;
     padding: 20px 0px 0 80px!important;
-/*    margin-top: 1px;*/
-  margin: 10px;
-  border-bottom: 1px solid #ddd!important;
+    /*    margin-top: 1px;*/
+    margin: 10px;
+    border-bottom: 1px solid #ddd!important;
 }
 .menus .list .item {
     padding: 8px 18px;
@@ -587,26 +594,65 @@ a.blocks {
 .animate-show.ng-hide {
     opacity: 0;
 }
-
 i.icon-arrows {
-  right: 25px;
-  color: rgb(46, 204, 113);
-  font-size: 24px;
-  position: absolute;
-  top: 35%;
+    right: 25px;
+    color: rgb(46, 204, 113);
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
-
 .reports .card .row .col h3 {
-  font-size: 16px;
-  line-height: 1.9;
-  padding: 0;
-  margin: 0;
+    font-size: 16px;
+    line-height: 1.9;
+    padding: 0;
+    margin: 0;
 }
-
 .start.input.inputs {
-  position: initial;
+    position: initial;
+}
+input.disableds {
+    text-align: left;
 }
 
-input.disableds {
-  text-align: left;
+textarea.text-areas {
+  width: 60%;
+}
+
+.reports .card {
+  margin: 5px 10px;
+}
+
+span.head {
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 600;
+}
+
+.list.req-services .item-note
+{
+    color: #444;
+}
+
+.logo img {
+    width: 70%;
+}
+
+.logo {
+    text-align: center;
+    padding-top: 22px;
+}
+
+button.button.button-fb.button-block.button-outline {
+    color: #fff;
+    background-color: blue;
+    border-color: blue;
+    text-transform: uppercase;
+}
+
+button.button.button-twit.button-block.button-outline {
+    text-transform: uppercase;
+    color: #fff;
+    border-color: blue;
+    background-color: blue;
 }

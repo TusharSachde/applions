@@ -208,6 +208,35 @@ angular.module('starter.controllers', ['ngAnimate'])
         $scope.oModal12.hide();
     };
 
+    $ionicModal.fromTemplateUrl('templates/modal-sortbyservice.html', {
+        id: '13',
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.oModal13 = modal;
+    });
+
+    $scope.opensortservice = function() {
+        $scope.oModal13.show();
+    }
+    $scope.closesortservice = function() {
+        $scope.oModal13.hide();
+    };
+    $ionicModal.fromTemplateUrl('templates/modal-filterservice.html', {
+        id: '14',
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.oModal14 = modal;
+    });
+
+    $scope.openfilterservice = function() {
+        $scope.oModal14.show();
+    }
+    $scope.closefilterservice = function() {
+        $scope.oModal14.hide();
+    };
+
 
     //    $scope.appliance = "active";   
     $scope.appliance = "bold";
@@ -352,36 +381,86 @@ angular.module('starter.controllers', ['ngAnimate'])
     $scope.brandcall = "bold";
     $scope.myservice = "";
     $scope.seller = "";
-    $scope.details = "";
+    $scope.brandservice = "";
+    $scope.authorizedservice = "";
+    $scope.organisedservice = "";
+    $scope.otherservice = "";
 
     //  DESIGN CODE
     $scope.changebrandcall = function() {
         $scope.brandcall = "bold";
         $scope.myservice = "";
         $scope.seller = "";
-        $scope.details = "";
+        $scope.brandservice = "";
+        $scope.authorizedservice = "";
+        $scope.organisedservice = "";
+        $scope.otherservice = "";
         $scope.custom = $scope.custom === false ? true : false;
     }
+
     $scope.changemyservice = function() {
         $scope.brandcall = "";
         $scope.myservice = "bold";
         $scope.seller = "";
-        $scope.details = "";
+        $scope.brandservice = "";
+        $scope.authorizedservice = "";
+        $scope.organisedservice = "";
+        $scope.otherservice = "";
         $scope.custom = $scope.custom === false ? true : false;
     }
+
     $scope.changeseller = function() {
         $scope.brandcall = "";
         $scope.myservice = "";
         $scope.seller = "bold";
-        $scope.details = "";
+        $scope.brandservice = "";
+        $scope.authorizedservice = "";
+        $scope.organisedservice = "";
+        $scope.otherservice = "";
         $scope.custom = $scope.custom === false ? true : false;
     }
 
-    $scope.changedetails = function() {
+    $scope.changebrandservice = function() {
         $scope.brandcall = "";
         $scope.myservice = "";
         $scope.seller = "";
-        $scope.details = "bold";
+        $scope.brandservice = "bold";
+        $scope.authorizedservice = "";
+        $scope.organisedservice = "";
+        $scope.otherservice = "";
+        $scope.custom = $scope.custom === false ? true : false;
+    }
+
+    $scope.changeauthorizedservice = function() {
+        $scope.brandcall = "";
+        $scope.myservice = "";
+        $scope.seller = "";
+        $scope.brandservice = "";
+        $scope.authorizedservice = "bold";
+        $scope.organisedservice = "";
+        $scope.otherservice = "";
+        $scope.custom = $scope.custom === false ? true : false;
+    }
+
+    $scope.changeorganisedservice = function() {
+        $scope.brandcall = "";
+        $scope.myservice = "";
+        $scope.seller = "";
+        $scope.brandservice = "";
+        $scope.authorizedservice = "";
+        $scope.organisedservice = "bold";
+        $scope.otherservice = "";
+        $scope.custom = $scope.custom === false ? true : false;
+    }
+
+    $scope.changeotherservice = function() {
+        $scope.brandcall = "";
+        $scope.myservice = "";
+        $scope.seller = "";
+        $scope.brandservice = "";
+        $scope.authorizedservice = "";
+        $scope.organisedservice = "";
+        $scope.otherservice = "bold";
         $scope.custom = $scope.custom === false ? true : false;
     }
 
