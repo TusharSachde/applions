@@ -614,45 +614,42 @@ i.icon-arrows {
 input.disableds {
     text-align: left;
 }
-
 textarea.text-areas {
-  width: 60%;
+    width: 60%;
 }
-
 .reports .card {
-  margin: 5px 10px;
+    margin: 5px 10px;
 }
-
 span.head {
-  font-size: 14px;
-  line-height: 1;
-  font-weight: 600;
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 600;
 }
-
-.list.req-services .item-note
-{
+.list.req-services .item-note {
     color: #444;
 }
-
 .logo img {
-    width: 70%;
+    width: 90%;
 }
-
 .logo {
     text-align: center;
     padding-top: 22px;
 }
-
 button.button.button-fb.button-block.button-outline {
     color: #fff;
-    background-color: blue;
-    border-color: blue;
+    background-color: #4465ac;
+    border-color: #4465ac;
     text-transform: uppercase;
+    padding: 0 19px;
 }
-
 button.button.button-twit.button-block.button-outline {
     text-transform: uppercase;
     color: #fff;
-    border-color: blue;
-    background-color: blue;
+    border-color: #32c8fa;
+    background-color: #32c8fa;
+}
+.btn-mk.padding {
+    position: absolute;
+    width: 100%;
+    bottom: 20px;
 }

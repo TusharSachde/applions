@@ -559,25 +559,25 @@ angular.module('starter.controllers', ['ngAnimate'])
 
 .controller('RegisterCtrl', function($scope, $ionicSlideBoxDelegate, $ionicPopup, MyServices) {
 
-    $scope.next = function() {
-        $ionicSlideBoxDelegate.next();
-    };
-    var logload = function(data, length) {
-        for (var i = 0; i < length; i++) {
-            console.log(data.item(i));
-        }
-    };
-
-    MyServices.query("SELECT * FROM LOGS", logload);
-
-    $scope.previous = function() {
-        $ionicSlideBoxDelegate.previous();
-    };
-
-    // Called each time the slide changes
-    $scope.slideChanged = function(index) {
-        $scope.slideIndex = index;
-    };
+//    $scope.next = function() {
+//        $ionicSlideBoxDelegate.next();
+//    };
+//    var logload = function(data, length) {
+//        for (var i = 0; i < length; i++) {
+//            console.log(data.item(i));
+//        }
+//    };
+//
+//    MyServices.query("SELECT * FROM LOGS", logload);
+//
+//    $scope.previous = function() {
+//        $ionicSlideBoxDelegate.previous();
+//    };
+//
+//    // Called each time the slide changes
+//    $scope.slideChanged = function(index) {
+//        $scope.slideIndex = index;
+//    };
 
 
 });
