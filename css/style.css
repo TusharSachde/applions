@@ -28,17 +28,12 @@
 .picture {
     width: 70px;
     height: 70px;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
     border-radius: 50%;
     overflow: hidden;
     background-position: center center;
     background-repeat: no-repeat;
     position: absolute;
     text-align: center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
     top: 11.5px;
     left: 10px;
@@ -73,24 +68,18 @@
 .flex-block {
     display: -webkit-box;
     display: -webkit-flex;
-    display: -moz-box;
     display: -ms-flexbox;
     display: flex;
 }
 .picturess.assertive-bg {
     height: 70px;
     width: 70px;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
     border-radius: 50%;
     overflow: hidden;
     background-position: center center;
     background-repeat: no-repeat;
     position: absolute;
     text-align: center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
     top: 13.5px;
     left: 10px;
@@ -213,8 +202,6 @@ input[type="date"] {
 }
 .bg-filter {
     background: -webkit-linear-gradient(0deg, white 49.5%, #ccc 50%, #EFEFEF 50%);
-    background: -o-linear-gradient(0deg, white 49.5%, #ccc 50%, #EFEFEF 50%);
-    background: -moz-linear-gradient(0deg, white 49.5%, #ccc 50%, #EFEFEF 50%);
     background: linear-gradient(90deg, white 49.5%, #ccc 50%, #EFEFEF 50%);
 }
 .filter-modal input[type="checkbox"] {
@@ -252,8 +239,6 @@ input[type="date"] {
     content: '\f121';
     opacity: 0;
     -webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
-    -moz-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
-    -o-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
     transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
 }
 .filter-modal input[type="checkbox"]:checked:before {
@@ -280,6 +265,8 @@ input[type="date"] {
 .bar-balanced .button.btn-sort.button-icon {
     border-color: transparent;
     background: none;
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
     transform: rotate(90deg);
 }
 .small-icon:before {
@@ -339,6 +326,8 @@ ion-modal-view.bg-archive.modal {
     width: 300px;
     margin: 0 auto;
     left: 50%;
+    -webkit-transform: translatex(-50%);
+    -ms-transform: translatex(-50%);
     transform: translatex(-50%);
 }
 .cont-archive {
@@ -371,15 +360,10 @@ p.cont-que {
 .pictures {
     width: 70px;
     height: 70px;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
     border-radius: 50%;
     overflow: hidden;
     background-position: center center;
     background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
     margin-right: 20px;
 }
@@ -432,18 +416,12 @@ i.ion-android-star.actived {
     padding: 0px 15px;
 }
 .button-round {
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
     border-radius: 50%;
     height: 50px;
     width: 50px;
-    -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.35);
-    -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.35);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.35);
     font-size: 30px;
     -webkit-transition: all 300ms ease;
-    -moz-transition: all 300ms ease;
-    -o-transition: all 300ms ease;
     transition: all 300ms ease;
 }
 .button-round.ion-plus-round:before {
@@ -529,6 +507,8 @@ a.blocks {
 .list.req-services .button.button-balanced.button-outline {
     border: 0px;
     top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
 .list.req-services .item.item-button-right {
@@ -547,6 +527,7 @@ a.blocks {
     top: 0;
     z-index: 99999999;
     /*  transform: translateX(-100%);*/
+    -webkit-transition: 300ms ease;
     transition: 300ms ease;
     min-height: 100%;
     background: #fff;
@@ -566,6 +547,8 @@ a.blocks {
     font-size: 14px;
 }
 .menu-tab {
+    -webkit-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
     transform: translateX(-100%);
 }
 .item-lights {
@@ -600,6 +583,8 @@ i.icon-arrows {
     font-size: 20px;
     position: absolute;
     top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
 .reports .card .row .col h3 {
