@@ -55,7 +55,7 @@
 }
 .item-picture.item .item-content {
     padding-left: 95px;
-    max-height: 97px;
+    min-height: 94px;
 }
 .blocks h3 {
     margin: 0;
@@ -632,24 +632,56 @@ span.head {
     width: 90%;
 }
 .logo {
-    text-align: center;
-    padding-top: 22px;
+  text-align: center;
+  padding: 20px 0;
 }
-button.button.button-fb.button-block.button-outline {
+
+a.button.button-fb.button-outline {
     color: #fff;
     background-color: #4465ac;
     border-color: #4465ac;
     text-transform: uppercase;
-    padding: 0 19px;
+    padding: 0 16px;
+    height: 0px;
 }
-button.button.button-twit.button-block.button-outline {
+a.button.button-twit.button-outline {
     text-transform: uppercase;
     color: #fff;
     border-color: #32c8fa;
     background-color: #32c8fa;
 }
-.btn-mk.padding {
+a.button.button-google.button-outline {
+    background-color: #dd4d3b;
+    border-color: #dd4d3b;
+    color: #fff;
+}
+.btn-mk {
     position: absolute;
     width: 100%;
     bottom: 20px;
+}
+.list.login-text {
+    padding: 45px 0 0 0px;
+}
+.list.login-text label.item.item-input {
+    margin-bottom: 10px;
+    border: 0px;
+    border-bottom: 1px solid #000;
+}
+.item.login-wid {
+    padding: 10px 15px;
+    border: 0px;
+    text-align: center;
+}
+p.login-or {
+  text-align: center;
+  color: #000;
+  font-size: 15px;
+  font-weight: 600;
+}
+ 
+.button-fb i,
+.button-google i,
+.button-twit i {
+    font-size: 25px;
 }
