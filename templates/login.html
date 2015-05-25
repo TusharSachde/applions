@@ -1,8 +1,10 @@
 <ion-view hide-nav-bar="true" class="light-bg">
     <ion-content>
-        <div class="logo">
-            <img src='img/logo.png'>
+      <div class="logo">
+            <img src="img/logo.jpeg">
+            <h4>App Lions</h4>
         </div>
+<!--
         <div class="btn-login padding-horizontal">
             <a class="button button-block btn-reg button-balanced" href="#/tab/home">
                         Register
@@ -24,33 +26,41 @@
             </a>
 
         </div>
-        <!--
+-->
+        
         <div class="list login-text">
-            <label class="item item-input">
-                <input type="text" placeholder="Enter your Email Id">
+            <label class="item item-input login-i">
+               <i class="icon ln-envelope"></i>
+                <input type="email" placeholder="Enter your Email Id">
             </label>
-            <label class="item item-input">
+            <label class="item item-input login-i">
+               <i class="icon ln-lock"></i>
                 <input type="password" placeholder="Password">
             </label>
         </div>
-        <div class="list ">
-            <div class="item login-wid">
+                   <div class="padding-horizontal btn-signin">
+                    <a class="button button-block button-balanced" href="#/tab/home">
+Sign In
+            </a>
+        </div>
+            <div class="login-with">
                 or login with
             </div>
-        </div>
--->
-        <!--
-        <div class="button-bar">
-            <a class="button button-fb button-outline" href="#/tab/home">
+        <div class="button-bar padding-horizontal">
+            <a class="button button-fb button-outline margin-right" href="#/tab/home">
                 <i class="ion-social-facebook"></i>
-            </a>
-            <a class="button button-twit button-outline" href="#/tab/home">
+            </a> 
+            <a class="button button-twit button-outline margin-right" href="#/tab/home">
                 <i class="ion-social-twitter"></i>
-            </a>
+            </a> 
             <a class="button button-google button-outline" href="#/tab/home">
                 <i class="ion-social-googleplus"></i>
             </a>
         </div>
--->
+        <div class="forgot padding-horizontal">
+            <a href="#" class="left">Forgot Password?</a>
+            <span class="right">New Here <a href="#"> Sign Up</a></span>
+        </div>
+
     </ion-content>
 </ion-view>
