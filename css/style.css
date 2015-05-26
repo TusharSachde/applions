@@ -631,18 +631,22 @@ a.button.button-fb.button-outline {
     border-color: #4465ac;
     text-transform: uppercase;
     border-radius: 0px;
+    padding: 6px 16px;
 }
 a.button.button-twit.button-outline {
     text-transform: uppercase;
     color: #fff;
     border-color: #32c8fa;
     background-color: #32c8fa;
+    padding: 6px 16px;
 }
 a.button.button-google.button-outline {
     background-color: #dd4d3b;
     border-color: #dd4d3b;
     color: #fff;
     border-radius: 0px;
+    padding: 6px 16px;
+
 }
 .btn-mk {
     position: absolute;
@@ -669,7 +673,7 @@ p.login-or {
 .button-fb i,
 .button-google i,
 .button-twit i {
-    font-size: 25px;
+    font-size: 28px;
 }
 a.margin-right {
     margin-right: 4px;
@@ -694,7 +698,7 @@ span.right a {
 .forgot {
     position: absolute;
     width: 100%;
-    bottom: 20px;
+    bottom: 10px;
 }
 .padding-horizontal.btn-signin a.button.button-block.button-balanced {
     border-color: #2ECC71;
