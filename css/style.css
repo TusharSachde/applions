@@ -628,21 +628,21 @@ a.button.button-fb.button-outline {
     border-color: #4465ac;
     text-transform: uppercase;
     border-radius: 0px;
-    padding: 6px 16px;
+/*    padding: 6px 16px;*/
 }
 a.button.button-twit.button-outline {
     text-transform: uppercase;
     color: #fff;
     border-color: #32c8fa;
     background-color: #32c8fa;
-    padding: 6px 16px;
+/*    padding: 6px 16px;*/
 }
 a.button.button-google.button-outline {
     background-color: #dd4d3b;
     border-color: #dd4d3b;
     color: #fff;
     border-radius: 0px;
-    padding: 6px 16px;
+/*    padding: 6px 16px;*/
 
 }
 .btn-mk {
@@ -676,10 +676,10 @@ a.margin-right {
     margin-right: 4px;
 }
 .login-with {
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     text-align: center;
     font-size: 14px;
-    padding-top: 15px;
+    padding-top: 5px;
     font-weight: 500;
 }
 .forgot a.left {
