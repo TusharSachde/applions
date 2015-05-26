@@ -59,17 +59,14 @@
 }
 .blocks {
     min-width: 60px;
-    display: inline-block;
+    display: table-cell;
     padding: 8px 0 2px;
     color: #5F5F5F;
     font-size: 12px;
     border-right: 1px solid #DDD;
 }
 .flex-block {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
+    display: table;
 }
 .picturess.assertive-bg {
     height: 70px;
@@ -150,9 +147,9 @@
 .bold {
     color: #2ECC71;
 }
-label.item.add-warnty a {
+.add-warnty {
     float: right;
-    padding-right: 2px;
+    padding-right: 5px;
     text-decoration: none;
     color: #2ECC71;
 }
@@ -710,4 +707,15 @@ span.right a {
   margin-top: -8px;
   padding: 0 20px 0px 0;
   color: #bbb;
+}
+.input-up
+{
+    border-top: 0px;
+
+}
+
+.input-btm
+{
+    border-bottom: 0px;
+
 }

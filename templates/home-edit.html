@@ -1,28 +1,28 @@
 <ion-view view-title="Manage Appliance" class="light-bg">
-   <ion-nav-buttons side="right">
+    <ion-nav-buttons side="right">
         <button class="button button-icon button-clear small-icon">
-        Save
-        </button> 
+            Save
+        </button>
     </ion-nav-buttons>
     <ion-scroll zooming="false" direction="x" class="light-bg stickyScroll">
         <div class="flex-block">
             <div class="blocks text-center" ng-click="openarchive();">
                 <h3 class="icon ln-archive"></h3> Archive
             </div>
-            <div class="blocks text-center"  ng-click="opentransfer();">
+            <div class="blocks text-center" ng-click="opentransfer();">
                 <h3 class="icon ln-tab"></h3> Transfer
             </div>
             <div class="blocks text-center" ng-click="opendelete();">
                 <h3 class="icon ln-trash2"></h3> Delete
             </div>
-<!--            <div class="blocks text-center" ng-click="openservice();">-->
+            <!--            <div class="blocks text-center" ng-click="openservice();">-->
             <a class="blocks text-center" ng-href="#/tab/home/services">
                 <h3 class="icon ln-wrench"></h3> Service
-            </a>  
-                <div class="blocks text-center" ng-click="openreport();">
+            </a>
+            <div class="blocks text-center" ng-click="openreport();">
                 <h3 class="icon ln-papers"></h3> Report
             </div>
-            <div class="blocks text-center" >
+            <div class="blocks text-center" ng-click="sendtowebsite();">
                 <h3 class="icon ln-circle-exclamation"></h3> Info
             </div>
             <div class="blocks text-center">
@@ -62,25 +62,10 @@
                 </div>
             </div>
         </div>
-<!--
-          <div class="list" ng-if="appliance=='bold'">
-            <div class="item withlist">
-                <div class="picture assertive-bg" style="background-image: url('img/icons/Mobile.png');">
-                                 <label class="item item-input">
-                <span class="input-label">Product*</span>
-                <input type="text" required>
-            </label>
-            <label class="item item-input">
-                <span class="input-label">Name As*</span>
-                <input type="text" required>
-            </label>
-                </div>
-            </div>
-        </div>
--->
+
         <div class="appliance" ng-if="appliance=='bold'">
-           
-<!--
+
+            <!--
             <div class="item withlist">
                 <div class="picture assertive-bg" style="background-image: url('img/icons/Mobile.png');">
                                  <label class="item item-input">
@@ -96,44 +81,50 @@
 -->
             <div class="wish wishs">
                 <div class="picturess  assertive-bg" style="background-image: url('img/icons/Mobile.png');"></div>
-                                    <label class="item item-input">
-                <span class="input-label">Product*</span>
-                <input type="text" required>
-            </label>
-            <label class="item item-input">
-                <span class="input-label">Name As*</span>
-                <input type="text" required>
-            </label>
+                <label class="item item-input input-up">
+                    <span class="input-label">Product*</span>
+                    <input type="text" required>
+                </label>
+                <label class="item item-input input-btm">
+                    <span class="input-label">Name As*</span>
+                    <input type="text" required>
+                </label>
             </div>
+            
             <div class="list" style="margin-top: 1px;">
-            <label class="item item-input">
-                <span class="input-label">Brand*</span>
-                <input type="text" required>
-            </label>
-            <label class="item item-input">
-                <span class="input-label">Model No.</span>
-                <input type="text">
-            </label>
-            <label class="item item-input">
-                <span class="input-label">Serial No.</span>
-                <input type="text">
-            </label>
-            <label class="item item-input" ng-click="openedit();">
-                <span class="input-label">Location</span>
-                <input type="text" readonly>
-            </label>
-            <label class="item item-input">
-                <span class="input-label">Cover</span>
-                <input type="text">
-            </label>
-            <label class="item item-input">
-                <span class="input-label">Expiry</span>
-                <input type="text">
-            </label>
-            <div class="button-bar">
-<!--                <button class="button button-outline icon-right button-balanced" ng-click="myPopup();">Save &amp; Exit</button>-->
-                <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-class="purchase" ng-click="changepurchase()">Next</button>
-            </div>
+                <label class="item item-input">
+                    <span class="input-label">Brand*</span>
+                    <input type="text" required>
+                </label>
+                
+                <label class="item item-input">
+                    <span class="input-label">Model No.</span>
+                    <input type="text">
+                </label>
+                
+                <label class="item item-input">
+                    <span class="input-label">Serial No.</span>
+                    <input type="text">
+                </label>
+                
+                <label class="item item-input" ng-click="openedit();">
+                    <span class="input-label">Location</span>
+                    <input type="text" readonly>
+                </label>
+                
+                <label class="item item-input">
+                    <span class="input-label">Cover</span>
+                    <input type="text">
+                </label>
+                
+                <label class="item item-input">
+                    <span class="input-label">Expiry</span>
+                    <input type="text">
+                </label>
+                
+                <div class="button-bar">
+                    <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-class="purchase" ng-click="changepurchase()">Next</button>
+                </div>
             </div>
         </div>
 
@@ -192,12 +183,12 @@
 
             <div class="button-bar">
                 <button class="button button-outline icon-left ion-chevron-left button-balanced" ng-class="appliance" ng-click="changeapp()">Previous</button>
-<!--                <button class="button button-outline icon-right button-balanced save-exits">Save &amp; Exit</button>-->
+                <!--                <button class="button button-outline icon-right button-balanced save-exits">Save &amp; Exit</button>-->
                 <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-class="warranty" ng-click="changewarranty()">Next</button>
             </div>
         </div>
-
-        <div class="list" ng-if="warranty=='bold'">
+<div class="warranty" ng-if="warranty=='bold'">
+        <div class="list">
             <div class="item product-wrnnty">
                 Product Warranty
             </div>
@@ -230,12 +221,13 @@
                 <span class="input-label">Warranty Period</span>
                 <input type="text">
             </label>
-            <label class="item add-warnty" ng-click="openpswd();">
-                <a>Additional Warranty / AMC</a>
-            </label>
+            </div>
+            <div class="add-warnty" ng-click="openpswd();">
+                Additional Warranty / AMC
+            </div>
             <div class="button-bar">
                 <button class="button button-outline icon-left ion-chevron-left button-balanced" ng-class="purchase" ng-click="changepurchase()">Previous</button>
-<!--                <button class="button button-outline icon-right button-balanced save-exits">Save &#38; Exit</button>-->
+                <!--                <button class="button button-outline icon-right button-balanced save-exits">Save &#38; Exit</button>-->
                 <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-class="documents" ng-click="changedocuments()">Next</button>
             </div>
         </div>
@@ -262,7 +254,7 @@
             </label>
             <div class="button-bar">
                 <button class="button button-outline icon-left ion-chevron-left button-balanced" ng-class="warranty" ng-click="changewarranty()">Previous</button>
-<!--                <button class="button button-outline icon-right button-balanced save-exits" ng-click="myPopup();">Save &amp; Exit</button>-->
+                <!--                <button class="button button-outline icon-right button-balanced save-exits" ng-click="myPopup();">Save &amp; Exit</button>-->
             </div>
         </div>
     </ion-content>

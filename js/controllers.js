@@ -23,6 +23,10 @@ angular.module('starter.controllers', ['ngAnimate'])
 
 
 
+    $scope.sendtowebsite = function(website) {
+        console.log(website);
+        window.open('http://applions.blogspot.in/?m=1' , '_blank');
+    }
 
 
     $ionicModal.fromTemplateUrl('templates/location.html', {
