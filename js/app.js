@@ -34,6 +34,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 controller: 'RegisterCtrl'
             }
         }) 
+        .state('login.registration', {
+            url: '/login',
+            views: {
+                templateUrl: 'templates/registration.html',
+                controller: 'RegisterCtrl'
+            }
+        }) 
 //Request Servies
     .state('tab.services', {
         url: '/home/services',

@@ -11,28 +11,28 @@
                     Appliance Summary
                 </div>
             </div>
-            
+
             <div class="col text-center blockss">
                 <div ng-class="purchase" ng-click="changepurchase()">
                     Purchase Details
                 </div>
             </div>
-            
+
             <div class="col text-center blockss">
                 <div ng-class="warranty" ng-click="changewarranty()">
                     Warranty / AMC
                 </div>
             </div>
-            
+
             <div class="col text-center blockss endblocks">
                 <div ng-class="documents" ng-click="changedocuments()">
                     Documents / Notes
                 </div>
             </div>
-            
+
         </div>
         <div class="appliance" ng-if="appliance=='bold'">
-           
+
             <div class="wish wishs">
                 <div class="picturess  assertive-bg" style="background-image: url('img/icons/Mobile.png');"></div>
                 <label class="item item-input">
@@ -44,28 +44,28 @@
                     <input type="text" required>
                 </label>
             </div>
-            
+
             <div class="list">
                 <label class="item item-input">
                     <span class="input-label">Brand*</span>
                     <input type="text" required>
                 </label>
-                
+
                 <label class="item item-input">
                     <span class="input-label">Model No.</span>
                     <input type="text">
                 </label>
-                
+
                 <label class="item item-input">
                     <span class="input-label">Serial No.</span>
                     <input type="text">
                 </label>
-                
+
                 <label class="item item-input" ng-click="openedit();">
                     <span class="input-label">Location</span>
                     <input type="text" readonly>
                 </label>
-                
+
                 <label class="item item-input item-select">
                     <div class="input-label">
                         Warranty/AMC
@@ -76,7 +76,7 @@
                         <option>No</option>
                     </select>
                 </label>
-                
+
                 <div class="button-bar">
                     <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-class="purchase" ng-click="changepurchase()">Next</button>
                 </div>
@@ -85,37 +85,37 @@
 
 
         <div class="list" ng-if="purchase=='bold'">
-           
+
             <label class="item item-input">
                 <span class="input-label">Purchase Date</span>
                 <input type="date">
             </label>
-            
+
             <label class="item item-input">
                 <span class="input-label">Bill No*</span>
                 <input type="text" required>
             </label>
-            
+
             <label class="item item-input">
                 <span class="input-label">Store Pincode</span>
                 <input type="text">
             </label>
-            
+
             <label class="item item-input">
                 <span class="input-label">Store Name</span>
                 <input type="text">
             </label>
-            
+
             <label class="item item-input">
                 <span class="input-label">Store Pincode</span>
                 <input type="text">
             </label>
-            
+
             <label class="item item-input" ng-click="openedit();">
                 <span class="input-label">Store District</span>
                 <input type="text">
             </label>
-            
+
             <label class="item item-input item-select">
                 <div class="input-label">
                     Store State
@@ -126,22 +126,22 @@
                     <option>Gujrat</option>
                 </select>
             </label>
-            
+
             <label class="item item-input">
                 <span class="input-label">Store Address</span>
                 <input type="text">
             </label>
-            
+
             <label class="item item-input">
                 <span class="input-label">Contact No.</span>
                 <input type="text">
             </label>
-            
+
             <label class="item item-input">
                 <span class="input-label">Sale Person</span>
                 <input type="text">
             </label>
-            
+
             <label class="item item-input">
                 <span class="input-label">Purchase Price</span>
                 <input type="text">
@@ -157,12 +157,12 @@
             <div class="item product-wrnnty">
                 Product Warranty
             </div>
-            
+
             <label class="item item-input">
                 <span class="input-label">Warranty Period</span>
                 <input type="text">
             </label>
-            
+
             <label class="item item-input item-select">
                 <div class="input-label">
                     Warranty Type
@@ -173,30 +173,30 @@
                     <option>Off Site</option>
                 </select>
             </label>
-            
+
             <div class="item product-wrnnty">
                 Component Warranty
             </div>
-            
+
             <label class="item item-input">
                 <span class="input-label">Component</span>
                 <input type="text">
             </label>
-            
+
             <label class="item item-input">
                 <span class="input-label">Serial No</span>
                 <input type="text">
             </label>
-            
+
             <label class="item item-input">
                 <span class="input-label">Warranty Period</span>
                 <input type="text">
             </label>
-            
+
             <label class="item add-warnty" ng-click="openpswd();">
                 <a>Additional Warranty / AMC</a>
             </label>
-            
+
             <div class="button-bar">
                 <button class="button button-outline icon-left ion-chevron-left button-balanced" ng-class="purchase" ng-click="changepurchase()">Previous</button>
                 <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-class="documents" ng-click="changedocuments()">Next</button>
@@ -207,7 +207,7 @@
             <div class="item product-wrnnty">
                 Product Documents
             </div>
-            
+
             <label class="item" style="padding:0;">
                 <div class="row">
                     <div class="col text-center">
@@ -218,11 +218,11 @@
                     </div>
                 </div>
             </label>
-            
+
             <div class="item product-wrnnty">
                 Add Notes
             </div>
-            
+
             <label class="item item-input">
                 <input type="text" placeholder="Add Note">
             </label>
