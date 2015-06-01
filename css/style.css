@@ -240,7 +240,7 @@ input[type="date"] {
 }
 .bottom-stick {
     position: absolute;
-    bottom: 0px;
+    bottom: -10px;
     z-index: 9;
     right: 0px;
 }
