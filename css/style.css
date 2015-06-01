@@ -762,3 +762,8 @@ padding-top: 20px;
     border-bottom: 0px;
 
 }
+
+input[readonly]:not(.cloned-text-input)
+{
+    background: transparent;
+}
