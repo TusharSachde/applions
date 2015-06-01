@@ -240,6 +240,34 @@ angular.module('starter.controllers', ['ngAnimate'])
     $scope.closefilterservice = function() {
         $scope.oModal14.hide();
     };
+    $ionicModal.fromTemplateUrl('templates/modal-brand.html', {
+        id: '15',
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.oModal15 = modal;
+    });
+
+    $scope.openbrandsearch = function() {
+        $scope.oModal15.show();
+    }
+    $scope.closebrandsearch = function() {
+        $scope.oModal15.hide();
+    };
+    $ionicModal.fromTemplateUrl('templates/modal-product.html', {
+        id: '16',
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.oModal16 = modal;
+    });
+
+    $scope.openproductsearch = function() {
+        $scope.oModal16.show();
+    }
+    $scope.closeproductsearch = function() {
+        $scope.oModal16.hide();
+    };
 
 
     //    $scope.appliance = "active";   

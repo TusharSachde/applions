@@ -33,24 +33,16 @@
         </div>
         <div class="appliance" ng-if="appliance=='bold'">
 
-            <div class="wish wishs">
-                <div class="picturess  assertive-bg" style="background-image: url('img/icons/Mobile.png');"></div>
-                <label class="item item-input">
-                    <span class="input-label">Product*</span>
-                    <input type="text" required>
-                </label>
-                <label class="item item-input">
-                    <span class="input-label">Name As*</span>
-                    <input type="text" required>
-                </label>
-            </div>
-
             <div class="list">
-                <label class="item item-input">
-                    <span class="input-label">Brand*</span>
-                    <input type="text" required>
+<!--                <div class="picturess  assertive-bg" style="background-image: url('img/icons/Mobile.png');"></div>-->
+                <label class="item item-input" ng-click="openproductsearch();">
+                    <span class="input-label">Product*</span>
+                    <input type="text" readonly>
                 </label>
-
+                <label class="item item-input" ng-click="openbrandsearch();">
+                    <span class="input-label">Brand*</span>
+                    <input type="text" readonly>
+                </label>
                 <label class="item item-input">
                     <span class="input-label">Model No.</span>
                     <input type="text">
@@ -60,7 +52,10 @@
                     <span class="input-label">Serial No.</span>
                     <input type="text">
                 </label>
-
+                <label class="item item-input">
+                    <span class="input-label">Name As*</span>
+                    <input type="text" required>
+                </label>
                 <label class="item item-input" ng-click="openedit();">
                     <span class="input-label">Location</span>
                     <input type="text" readonly>
@@ -152,84 +147,84 @@
                 <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-class="warranty" ng-click="changewarranty()">Next</button>
             </div>
         </div>
-
-        <div class="list" ng-if="warranty=='bold'">
-            <div class="item product-wrnnty">
-                Product Warranty
-            </div>
-
-            <label class="item item-input">
-                <span class="input-label">Warranty Period</span>
-                <input type="text">
-            </label>
-
-            <label class="item item-input item-select">
-                <div class="input-label">
-                    Warranty Type
+        <div class="warranty" ng-if="warranty=='bold'">
+            <div class="list">
+                <div class="item product-wrnnty">
+                    Product Warranty
                 </div>
-                <select>
-                    <option></option>
-                    <option>On Site</option>
-                    <option>Off Site</option>
-                </select>
-            </label>
 
-            <div class="item product-wrnnty">
-                Component Warranty
-            </div>
+                <label class="item item-input">
+                    <span class="input-label">Warranty Period</span>
+                    <input type="text">
+                </label>
 
-            <label class="item item-input">
-                <span class="input-label">Component</span>
-                <input type="text">
-            </label>
-
-            <label class="item item-input">
-                <span class="input-label">Serial No</span>
-                <input type="text">
-            </label>
-
-            <label class="item item-input">
-                <span class="input-label">Warranty Period</span>
-                <input type="text">
-            </label>
-
-            <label class="item add-warnty" ng-click="openpswd();">
-                <a>Additional Warranty / AMC</a>
-            </label>
-
-            <div class="button-bar">
-                <button class="button button-outline icon-left ion-chevron-left button-balanced" ng-class="purchase" ng-click="changepurchase()">Previous</button>
-                <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-class="documents" ng-click="changedocuments()">Next</button>
-            </div>
-        </div>
-
-        <div class="list" ng-if="documents=='bold'">
-            <div class="item product-wrnnty">
-                Product Documents
-            </div>
-
-            <label class="item" style="padding:0;">
-                <div class="row">
-                    <div class="col text-center">
-                        <button class="button button-outline button-balanced button-block button-small" ng-class="warranty" ng-click="changewarranty()">Upload Bill</button>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Warranty Type
                     </div>
-                    <div class="col text-center">
-                        <button class="button button-outline button-balanced button-block button-small" ng-class="warranty" ng-click="changewarranty()">Upload Warranty Card</button>
-                    </div>
+                    <select>
+                        <option></option>
+                        <option>On Site</option>
+                        <option>Off Site</option>
+                    </select>
+                </label>
+
+                <div class="item product-wrnnty">
+                    Component Warranty
                 </div>
-            </label>
 
-            <div class="item product-wrnnty">
-                Add Notes
+                <label class="item item-input">
+                    <span class="input-label">Component</span>
+                    <input type="text">
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">Serial No</span>
+                    <input type="text">
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">Warranty Period</span>
+                    <input type="text">
+                </label>
+            </div>
+                <div class="add-warnty" ng-click="openpswd();">
+                    Additional Warranty / AMC
+                </div>
+
+                <div class="button-bar">
+                    <button class="button button-outline icon-left ion-chevron-left button-balanced" ng-class="purchase" ng-click="changepurchase()">Previous</button>
+                    <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-class="documents" ng-click="changedocuments()">Next</button>
+                </div>
             </div>
 
-            <label class="item item-input">
-                <input type="text" placeholder="Add Note">
-            </label>
+            <div class="list" ng-if="documents=='bold'">
+                <div class="item product-wrnnty">
+                    Product Documents
+                </div>
 
-            <div class="button-bar">
-                <button class="button button-outline icon-left ion-chevron-left button-balanced" ng-class="warranty" ng-click="changewarranty()">Previous</button>
+                <label class="item" style="padding:0;">
+                    <div class="row">
+                        <div class="col text-center">
+                            <button class="button button-outline button-balanced button-block button-small" ng-class="warranty">Upload Bill</button>
+                        </div>
+                        <div class="col text-center">
+                            <button class="button button-outline button-balanced button-block button-small" ng-class="warranty">Upload Warranty Card</button>
+                        </div>
+                    </div>
+                </label>
+
+                <div class="item product-wrnnty">
+                    Add Notes
+                </div>
+
+                <label class="item item-input">
+                    <input type="text" placeholder="Add Note">
+                </label>
+
+                <div class="button-bar">
+                    <button class="button button-outline icon-left ion-chevron-left button-balanced" ng-class="warranty" ng-click="changewarranty()">Previous</button>
+                </div>
             </div>
-        </div>
     </ion-content>
 </ion-view>
