@@ -595,6 +595,7 @@ a.blocks {
 .menus .list .item {
     padding: 8px 18px;
     border: 0;
+    margin: 0;
 }
 .menus .list .item.active {
     background: #fff;
@@ -766,4 +767,10 @@ padding-top: 20px;
 input[readonly]:not(.cloned-text-input)
 {
     background: transparent;
+}
+
+.menus.animate-show {
+    -webkit-box-shadow: 0 0 5px #ddd;
+    -moz-box-shadow: 0 0 5px #ddd;
+    box-shadow: 0 0 5px #ddd;
 }
