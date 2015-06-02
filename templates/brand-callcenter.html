@@ -1,9 +1,12 @@
 <ion-view view-title="Request Service" class="light-bg">
+<!--
     <ion-nav-buttons side="left">
         <button class="button button-icon icon-right ln-options button-clear small-icon" ng-click="toggleCustom()">
         </button>
     </ion-nav-buttons>
+-->
     <ion-nav-buttons side="right">
+               <button class="button button-icon icon-right ln-options button-clear small-icon" ng-click="toggleCustom()">
         <button class="button button-icon button-clear ln-tab btn-sort small-icon" ng-click="opensortservice();" ng-if="brandservice=='bold' || authorizedservice=='bold' || organisedservice=='bold'|| otherservice=='bold'">
         </button>
         <button class="button button-icon button-clear ln-funnel small-icon" ng-click="openfilterservice();" ng-if="brandservice=='bold' || authorizedservice=='bold' || organisedservice=='bold'|| otherservice=='bold'">
