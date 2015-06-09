@@ -3,13 +3,19 @@
         <h1 class="title">Confirm Delete</h1>
     </ion-header-bar>
     <ion-content>
-<div class="cont-archive">
-       <p> This appliance will be Delete.You will loose all the information related to this appliance permanently</p>
-       <p class="cont-que"> Do you want to Delete this appliance?</p>
-    </div>
-         <div class="button-bar padding-horizontal">
-            <button class="button button-assertive" ng-click="closedelete();">No</button>
-            <button class="button button-balanced">Yes</button>
+        <div class="cont-archive">
+            <p> This appliance will be Delete.You will loose all the information related to this appliance permanently</p>
+            <p class="cont-que"> Do you want to Delete this appliance?</p>
+        </div>
+        <!--
+      <div class="button-bar padding-horizontal">
+    <button class="button button-assertive" ng-click="closedelete();">No</button>
+    <button class="button button-balanced">Yes</button>
+</div>
+-->
+        <div class="padding-horizontal">
+            <button class="button button-balanced button-outline button-block">Yes</button>
+            <button class="button button-assertive button-outline button-block" ng-click="closedelete();">No</button>
         </div>
     </ion-content>
 </ion-modal-view>
