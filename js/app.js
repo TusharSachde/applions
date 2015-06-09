@@ -12,7 +12,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.tabs.position('bottom');
-    $ionicConfigProvider.scrolling.jsScrolling(false);
+    //    $ionicConfigProvider.scrolling.jsScrolling(false);
 
     $stateProvider
 
@@ -26,39 +26,39 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         url: "/login",
         abstract: true,
         templateUrl: "templates/login.html"
-    })  
-    .state('reg', {
-        url: "/reg",
-        abstract: true,
-        templateUrl: "templates/registration.html"
-    }) 
-    .state('forgot', {
-        url: "/forgot",
-        abstract: true,
-        templateUrl: "templates/forgot.html"
     })
+        .state('reg', {
+            url: "/reg",
+            abstract: true,
+            templateUrl: "templates/registration.html"
+        })
+        .state('forgot', {
+            url: "/forgot",
+            abstract: true,
+            templateUrl: "templates/forgot.html"
+        })
         .state('login.login', {
             url: '/login',
             views: {
                 templateUrl: 'templates/login.html',
                 controller: 'RegisterCtrl'
             }
-        }) 
+        })
         .state('reg.registration', {
             url: '/registration',
             views: {
                 templateUrl: 'templates/registration.html',
                 controller: 'RegisterCtrl'
             }
-        })  
-    .state('forgot.forgot', {
+        })
+        .state('forgot.forgot', {
             url: '/forgot',
             views: {
                 templateUrl: 'templates/forgot.html',
                 controller: 'RegisterCtrl'
             }
-        }) 
-//Request Servies
+        })
+    //Request Servies
     .state('tab.services', {
         url: '/home/services',
         views: {
@@ -67,11 +67,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 controller: 'HomeCtrl'
             }
         }
-    })    
-        
+    })
 
-        
-        .state('tab.home', {
+
+
+    .state('tab.home', {
         url: '/home',
         views: {
             'tab-home': {
@@ -79,16 +79,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 controller: 'HomeCtrl'
             }
         }
-    }) 
-        .state('tab.service', {
-        url: '/home/service',
-        views: {
-            'tab-home': {
-                templateUrl: 'templates/tab-services.html',
-                controller: 'HomeCtrl'
-            }
-        }
     })
+        .state('tab.service', {
+            url: '/home/service',
+            views: {
+                'tab-home': {
+                    templateUrl: 'templates/tab-services.html',
+                    controller: 'HomeCtrl'
+                }
+            }
+        })
         .state('tab.addappliance', {
             url: '/home/addappliance',
             views: {
