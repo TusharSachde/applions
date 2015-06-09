@@ -5,25 +5,21 @@
             <button class="button button-clear" ng-click="closeModalss()">Close</button>
         </div>
     </ion-header-bar>
-    <ion-content>
-        <div class="row block-down blockmodal">
-            <div class="col text-center blockss">
-                <div ng-class="myhome" ng-click="changemyhome()">
+       <ion-scroll zooming="false" direction="x" class="light-bg stickyScroll">
+            <div class="flex-block">
+                <div class="blocks1 text-center"  ng-click="tabvalue = 1;" ng-class="{'activetab': tabvalue == 1}">
                     My Home
                 </div>
-            </div>
-            <div class="col text-center blockss">
-                <div ng-class="myoffice" ng-click="changemyoffice()">
+                <div class="blocks1 text-center"  ng-click="tabvalue = 2;" ng-class="{'activetab': tabvalue == 2}">
                     My Office
                 </div>
-            </div>
-            <div class="col text-center blockss">
-                <div ng-class="addnew" ng-click="changeaddnew()">
+                <div class="blocks1 text-center"  ng-click="tabvalue = 3;" ng-class="{'activetab': tabvalue == 3}">
                     Add New
                 </div>
             </div>
-        </div>
-        <div class="list" ng-if="myhome=='bold'">
+        </ion-scroll>
+    <ion-content class="tabs-conts">     
+        <div class="list" ng-if="tabvalue == 1">
             <label class="item item-input">
                 <span class="input-label">Location*</span>
                 <input type="text" required>
@@ -60,7 +56,7 @@
                 </textarea>
             </label>
         </div>
-        <div class="list" ng-if="myoffice=='bold'">
+        <div class="list" ng-if="tabvalue == 2">
             <label class="item item-input">
                 <span class="input-label">Location*</span>
                 <input type="text" required>
@@ -97,7 +93,7 @@
                 </textarea>
             </label>
         </div>
-        <div class="list" ng-if="addnew=='bold'">
+        <div class="list" ng-if="tabvalue == 3">
             <label class="item item-input">
                 <span class="input-label">Location*</span>
                 <input type="text" required>

@@ -6,35 +6,24 @@
     </ion-nav-buttons>
     <ion-content class="bbar-white app-cont">
         <div class="row block-down">
-            <div class="col text-center blockss active">
-                <div ng-class="appliance" ng-click="changeapp()">
-                    Appliance Summary
-                </div>
+            <div class="col text-center blockss" ng-click="changetab(1);" ng-class="{'activetab': tabvalue == 1}">
+                Appliance Summary
             </div>
-
-            <div class="col text-center blockss">
-                <div ng-class="purchase" ng-click="changepurchase()">
-                    Purchase Details
-                </div>
+            <div class="col text-center blockss" ng-click="changetab(2);" ng-class="{'activetab': tabvalue == 2}">
+                Purchase Details
             </div>
-
-            <div class="col text-center blockss">
-                <div ng-class="warranty" ng-click="changewarranty()">
-                    Warranty / AMC
-                </div>
+            <div class="col text-center blockss" ng-click="changetab(3);" ng-class="{'activetab': tabvalue == 3}">
+                Warranty / AMC
             </div>
-
-            <div class="col text-center blockss endblocks">
-                <div ng-class="documents" ng-click="changedocuments()">
-                    Documents / Notes
-                </div>
+            <div class="col text-center blockss endblocks" ng-click="changetab(4);" ng-class="{'activetab': tabvalue == 4}">
+                Documents / Notes
             </div>
-
         </div>
-        <div class="appliance" ng-if="appliance=='bold'">
+
+        <div class="appliance" ng-if="tabvalue == 1">
 
             <div class="list">
-<!--                <div class="picturess  assertive-bg" style="background-image: url('img/icons/Mobile.png');"></div>-->
+                <!--                <div class="picturess  assertive-bg" style="background-image: url('img/icons/Mobile.png');"></div>-->
                 <label class="item item-input" ng-click="openproductsearch();">
                     <span class="input-label">Product*</span>
                     <input type="text" readonly>
@@ -72,14 +61,15 @@
                     </select>
                 </label>
 
-                <div class="button-bar">
-                    <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-class="purchase" ng-click="changepurchase()">Next</button>
+                <div class="padding">
+                    <button class="button button-outline button-block icon-right ion-chevron-right button-balanced" ng-click="changetab(2);">Next</button>
                 </div>
             </div>
         </div>
+        </div>
 
 
-        <div class="list" ng-if="purchase=='bold'">
+        <div class="list" ng-if="tabvalue == 2">
 
             <label class="item item-input">
                 <span class="input-label">Purchase Date</span>
@@ -143,11 +133,12 @@
             </label>
 
             <div class="button-bar">
-                <button class="button button-outline icon-left ion-chevron-left button-balanced" ng-class="appliance" ng-click="changeapp()">Previous</button>
-                <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-class="warranty" ng-click="changewarranty()">Next</button>
+                <button class="button button-outline icon-left ion-chevron-left button-balanced" ng-click="changetab(1)">Previous</button>
+                <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-click="changetab(3)">Next</button>
             </div>
         </div>
-        <div class="warranty" ng-if="warranty=='bold'">
+        </div>
+        <div class="warranty" ng-if="tabvalue == 3">
             <div class="list">
                 <div class="item product-wrnnty">
                     Product Warranty
@@ -169,6 +160,7 @@
                     </select>
                 </label>
 
+                <!--
                 <div class="item product-wrnnty">
                     Component Warranty
                 </div>
@@ -187,44 +179,57 @@
                     <span class="input-label">Warranty Period</span>
                     <input type="text">
                 </label>
+-->
             </div>
-                <div class="add-warnty" ng-click="openpswd();">
-                    Additional Warranty / AMC
+              <div class="row">
+                <div class="col add-warnty" ng-click="opencomponent()">
+                     Component Warranty
                 </div>
-
-                <div class="button-bar">
-                    <button class="button button-outline icon-left ion-chevron-left button-balanced" ng-class="purchase" ng-click="changepurchase()">Previous</button>
-                    <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-class="documents" ng-click="changedocuments()">Next</button>
+                <div class="col add-warnty" ng-click="openpswd();">
+                      Additional Warranty / AMC
                 </div>
             </div>
+<!--
+            <div class="button-bar">
+                <button class="button button-outline icon-left button-balanced" ng-click="opencomponent()"> Component Warranty</button>
+                <button class="button button-outline icon-right button-balanced" ng-click="openpswd();"> Additional Warranty / AMC</button>
+            </div>
+-->
 
-            <div class="list" ng-if="documents=='bold'">
-                <div class="item product-wrnnty">
-                    Product Documents
-                </div>
+            <div class="button-bar">
+                <button class="button button-outline icon-left ion-chevron-left button-balanced" ng-click="changetab(2)">Previous</button>
+                <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-click="changetab(4)">Next</button>
+            </div>
+        </div>
+        </div>
 
-                <label class="item" style="padding:0;">
-                    <div class="row">
-                        <div class="col text-center">
-                            <button class="button button-outline button-balanced button-block button-small" ng-class="warranty">Upload Bill</button>
-                        </div>
-                        <div class="col text-center">
-                            <button class="button button-outline button-balanced button-block button-small" ng-class="warranty">Upload Warranty Card</button>
-                        </div>
+        <div class="list" ng-if="tabvalue == 4">
+            <div class="item product-wrnnty">
+                Product Documents
+            </div>
+
+            <label class="item" style="padding:0;">
+                <div class="row">
+                    <div class="col text-center">
+                        <button class="button button-outline button-balanced button-block button-small" ng-class="warranty">Upload Bill</button>
                     </div>
-                </label>
-
-                <div class="item product-wrnnty">
-                    Add Notes
+                    <div class="col text-center">
+                        <button class="button button-outline button-balanced button-block button-small" ng-class="warranty">Upload Warranty Card</button>
+                    </div>
                 </div>
+            </label>
 
-                <label class="item item-input">
-                    <input type="text" placeholder="Add Note">
-                </label>
-
-                <div class="button-bar">
-                    <button class="button button-outline icon-left ion-chevron-left button-balanced" ng-class="warranty" ng-click="changewarranty()">Previous</button>
-                </div>
+            <div class="item product-wrnnty">
+                Add Notes
             </div>
+
+            <label class="item item-input">
+                <input type="text" placeholder="Add Note">
+            </label>
+
+            <div class="padding">
+                <button class="button button-block button-outline icon-left ion-chevron-left button-balanced" ng-click="changetab(3)">Previous</button>
+            </div>
+        </div>
     </ion-content>
 </ion-view>

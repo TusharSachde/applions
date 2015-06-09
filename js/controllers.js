@@ -16,18 +16,43 @@ angular.module('starter.controllers', ['ngAnimate'])
 .controller('HomeCtrl', function($scope, $ionicModal, $ionicPopup, $timeout) {
 
     //toggle
+    $scope.changetab = function (tab){
+        $scope.tabvalue = tab;
+    }
+    
     $scope.custom = false;
     $scope.toggleCustom = function() {
         $scope.custom = $scope.custom === false ? true : false;
     };
 
-    $scope.tabvalue = 1;
+    $scope.tabvalue = 1;  
+    $scope.showreport = 1;
 
     $scope.sendtowebsite = function(website) {
         console.log(website);
         window.open('http://applions.blogspot.in/?m=1', '_blank');
     }
 
+    
+//    $scope.next1 = function(){
+//        console.log("next1  clicked");
+//        console.log($scope.tabvalue);
+//        $scope.tabvalue = 1; 
+//    } 
+//    
+//    $scope.next2 = function(){
+//        console.log("next2 clicked");
+//        console.log($scope.tabvalue)
+//        $scope.tabvalue = 2; 
+//    }
+//    $scope.next3 = function(){
+//        console.log("next clicked");
+//        $scope.tabvalue = 3; 
+//    }
+// $scope.next4 = function(){
+//        console.log("next clicked");
+//        $scope.tabvalue = 4; 
+//    }
 
     $ionicModal.fromTemplateUrl('templates/location.html', {
         id: '1',
@@ -152,20 +177,20 @@ angular.module('starter.controllers', ['ngAnimate'])
         $scope.oModal8.hide();
     };
 
-    //    $ionicModal.fromTemplateUrl('templates/modal-services.html', {
-    //        id: '9',
-    //        scope: $scope,
-    //        animation: 'slide-in-up'
-    //    }).then(function(modal) {
-    //        $scope.oModal9 = modal;
-    //    });
-    //
-    //    $scope.openservice = function() {
-    //        $scope.oModal9.show();
-    //    }
-    //    $scope.closeservice = function() {
-    //        $scope.oModal9.hide();
-    //    };
+        $ionicModal.fromTemplateUrl('templates/modal-component.html', {
+            id: '9',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.oModal9 = modal;
+        });
+    
+        $scope.opencomponent = function() {
+            $scope.oModal9.show();
+        }
+        $scope.closecomponent = function() {
+            $scope.oModal9.hide();
+        };
 
     $ionicModal.fromTemplateUrl('templates/modal-prevreports.html', {
         id: '10',
@@ -270,233 +295,6 @@ angular.module('starter.controllers', ['ngAnimate'])
     };
 
 
-    //    $scope.appliance = "active";   
-    $scope.appliance = "bold";
-    $scope.profile = "";
-    $scope.warranty = "";
-    $scope.documents = "";
-
-    //  DESIGN CODE
-    $scope.changeapp = function() {
-        $scope.appliance = "bold";
-        $scope.purchase = "";
-        $scope.warranty = "";
-        $scope.documents = "";
-
-    }
-
-    $scope.changepurchase = function() {
-        $scope.appliance = "";
-        $scope.purchase = "bold";
-        $scope.warranty = "";
-        $scope.documents = "";
-    }
-
-    $scope.changewarranty = function() {
-        $scope.appliance = "";
-        $scope.purchase = "";
-        $scope.warranty = "bold";
-        $scope.documents = "";
-    }
-    $scope.changedocuments = function() {
-        $scope.appliance = "";
-        $scope.purchase = "";
-        $scope.warranty = "";
-        $scope.documents = "bold";
-    }
-
-
-
-    //    $scope.appliance = "active";   
-    $scope.myhome = "bold";
-    $scope.myoffice = "";
-    $scope.addnew = "";
-
-    //  DESIGN CODE
-    $scope.changemyhome = function() {
-        $scope.myhome = "bold";
-        $scope.myoffice = "";
-        $scope.addnew = "";
-
-    }
-
-    $scope.changemyoffice = function() {
-        $scope.myhome = "";
-        $scope.myoffice = "bold";
-        $scope.addnew = "";
-    }
-    $scope.changeaddnew = function() {
-        $scope.myhome = "";
-        $scope.myoffice = "";
-        $scope.addnew = "bold";
-    }
-
-    //    tab3   
-    $scope.myhome = "bold";
-    $scope.myoffice = "";
-    $scope.addnew = "";
-    $scope.user = [];
-
-    //  DESIGN CODE
-    $scope.changemyhome = function() {
-        $scope.myhome = "bold";
-        $scope.myoffice = "";
-        $scope.addnew = "";
-
-    }
-
-    $scope.changemyoffice = function() {
-        $scope.myhome = "";
-        $scope.myoffice = "bold";
-        $scope.addnew = "";
-    }
-    $scope.changeaddnew = function() {
-        $scope.myhome = "";
-        $scope.myoffice = "";
-        $scope.addnew = "bold";
-    }
-
-
-    //    tab4  
-    $scope.appstatus = "bold";
-    $scope.apptype = "";
-    $scope.location = "";
-    $scope.coverstatus = "";
-    $scope.covertype = "";
-
-    //  DESIGN CODE
-    $scope.changeappstatus = function() {
-        $scope.appstatus = "bold";
-        $scope.apptype = "";
-        $scope.location = "";
-        $scope.coverstatus = "";
-        $scope.covertype = "";
-    }
-
-    $scope.changetype = function() {
-        $scope.appstatus = "";
-        $scope.apptype = "bold";
-        $scope.location = "";
-        $scope.coverstatus = "";
-        $scope.covertype = "";
-    }
-
-    $scope.changelocation = function() {
-        $scope.appstatus = "";
-        $scope.apptype = "";
-        $scope.location = "bold";
-        $scope.coverstatus = "";
-        $scope.covertype = "";
-    }
-
-    $scope.changecoverstatus = function() {
-        $scope.appstatus = "";
-        $scope.apptype = "";
-        $scope.location = "";
-        $scope.coverstatus = "bold";
-        $scope.covertype = "";
-    }
-
-    $scope.changecovertype = function() {
-        $scope.appstatus = "";
-        $scope.apptype = "";
-        $scope.location = "";
-        $scope.coverstatus = "";
-        $scope.covertype = "bold";
-    }
-
-
-    //    tab5   
-    $scope.showreport = 1;
-
-    //    tab6
-    $scope.brandcall = "bold";
-    $scope.myservice = "";
-    $scope.seller = "";
-    $scope.brandservice = "";
-    $scope.authorizedservice = "";
-    $scope.organisedservice = "";
-    $scope.otherservice = "";
-
-    //  DESIGN CODE
-    $scope.changebrandcall = function() {
-        $scope.brandcall = "bold";
-        $scope.myservice = "";
-        $scope.seller = "";
-        $scope.brandservice = "";
-        $scope.authorizedservice = "";
-        $scope.organisedservice = "";
-        $scope.otherservice = "";
-        $scope.custom = $scope.custom === false ? true : false;
-    }
-
-    $scope.changemyservice = function() {
-        $scope.brandcall = "";
-        $scope.myservice = "bold";
-        $scope.seller = "";
-        $scope.brandservice = "";
-        $scope.authorizedservice = "";
-        $scope.organisedservice = "";
-        $scope.otherservice = "";
-        $scope.custom = $scope.custom === false ? true : false;
-    }
-
-    $scope.changeseller = function() {
-        $scope.brandcall = "";
-        $scope.myservice = "";
-        $scope.seller = "bold";
-        $scope.brandservice = "";
-        $scope.authorizedservice = "";
-        $scope.organisedservice = "";
-        $scope.otherservice = "";
-        $scope.custom = $scope.custom === false ? true : false;
-    }
-
-    $scope.changebrandservice = function() {
-        $scope.brandcall = "";
-        $scope.myservice = "";
-        $scope.seller = "";
-        $scope.brandservice = "bold";
-        $scope.authorizedservice = "";
-        $scope.organisedservice = "";
-        $scope.otherservice = "";
-        $scope.custom = $scope.custom === false ? true : false;
-    }
-
-    $scope.changeauthorizedservice = function() {
-        $scope.brandcall = "";
-        $scope.myservice = "";
-        $scope.seller = "";
-        $scope.brandservice = "";
-        $scope.authorizedservice = "bold";
-        $scope.organisedservice = "";
-        $scope.otherservice = "";
-        $scope.custom = $scope.custom === false ? true : false;
-    }
-
-    $scope.changeorganisedservice = function() {
-        $scope.brandcall = "";
-        $scope.myservice = "";
-        $scope.seller = "";
-        $scope.brandservice = "";
-        $scope.authorizedservice = "";
-        $scope.organisedservice = "bold";
-        $scope.otherservice = "";
-        $scope.custom = $scope.custom === false ? true : false;
-    }
-
-    $scope.changeotherservice = function() {
-        $scope.brandcall = "";
-        $scope.myservice = "";
-        $scope.seller = "";
-        $scope.brandservice = "";
-        $scope.authorizedservice = "";
-        $scope.organisedservice = "";
-        $scope.otherservice = "bold";
-        $scope.custom = $scope.custom === false ? true : false;
-    }
-
-
     function save() {
         var myPopup = $ionicPopup.show({
             template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Appliance has been update successfully!!</p>',
@@ -539,20 +337,20 @@ angular.module('starter.controllers', ['ngAnimate'])
         $scope.oModal1.hide();
     };
 
-    $ionicModal.fromTemplateUrl('templates/modal-chngno.html', {
-        id: '2',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.oModal2 = modal;
-    });
-
-    $scope.openchngno = function() {
-        $scope.oModal2.show();
-    }
-    $scope.closechngno = function() {
-        $scope.oModal2.hide();
-    };
+//    $ionicModal.fromTemplateUrl('templates/modal-chngno.html', {
+//        id: '2',
+//        scope: $scope,
+//        animation: 'slide-in-up'
+//    }).then(function(modal) {
+//        $scope.oModal2 = modal;
+//    });
+//
+//    $scope.openchngno = function() {
+//        $scope.oModal2.show();
+//    }
+//    $scope.closechngno = function() {
+//        $scope.oModal2.hide();
+//    };
 
     $ionicModal.fromTemplateUrl('templates/modal-stat.html', {
         id: '3',

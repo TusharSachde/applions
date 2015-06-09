@@ -8,10 +8,10 @@
     <ion-content>
 
         <div class="row report-tab">
-            <div class="col text-center head-report" ng-click="showreport=1;">
+            <div class="col text-center head-report" ng-click="showreport=1;" ng-class="{'activetab': showreport == 1}">
                 New Report
             </div>
-            <div class="col text-center head-report" ng-click="showreport=2;">
+            <div class="col text-center head-report" ng-click="showreport=2;" ng-class="{'activetab': showreport == 2}">
                 Previous Report
             </div>
         </div>

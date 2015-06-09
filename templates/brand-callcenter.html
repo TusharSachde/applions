@@ -6,14 +6,14 @@
     </ion-nav-buttons>
 -->
     <ion-nav-buttons side="right">
-               <button class="button button-icon icon-right ln-options button-clear small-icon" ng-click="toggleCustom()">
-        <button class="button button-icon button-clear ln-tab btn-sort small-icon" ng-click="opensortservice();" ng-if="brandservice=='bold' || authorizedservice=='bold' || organisedservice=='bold'|| otherservice=='bold'">
-        </button>
-        <button class="button button-icon button-clear ln-funnel small-icon" ng-click="openfilterservice();" ng-if="brandservice=='bold' || authorizedservice=='bold' || organisedservice=='bold'|| otherservice=='bold'">
+                <button class="button button-icon button-clear ln-tab btn-sort small-icon" ng-click="opensortservice();">
+    </button>
+        <button class="button button-icon button-clear ln-funnel small-icon">
         </button>
     </ion-nav-buttons>
     <ion-content>
         <!--        <div class="menus" ng-hide="custom">-->
+<!--
         <div class="menus animate-show" ng-hide="custom">
             <div class="list">
                 <ion-item class="item-picture light-bg item item-complex item-lights hrdown">
@@ -50,9 +50,10 @@
                 </div>
             </div>
         </div>
+-->
 
 
-        <div class="list req-services" ng-if="brandcall=='bold'">
+        <div class="list req-services">
             <div class="item product-wrnnty">
                 Sony Ericsson Call Center
             </div>

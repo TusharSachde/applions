@@ -9,27 +9,24 @@
     <div class="row filter-modal">
         <div class="col col-50">
             <ion-list>
-                <ion-item class="active" >
-                <div ng-click="changeappstatus();">Appliance Status</div>
+                <ion-item ng-click="tabvalue = 1;" ng-class="{'activetab': tabvalue == 1}">
+                        Appliance Status
                 </ion-item>
-                <ion-item>
-                    <div ng-click="changetype();">Appliance Type</div>
-                    </ion-item>
-                <ion-item>
-                <div ng-click="changelocation();">Location
-                    </div>
+                <ion-item ng-click="tabvalue = 2;" ng-class="{'activetab': tabvalue == 2}">
+                        Appliance Type
                 </ion-item>
-                <ion-item>
-                <div ng-click="changecoverstatus();">
-                    Cover Status
-                    </div>
-                    </ion-item>
-                <ion-item>
-                <div ng-click="changecovertype();">Cover Type</div>
+                <ion-item ng-click="tabvalue = 3;" ng-class="{'activetab': tabvalue == 3}">
+                        Location
+                </ion-item>
+                <ion-item ng-click="tabvalue = 4;" ng-class="{'activetab': tabvalue == 4}">
+                        Cover Status
+                </ion-item>
+                <ion-item ng-click="tabvalue = 5;" ng-class="{'activetab': tabvalue == 5}">                   
+                        Cover Type
                 </ion-item>
             </ion-list>
         </div>
-        <div class="col right" ng-if="appstatus=='bold'">
+        <div class="col right" ng-if="tabvalue == 1">
             <div class="bar item-input-inset search-app">
                 <label class="item-input-wrapper">
                     <i class="icon ion-ios-search placeholder-icon"></i>
@@ -59,9 +56,9 @@
                     </label>
                 </ion-item>
             </ion-list>
-        </div>       
-           
-             <div class="col right" ng-if="apptype=='bold'">
+        </div>
+
+        <div class="col right" ng-if="tabvalue == 2">
             <div class="bar item-input-inset search-app">
                 <label class="item-input-wrapper">
                     <i class="icon ion-ios-search placeholder-icon"></i>
@@ -89,21 +86,21 @@
                     <label>
                         <input type="checkbox"> Audio System
                     </label>
-                </ion-item> 
-                   <ion-item>
+                </ion-item>
+                <ion-item>
                     <label>
                         <input type="checkbox"> Bluetooth Headphone
                     </label>
-                </ion-item> 
-                   <ion-item>
+                </ion-item>
+                <ion-item>
                     <label>
                         <input type="checkbox"> Blu-ray Player
                     </label>
                 </ion-item>
             </ion-list>
-        </div>       
-           
-             <div class="col right" ng-if="location=='bold'">
+        </div>
+
+        <div class="col right" ng-if="tabvalue == 3">
             <div class="bar item-input-inset search-app">
                 <label class="item-input-wrapper">
                     <i class="icon ion-ios-search placeholder-icon"></i>
@@ -128,9 +125,9 @@
                     </label>
                 </ion-item>
             </ion-list>
-        </div>       
-           
-             <div class="col right" ng-if="coverstatus=='bold'">
+        </div>
+
+        <div class="col right" ng-if="tabvalue == 4">
             <div class="bar item-input-inset search-app">
                 <label class="item-input-wrapper">
                     <i class="icon ion-ios-search placeholder-icon"></i>
@@ -158,16 +155,16 @@
                     <label>
                         <input type="checkbox"> Expired
                     </label>
-                </ion-item>    
-                         <ion-item>
+                </ion-item>
+                <ion-item>
                     <label>
                         <input type="checkbox"> No Details
                     </label>
                 </ion-item>
             </ion-list>
         </div>
-                   
-             <div class="col right" ng-if="covertype=='bold'">
+
+        <div class="col right" ng-if="tabvalue == 5">
             <div class="bar item-input-inset search-app">
                 <label class="item-input-wrapper">
                     <i class="icon ion-ios-search placeholder-icon"></i>
@@ -196,14 +193,14 @@
                         <input type="checkbox"> AMC
                     </label>
                 </ion-item>
-                    <ion-item>
+                <ion-item>
                     <label>
                         <input type="checkbox"> Component Warranty
                     </label>
                 </ion-item>
             </ion-list>
         </div>
-        
+
         <div class="button-bar bottom-stick">
             <button class="button button-balanced button-block button-small">Clear</button>
             <button class="button button-balanced button-block button-small">Apply</button>
