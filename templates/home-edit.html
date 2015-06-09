@@ -41,29 +41,21 @@
     </ion-scroll>
     <ion-content class="scroll-above bbar-white">
         <div class="row block-down">
-            <div class="col text-center blockss active">
-                <div ng-class="appliance" ng-click="changeapp()">
-                    Appliance Summary
-                </div>
+            <div class="col text-center blockss" ng-click="tabvalue = 1;" ng-class="{'activetab': tabvalue == 1}">
+                Appliance Summary
             </div>
-            <div class="col text-center blockss">
-                <div ng-class="purchase" ng-click="changepurchase()">
-                    Purchase Details
-                </div>
+            <div class="col text-center blockss" ng-class="{'activetab': tabvalue == 2}" ng-click="tabvalue = 2;">
+                Purchase Details
             </div>
-            <div class="col text-center blockss">
-                <div ng-class="warranty" ng-click="changewarranty()">
-                    Warranty / AMC
-                </div>
+            <div class="col text-center blockss" ng-click="tabvalue = 3;">
+                Warranty / AMC
             </div>
-            <div class="col text-center blockss endblocks">
-                <div ng-class="documents" ng-click="changedocuments()">
-                    Documents / Notes
-                </div>
+            <div class="col text-center blockss endblocks" ng-click="tabvalue = 4;">
+                Documents / Notes
             </div>
         </div>
 
-        <div class="appliance" ng-if="appliance=='bold'">
+        <div class="appliance" ng-if="tabvalue == 1">
 
             <!--
             <div class="item withlist">
@@ -129,7 +121,7 @@
         </div>
 
 
-        <div class="list" ng-if="purchase=='bold'">
+        <div class="list" ng-if="tabvalue == 2;">
             <label class="item item-input">
                 <span class="input-label">Purchase Date</span>
                 <input type="date">
