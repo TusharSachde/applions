@@ -235,6 +235,22 @@ angular.module('starter.controllers', ['ngAnimate'])
     }
     $scope.closeviewdetails = function() {
         $scope.oModal12.hide();
+    }; 
+    
+    
+    $ionicModal.fromTemplateUrl('templates/modal-prevreports.html', {
+        id: '12',
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.oModal12 = modal;
+    });
+
+    $scope.openprevreports = function() {
+        $scope.oModal12.show();
+    }
+    $scope.closeprevreports = function() {
+        $scope.oModal12.hide();
     };
 
     $ionicModal.fromTemplateUrl('templates/modal-sortbyservice.html', {
@@ -292,6 +308,20 @@ angular.module('starter.controllers', ['ngAnimate'])
     }
     $scope.closeproductsearch = function() {
         $scope.oModal16.hide();
+    }; 
+    $ionicModal.fromTemplateUrl('templates/notification.html', {
+        id: '17',
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.oModal17 = modal;
+    });
+
+    $scope.opennotification = function() {
+        $scope.oModal17.show();
+    }
+    $scope.closenotification = function() {
+        $scope.oModal17.hide();
     };
 
 
