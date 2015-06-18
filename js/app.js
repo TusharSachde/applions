@@ -1,7 +1,7 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
-.run(function ($ionicPlatform) {
-    $ionicPlatform.ready(function () {
+.run(function($ionicPlatform) {
+    $ionicPlatform.ready(function() {
         if (window.StatusBar) {
             // org.apache.cordova.statusbar required
             StatusBar.overlaysWebView(true);
@@ -10,13 +10,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     });
 })
 
-.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.tabs.position('bottom');
     //    $ionicConfigProvider.scrolling.jsScrolling(false);
 
     $stateProvider
 
-        .state('tab', {
+    .state('tab', {
         url: "/tab",
         abstract: true,
         templateUrl: "templates/tabs.html"
@@ -24,8 +24,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
     .state('login', {
         url: "/login",
-        abstract: true,
-        templateUrl: "templates/login.html"
+        templateUrl: "templates/login.html",
+        controller: 'LoginCtrl'
     })
 
     .state('reg', {
@@ -44,22 +44,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         url: "/oldreg",
         abstract: true,
         templateUrl: "templates/old-reg.html"
-    })  
-    .state('old-reg', {
-        url: "/old-reg",
-        abstract: true,
-        templateUrl: "templates/old-registration.html"
     })
+        .state('old-reg', {
+            url: "/old-reg",
+            abstract: true,
+            templateUrl: "templates/old-registration.html"
+        })
 
-    .state('login.login', {
-        url: '/login',
-        views: {
-            templateUrl: 'templates/login.html',
-            controller: 'RegisterCtrl'
-        }
-    })
-    
-  .state('old-reg.oldregistration', {
+    .state('old-reg.oldregistration', {
         url: '/oldregistration',
         views: {
             templateUrl: 'templates/old-registration.html',
@@ -76,12 +68,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     })
 
     .state('forgot.forgot', {
-            url: '/forgot',
-            views: {
-                templateUrl: 'templates/forgot.html',
-                controller: 'RegisterCtrl'
-            }
-        })
+        url: '/forgot',
+        views: {
+            templateUrl: 'templates/forgot.html',
+            controller: 'RegisterCtrl'
+        }
+    })
         .state('oldreg.oldreg', {
             url: '/oldreg',
             views: {
@@ -100,8 +92,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             }
         }
     })
-
-
 
     .state('tab.home', {
         url: '/home',
@@ -174,5 +164,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/login/login');
+    $urlRouterProvider.otherwise('/login');
 });

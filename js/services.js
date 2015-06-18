@@ -1,6 +1,8 @@
+var adminurl = "http://192.168.2.22:1337/";
+
 angular.module('starter.services', [])
 
-.factory('Chats', function() {
+.factory('Chats', function($http) {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
@@ -37,6 +39,22 @@ angular.module('starter.services', [])
     },
     remove: function(chat) {
       chats.splice(chats.indexOf(chat), 1);
+    },
+    login: function(user, callback) {
+        $http.get(adminurl + "user/login?email="+user.email+"&password="+user.password,{}).success(callback);
+    },
+    jstorageUser: function(user) {
+        $.jStorage.set("user",user);
+    },
+    getUser: function() {
+        $.jStorage.get("user");
+    },
+    authenticate: function() {
+        if($.jStorage.get("user")!=null){
+            return "true";
+        }else{
+            return "false";
+        }
     },
     get: function(chatId) {
       for (var i = 0; i < chats.length; i++) {
