@@ -43,6 +43,9 @@ angular.module('starter.services', [])
     login: function(user, callback) {
         $http.get(adminurl + "user/login?email="+user.email+"&password="+user.password,{}).success(callback);
     },
+    getAppliance: function(callback) {
+        $http.get(adminurl + "appliance",{}).success(callback);
+    },
     jstorageUser: function(user) {
         $.jStorage.set("user",user);
     },

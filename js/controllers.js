@@ -71,16 +71,17 @@ angular.module('starter.controllers', ['ngAnimate','starter.services', 'ngCordov
         }
 })
 
-.controller('HomeCtrl', function($scope, $ionicModal, $ionicPopup, $timeout) {
+.controller('HomeCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, Chats) {
 
-
-        $scope.user = [];
-
-        console.log("login ctrl");
-        $scope.userLogin = function() {
-            console.log($scope.user);
-            console.log("login ctrl");
+        $scope.appliance = [];
+    
+        console.log("in home ctrl");
+    
+        var applianceSuccess = function (data, status) {
+            console.log(data);
+            $scope.appliance = data;
         }
+        Chats.getAppliance(applianceSuccess);
 
         //toggle
         $scope.changetab = function(tab) {
