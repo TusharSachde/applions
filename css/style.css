@@ -999,3 +999,14 @@ span.pull-right {
     width: 100%;
     height: 20px;
 }
+
+.item.item-toggle.wizardli .toggle {
+    position: absolute;
+    top: 0px;
+    right: 35px;
+    z-index: 3;
+}
+
+.item.item-toggle.wizardli {
+  border: 0px;
+}
