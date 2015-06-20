@@ -484,7 +484,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
 .controller('AboutCtrl', function ($scope) {})
 
-.controller('RegisterCtrl', function ($scope, $ionicSlideBoxDelegate, $ionicPopup, MyServices) {
+.controller('RegisterCtrl', function ($scope, $ionicSlideBoxDelegate, $ionicPopup) {
 
     $scope.user = [];
 

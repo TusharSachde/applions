@@ -45,24 +45,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             controller: 'AppwizardCtrl'
         })
 
-    .state('oldreg', {
-            url: "/oldreg",
-            abstract: true,
-            templateUrl: "templates/old-reg.html"
-        })
-        .state('old-reg', {
-            url: "/old-reg",
-            abstract: true,
-            templateUrl: "templates/old-registration.html"
-        })
+//    .state('oldreg', {
+//        url: "/oldreg",
+//        abstract: true,
+//        templateUrl: "templates/old-reg.html"
+//    })
 
-    .state('old-reg.oldregistration', {
-        url: '/oldregistration',
-        views: {
-            templateUrl: 'templates/old-registration.html',
-            controller: 'RegisterCtrl'
-        }
-    })
+//    .state('old-reg', {
+//        url: "/old-reg",
+//        abstract: true,
+//        templateUrl: "templates/old-registration.html"
+//    })
+
+//    .state('oldregistration', {
+//        url: '/oldregistration',
+//            templateUrl: 'templates/old-registration.html',
+//            controller: 'RegisterCtrl'
+//    })
 
     .state('reg.registration', {
         url: '/registration',
@@ -73,19 +72,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     })
 
     .state('forgot.forgot', {
-            url: '/forgot',
-            views: {
-                templateUrl: 'templates/forgot.html',
-                controller: 'RegisterCtrl'
-            }
-        })
-        .state('oldreg.oldreg', {
-            url: '/oldreg',
-            views: {
-                templateUrl: 'templates/old-reg.html',
-                controller: 'RegisterCtrl'
-            }
-        })
+        url: '/forgot',
+        views: {
+            templateUrl: 'templates/forgot.html',
+            controller: 'RegisterCtrl'
+        }
+    })
+
+    .state('oldreg', {
+        url: '/oldreg',
+            templateUrl: 'templates/old-reg.html',
+            controller: 'RegisterCtrl'
+    })
 
     //Request Servies
     .state('tab.services', {
