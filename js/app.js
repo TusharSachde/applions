@@ -28,61 +28,28 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'LoginCtrl'
     })
 
-    .state('reg', {
-        url: "/reg",
-        abstract: true,
-        templateUrl: "templates/registration.html"
+    .state('appwizards', {
+        url: "/appwizards",
+        templateUrl: "templates/appwizard.html",
+        controller: 'AppwizardCtrl'
+    })
+
+    .state('registration', {
+        url: '/registration',
+        templateUrl: 'templates/registration.html',
+        controller: 'RegisterCtrl'
     })
 
     .state('forgot', {
-            url: "/forgot",
-            abstract: true,
-            templateUrl: "templates/forgot.html"
-        })
-        .state('appwizards', {
-            url: "/appwizards",
-            templateUrl: "templates/appwizard.html",
-            controller: 'AppwizardCtrl'
-        })
-
-//    .state('oldreg', {
-//        url: "/oldreg",
-//        abstract: true,
-//        templateUrl: "templates/old-reg.html"
-//    })
-
-//    .state('old-reg', {
-//        url: "/old-reg",
-//        abstract: true,
-//        templateUrl: "templates/old-registration.html"
-//    })
-
-//    .state('oldregistration', {
-//        url: '/oldregistration',
-//            templateUrl: 'templates/old-registration.html',
-//            controller: 'RegisterCtrl'
-//    })
-
-    .state('reg.registration', {
-        url: '/registration',
-        views: {
-            templateUrl: 'templates/registration.html',
-            controller: 'RegisterCtrl'
-        }
-    })
-
-    .state('forgot.forgot', {
         url: '/forgot',
-        views: {
-            templateUrl: 'templates/forgot.html',
-            controller: 'RegisterCtrl'
-        }
+        templateUrl: 'templates/forgot.html',
+        controller: 'RegisterCtrl'
     })
 
     .state('oldreg', {
         url: '/oldreg',
-            templateUrl: 'templates/old-reg.html',
-            controller: 'RegisterCtrl'
+        templateUrl: 'templates/old-reg.html',
+        controller: 'RegisterCtrl'
     })
 
     //Request Servies

@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordova'])
 
-.controller('AppCtrl', function ($scope, $ionicPopup, $location, ngAnimate) {
+.controller('AppCtrl', function ($scope, $ionicPopup, $location) {
     //    var readsmsCallback = function (otp) {
     //        if (!otp) {
     //            conole.log("No Otp");
@@ -477,6 +477,21 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     }
     $scope.closefeedback = function () {
         $scope.oModal4.hide();
+    };  
+    
+    $ionicModal.fromTemplateUrl('templates/modal-existing.html', {
+        id: '5',
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function (modal) {
+        $scope.oModal5 = modal;
+    });
+
+    $scope.openexisting = function () {
+        $scope.oModal5.show();
+    }
+    $scope.closeexisting = function () {
+        $scope.oModal5.hide();
     };
 })
 

@@ -1,0 +1,69 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <h1 class="title">Existing User</h1>
+        <div class="buttons button-right">
+            <button class="button button-clear" ng-click="closeexisting();">Close</button>
+        </div>
+    </ion-header-bar>
+    <ion-content class="has-header otpbg">
+        <div class="padder"></div>
+        <div class="otp-title">
+            <div class="title">
+                <p>Enter Your Mobile Number!</p>
+            </div>
+            <ion-item>
+                <label class="item item-input">
+                    <label>+91</label>
+                    <input type="text" placeholder="Mobile Number">
+                </label>
+            </ion-item>
+        </div>
+        <div class="otpnote  padding-horizontal">
+            <p><span>Note:</span> We will send you One Time Password (OTP)to the mobile number enterd above.</p>
+            <div class="button-bar padding">
+                <button class="button button-outline button-balanced" ng-click="next();">
+                    Submit
+                </button>
+                </div>
+</div>
+                <div class="otp-title">
+                    <div class="title">
+                        <p>Enter Your OTP!</p>
+                    </div>
+                    <ion-item>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Enter OTP">
+                        </label>
+                    </ion-item>
+                </div>
+                <div class="button-bar padding">
+                    <a class="button button-outline button-balanced" href="#/tab/home">Submit</a>
+                </div>
+            <div class="text-right">
+                <span class="linked" ng-click="showAlert();">Didn't get OTP?</span>
+            </div>
+        <!--
+        
+        <ion-slide ng-controller="AppCtrl">
+            <div class="padder"></div>
+        <div class="otp-title">
+            <div class="title">
+                <p>Enter Your OTP!</p>
+            </div>
+            <ion-item>
+                <label class="item item-input">
+                  <input type="text" placeholder="Enter OTP">
+                </label>
+            </ion-item>
+        </div>
+       <div class="button-bar padding">
+                <a class="button button-outline button-balanced" href="#/tab/home">Submit</a>
+    </div>
+        </div>
+        <div class="text-right">
+                <span class="linked" ng-click="showAlert();">Didn't get OTP?</span>
+            </div>
+        </ion-slide>
+-->
+    </ion-content>
+</ion-modal-view>
