@@ -17,7 +17,6 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
 })
 
-<<<<<<< HEAD
 .controller('HomeCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams) {
     
          // TAB/HOME PAGE START
@@ -342,265 +341,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.closeprevreports = function() {
             $scope.oModal10.hide();
         };
-=======
-.controller('LoginCtrl', function ($scope, $ionicModal, $ionicPopup, $ionicPopup, $timeout, Chats, $location, $cordovaDevice) {
->>>>>>> b96d52e54450a7338e0dee90a33865aae93bc523
-
-    $scope.user = [];
-
-    document.addEventListener("deviceready", function () {
-
-        var device = $cordovaDevice.getDevice();
-
-        var cordova = $cordovaDevice.getCordova();
-
-        var model = $cordovaDevice.getModel();
-
-        var platform = $cordovaDevice.getPlatform();
-
-        var uuid = $cordovaDevice.getUUID();
-
-        var version = $cordovaDevice.getVersion();
-
-        console.log(version);
-
-    }, false);
-
-    $scope.getdiv = function () {
-        console.log($cordovaDevice.getDevice());
-    }
-
-
-    //        if(Chats.authenticate()=="true"){
-    //            $location.url("tab/home");
-    //        }
-
-    var loginsuccess = function (data, status) {
-        if (angular.isObject(data)) {
-            Chats.jstorageUser(data);
-            $location.url("tab/home");
-        } else {
-            var myPopup = $ionicPopup.show({
-                title: data,
-                scope: $scope,
-            });
-            $timeout(function () {
-                myPopup.close(); //close the popup after 3 seconds for some reason
-            }, 1500);
-        }
-    }
-
-    $scope.userLogin = function () {
-        console.log($scope.user);
-        Chats.login($scope.user, loginsuccess);
-
-    }
-})
-
-.controller('HomeCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, Chats) {
-
-    $scope.appliance = [];
-
-    console.log("in home ctrl");
-
-    var applianceSuccess = function (data, status) {
-        console.log(data);
-        $scope.appliance = data;
-    }
-    Chats.getAppliance(applianceSuccess);
-
-    //toggle
-    $scope.changetab = function (tab) {
-        $scope.tabvalue = tab;
-    }
-
-    $scope.custom = false;
-    $scope.toggleCustom = function () {
-        $scope.custom = $scope.custom === false ? true : false;
-    };
-
-    $scope.tabvalue = 1;
-    $scope.showreport = 1;
-
-    $scope.sendtowebsite = function (website) {
-        console.log(website);
-        window.open('http://applions.blogspot.in/?m=1', '_blank');
-    }
-
-
-    //    $scope.next1 = function(){
-    //        console.log("next1  clicked");
-    //        console.log($scope.tabvalue);
-    //        $scope.tabvalue = 1; 
-    //    } 
-    //    
-    //    $scope.next2 = function(){
-    //        console.log("next2 clicked");
-    //        console.log($scope.tabvalue)
-    //        $scope.tabvalue = 2; 
-    //    }
-    //    $scope.next3 = function(){
-    //        console.log("next clicked");
-    //        $scope.tabvalue = 3; 
-    //    }
-    // $scope.next4 = function(){
-    //        console.log("next clicked");
-    //        $scope.tabvalue = 4; 
-    //    }
-
-    $ionicModal.fromTemplateUrl('templates/location.html', {
-        id: '1',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal1 = modal;
-    });
-
-    $scope.openedit = function () {
-        $scope.oModal1.show();
-    };
-
-    $scope.closeModalss = function () {
-        $scope.oModal1.hide();
-    };
-
-
-    $ionicModal.fromTemplateUrl('templates/addwarranty.html', {
-        id: '2',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal2 = modal;
-    });
-
-    $scope.openpswd = function () {
-        $scope.oModal2.show();
-    };
-
-    $scope.closeModal = function () {
-        $scope.oModal2.hide();
-    };
-
-    $ionicModal.fromTemplateUrl('templates/modal-filter.html', {
-        id: '3',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal3 = modal;
-    });
-
-    $scope.openfilter = function () {
-        $scope.oModal3.show();
-    }
-    $scope.closefilter = function () {
-        $scope.oModal3.hide();
-    };
-
-    $ionicModal.fromTemplateUrl('templates/modal-sortby.html', {
-        id: '4',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal4 = modal;
-    });
-
-    $scope.opensort = function () {
-        $scope.oModal4.show();
-    }
-    $scope.closesort = function () {
-        $scope.oModal4.hide();
-    };
-
-    $ionicModal.fromTemplateUrl('templates/modal-conformarchive.html', {
-        id: '5',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal5 = modal;
-    });
-
-    $scope.openarchive = function () {
-        $scope.oModal5.show();
-    }
-    $scope.closearchive = function () {
-        $scope.oModal5.hide();
-    };
-
-    $ionicModal.fromTemplateUrl('templates/modal-transfer.html', {
-        id: '6',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal6 = modal;
-    });
-
-    $scope.opentransfer = function () {
-        $scope.oModal6.show();
-    }
-    $scope.closetransfer = function () {
-        $scope.oModal6.hide();
-    };
-
-    $ionicModal.fromTemplateUrl('templates/modal-delete.html', {
-        id: '7',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal7 = modal;
-    });
-
-    $scope.opendelete = function () {
-        $scope.oModal7.show();
-    }
-    $scope.closedelete = function () {
-        $scope.oModal7.hide();
-    };
-
-    $ionicModal.fromTemplateUrl('templates/modal-report.html', {
-        id: '8',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal8 = modal;
-    });
-
-    $scope.openreport = function () {
-        $scope.oModal8.show();
-    }
-    $scope.closereport = function () {
-        $scope.oModal8.hide();
-    };
-
-    $ionicModal.fromTemplateUrl('templates/modal-component.html', {
-        id: '9',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal9 = modal;
-    });
-
-    $scope.opencomponent = function () {
-        $scope.oModal9.show();
-    }
-    $scope.closecomponent = function () {
-        $scope.oModal9.hide();
-    };
-
-    $ionicModal.fromTemplateUrl('templates/modal-prevreports.html', {
-        id: '10',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal10 = modal;
-    });
-
-    $scope.openprevreports = function () {
-        $scope.oModal10.show();
-    }
-    $scope.closeprevreports = function () {
-        $scope.oModal10.hide();
-    };
-
+    
     $ionicModal.fromTemplateUrl('templates/modal-addservice.html', {
         id: '11',
         scope: $scope,
@@ -728,6 +469,61 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $timeout(function () {
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
+    }
+})
+
+    
+.controller('LoginCtrl', function ($scope, $ionicModal, $ionicPopup, $ionicPopup, $timeout, Chats, $location, $cordovaDevice) {
+    
+
+    $scope.user = [];
+
+    document.addEventListener("deviceready", function () {
+
+        var device = $cordovaDevice.getDevice();
+
+        var cordova = $cordovaDevice.getCordova();
+
+        var model = $cordovaDevice.getModel();
+
+        var platform = $cordovaDevice.getPlatform();
+
+        var uuid = $cordovaDevice.getUUID();
+
+        var version = $cordovaDevice.getVersion();
+
+        console.log(version);
+
+    }, false);
+
+    $scope.getdiv = function () {
+        console.log($cordovaDevice.getDevice());
+    }
+
+
+    //        if(Chats.authenticate()=="true"){
+    //            $location.url("tab/home");
+    //        }
+
+    var loginsuccess = function (data, status) {
+        if (angular.isObject(data)) {
+            Chats.jstorageUser(data);
+            $location.url("tab/home");
+        } else {
+            var myPopup = $ionicPopup.show({
+                title: data,
+                scope: $scope,
+            });
+            $timeout(function () {
+                myPopup.close(); //close the popup after 3 seconds for some reason
+            }, 1500);
+        }
+    }
+
+    $scope.userLogin = function () {
+        console.log($scope.user);
+        Chats.login($scope.user, loginsuccess);
+
     }
 })
 

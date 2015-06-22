@@ -1,15 +1,10 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
-<<<<<<< HEAD
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
         if (device.platform == 'iOS') {
             navigator.splashscreen.hide();
         }
-=======
-.run(function ($ionicPlatform) {
-    $ionicPlatform.ready(function () {
->>>>>>> b96d52e54450a7338e0dee90a33865aae93bc523
         if (window.StatusBar) {
             // org.apache.cordova.statusbar required
             StatusBar.overlaysWebView(true);
