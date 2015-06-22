@@ -1,10 +1,15 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
+<<<<<<< HEAD
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
         if (device.platform == 'iOS') {
             navigator.splashscreen.hide();
         }
+=======
+.run(function ($ionicPlatform) {
+    $ionicPlatform.ready(function () {
+>>>>>>> b96d52e54450a7338e0dee90a33865aae93bc523
         if (window.StatusBar) {
             // org.apache.cordova.statusbar required
             StatusBar.overlaysWebView(true);
@@ -13,13 +18,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.tabs.position('bottom');
     //    $ionicConfigProvider.scrolling.jsScrolling(false);
 
     $stateProvider
 
-    .state('tab', {
+        .state('tab', {
         url: "/tab",
         abstract: true,
         templateUrl: "templates/tabs.html"
@@ -31,59 +36,29 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'LoginCtrl'
     })
 
-    .state('reg', {
-        url: "/reg",
-        abstract: true,
-        templateUrl: "templates/registration.html"
+    .state('appwizards', {
+        url: "/appwizards",
+        templateUrl: "templates/appwizard.html",
+        controller: 'AppwizardCtrl'
+    })
+
+    .state('registration', {
+        url: '/registration',
+        templateUrl: 'templates/registration.html',
+        controller: 'RegisterCtrl'
     })
 
     .state('forgot', {
-        url: "/forgot",
-        abstract: true,
-        templateUrl: "templates/forgot.html"
+        url: '/forgot',
+        templateUrl: 'templates/forgot.html',
+        controller: 'RegisterCtrl'
     })
 
     .state('oldreg', {
-        url: "/oldreg",
-        abstract: true,
-        templateUrl: "templates/old-reg.html"
+        url: '/oldreg',
+        templateUrl: 'templates/old-reg.html',
+        controller: 'RegisterCtrl'
     })
-        .state('old-reg', {
-            url: "/old-reg",
-            abstract: true,
-            templateUrl: "templates/old-registration.html"
-        })
-
-    .state('old-reg.oldregistration', {
-        url: '/oldregistration',
-        views: {
-            templateUrl: 'templates/old-registration.html',
-            controller: 'RegisterCtrl'
-        }
-    })
-
-    .state('reg.registration', {
-        url: '/registration',
-        views: {
-            templateUrl: 'templates/registration.html',
-            controller: 'RegisterCtrl'
-        }
-    })
-
-    .state('forgot.forgot', {
-        url: '/forgot',
-        views: {
-            templateUrl: 'templates/forgot.html',
-            controller: 'RegisterCtrl'
-        }
-    })
-        .state('oldreg.oldreg', {
-            url: '/oldreg',
-            views: {
-                templateUrl: 'templates/old-reg.html',
-                controller: 'RegisterCtrl'
-            }
-        })
 
     //Request Servies
     .state('tab.services', {

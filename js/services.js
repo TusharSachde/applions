@@ -43,6 +43,7 @@ angular.module('starter.services', [])
     login: function(user, callback) {
         $http.get(adminurl + "user/login?email="+user.email+"&password="+user.password,{}).success(callback);
     },
+<<<<<<< HEAD
     getOneAppliance: function(id, callback, callback2) {
         $http.get(adminurl + "appliance?id="+id,{}).success(callback);
         $http.get(adminurl + "appliancetype",{}).success(callback2);
@@ -62,6 +63,8 @@ angular.module('starter.services', [])
     updateUserLocation: function(data, callback) {
         $http.get(adminurl + "userlocation/updatelocation",{params:data}).success(callback);
     },
+=======
+>>>>>>> b96d52e54450a7338e0dee90a33865aae93bc523
     getAppliance: function(callback) {
         $http.get(adminurl + "appliance",{}).success(callback);
     },

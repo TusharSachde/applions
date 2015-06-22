@@ -14,34 +14,43 @@
                 <input type="password" placeholder="Password" ng-model="user.password">
             </label>
         </div>
+
         <div class="padding-horizontal btn-signin" ng-click="userLogin()">
             <a class="button button-block button-balanced">
             Sign In
             </a>
         </div>
+
+        <div class="padding-horizontal btn-signin">
+            <a class="button button-block button-balanced" href="#/oldreg">
+           Existing User?
+            </a>
+        </div>
+
         <div class="login-with">
             or login with
         </div>
+
         <div class="button-bar padding-horizontal">
-            <a class="button button-fb button-outline margin-right" href="#/tab/home">
+            <a class="button button-fb button-outline margin-right" href="#/appwizards">
                 <i class="ion-social-facebook"></i>
             </a>
-<!--
-            <a class="button button-twit button-outline margin-right" href="#/tab/home">
-                <i class="ion-social-twitter"></i>
-            </a>
--->
-            <a class="button button-google button-outline" href="#/tab/home">
+            <a class="button button-google button-outline" href="#/appwizards">
                 <i class="ion-social-googleplus"></i>
             </a>
         </div>
+
         <div class="forgot padding-horizontal">
-            <span class="left"> <a href="#/oldreg/oldreg" class="left">Old User?</a></span>
-            <span class="right">New Here <a href="#/reg/registration"> Sign Up</a></span>
-        </div>   
-                <div class="padding-horizontal">
-            <a href="#/forgot/forgot" class="right">Forgot Password?</a>
-            <a class="right" ng-click="getdiv()">get device</a>
+            <!--
+    <span class="left"> 
+            <a class="button button-small button-balanced" href="#/oldreg" class="left">Existing User?</a></span>
+-->
+            <span class="right">New Here <a href="#/registration"> Sign Up</a></span>
+        </div>
+
+        <div class="forgot padding-horizontal">
+            <a href="#/forgot" class="right">Forgot Password?</a>
+<!--            <a class="right" ng-click="getdiv()">get device</a>-->
         </div>
 
     </ion-content>
