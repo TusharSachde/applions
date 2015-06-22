@@ -71,20 +71,142 @@ angular.module('starter.controllers', ['ngAnimate','starter.services', 'ngCordov
         }
 })
 
-.controller('HomeCtrl', function($scope, $ionicModal, $ionicPopup, $timeout) {
+.controller('HomeCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams) {
+    
+         // TAB/HOME PAGE START
 
-
-        $scope.user = [];
-
-        console.log("login ctrl");
-        $scope.userLogin = function() {
-            console.log($scope.user);
-            console.log("login ctrl");
+        $scope.appliance = [];
+    
+        console.log("in home ctrl");
+    
+        var applianceSuccess = function (data, status) {
+            console.log(data);
+            $scope.appliance = data;
         }
+        Chats.getAppliance(applianceSuccess);
+    
+        // TAB/HOME PAGE END
+    
+})
+.controller('HomeEditCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams) {
+    
+    
+       
+    
+        // TAB/HOME/EDIT PAGE STARt
+        $scope.appliance = [];
+        $scope.appliancetype = [];
+        $scope.userlocation = [];
+        $scope.location = [];
+//        $scope.appliance.userlocation = [
+//            {
+//                address: ";MKGLNDG",
+//                country: "5572b34c9c0d63cc03245a7a",
+//                createdAt: "2015-06-22T06:08:02.102Z",
+//                district: ";mfknjk",
+//                id: "5587a642fecc3ff81bd1a435",
+//                name: "aksljdbhk;NKDNLK FSM",
+//                pincode: "45742",
+//                state: "ak;dnlfdng",
+//                updatedAt: "2015-06-22T06:08:02.102Z",
+//                user: "55752e5dfda25b7c09de7c14"    
+//            },{
+//                address: ";MKGLNDG",
+//                country: "5572b34c9c0d63cc03245a7a",
+//                createdAt: "2015-06-22T06:08:02.102Z",
+//                district: ";mfknjk",
+//                id: "5587a642fecc3ff81bd1a435",
+//                name: "Thakurli",
+//                pincode: "45742",
+//                state: "ak;dnlfdng",
+//                updatedAt: "2015-06-22T06:08:02.102Z",
+//                user: "55752e5dfda25b7c09de7c14"    
+//            }
+//        ];
+    
+        //validate user
+        $scope.user = Chats.getUser();
+    
+        // ONE USER
+        var userCallback = function(data, status){
+            console.log("before");
+            console.log(data.userlocation);
+            $scope.userlocation = data.userlocation;
+            console.log("after");
+            console.log($scope.appliance.userlocation);
+        }
+        Chats.getWholeUser($scope.user.id,userCallback);
+    
+        // ONE APPLIANCE    
+    
+        var getProduct = function (data, status){
+            console.log("product");
+            console.log(data);
+            $scope.appliancetype = data;
+        }
+    
+        var getOneSuccess = function (data, status){
+            console.log("all appliance");
+            console.log(data);
+            $scope.appliance = data;
+        }
+        Chats.getOneAppliance($stateParams.id, getOneSuccess, getProduct);
+    
+        //ON PRODUCT CLICK
+        $scope.toProduct = function(product){
+            console.log(product);
+            $scope.appliance.appliancetype = product;
+        }
+        
+        //ON LOCATION CLICK
+        $scope.selectLocation = function(location){
+            for(var i = 0 ; i < $scope.userlocation.length ; i++){
+                $scope.userlocation[i].tabactive = "";
+            }
+            location.tabactive = "activetab";
+            $scope.tabvalue = 1;
+            $scope.appliance.userlocation = location;
+        }
+        
+        var locationSuccess = function (data, status){
+            console.log(data);
+        }
+        $scope.addLocation = function(){
+            $scope.location.user = $scope.user.id;
+            Chats.addUserLocation($scope.location,locationSuccess);
+        }
+        
+        var updateLocationSuccess = function(data, status){
+            console.log(data);
+        }
+        $scope.updateLocation = function(){
+            delete $scope.appliance.userlocation["$$hashKey"];
+            delete $scope.appliance.userlocation["tabactive"];
+            console.log($scope.appliance.userlocation);
+            
+            Chats.updateUserLocation($scope.appliance.userlocation, updateLocationSuccess)
+        }
+    
+        // TAB/HOME/EDIT PAGE END
+    
 
         //toggle
         $scope.changetab = function(tab) {
             $scope.tabvalue = tab;
+        }
+        var applianceUpdate = function(data, status){
+            console.log(data);
+        }
+        $scope.changetab2 = function(tab) {
+            $scope.tabvalue = tab;
+            $scope.appliance.appliancetype = $scope.appliance.appliancetype.id;
+            $scope.appliance.brand = $scope.appliance.brand.id;
+            $scope.appliance.store = $scope.appliance.store.id;
+            $scope.appliance.user = $scope.appliance.user.id;
+            $scope.appliance.userlocation = $scope.appliance.userlocation.id;
+            $scope.appliance.warranty = $scope.appliance.warranty.id;
+            console.log($scope.appliance);
+            Chats.updateAppliance($scope.appliance, applianceUpdate);
         }
 
         $scope.custom = false;
@@ -128,7 +250,7 @@ angular.module('starter.controllers', ['ngAnimate','starter.services', 'ngCordov
         }).then(function(modal) {
             $scope.oModal1 = modal;
         });
-
+//jagruti
         $scope.openedit = function() {
             $scope.oModal1.show();
         };

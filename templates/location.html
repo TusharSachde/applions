@@ -7,27 +7,32 @@
     </ion-header-bar>
        <ion-scroll zooming="false" direction="x" class="light-bg stickyScroll">
             <div class="flex-block">
-                <div class="blocks1 text-center"  ng-click="tabvalue = 1;" ng-class="{'activetab': tabvalue == 1}">
-                    My Home
+                <div class="blocks1 text-center" ng-repeat="location in userlocation" ng-click="selectLocation(location)" ng-class="location.tabactive">
+                    {{location.name}}
                 </div>
-                <div class="blocks1 text-center"  ng-click="tabvalue = 2;" ng-class="{'activetab': tabvalue == 2}">
-                    My Office
-                </div>
-                <div class="blocks1 text-center"  ng-click="tabvalue = 3;" ng-class="{'activetab': tabvalue == 3}">
+                <div class="blocks1 text-center"  ng-click="changetab(3)" ng-class="{'activetab': tabvalue == 3}">
                     Add New
                 </div>
             </div>
         </ion-scroll>
     <ion-content class="tabs-conts">     
-        <div class="list" ng-if="tabvalue == 1">
+        <div class="list" ng-if="tabvalue!=3">
             <label class="item item-input">
-                <span class="input-label">Location*</span>
-                <input type="text" required>
+                <span class="input-label">Name*</span>
+                <input type="text" ng-model="appliance.userlocation.name" required>
             </label>
             <label class="item item-input">
                 <span class="input-label">Pincode*</span>
-                <input type="text" required>
+                <input type="text" ng-model="appliance.userlocation.pincode" required>
             </label>
+            <label class="item item-input">
+                <span class="input-label">District/City*</span>
+                <input type="text" ng-model="appliance.userlocation.district" required>
+            </label><label class="item item-input">
+                <span class="input-label">State*</span>
+                <input type="text" ng-model="appliance.userlocation.state" required>
+            </label>
+<!--
             <label class="item item-input item-select">
                 <div class="input-label">
                     District/City*
@@ -39,6 +44,8 @@
                     <option>Bangluru</option>
                 </select>
             </label>
+-->
+<!--
             <label class="item item-input item-select">
                 <div class="input-label">
                     State*
@@ -50,21 +57,30 @@
                     <option>Karnataka</option>
                 </select>
             </label>
+-->
             <label class="item item-input">
                 <span class="input-label">Address</span>
-                <textarea required>
+                <textarea ng-model="appliance.userlocation.address" required>
                 </textarea>
             </label>
-        </div>
-        <div class="list" ng-if="tabvalue == 2">
+        </div>    
+        <div class="list" ng-if="tabvalue==3">
             <label class="item item-input">
-                <span class="input-label">Location*</span>
-                <input type="text" required>
+                <span class="input-label">Name*</span>
+                <input type="text" ng-model="location.name" required>
             </label>
             <label class="item item-input">
                 <span class="input-label">Pincode*</span>
-                <input type="text" required>
+                <input type="text" ng-model="location.pincode" required>
             </label>
+            <label class="item item-input">
+                <span class="input-label">District/City*</span>
+                <input type="text" ng-model="location.district" required>
+            </label><label class="item item-input">
+                <span class="input-label">State*</span>
+                <input type="text" ng-model="location.state" required>
+            </label>
+<!--
             <label class="item item-input item-select">
                 <div class="input-label">
                     District/City*
@@ -76,6 +92,8 @@
                     <option>Bangluru</option>
                 </select>
             </label>
+-->
+<!--
             <label class="item item-input item-select">
                 <div class="input-label">
                     State*
@@ -87,51 +105,16 @@
                     <option>Karnataka</option>
                 </select>
             </label>
+-->
             <label class="item item-input">
                 <span class="input-label">Address</span>
-                <textarea required>
-                </textarea>
-            </label>
-        </div>
-        <div class="list" ng-if="tabvalue == 3">
-            <label class="item item-input">
-                <span class="input-label">Location*</span>
-                <input type="text" required>
-            </label>
-            <label class="item item-input">
-                <span class="input-label">Pincode*</span>
-                <input type="text" required>
-            </label>
-            <label class="item item-input item-select">
-                <div class="input-label">
-                    District/City*
-                </div>
-                <select>
-                    <option></option>
-                    <option>Mumbai</option>
-                    <option>Delhi</option>
-                    <option>Bangluru</option>
-                </select>
-            </label>
-            <label class="item item-input item-select">
-                <div class="input-label">
-                    State*
-                </div>
-                <select>
-                    <option></option>
-                    <option>Maharashtra</option>
-                    <option>Delhi</option>
-                    <option>Karnataka</option>
-                </select>
-            </label>
-            <label class="item item-input">
-                <span class="input-label">Address</span>
-                <textarea required>
+                <textarea ng-model="location.address" required>
                 </textarea>
             </label>
         </div>
         <div class="button-bar padding">
-            <button class="button button-outline button-balanced">Select</button>
+            <button class="button button-outline button-balanced" ng-click="updateLocation()" ng-if="tabvalue!=3">Select</button>
+            <button class="button button-outline button-balanced" ng-click="addLocation()" ng-if="tabvalue==3">Add</button>
         </div>
     </ion-content>
 </ion-modal-view>

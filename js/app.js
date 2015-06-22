@@ -2,6 +2,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
+        if (device.platform == 'iOS') {
+            navigator.splashscreen.hide();
+        }
         if (window.StatusBar) {
             // org.apache.cordova.statusbar required
             StatusBar.overlaysWebView(true);
@@ -124,11 +127,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     })
 
     .state('tab.edit', {
-        url: '/home/edit',
+        url: '/home/edit/:id',
         views: {
             'tab-home': {
                 templateUrl: 'templates/home-edit.html',
-                controller: 'HomeCtrl'
+                controller: 'HomeEditCtrl'
             }
         }
     })

@@ -43,11 +43,33 @@ angular.module('starter.services', [])
     login: function(user, callback) {
         $http.get(adminurl + "user/login?email="+user.email+"&password="+user.password,{}).success(callback);
     },
+    getOneAppliance: function(id, callback, callback2) {
+        $http.get(adminurl + "appliance?id="+id,{}).success(callback);
+        $http.get(adminurl + "appliancetype",{}).success(callback2);
+    },
+    getWholeUser: function(id, callback) {
+        $http.get(adminurl + "user?id="+id,{}).success(callback);
+    },
+    updateAppliance: function(data, callback) {
+        $http.put(adminurl + "appliance/"+data.id,data).success(callback);
+    },
+    searchProduct: function(data, callback) {
+        $http.post(adminurl + "appliancetype/searchproduct",{params:data}).success(callback);
+    },
+    addUserLocation: function(data, callback) {
+        $http.get(adminurl + "userlocation/addlocation",{params:data}).success(callback);
+    },
+    updateUserLocation: function(data, callback) {
+        $http.get(adminurl + "userlocation/updatelocation",{params:data}).success(callback);
+    },
+    getAppliance: function(callback) {
+        $http.get(adminurl + "appliance",{}).success(callback);
+    },
     jstorageUser: function(user) {
         $.jStorage.set("user",user);
     },
     getUser: function() {
-        $.jStorage.get("user");
+        return $.jStorage.get("user");
     },
     authenticate: function() {
         if($.jStorage.get("user")!=null){

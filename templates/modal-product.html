@@ -7,14 +7,14 @@
     </ion-header-bar>
     <ion-content class="has-header">
 <div class="list">
-            <form class="item item-input-inset only-horizontal">
+            <form class="item item-input-inset only-horizontal" ng-submit="search">
                 <label class="item-input-wrapper ">
-                    <input type="text " placeholder="Product" style="border: 0px;" class="ng-pristine ng-valid ng-touched">
+                    <input type="text" ng-model="appliance.appliancetype.name" placeholder="Product" style="border: 0px;" class="ng-pristine ng-valid ng-touched">
                 </label>
                 <button class="button button-icon ion-search" type="submit"></button>
             </form>
 
-            <ion-item class="item">Home Theater</ion-item>
+            <ion-item class="item" ng-repeat="product in appliancetype" ng-click="toProduct(product)">{{product.name}}</ion-item>
 
         </div>
     </ion-content>

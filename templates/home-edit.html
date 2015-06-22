@@ -75,11 +75,11 @@
                 <div class="picturess  assertive-bg" style="background-image: url('img/icons/Mobile.png');"></div>
                 <label class="item item-input input-up" ng-click="openproductsearch();">
                     <span class="input-label">Product*</span>
-                    <input type="text" readonly>
+                    <input type="text" ng-model="appliance.appliancetype.name" readonly>
                 </label>
                 <label class="item item-input input-btm">
                     <span class="input-label">Name As*</span>
-                    <input type="text" required>
+                    <input type="text" ng-model="appliance.name" required>
                 </label>
             </div>
 
@@ -91,17 +91,17 @@
 
                 <label class="item item-input">
                     <span class="input-label">Model No.</span>
-                    <input type="text">
+                    <input type="text" ng-model="appliance.modelnumber">
                 </label>
 
                 <label class="item item-input">
                     <span class="input-label">Serial No.</span>
-                    <input type="text">
+                    <input type="text" ng-model="appliance.serialnumber">
                 </label>
 
                 <label class="item item-input" ng-click="openedit();">
                     <span class="input-label">Location</span>
-                    <input type="text" readonly>
+                    <input type="text" ng-model="appliance.userlocation.name" readonly>
                 </label>
 
                 <label class="item item-input">
@@ -111,13 +111,13 @@
 
                 <label class="item item-input">
                     <span class="input-label">Expiry</span>
-                    <input type="text">
+                    <input type="text" ng-model="appliance.warranty[0].expiry">
                 </label>
 
 
             </div>
             <div class="padding">
-                <button class="button button-outline button-block icon-right ion-chevron-right button-balanced" ng-click="changetab(2);">Next</button>
+                <button class="button button-outline button-block icon-right ion-chevron-right button-balanced" ng-click="changetab2(2);">Next</button>
             </div>
         </div>
 
