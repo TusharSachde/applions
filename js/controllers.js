@@ -108,6 +108,21 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.closesortservice = function () {
             $scope.oModal13.hide();
         };
+    
+        $ionicModal.fromTemplateUrl('templates/modal-addservice.html', {
+            id: '11',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal11 = modal;
+        });
+
+        $scope.openaddservice = function () {
+            $scope.oModal11.show();
+        }
+        $scope.closeaddservice = function () {
+            $scope.oModal11.hide();
+        };
     })
     .controller('HomeEditCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams) {
 
