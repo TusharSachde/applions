@@ -4,6 +4,32 @@ angular.module('starter.services', [])
 
 .factory('Chats', function($http) {
   // Might use a resource here that returns a JSON array
+    
+    
+    
+    
+
+//     var db = openDatabase('books', '1.0', 'Books Database', 2 * 1024 * 1024);
+//
+//
+//
+//
+//    db.transaction(function (tx) {
+//        tx.executeSql('CREATE TABLE IF NOT EXISTS BOOKS (id INTEGER PRIMARY KEY, name,date)');
+//        tx.executeSql('CREATE TABLE IF NOT EXISTS HORSES (id INTEGER PRIMARY KEY, name,book,total)');
+//        tx.executeSql('CREATE TABLE IF NOT EXISTS BETS (id  INTEGER PRIMARY KEY, book,favorite,backlay,stake,odds,timestamp)');
+//        
+//         
+//
+//        
+//        //        tx.executeSql('INSERT INTO BETS (id, book,favorite,backlay,stake,odds) VALUES (1,1,2,2,0.3,100)');
+//
+//        //            tx.executeSql('SELECT last_insert_rowid()',callback);
+//        //            getlast();
+//        //            tx.executeSql('SELECT last_insert_rowid()', [], function (tx, results) {
+//        //                console.log(results.rows.item(0));
+//        //                });
+//    });
 
   // Some fake testing data
   var chats = [{
@@ -55,6 +81,9 @@ angular.module('starter.services', [])
     },
     searchProduct: function(data, callback) {
         $http.post(adminurl + "appliancetype/searchproduct",{params:data}).success(callback);
+    },
+    updateWarranty: function(data, callback) {
+        $http.post(adminurl + "warranty/updatewarranty",{params:data}).success(callback);
     },
     addUserLocation: function(data, callback) {
         $http.get(adminurl + "userlocation/addlocation",{params:data}).success(callback);

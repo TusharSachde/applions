@@ -124,7 +124,7 @@
         <div class="list" ng-if="tabvalue == 2">
             <label class="item item-input">
                 <span class="input-label">Purchase Date</span>
-                <input type="date">
+                <input type="date" ng-model="appliance.purchasedate">
             </label>
             <label class="item item-input">
                 <span class="input-label">Bill No*</span>
@@ -201,12 +201,12 @@
                         <option>Off Site</option>
                     </select>
                 </label>
-                <!--
+                
                 <div class="item product-wrnnty">
                     Component Warranty
                 </div>
--->
-                <!--
+
+                
                 <label class="item item-input">
                     <span class="input-label">Component</span>
                     <input type="text">
@@ -215,13 +215,13 @@
                     <span class="input-label">Serial No</span>
                     <input type="text">
                 </label>
--->
-                <!--
+
+                
                 <label class="item item-input">
                     <span class="input-label">Warranty Period</span>
                     <input type="text">
                 </label>
--->
+
             </div>
             <div class="row">
                 <div class="col add-warnty" ng-click="opencomponent()">

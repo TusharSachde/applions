@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordova'])
 
-.controller('AppCtrl', function ($scope, $ionicPopup, $location) {
+.controller('AppCtrl', function ($scope, $ionicPopup, $location, applianceStore) {
     //    var readsmsCallback = function (otp) {
     //        if (!otp) {
     //            conole.log("No Otp");
