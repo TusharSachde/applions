@@ -33,6 +33,54 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         // TAB/HOME PAGE END
 
+        $ionicModal.fromTemplateUrl('templates/modal-sortby.html', {
+            id: '4',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal4 = modal;
+        });
+
+        $scope.opensort = function () {
+            $scope.oModal4.show();
+        }
+        $scope.closesort = function () {
+            $scope.oModal4.hide();
+            opennotification();
+        };
+
+        $ionicModal.fromTemplateUrl('templates/modal-filter.html', {
+            id: '3',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal3 = modal;
+        });
+
+        $scope.openfilter = function () {
+            $scope.oModal3.show();
+        }
+        $scope.closefilter = function () {
+            $scope.oModal3.hide();
+        };
+    
+        $ionicModal.fromTemplateUrl('templates/notification.html', {
+            id: '17',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal17 = modal;
+        });
+
+        $scope.opennotification = function () {
+            $scope.oModal17.show();
+        }
+        $scope.closenotification = function () {
+            $scope.oModal17.hide();
+        };
+
+
+
     })
     .controller('HomeEditCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams) {
 
