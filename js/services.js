@@ -77,13 +77,24 @@ angular.module('starter.services', [])
         $http.get(adminurl + "user?id="+id,{}).success(callback);
     },
     updateAppliance: function(data, callback) {
+        
         $http.put(adminurl + "appliance/"+data.id,data).success(callback);
     },
     searchProduct: function(data, callback) {
         $http.post(adminurl + "appliancetype/searchproduct",{params:data}).success(callback);
     },
+    applianceStore: function(data, callback) {
+        delete data.createdAt;
+        delete data.updatedAt;
+        delete data.id;
+        $http.post(adminurl + "store/createstore",data).success(callback);
+    },
     updateWarranty: function(data, callback) {
-        $http.post(adminurl + "warranty/updatewarranty",{params:data}).success(callback);
+        $http.post(adminurl + "warranty/updatewarranty",{
+                "purchasedate":data.purchasedate,
+                "billno":data.billno,
+                "id":data.id
+        }).success(callback);
     },
     addUserLocation: function(data, callback) {
         $http.get(adminurl + "userlocation/addlocation",{params:data}).success(callback);

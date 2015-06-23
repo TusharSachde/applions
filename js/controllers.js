@@ -41,6 +41,8 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.appliancetype = [];
         $scope.userlocation = [];
         $scope.location = [];
+        $scope.warranty = [];
+        $scope.store = [];
 //        $scope.appliance.userlocation = [
 //            {
 //                address: ";MKGLNDG",
@@ -92,6 +94,11 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             console.log("all appliance");
             console.log(data);
             $scope.appliance = data;
+            $scope.warranty = data.warranty[data.warranty.length - 1];
+            $scope.warranty.purchasedate = new Date($scope.warranty.purchasedate);
+            $scope.store = data.store;
+            $scope.store.purchaseprice = data.purchaseprice;
+            $scope.store.appliance = data.id;
         }
         Chats.getOneAppliance($stateParams.id, getOneSuccess, getProduct);
     
@@ -128,6 +135,22 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             console.log($scope.appliance.userlocation);
             
             Chats.updateUserLocation($scope.appliance.userlocation, updateLocationSuccess)
+        }
+        
+        
+        //UPDATE PURCHASE DETAILS
+        var warrantySuccess = function(data, status){
+            console.log(data);
+        }
+        
+        var storeSuccess = function(data, status){
+            console.log(data);
+        }
+        
+        $scope.purchaseDetails = function(){
+            Chats.updateWarranty($scope.warranty, warrantySuccess);
+            Chats.applianceStore($scope.store, storeSuccess);
+            
         }
     
         // TAB/HOME/EDIT PAGE END
