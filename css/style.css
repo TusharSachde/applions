@@ -177,7 +177,8 @@
 }
 
 .add-warnty {
-/*    float: right;*/
+    /*    float: right;*/
+    
     padding-right: 5px;
     text-decoration: none;
     color: #2ECC71;
@@ -1008,5 +1009,12 @@ span.pull-right {
 }
 
 .item.item-toggle.wizardli {
-  border: 0px;
+    border: 0px;
+}
+
+label.item.item-input.inputs-main.item-select select {
+    width: 100%;
+    border: 0px;
+    font-size: 16px;
+    padding: 6px 0;
 }
