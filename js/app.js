@@ -91,7 +91,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         views: {
             'tab-home': {
                 templateUrl: 'templates/addappliance.html',
-                controller: 'HomeCtrl'
+                controller: 'HomeEditCtrl'
             }
         }
     })
