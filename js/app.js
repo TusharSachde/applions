@@ -54,6 +54,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         templateUrl: 'templates/old-reg.html',
         controller: 'RegisterCtrl'
     })
+    .state('old-registration', {
+        url: '/old-registration',
+        templateUrl: 'templates/old-registration.html',
+        controller: 'RegisterCtrl'
+    })
 
     //Request Servies
     .state('tab.services', {
@@ -97,7 +102,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     })
 
     .state('tab.edit', {
-        url: '/home/edit/:id',
+        url: '/home/edit',
         views: {
             'tab-home': {
                 templateUrl: 'templates/home-edit.html',
