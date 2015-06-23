@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordova'])
 
-.controller('AppCtrl', function($scope, $ionicPopup, $location, applianceStore) {
+.controller('AppCtrl', function ($scope, $ionicPopup, $location, applianceStore) {
     //    var readsmsCallback = function (otp) {
     //        if (!otp) {
     //            conole.log("No Otp");
@@ -17,27 +17,24 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
 })
 
-.controller('HomeCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams) {
+.controller('HomeCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams) {
 
-    // TAB/HOME PAGE START
+        // TAB/HOME PAGE START
 
-    $scope.appliance = [];
+        $scope.appliance = [];
 
-    console.log("in home ctrl");
+        console.log("in home ctrl");
 
-    var applianceSuccess = function(data, status) {
-        console.log(data);
-        $scope.appliance = data;
-    }
-    Chats.getAppliance(applianceSuccess);
+        var applianceSuccess = function (data, status) {
+            console.log(data);
+            $scope.appliance = data;
+        }
+        Chats.getAppliance(applianceSuccess);
 
-    // TAB/HOME PAGE END
+        // TAB/HOME PAGE END
 
-})
-    .controller('HomeEditCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams) {
-
-
-
+    })
+    .controller('HomeEditCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams) {
 
         // TAB/HOME/EDIT PAGE STARt
         $scope.appliance = [];
@@ -74,38 +71,38 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.user = Chats.getUser();
 
         // ONE USER
-        var userCallback = function(data, status) {
-            console.log("before");
-            console.log(data.userlocation);
-            $scope.userlocation = data.userlocation;
-            console.log("after");
-            console.log($scope.appliance.userlocation);
-        }
-//        Chats.getWholeUser($scope.user.id, userCallback);
+        var userCallback = function (data, status) {
+                console.log("before");
+                console.log(data.userlocation);
+                $scope.userlocation = data.userlocation;
+                console.log("after");
+                console.log($scope.appliance.userlocation);
+            }
+            //        Chats.getWholeUser($scope.user.id, userCallback);
 
         // ONE APPLIANCE    
 
-        var getProduct = function(data, status) {
+        var getProduct = function (data, status) {
             console.log("product");
             console.log(data);
             $scope.appliancetype = data;
         }
 
-        var getOneSuccess = function(data, status) {
-            console.log("all appliance");
-            console.log(data);
-            $scope.appliance = data;
-        }
-        //        Chats.getOneAppliance($stateParams.id, getOneSuccess, getProduct);
+        var getOneSuccess = function (data, status) {
+                console.log("all appliance");
+                console.log(data);
+                $scope.appliance = data;
+            }
+            //        Chats.getOneAppliance($stateParams.id, getOneSuccess, getProduct);
 
         //ON PRODUCT CLICK
-        $scope.toProduct = function(product) {
+        $scope.toProduct = function (product) {
             console.log(product);
             $scope.appliance.appliancetype = product;
         }
 
         //ON LOCATION CLICK
-        $scope.selectLocation = function(location) {
+        $scope.selectLocation = function (location) {
             for (var i = 0; i < $scope.userlocation.length; i++) {
                 $scope.userlocation[i].tabactive = "";
             }
@@ -114,18 +111,18 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             $scope.appliance.userlocation = location;
         }
 
-        var locationSuccess = function(data, status) {
+        var locationSuccess = function (data, status) {
             console.log(data);
         }
-        $scope.addLocation = function() {
+        $scope.addLocation = function () {
             $scope.location.user = $scope.user.id;
             Chats.addUserLocation($scope.location, locationSuccess);
         }
 
-        var updateLocationSuccess = function(data, status) {
+        var updateLocationSuccess = function (data, status) {
             console.log(data);
         }
-        $scope.updateLocation = function() {
+        $scope.updateLocation = function () {
             delete $scope.appliance.userlocation["$$hashKey"];
             delete $scope.appliance.userlocation["tabactive"];
             console.log($scope.appliance.userlocation);
@@ -137,13 +134,13 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
 
         //toggle
-        $scope.changetab = function(tab) {
+        $scope.changetab = function (tab) {
             $scope.tabvalue = tab;
         }
-        var applianceUpdate = function(data, status) {
+        var applianceUpdate = function (data, status) {
             console.log(data);
         }
-        $scope.changetab2 = function(tab) {
+        $scope.changetab2 = function (tab) {
             $scope.tabvalue = tab;
             $scope.appliance.appliancetype = $scope.appliance.appliancetype.id;
             $scope.appliance.brand = $scope.appliance.brand.id;
@@ -156,14 +153,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         }
 
         $scope.custom = false;
-        $scope.toggleCustom = function() {
+        $scope.toggleCustom = function () {
             $scope.custom = $scope.custom === false ? true : false;
         };
 
         $scope.tabvalue = 1;
         $scope.showreport = 1;
 
-        $scope.sendtowebsite = function(website) {
+        $scope.sendtowebsite = function (website) {
             console.log(website);
             window.open('http://applions.blogspot.in/?m=1', '_blank');
         }
@@ -193,15 +190,15 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '1',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal1 = modal;
         });
         //jagruti
-        $scope.openedit = function() {
+        $scope.openedit = function () {
             $scope.oModal1.show();
         };
 
-        $scope.closeModalss = function() {
+        $scope.closeModalss = function () {
             $scope.oModal1.hide();
         };
 
@@ -210,15 +207,15 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '2',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal2 = modal;
         });
 
-        $scope.openpswd = function() {
+        $scope.openpswd = function () {
             $scope.oModal2.show();
         };
 
-        $scope.closeModal = function() {
+        $scope.closeModal = function () {
             $scope.oModal2.hide();
         };
 
@@ -226,14 +223,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '3',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal3 = modal;
         });
 
-        $scope.openfilter = function() {
+        $scope.openfilter = function () {
             $scope.oModal3.show();
         }
-        $scope.closefilter = function() {
+        $scope.closefilter = function () {
             $scope.oModal3.hide();
         };
 
@@ -241,14 +238,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '4',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal4 = modal;
         });
 
-        $scope.opensort = function() {
+        $scope.opensort = function () {
             $scope.oModal4.show();
         }
-        $scope.closesort = function() {
+        $scope.closesort = function () {
             $scope.oModal4.hide();
         };
 
@@ -256,14 +253,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '5',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal5 = modal;
         });
 
-        $scope.openarchive = function() {
+        $scope.openarchive = function () {
             $scope.oModal5.show();
         }
-        $scope.closearchive = function() {
+        $scope.closearchive = function () {
             $scope.oModal5.hide();
         };
 
@@ -271,14 +268,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '6',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal6 = modal;
         });
 
-        $scope.opentransfer = function() {
+        $scope.opentransfer = function () {
             $scope.oModal6.show();
         }
-        $scope.closetransfer = function() {
+        $scope.closetransfer = function () {
             $scope.oModal6.hide();
         };
 
@@ -286,14 +283,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '7',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal7 = modal;
         });
 
-        $scope.opendelete = function() {
+        $scope.opendelete = function () {
             $scope.oModal7.show();
         }
-        $scope.closedelete = function() {
+        $scope.closedelete = function () {
             $scope.oModal7.hide();
         };
 
@@ -301,14 +298,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '8',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal8 = modal;
         });
 
-        $scope.openreport = function() {
+        $scope.openreport = function () {
             $scope.oModal8.show();
         }
-        $scope.closereport = function() {
+        $scope.closereport = function () {
             $scope.oModal8.hide();
         };
 
@@ -316,14 +313,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '9',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal9 = modal;
         });
 
-        $scope.opencomponent = function() {
+        $scope.opencomponent = function () {
             $scope.oModal9.show();
         }
-        $scope.closecomponent = function() {
+        $scope.closecomponent = function () {
             $scope.oModal9.hide();
         };
 
@@ -331,14 +328,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '10',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal10 = modal;
         });
 
-        $scope.openprevreports = function() {
+        $scope.openprevreports = function () {
             $scope.oModal10.show();
         }
-        $scope.closeprevreports = function() {
+        $scope.closeprevreports = function () {
             $scope.oModal10.hide();
         };
 
@@ -346,14 +343,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '11',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal11 = modal;
         });
 
-        $scope.openaddservice = function() {
+        $scope.openaddservice = function () {
             $scope.oModal11.show();
         }
-        $scope.closeaddservice = function() {
+        $scope.closeaddservice = function () {
             $scope.oModal11.hide();
         };
 
@@ -361,14 +358,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '12',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal12 = modal;
         });
 
-        $scope.openviewdetails = function() {
+        $scope.openviewdetails = function () {
             $scope.oModal12.show();
         }
-        $scope.closeviewdetails = function() {
+        $scope.closeviewdetails = function () {
             $scope.oModal12.hide();
         };
 
@@ -377,14 +374,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '12',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal12 = modal;
         });
 
-        $scope.openprevreports = function() {
+        $scope.openprevreports = function () {
             $scope.oModal12.show();
         }
-        $scope.closeprevreports = function() {
+        $scope.closeprevreports = function () {
             $scope.oModal12.hide();
         };
 
@@ -392,70 +389,70 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '13',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal13 = modal;
         });
 
-        $scope.opensortservice = function() {
+        $scope.opensortservice = function () {
             $scope.oModal13.show();
         }
-        $scope.closesortservice = function() {
+        $scope.closesortservice = function () {
             $scope.oModal13.hide();
         };
         $ionicModal.fromTemplateUrl('templates/modal-filterservice.html', {
             id: '14',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal14 = modal;
         });
 
-        $scope.openfilterservice = function() {
+        $scope.openfilterservice = function () {
             $scope.oModal14.show();
         }
-        $scope.closefilterservice = function() {
+        $scope.closefilterservice = function () {
             $scope.oModal14.hide();
         };
         $ionicModal.fromTemplateUrl('templates/modal-brand.html', {
             id: '15',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal15 = modal;
         });
 
-        $scope.openbrandsearch = function() {
+        $scope.openbrandsearch = function () {
             $scope.oModal15.show();
         }
-        $scope.closebrandsearch = function() {
+        $scope.closebrandsearch = function () {
             $scope.oModal15.hide();
         };
         $ionicModal.fromTemplateUrl('templates/modal-product.html', {
             id: '16',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal16 = modal;
         });
 
-        $scope.openproductsearch = function() {
+        $scope.openproductsearch = function () {
             $scope.oModal16.show();
         }
-        $scope.closeproductsearch = function() {
+        $scope.closeproductsearch = function () {
             $scope.oModal16.hide();
         };
         $ionicModal.fromTemplateUrl('templates/notification.html', {
             id: '17',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal17 = modal;
         });
 
-        $scope.opennotification = function() {
+        $scope.opennotification = function () {
             $scope.oModal17.show();
         }
-        $scope.closenotification = function() {
+        $scope.closenotification = function () {
             $scope.oModal17.hide();
         };
 
@@ -466,19 +463,19 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 title: 'Alert!',
                 scope: $scope,
             });
-            $timeout(function() {
+            $timeout(function () {
                 myPopup.close(); //close the popup after 3 seconds for some reason
             }, 2000);
         }
     })
 
 
-.controller('LoginCtrl', function($scope, $ionicModal, $ionicPopup, $ionicPopup, $timeout, Chats, $location, $cordovaDevice) {
+.controller('LoginCtrl', function ($scope, $ionicModal, $ionicPopup, $ionicPopup, $timeout, Chats, $location, $cordovaDevice) {
 
 
     $scope.user = [];
 
-    document.addEventListener("deviceready", function() {
+    document.addEventListener("deviceready", function () {
 
         var device = $cordovaDevice.getDevice();
 
@@ -496,7 +493,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
     }, false);
 
-    $scope.getdiv = function() {
+    $scope.getdiv = function () {
         console.log($cordovaDevice.getDevice());
     }
 
@@ -505,7 +502,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     //            $location.url("tab/home");
     //        }
 
-    var loginsuccess = function(data, status) {
+    var loginsuccess = function (data, status) {
         if (angular.isObject(data)) {
             Chats.jstorageUser(data);
             $location.url("tab/home");
@@ -514,30 +511,30 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 title: data,
                 scope: $scope,
             });
-            $timeout(function() {
+            $timeout(function () {
                 myPopup.close(); //close the popup after 3 seconds for some reason
             }, 1500);
         }
     }
 
-    $scope.userLogin = function() {
+    $scope.userLogin = function () {
         console.log($scope.user);
         Chats.login($scope.user, loginsuccess);
 
     }
 })
 
-.controller('ProfileCtrl', function($scope, $ionicPopover, $ionicModal) {
+.controller('ProfileCtrl', function ($scope, $ionicPopover, $ionicModal) {
     $ionicPopover.fromTemplateUrl('templates/profile-popover.html', {
         scope: $scope
-    }).then(function(popover) {
+    }).then(function (popover) {
         $scope.popover = popover;
     });
 
-    $scope.openPopover = function($event) {
+    $scope.openPopover = function ($event) {
         $scope.popover.show($event);
     };
-    $scope.closePopover = function() {
+    $scope.closePopover = function () {
         $scope.popover.hide();
     };
 
@@ -546,14 +543,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         id: '1',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal1 = modal;
     });
 
-    $scope.openchngpswd = function() {
+    $scope.openchngpswd = function () {
         $scope.oModal1.show();
     }
-    $scope.closechngpswd = function() {
+    $scope.closechngpswd = function () {
         $scope.oModal1.hide();
     };
 
@@ -576,14 +573,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         id: '3',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal3 = modal;
     });
 
-    $scope.openstat = function() {
+    $scope.openstat = function () {
         $scope.oModal3.show();
     }
-    $scope.closestat = function() {
+    $scope.closestat = function () {
         $scope.oModal3.hide();
     };
 
@@ -591,14 +588,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         id: '4',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal4 = modal;
     });
 
-    $scope.openfeedback = function() {
+    $scope.openfeedback = function () {
         $scope.oModal4.show();
     }
-    $scope.closefeedback = function() {
+    $scope.closefeedback = function () {
         $scope.oModal4.hide();
     };
 
@@ -606,28 +603,28 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         id: '5',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal5 = modal;
     });
 
-    $scope.openexisting = function() {
+    $scope.openexisting = function () {
         $scope.oModal5.show();
     }
-    $scope.closeexisting = function() {
+    $scope.closeexisting = function () {
         $scope.oModal5.hide();
     };
 })
 
-.controller('StoreCtrl', function($scope) {})
+.controller('StoreCtrl', function ($scope) {})
 
-.controller('AboutCtrl', function($scope) {})
+.controller('AboutCtrl', function ($scope) {})
 
-.controller('RegisterCtrl', function($scope, $ionicSlideBoxDelegate, $ionicPopup) {
+.controller('RegisterCtrl', function ($scope, $ionicSlideBoxDelegate, $ionicPopup) {
 
     $scope.user = [];
 
     console.log("login ctrl");
-    $scope.userLogin = function() {
+    $scope.userLogin = function () {
         console.log($scope.user);
         console.log("login ctrl");
     }
@@ -657,19 +654,19 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 })
 
 
-.controller('AppwizardCtrl', function($scope, $ionicModal) {
+.controller('AppwizardCtrl', function ($scope, $ionicModal) {
     $ionicModal.fromTemplateUrl('templates/modal-brand.html', {
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.Modal = modal;
     });
 
-    $scope.openbrandsearch = function() {
+    $scope.openbrandsearch = function () {
         console.log("in ctrl");
         $scope.Modal.show();
     }
-    $scope.closebrandsearch = function() {
+    $scope.closebrandsearch = function () {
         $scope.Modal.hide();
     };
 
