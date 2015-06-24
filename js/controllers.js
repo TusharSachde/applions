@@ -75,7 +75,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         };
 
     })
-    .controller('AddappCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams) {
+    .controller('HomeEditCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams) {
 
         // TAB/HOME/EDIT PAGE STARt
         $scope.appliance = [];
@@ -136,6 +136,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             console.log(data);
             $scope.appliance = data;
             $scope.warranty = data.warranty[data.warranty.length - 1];
+            console.log($scope.warranty);
             $scope.warranty.purchasedate = new Date($scope.warranty.purchasedate);
             $scope.store = data.store;
             $scope.store.purchaseprice = data.purchaseprice;
@@ -582,7 +583,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         }
 
     })
-    .controller('HomeEditCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams) {
+    .controller('AddappCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams) {
 
 
 
