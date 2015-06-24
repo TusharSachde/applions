@@ -9,22 +9,22 @@
         <div class="list">
             <label class="item item-input">
                 <span class="input-label">Component</span>
-                <input type="text">
+                <input type="text" ng-model="compwarranty.component">
             </label>
             <label class="item item-input">
                 <span class="input-label">Serial No</span>
-                <input type="text">
+                <input type="text" ng-model="compwarranty.serial">
             </label>
             <label class="item item-input">
                 <span class="input-label">Purchase Date</span>
-                <input type="date">
+                <input type="date" ng-model="compwarranty.startdate">
             </label>
             <label class="item item-input">
                 <span class="input-label">Warranty Period</span>
-                <input type="text">
+                <input type="text" ng-model="compwarranty.warrantyperiod">
             </label>
         </div>
-        <div class="padding-horizontal">
+        <div class="padding-horizontal" ng-click="saveComponentWarranty()">
             <button class="button button-balanced button-block button-outline">Save &#38; Exit</button>
         </div>
     </ion-content>

@@ -100,9 +100,13 @@ angular.module('starter.services', [])
         $http.get(adminurl + "userlocation/addlocation",{params:data}).success(callback);
     },
     addComponentWarranty: function(data, callback) {
-        $http.get(adminurl + "componentwarranty",{params:data}).success(callback);
+        console.log(data);
+        $http.get(adminurl + "componentwarranty/createcw",{params:data}).success(callback);
     },
     updateUserLocation: function(data, callback) {
+        $http.get(adminurl + "userlocation/updatelocation",{params:data}).success(callback);
+    },
+    updateComponentWarranty: function(data, callback) {
         $http.get(adminurl + "userlocation/updatelocation",{params:data}).success(callback);
     },
     getAppliance: function(callback) {
@@ -128,6 +132,9 @@ angular.module('starter.services', [])
         }
       }
       return null;
-    }
+    },
+      getmybrands: function(data) {
+        $http.post("json/brands.json",data).success();
+      }
   };
 });
