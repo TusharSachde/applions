@@ -1,0 +1,45 @@
+[
+
+    {
+
+        "countrycode": "+91",
+
+        "name": "India",
+
+        "createdAt": "2015-05-26T08:28:38.326Z",
+
+        "updatedAt": "2015-06-12T10:36:50.495Z",
+
+        "id": "55642eb60079af4c0d2e7379"
+
+    },
+
+    {
+
+        "name": "pakistan",
+
+        "countrycode": "912",
+
+        "createdAt": "2015-06-01T08:25:47.421Z",
+
+        "updatedAt": "2015-06-01T08:25:47.421Z",
+
+        "id": "556c170bd140e79c17832fd0"
+
+    },
+
+    {
+
+        "name": "Sri Lanka",
+
+        "countrycode": "1234",
+
+        "createdAt": "2015-06-06T08:46:04.259Z",
+
+        "updatedAt": "2015-06-06T08:46:04.259Z",
+
+        "id": "5572b34c9c0d63cc03245a7a"
+
+    }
+
+]

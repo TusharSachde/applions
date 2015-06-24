@@ -9,7 +9,7 @@
                 <input type="tel" placeholder="Enter your mobile no." ng-model="profile.contact">
             </label>
             <label class="item item-input" ng-class="allvalidation[0].validation">
-                <span class="input-label" ng-class="allvalidation[0].validation">Email ID *</span>
+                <span class="input-label">Email ID *</span>
                 <input type="email" placeholder="Enter your email" ng-model="profile.email" required />
             </label>
             <label class="item item-input">
@@ -48,6 +48,10 @@
             <!--               <ion-item class="item item-input item-select">-->
               <label class="item item-input inputs-main item-select">
               <span class="input-label">Country</span>
+            <select ng-model="profile.country.id">
+                <option value="{{ctry.id}}" ng-repeat="ctry in country">{{ctry.name}}</option>
+            </select>
+<!--
             <select ng-model="profile.country.name">
                 <option value="">Select Country</option>
                 <option value="Afganistan">Afghanistan</option>
@@ -298,6 +302,7 @@
                 <option value="Zambia">Zambia</option>
                 <option value="Zimbabwe">Zimbabwe</option>
             </select>
+-->
 
             </label>
             <!--

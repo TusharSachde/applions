@@ -29,9 +29,11 @@
 }
 .ng-invalid.ng-dirty,
 .ng-dirty {
-    border-left: 2px solid red !important;
-    border-right: 2px solid red !important;
-    
+    border-left:  solid red;
+    border-right:  solid red;
+}
+.ng-dirty>* {
+    color: red;
 }
 .picture {
     width: 70px;

@@ -9,22 +9,22 @@
         <div class="list">
             <label class="item item-input">
                 <span class="input-label">Email Id</span>
-                <input type="text" value="sahil@gmail.com" disabled>
+                <input type="text" value="sahil@gmail.com" ng-model="profile.email" disabled>
             </label>
-            <label class="item item-input">
+            <label class="item item-input" ng-class="allvalidation[0].validation">
                 <span class="input-label">Old Password</span>
-                <input type="text">
+                <input type="password" ng-model="password.password">
             </label>
-            <label class="item item-input">
+            <label class="item item-input" ng-class="allvalidation[1].validation">
                 <span class="input-label">New Password</span>
-                <input type="text">
+                <input type="password" ng-model="password.editpassword">
             </label>
-            <label class="item item-input">
+            <label class="item item-input" ng-class="allvalidation[2].validation">
                 <span class="input-label">Retype New Password</span>
-                <input type="text">
+                <input type="password" ng-model="password.confpassword">
             </label>
         </div>
-        <div class="padding-horizontal">
+        <div class="padding-horizontal" ng-click="changePassword()">
             <button class="button button-assertive button-block">Change Password</button>
         </div>
     </ion-content>

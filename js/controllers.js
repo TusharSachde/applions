@@ -1182,23 +1182,25 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 //DEVELOPMENT STARTS
     
     $scope.profile = [];
+    $scope.password = [];
+    $scope.country = [];
     
+    //GETCOUNTRY-------------------------
     
+    Chats.getCountry(function(data, status){
+        $scope.country = data;
+    });
     
-//    var userSuccess = function(data, status){
-////        console.log(data);
-////        $scope.profile = data;
-//    }
-//    Chats.getWholeUser(Chats.getUser().id,userSuccess);
+    //GET USER DATA-----------------------);
     
-    var userSuccess = function(data, status){
+    Chats.getProfileJson(3,function(data, status){
         console.log(data);
         $scope.profile = data;
         $scope.profile.dob = new Date($scope.profile.dob);
-    }
-    Chats.getProfileJson(3,userSuccess);
+    });
     
-    //UPDATE PROFILE
+    //UPDATE PROFILE-----------------------
+    
     var userUpdateSuccess = function (data, status){
         console.log(data);
     }
@@ -1211,6 +1213,40 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         if (check) {
             console.log("validate");
             Chats.updateUser($scope.profile, userUpdateSuccess);
+
+        }
+    }
+    
+    //CHANGE PASSWORD--------------------
+    
+    $scope.changePassword = function () {
+        $scope.allvalidation = [{
+            field: $scope.password.password,
+            validation: ""
+        },{
+            field: $scope.password.editpassword,
+            validation: ""
+        },{
+            field: $scope.password.confpassword,
+            validation: ""
+        }];
+        var check = formvalidation($scope.allvalidation);
+        if (check) {
+            if($scope.password.editpassword === $scope.password.confpassword)
+            {
+                $scope.password.id = Chats.getUser().id;
+                Chats.changePassword($scope.password, function(data, status){
+                    console.log(data);
+                });
+            }else{
+                var myPopup = $ionicPopup.show({
+                title: "",
+                scope: $scope,
+                });
+                $timeout(function() {
+                    myPopup.close(); //close the popup after 3 seconds for some reason
+                }, 1500);
+            }
 
         }
     }

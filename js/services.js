@@ -151,6 +151,13 @@ angular.module('starter.services', [])
         },
         updateUser: function(data,callback) {
             $http.post("json/profile.json", data).success(callback);
+        },
+        getCountry: function(callback) {
+            $http.post("json/country.json").success(callback);
+        },
+        changePassword: function(data, callback) {
+            delete data.confpassword;
+            $http.get(adminurl + "user/changepassword",{params:data}).success(callback);
         }
     };
 });
