@@ -139,3 +139,31 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/login');
 });
+
+
+//var formvalidation = function (allvalidation) {
+//    var isvalid2 = true;
+//    for (var i = 0; i < allvalidation.length; i++) {
+//        console.log("checking");
+//        console.log(allvalidation[i].field);
+//        if (allvalidation[i].field == "" || allvalidation[i].field == null || !allvalidation[i].field) {
+//            allvalidation[i].validation = "ng-dirty";
+//            isvalid2 = false;
+//        }
+//    }
+//    return isvalid2;
+//};
+
+
+var formvalidation = function(allvalidation) {
+    var isvalid2 = true;
+    for (var i = 0; i < allvalidation.length; i++) {
+        console.log("checking");
+        console.log(allvalidation[i].field);
+        if (allvalidation[i].field == "" || !allvalidation[i].field) {
+            allvalidation[i].validation = "ng-dirty";
+            isvalid2 = false;
+        }
+    }
+    return isvalid2;
+};

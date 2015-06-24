@@ -1177,7 +1177,47 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     }
 })
 
-.controller('ProfileCtrl', function($scope, $ionicPopover, $ionicModal) {
+.controller('ProfileCtrl', function($scope, $ionicPopover, $ionicModal, Chats) {
+    
+//DEVELOPMENT STARTS
+    
+    $scope.profile = [];
+    
+    
+    
+//    var userSuccess = function(data, status){
+////        console.log(data);
+////        $scope.profile = data;
+//    }
+//    Chats.getWholeUser(Chats.getUser().id,userSuccess);
+    
+    var userSuccess = function(data, status){
+        console.log(data);
+        $scope.profile = data;
+        $scope.profile.dob = new Date($scope.profile.dob);
+    }
+    Chats.getProfileJson(3,userSuccess);
+    
+    //UPDATE PROFILE
+    var userUpdateSuccess = function (data, status){
+        console.log(data);
+    }
+    $scope.updateProfile = function(){
+        $scope.allvalidation = [{
+            field: $scope.profile.email,
+            validation: ""
+        }];
+        var check = formvalidation($scope.allvalidation);
+        if (check) {
+            console.log("validate");
+            Chats.updateUser($scope.profile, userUpdateSuccess);
+
+        }
+    }
+    
+//DEVELOPMENT ENDS
+    
+    
     $ionicPopover.fromTemplateUrl('templates/profile-popover.html', {
         scope: $scope
     }).then(function(popover) {

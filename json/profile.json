@@ -1,0 +1,175 @@
+{
+
+   "userlocation": [
+
+      {
+
+         "name": "aksljdbhk;NKDNLK FSM",
+
+         "address": ";MKGLNDG",
+
+         "district": ";mfknjk",
+
+         "state": "ak;dnlfdng",
+
+         "country": "5572b34c9c0d63cc03245a7a",
+
+         "pincode": "45742",
+
+         "user": "55752e5dfda25b7c09de7c14",
+
+         "createdAt": "2015-06-22T06:08:02.102Z",
+
+         "updatedAt": "2015-06-22T09:53:58.853Z",
+
+         "id": "5587a642fecc3ff81bd1a435"
+
+      },
+
+      {
+
+         "user": "55752e5dfda25b7c09de7c14",
+
+         "name": "thakurli",
+
+         "address": "cholegaon",
+
+         "district": "thane",
+
+         "state": "maha",
+
+         "country": "5572b34c9c0d63cc03245a7a",
+
+         "id": "5587a854fecc3ff81bd1a436",
+
+         "createdAt": "2015-06-22T06:16:52.381Z",
+
+         "updatedAt": "2015-06-22T12:09:00.970Z",
+
+         "pincode": "421201"
+
+      },
+
+      {
+
+         "name": "vignesh",
+
+         "address": "dombivli",
+
+         "district": "thane",
+
+         "state": "maha",
+
+         "pincode": "421201",
+
+         "user": "55752e5dfda25b7c09de7c14",
+
+         "id": "5587c75db8dcfc801917a86e",
+
+         "createdAt": "2015-06-22T08:29:17.081Z",
+
+         "updatedAt": "2015-06-23T08:25:54.594Z"
+
+      },
+
+      {
+
+         "address": "kjhk",
+
+         "district": "hkjhkj",
+
+         "name": "kjhkjh",
+
+         "pincode": "987987",
+
+         "state": "kjhkj",
+
+         "user": "55752e5dfda25b7c09de7c14",
+
+         "id": "5587c7d7b8dcfc801917a86f",
+
+         "createdAt": "2015-06-22T08:31:19.076Z",
+
+         "updatedAt": "2015-06-22T08:31:19.076Z"
+
+      },
+
+      {
+
+         "address": "address",
+
+         "district": "dist",
+
+         "name": "location",
+
+         "pincode": "54321",
+
+         "state": "maha",
+
+         "user": "55752e5dfda25b7c09de7c14",
+
+         "id": "558a8275bce0e3f41783e454",
+
+         "createdAt": "2015-06-24T10:12:05.485Z",
+
+         "updatedAt": "2015-06-24T10:12:25.534Z"
+
+      }
+
+   ],
+
+   "country": {
+
+      "name": "pakistan",
+
+      "countrycode": "912",
+
+      "createdAt": "2015-06-01T08:25:47.421Z",
+
+      "updatedAt": "2015-06-01T08:25:47.421Z",
+
+      "id": "556c170bd140e79c17832fd0"
+
+   },
+
+   "name": "vignesh2",
+
+   "email": "v@yahoo.com",
+
+   "password": "a029d0df84eb5549c641e04a9ef389e5",
+
+   "cpassword": "avinash",
+
+   "contact": "5555",
+
+   "pooshwooshid": "5555",
+
+   "pin": "8794613",
+
+   "gender": "male",
+
+   "district": "thane",
+
+   "state": "maha",
+
+   "pincode": "421201",
+
+   "address": "abcd",
+
+   "dob": "1993-01-01T00:00:00.000Z",
+
+   "accesslevel": "admin",
+
+   "id": "55752e5dfda25b7c09de7c14",
+
+   "createdAt": "2015-06-08T05:55:41.612Z",
+
+   "updatedAt": "2015-06-22T06:44:51.673Z",
+
+   "forgotpassword": "",
+
+   "editpassword": "",
+
+   "editcpassword": ""
+
+}
