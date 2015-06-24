@@ -546,7 +546,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             $scope.oModal17.hide();
         };
     
-     $ionicModal.fromTemplateUrl('templates/addwarranty.html', {
+     $ionicModal.fromTemplateUrl('templates/modal-callreport.html', {
             id: '18',
             scope: $scope,
             animation: 'slide-in-up'
