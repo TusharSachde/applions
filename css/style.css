@@ -1012,12 +1012,14 @@ span.pull-right {
     border: 0px;
 }
 
+/*
 label.item.item-input.inputs-main.item-select select {
     width: 100%;
     border: 0px;
     font-size: 16px;
     padding: 6px 0;
 }
+*/
 
 ion-item.item label.checkboxs {
   padding-right: 15px;
