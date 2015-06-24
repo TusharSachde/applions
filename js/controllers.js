@@ -514,7 +514,20 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.closenotification = function () {
             $scope.oModal17.hide();
         };
+        $ionicModal.fromTemplateUrl('templates/modal-compntwarranty.html', {
+            id: '21',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal21 = modal;
+        });
 
+        $scope.opencompntwarranty = function () {
+            $scope.oModal21.show();
+        }
+        $scope.closecompntwarranty = function () {
+            $scope.oModal21.hide();
+        };
 
         function save() {
             var myPopup = $ionicPopup.show({
@@ -861,6 +874,20 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         }
         $scope.closecomponent = function () {
             $scope.oModal9.hide();
+        };
+        $ionicModal.fromTemplateUrl('templates/modal-comptwarranty.html', {
+            id: '21',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal21 = modal;
+        });
+
+        $scope.opencompntwarranty = function () {
+            $scope.oModal21.show();
+        }
+        $scope.closecompntwarranty = function () {
+            $scope.oModal21.hide();
         };
 
         $ionicModal.fromTemplateUrl('templates/modal-prevreports.html', {
