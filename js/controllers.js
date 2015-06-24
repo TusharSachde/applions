@@ -545,6 +545,22 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.closenotification = function () {
             $scope.oModal17.hide();
         };
+    
+     $ionicModal.fromTemplateUrl('templates/addwarranty.html', {
+            id: '18',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal18 = modal;
+        });
+
+        $scope.opencallreport = function () {
+            $scope.oModal18.show();
+        };
+
+        $scope.closecallreport = function () {
+            $scope.oModal18.hide();
+        };
 
 
         function save() {

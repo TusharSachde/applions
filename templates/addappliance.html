@@ -20,7 +20,7 @@
             </div>
         </div>
 
- <div class="appliance" ng-if="tabvalue == 1">
+        <div class="appliance" ng-if="tabvalue == 1">
 
             <!--
             <div class="item withlist">
@@ -36,19 +36,13 @@
                 </div>
             </div>
 -->
-            <div class="wish wishs">
-                <div class="picturess  assertive-bg" style="background-image: url('img/icons/Mobile.png');"></div>
+
+            <!--                <div class="picturess  assertive-bg" style="background-image: url('img/icons/Mobile.png');"></div>-->
+            <div class="list">
                 <label class="item item-input input-up" ng-click="openproductsearch();">
                     <span class="input-label">Product*</span>
                     <input type="text" ng-model="appliance.appliancetype.name" readonly>
                 </label>
-                <label class="item item-input input-btm">
-                    <span class="input-label">Name As*</span>
-                    <input type="text" ng-model="appliance.name" required>
-                </label>
-            </div>
-
-            <div class="list" style="margin-top: 1px;">
                 <label class="item item-input" ng-click="openbrandsearch();">
                     <span class="input-label">Brand*</span>
                     <input type="text" readonly>
@@ -63,21 +57,38 @@
                     <span class="input-label">Serial No.</span>
                     <input type="text" ng-model="appliance.serialnumber">
                 </label>
-
+                <label class="item item-input input-btm">
+                    <span class="input-label">Name As*</span>
+                    <input type="text" ng-model="appliance.name" required>
+                </label>
                 <label class="item item-input" ng-click="openedit();">
                     <span class="input-label">Location</span>
                     <input type="text" ng-model="appliance.userlocation.name" readonly>
                 </label>
+                </label>
+                <li class="item item-toggle">
+                    Warranty/AMC
+                    <label class="toggle toggle-assertive">
+                        <input type="checkbox">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </li>
 
+                <!--
                 <label class="item item-input">
                     <span class="input-label">Cover</span>
                     <input type="text">
                 </label>
+-->
 
+                <!--
                 <label class="item item-input">
                     <span class="input-label">Expiry</span>
                     <input type="text" ng-model="appliance.warranty[0].expiry">
                 </label>
+-->
 
 
             </div>
@@ -187,7 +198,7 @@
                     <input type="text">
                 </label>
                 <ion-item ng-click="opencomponent()">
-                   <span class="balanced">Add Component Warranty</span>
+                    <span class="balanced">Add Component Warranty</span>
                 </ion-item>
                 <ion-item ng-click="openpswd()">
                     <span class="balanced"> Additional Warranty / AMC</span>
