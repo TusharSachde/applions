@@ -182,7 +182,7 @@
             </div>
         </div>
 
-        <div class="warranty" ng-if="tabvalue == 3">
+   <div class="warranty" ng-if="tabvalue == 3">
             <div class="list">
                 <div class="item product-wrnnty">
                     Product Warranty
@@ -201,12 +201,20 @@
                         <option>Off Site</option>
                     </select>
                 </label>
-
+                <ion-item ng-click="opencomponent()">
+                    <span class="balanced">Add Component Warranty</span>
+                </ion-item>
                 <div class="item product-wrnnty">
                     Component Warranty
                 </div>
-
-
+                  <ion-item ng-click="opencompntwarranty()">
+                   Component
+                    <span class="item-note">
+                    Back Cover
+                    </span>
+                </ion-item>
+                
+<!--
                 <label class="item item-input">
                     <span class="input-label">Component</span>
                     <input type="text">
@@ -215,31 +223,42 @@
                     <span class="input-label">Serial No</span>
                     <input type="text">
                 </label>
-
-
+                <label class="item item-input">
+                    <span class="input-label">Purchase Date</span>
+                    <input type="date">
+                </label>
                 <label class="item item-input">
                     <span class="input-label">Warranty Period</span>
                     <input type="text">
                 </label>
-                <ion-item ng-click="opencomponent()">
-                   <span class="balanced">Add Component Warranty</span>
-                </ion-item>
-                <ion-item ng-click="openpswd()">
-                    <span class="balanced"> Additional Warranty / AMC</span>
-                </ion-item>
-
-            </div>
-            <!--
-            <div class="row">
-                <div class="col add-warnty" ng-click="opencomponent()">
-                     Add Component Warranty
-                </div>
-                <div class="col add-warnty" ng-click="openpswd();">
-                      Additional Warranty / AMC
-                </div>
-            </div>
 -->
-            <!--
+                <!--            <div class="row">-->
+                <ion-item ng-click="openpswd()">
+                    <span class="balanced"> Add Additional Warranty / AMC</span>
+                </ion-item>
+                <div class="item product-wrnnty">
+                    Additional Warranty / AMC
+                </div>
+                <ion-item ng-click="openwarranty()">
+                    Bill No Form
+                    <span class="item-note">
+                      13456
+                    </span>
+                </ion-item>
+                <ion-item ng-click="openwarranty()">
+                    Bill No Form
+                    <span class="item-note">
+                      13456
+                    </span>
+                </ion-item>
+                <ion-item ng-click="openwarranty()">
+                    Bill No Form
+                    <span class="item-note">
+                      13456
+                    </span>
+                </ion-item>
+                <!--            </div>-->
+                <!--
             <div class="" ng-click="opencomponent();">
                Component Warranty
             </div>   
@@ -248,6 +267,8 @@
                 Additional Warranty / AMC
             </div>
 -->
+            </div>
+
 
 
             <div class="button-bar">
@@ -255,6 +276,7 @@
                 <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-click="changetab(4)">Next</button>
             </div>
         </div>
+
 
         <div class="list" ng-if="tabvalue == 4;">
             <div class="item product-wrnnty">
