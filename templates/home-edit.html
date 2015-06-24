@@ -185,16 +185,15 @@
                 </div>
                 <label class="item item-input">
                     <span class="input-label">Warranty Period</span>
-                    <input type="text">
+                    <input type="text" ng-model="warranty.period">
                 </label>
                 <label class="item item-input item-select">
                     <div class="input-label">
                         Warranty Type
                     </div>
-                    <select>
-                        <option></option>
-                        <option>On Site</option>
-                        <option>Off Site</option>
+                    <select ng-model="warranty.type">
+                        <option value="onsite">On Site</option>
+                        <option value="offsite">Off Site</option>
                     </select>
                 </label>
                 <ion-item ng-click="opencomponent()">
@@ -203,8 +202,8 @@
                 <div class="item product-wrnnty">
                     Component Warranty
                 </div>
-                  <ion-item ng-click="opencompntwarranty()">
-                   Component
+                <ion-item ng-click="opencompntwarranty(component)" ng-repeat="component in appliance.componentwarranty">
+                   {{component.component}}
                     <span class="item-note">
                     Back Cover
                     </span>
@@ -279,7 +278,7 @@
             </div>
             <label class="item" style="padding:0;">
                 <div class="row">
-                    <div class="col text-center">
+                    <div class="col text-center" ng-click="uploadBill()">
                         <button class="button button-outline button-balanced button-block button-small">Upload Bill</button>
                     </div>
                     <div class="col text-center">

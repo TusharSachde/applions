@@ -99,6 +99,9 @@ angular.module('starter.services', [])
     addUserLocation: function(data, callback) {
         $http.get(adminurl + "userlocation/addlocation",{params:data}).success(callback);
     },
+    addComponentWarranty: function(data, callback) {
+        $http.get(adminurl + "componentwarranty",{params:data}).success(callback);
+    },
     updateUserLocation: function(data, callback) {
         $http.get(adminurl + "userlocation/updatelocation",{params:data}).success(callback);
     },

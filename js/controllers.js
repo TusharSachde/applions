@@ -75,7 +75,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         };
 
     })
-    .controller('HomeEditCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams) {
+    .controller('HomeEditCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams, $cordovaImagePicker, $cordovaFileTransfer) {
 
         // TAB/HOME/EDIT PAGE STARt
         $scope.appliance = [];
@@ -84,6 +84,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.location = [];
         $scope.warranty = [];
         $scope.store = [];
+        $scope.componentobj = [];
         //        $scope.appliance.userlocation = [
         //            {
         //                address: ";MKGLNDG",
@@ -230,6 +231,66 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             window.open('http://applions.blogspot.in/?m=1', '_blank');
         }
 
+        
+        
+        //UPLOAD DOCUMENTS
+         var options = {
+            maximumImagesCount: 1,
+            width: 800,
+            height: 800,
+            quality: 80
+        };
+        
+        var changeproflogo = function (result) {
+            console.log(result);
+            $scope.mycard.profilelogo = result.value;
+        }
+        $scope.uploadBill = function () {
+            console.log("take picture");
+
+            $cordovaImagePicker.getPictures(options).then(function (resultImage) {
+                // Success! Image data is here
+                console.log("here in upload image");
+
+                console.log(resultImage);
+
+                $scope.cameraimage = resultImage[0];
+                $scope.uploadPhoto("http://wohlig.co.in/powerforone/index.php/json/imageuploadprofile", changeproflogo);
+
+            }, function (err) {
+                // An error occured. Show a message to the user
+            });
+        };
+
+        $scope.uploadPhoto = function (serverpath, callback) {
+
+            //        console.log("function called");
+            $cordovaFileTransfer.upload(serverpath, $scope.cameraimage, options)
+                .then(function (result) {
+                    console.log(result);
+                    var data = JSON.parse(result.response);
+                    callback(data);
+                    $ionicLoading.hide();
+                    //$scope.addretailer.store_image = $scope.filename2;
+                }, function (err) {
+                    // Error
+                    console.log(err);
+                }, function (progress) {
+                    // constant progress updates
+                    $ionicLoading.show({
+                        //        template: 'We are fetching the best rates for you.',
+
+                        content: 'Uploading Image',
+                        animation: 'fade-in',
+                        showBackdrop: true,
+                        maxWidth: 200,
+                        showDelay: '0'
+                    });
+                });
+        };
+        
+    //UPLOAD DOCUMENTS
+        
 
         //    $scope.next1 = function(){
         //        console.log("next1  clicked");
@@ -522,7 +583,8 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             $scope.oModal21 = modal;
         });
 
-        $scope.opencompntwarranty = function () {
+        $scope.opencompntwarranty = function (component) {
+            $scope.componentobj = component;
             $scope.oModal21.show();
         }
         $scope.closecompntwarranty = function () {
@@ -596,7 +658,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         }
 
     })
-    .controller('AddappCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams) {
+    .controller('AddappCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams, $cordovaImagePicker, $cordovaFileTransfer) {
 
 
 
@@ -875,7 +937,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.closecomponent = function () {
             $scope.oModal9.hide();
         };
-        $ionicModal.fromTemplateUrl('templates/modal-comptwarranty.html', {
+        $ionicModal.fromTemplateUrl('templates/modal-compntwarranty.html', {
             id: '21',
             scope: $scope,
             animation: 'slide-in-up'
