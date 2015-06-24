@@ -17,25 +17,25 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
 })
 
-.controller('HomeCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams) {
-    
-         // TAB/HOME PAGE START
+.controller('HomeCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams) {
+
+        // TAB/HOME PAGE START
 
         $scope.appliance = [];
-    
+
         console.log("in home ctrl");
-    
+
         var applianceSuccess = function (data, status) {
             console.log(data);
             $scope.appliance = data;
         }
         Chats.getAppliance(applianceSuccess);
-    
+
         // TAB/HOME PAGE END
-    
-})
-.controller('AddappCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams) {
-        
+
+    })
+    .controller('AddappCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams) {
+
         // TAB/HOME/EDIT PAGE STARt
         $scope.appliance = [];
         $scope.appliancetype = [];
@@ -43,54 +43,54 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.location = [];
         $scope.warranty = [];
         $scope.store = [];
-//        $scope.appliance.userlocation = [
-//            {
-//                address: ";MKGLNDG",
-//                country: "5572b34c9c0d63cc03245a7a",
-//                createdAt: "2015-06-22T06:08:02.102Z",
-//                district: ";mfknjk",
-//                id: "5587a642fecc3ff81bd1a435",
-//                name: "aksljdbhk;NKDNLK FSM",
-//                pincode: "45742",
-//                state: "ak;dnlfdng",
-//                updatedAt: "2015-06-22T06:08:02.102Z",
-//                user: "55752e5dfda25b7c09de7c14"    
-//            },{
-//                address: ";MKGLNDG",
-//                country: "5572b34c9c0d63cc03245a7a",
-//                createdAt: "2015-06-22T06:08:02.102Z",
-//                district: ";mfknjk",
-//                id: "5587a642fecc3ff81bd1a435",
-//                name: "Thakurli",
-//                pincode: "45742",
-//                state: "ak;dnlfdng",
-//                updatedAt: "2015-06-22T06:08:02.102Z",
-//                user: "55752e5dfda25b7c09de7c14"    
-//            }
-//        ];
-    
+        //        $scope.appliance.userlocation = [
+        //            {
+        //                address: ";MKGLNDG",
+        //                country: "5572b34c9c0d63cc03245a7a",
+        //                createdAt: "2015-06-22T06:08:02.102Z",
+        //                district: ";mfknjk",
+        //                id: "5587a642fecc3ff81bd1a435",
+        //                name: "aksljdbhk;NKDNLK FSM",
+        //                pincode: "45742",
+        //                state: "ak;dnlfdng",
+        //                updatedAt: "2015-06-22T06:08:02.102Z",
+        //                user: "55752e5dfda25b7c09de7c14"    
+        //            },{
+        //                address: ";MKGLNDG",
+        //                country: "5572b34c9c0d63cc03245a7a",
+        //                createdAt: "2015-06-22T06:08:02.102Z",
+        //                district: ";mfknjk",
+        //                id: "5587a642fecc3ff81bd1a435",
+        //                name: "Thakurli",
+        //                pincode: "45742",
+        //                state: "ak;dnlfdng",
+        //                updatedAt: "2015-06-22T06:08:02.102Z",
+        //                user: "55752e5dfda25b7c09de7c14"    
+        //            }
+        //        ];
+
         //validate user
         $scope.user = Chats.getUser();
-    
+
         // ONE USER
-        var userCallback = function(data, status){
+        var userCallback = function (data, status) {
             console.log("before");
             console.log(data.userlocation);
             $scope.userlocation = data.userlocation;
             console.log("after");
             console.log($scope.appliance.userlocation);
         }
-        Chats.getWholeUser($scope.user.id,userCallback);
-    
+        Chats.getWholeUser($scope.user.id, userCallback);
+
         // ONE APPLIANCE    
-    
-        var getProduct = function (data, status){
+
+        var getProduct = function (data, status) {
             console.log("product");
             console.log(data);
             $scope.appliancetype = data;
         }
-    
-        var getOneSuccess = function (data, status){
+
+        var getOneSuccess = function (data, status) {
             console.log("all appliance");
             console.log(data);
             $scope.appliance = data;
@@ -101,69 +101,69 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             $scope.store.appliance = data.id;
         }
         Chats.getOneAppliance($stateParams.id, getOneSuccess, getProduct);
-    
+
         //ON PRODUCT CLICK
-        $scope.toProduct = function(product){
+        $scope.toProduct = function (product) {
             console.log(product);
             $scope.appliance.appliancetype = product;
         }
-        
+
         //ON LOCATION CLICK
-        $scope.selectLocation = function(location){
-            for(var i = 0 ; i < $scope.userlocation.length ; i++){
+        $scope.selectLocation = function (location) {
+            for (var i = 0; i < $scope.userlocation.length; i++) {
                 $scope.userlocation[i].tabactive = "";
             }
             location.tabactive = "activetab";
             $scope.tabvalue = 1;
             $scope.appliance.userlocation = location;
         }
-        
-        var locationSuccess = function (data, status){
+
+        var locationSuccess = function (data, status) {
             console.log(data);
         }
-        $scope.addLocation = function(){
+        $scope.addLocation = function () {
             $scope.location.user = $scope.user.id;
-            Chats.addUserLocation($scope.location,locationSuccess);
+            Chats.addUserLocation($scope.location, locationSuccess);
         }
-        
-        var updateLocationSuccess = function(data, status){
+
+        var updateLocationSuccess = function (data, status) {
             console.log(data);
         }
-        $scope.updateLocation = function(){
+        $scope.updateLocation = function () {
             delete $scope.appliance.userlocation["$$hashKey"];
             delete $scope.appliance.userlocation["tabactive"];
             console.log($scope.appliance.userlocation);
-            
+
             Chats.updateUserLocation($scope.appliance.userlocation, updateLocationSuccess)
         }
-        
-        
+
+
         //UPDATE PURCHASE DETAILS
-        var warrantySuccess = function(data, status){
+        var warrantySuccess = function (data, status) {
             console.log(data);
         }
-        
-        var storeSuccess = function(data, status){
+
+        var storeSuccess = function (data, status) {
             console.log(data);
         }
-        
-        $scope.purchaseDetails = function(){
+
+        $scope.purchaseDetails = function () {
             Chats.updateWarranty($scope.warranty, warrantySuccess);
             Chats.applianceStore($scope.store, storeSuccess);
-            
+
         }
-    
+
         // TAB/HOME/EDIT PAGE END
-    
+
 
         //toggle
-        $scope.changetab = function(tab) {
+        $scope.changetab = function (tab) {
             $scope.tabvalue = tab;
         }
-        var applianceUpdate = function(data, status){
+        var applianceUpdate = function (data, status) {
             console.log(data);
         }
-        $scope.changetab2 = function(tab) {
+        $scope.changetab2 = function (tab) {
             $scope.tabvalue = tab;
             $scope.appliance.appliancetype = $scope.appliance.appliancetype.id;
             $scope.appliance.brand = $scope.appliance.brand.id;
@@ -176,14 +176,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         }
 
         $scope.custom = false;
-        $scope.toggleCustom = function() {
+        $scope.toggleCustom = function () {
             $scope.custom = $scope.custom === false ? true : false;
         };
 
         $scope.tabvalue = 1;
         $scope.showreport = 1;
 
-        $scope.sendtowebsite = function(website) {
+        $scope.sendtowebsite = function (website) {
             console.log(website);
             window.open('http://applions.blogspot.in/?m=1', '_blank');
         }
@@ -213,15 +213,15 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '1',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal1 = modal;
         });
-//jagruti
-        $scope.openedit = function() {
+        //jagruti
+        $scope.openedit = function () {
             $scope.oModal1.show();
         };
 
-        $scope.closeModalss = function() {
+        $scope.closeModalss = function () {
             $scope.oModal1.hide();
         };
 
@@ -230,30 +230,38 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '2',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal2 = modal;
         });
 
-        $scope.openpswd = function() {
-            $scope.oModal2.show();
+        $ionicModal.fromTemplateUrl('templates/showwarranty.html', {
+            id: '20',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal20 = modal;
+        });
+
+        $scope.openwarranty = function () {
+            $scope.oModal20.show();
         };
 
-        $scope.closeModal = function() {
-            $scope.oModal2.hide();
+        $scope.closewarranty = function () {
+            $scope.oModal20.hide();
         };
 
         $ionicModal.fromTemplateUrl('templates/modal-filter.html', {
             id: '3',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal3 = modal;
         });
 
-        $scope.openfilter = function() {
+        $scope.openfilter = function () {
             $scope.oModal3.show();
         }
-        $scope.closefilter = function() {
+        $scope.closefilter = function () {
             $scope.oModal3.hide();
         };
 
@@ -261,14 +269,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '4',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal4 = modal;
         });
 
-        $scope.opensort = function() {
+        $scope.opensort = function () {
             $scope.oModal4.show();
         }
-        $scope.closesort = function() {
+        $scope.closesort = function () {
             $scope.oModal4.hide();
         };
 
@@ -276,14 +284,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '5',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal5 = modal;
         });
 
-        $scope.openarchive = function() {
+        $scope.openarchive = function () {
             $scope.oModal5.show();
         }
-        $scope.closearchive = function() {
+        $scope.closearchive = function () {
             $scope.oModal5.hide();
         };
 
@@ -291,14 +299,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '6',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal6 = modal;
         });
 
-        $scope.opentransfer = function() {
+        $scope.opentransfer = function () {
             $scope.oModal6.show();
         }
-        $scope.closetransfer = function() {
+        $scope.closetransfer = function () {
             $scope.oModal6.hide();
         };
 
@@ -306,14 +314,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '7',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal7 = modal;
         });
 
-        $scope.opendelete = function() {
+        $scope.opendelete = function () {
             $scope.oModal7.show();
         }
-        $scope.closedelete = function() {
+        $scope.closedelete = function () {
             $scope.oModal7.hide();
         };
 
@@ -321,14 +329,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '8',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal8 = modal;
         });
 
-        $scope.openreport = function() {
+        $scope.openreport = function () {
             $scope.oModal8.show();
         }
-        $scope.closereport = function() {
+        $scope.closereport = function () {
             $scope.oModal8.hide();
         };
 
@@ -336,14 +344,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '9',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal9 = modal;
         });
 
-        $scope.opencomponent = function() {
+        $scope.opencomponent = function () {
             $scope.oModal9.show();
         }
-        $scope.closecomponent = function() {
+        $scope.closecomponent = function () {
             $scope.oModal9.hide();
         };
 
@@ -351,312 +359,312 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '10',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal10 = modal;
         });
 
-        $scope.openprevreports = function() {
+        $scope.openprevreports = function () {
             $scope.oModal10.show();
         }
-        $scope.closeprevreports = function() {
+        $scope.closeprevreports = function () {
             $scope.oModal10.hide();
         };
-    
-    $ionicModal.fromTemplateUrl('templates/modal-addservice.html', {
-        id: '11',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal11 = modal;
-    });
 
-    $scope.openaddservice = function () {
-        $scope.oModal11.show();
-    }
-    $scope.closeaddservice = function () {
-        $scope.oModal11.hide();
-    };
-
-    $ionicModal.fromTemplateUrl('templates/modal-viewdetail.html', {
-        id: '12',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal12 = modal;
-    });
-
-    $scope.openviewdetails = function () {
-        $scope.oModal12.show();
-    }
-    $scope.closeviewdetails = function () {
-        $scope.oModal12.hide();
-    };
-
-
-    $ionicModal.fromTemplateUrl('templates/modal-prevreports.html', {
-        id: '12',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal12 = modal;
-    });
-
-    $scope.openprevreports = function () {
-        $scope.oModal12.show();
-    }
-    $scope.closeprevreports = function () {
-        $scope.oModal12.hide();
-    };
-
-    $ionicModal.fromTemplateUrl('templates/modal-sortbyservice.html', {
-        id: '13',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal13 = modal;
-    });
-
-    $scope.opensortservice = function () {
-        $scope.oModal13.show();
-    }
-    $scope.closesortservice = function () {
-        $scope.oModal13.hide();
-    };
-    $ionicModal.fromTemplateUrl('templates/modal-filterservice.html', {
-        id: '14',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal14 = modal;
-    });
-
-    $scope.openfilterservice = function () {
-        $scope.oModal14.show();
-    }
-    $scope.closefilterservice = function () {
-        $scope.oModal14.hide();
-    };
-    $ionicModal.fromTemplateUrl('templates/modal-brand.html', {
-        id: '15',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal15 = modal;
-    });
-
-    $scope.openbrandsearch = function () {
-        $scope.oModal15.show();
-    }
-    $scope.closebrandsearch = function () {
-        $scope.oModal15.hide();
-    };
-    $ionicModal.fromTemplateUrl('templates/modal-product.html', {
-        id: '16',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal16 = modal;
-    });
-
-    $scope.openproductsearch = function () {
-        $scope.oModal16.show();
-    }
-    $scope.closeproductsearch = function () {
-        $scope.oModal16.hide();
-    };
-    $ionicModal.fromTemplateUrl('templates/notification.html', {
-        id: '17',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal17 = modal;
-    });
-
-    $scope.opennotification = function () {
-        $scope.oModal17.show();
-    }
-    $scope.closenotification = function () {
-        $scope.oModal17.hide();
-    };
-
-
-    function save() {
-        var myPopup = $ionicPopup.show({
-            template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Appliance has been update successfully!!</p>',
-            title: 'Alert!',
+        $ionicModal.fromTemplateUrl('templates/modal-addservice.html', {
+            id: '11',
             scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal11 = modal;
         });
-        $timeout(function () {
-            myPopup.close(); //close the popup after 3 seconds for some reason
-        }, 2000);
-    }
-})
 
-    
-.controller('LoginCtrl', function ($scope, $ionicModal, $ionicPopup, $ionicPopup, $timeout, Chats, $location, $cordovaDevice) {
-    
+        $scope.openaddservice = function () {
+            $scope.oModal11.show();
+        }
+        $scope.closeaddservice = function () {
+            $scope.oModal11.hide();
+        };
 
-    $scope.user = [];
+        $ionicModal.fromTemplateUrl('templates/modal-viewdetail.html', {
+            id: '12',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal12 = modal;
+        });
 
-    document.addEventListener("deviceready", function () {
-
-        var device = $cordovaDevice.getDevice();
-
-        var cordova = $cordovaDevice.getCordova();
-
-        var model = $cordovaDevice.getModel();
-
-        var platform = $cordovaDevice.getPlatform();
-
-        var uuid = $cordovaDevice.getUUID();
-
-        var version = $cordovaDevice.getVersion();
-
-        console.log(version);
-
-    }, false);
-
-    $scope.getdiv = function () {
-        console.log($cordovaDevice.getDevice());
-    }
+        $scope.openviewdetails = function () {
+            $scope.oModal12.show();
+        }
+        $scope.closeviewdetails = function () {
+            $scope.oModal12.hide();
+        };
 
 
-    //        if(Chats.authenticate()=="true"){
-    //            $location.url("tab/home");
-    //        }
+        $ionicModal.fromTemplateUrl('templates/modal-prevreports.html', {
+            id: '12',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal12 = modal;
+        });
 
-    var loginsuccess = function (data, status) {
-        if (angular.isObject(data)) {
-            Chats.jstorageUser(data);
-            $location.url("tab/home");
-        } else {
+        $scope.openprevreports = function () {
+            $scope.oModal12.show();
+        }
+        $scope.closeprevreports = function () {
+            $scope.oModal12.hide();
+        };
+
+        $ionicModal.fromTemplateUrl('templates/modal-sortbyservice.html', {
+            id: '13',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal13 = modal;
+        });
+
+        $scope.opensortservice = function () {
+            $scope.oModal13.show();
+        }
+        $scope.closesortservice = function () {
+            $scope.oModal13.hide();
+        };
+        $ionicModal.fromTemplateUrl('templates/modal-filterservice.html', {
+            id: '14',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal14 = modal;
+        });
+
+        $scope.openfilterservice = function () {
+            $scope.oModal14.show();
+        }
+        $scope.closefilterservice = function () {
+            $scope.oModal14.hide();
+        };
+        $ionicModal.fromTemplateUrl('templates/modal-brand.html', {
+            id: '15',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal15 = modal;
+        });
+
+        $scope.openbrandsearch = function () {
+            $scope.oModal15.show();
+        }
+        $scope.closebrandsearch = function () {
+            $scope.oModal15.hide();
+        };
+        $ionicModal.fromTemplateUrl('templates/modal-product.html', {
+            id: '16',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal16 = modal;
+        });
+
+        $scope.openproductsearch = function () {
+            $scope.oModal16.show();
+        }
+        $scope.closeproductsearch = function () {
+            $scope.oModal16.hide();
+        };
+        $ionicModal.fromTemplateUrl('templates/notification.html', {
+            id: '17',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal17 = modal;
+        });
+
+        $scope.opennotification = function () {
+            $scope.oModal17.show();
+        }
+        $scope.closenotification = function () {
+            $scope.oModal17.hide();
+        };
+
+
+        function save() {
             var myPopup = $ionicPopup.show({
-                title: data,
+                template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Appliance has been update successfully!!</p>',
+                title: 'Alert!',
                 scope: $scope,
             });
             $timeout(function () {
                 myPopup.close(); //close the popup after 3 seconds for some reason
-            }, 1500);
+            }, 2000);
         }
-    }
+    })
 
-    $scope.userLogin = function () {
-        console.log($scope.user);
-        Chats.login($scope.user, loginsuccess);
 
-    }
-    
-})
-    .controller('HomeEditCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams) {
-    
-    
-       
-    
+.controller('LoginCtrl', function ($scope, $ionicModal, $ionicPopup, $ionicPopup, $timeout, Chats, $location, $cordovaDevice) {
+
+
+        $scope.user = [];
+
+        document.addEventListener("deviceready", function () {
+
+            var device = $cordovaDevice.getDevice();
+
+            var cordova = $cordovaDevice.getCordova();
+
+            var model = $cordovaDevice.getModel();
+
+            var platform = $cordovaDevice.getPlatform();
+
+            var uuid = $cordovaDevice.getUUID();
+
+            var version = $cordovaDevice.getVersion();
+
+            console.log(version);
+
+        }, false);
+
+        $scope.getdiv = function () {
+            console.log($cordovaDevice.getDevice());
+        }
+
+
+        //        if(Chats.authenticate()=="true"){
+        //            $location.url("tab/home");
+        //        }
+
+        var loginsuccess = function (data, status) {
+            if (angular.isObject(data)) {
+                Chats.jstorageUser(data);
+                $location.url("tab/home");
+            } else {
+                var myPopup = $ionicPopup.show({
+                    title: data,
+                    scope: $scope,
+                });
+                $timeout(function () {
+                    myPopup.close(); //close the popup after 3 seconds for some reason
+                }, 1500);
+            }
+        }
+
+        $scope.userLogin = function () {
+            console.log($scope.user);
+            Chats.login($scope.user, loginsuccess);
+
+        }
+
+    })
+    .controller('HomeEditCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams) {
+
+
+
+
         // TAB/HOME/EDIT PAGE STARt
         $scope.appliance = [];
         $scope.appliancetype = [];
         $scope.userlocation = [];
         $scope.location = [];
-//        $scope.appliance.userlocation = [
-//            {
-//                address: ";MKGLNDG",
-//                country: "5572b34c9c0d63cc03245a7a",
-//                createdAt: "2015-06-22T06:08:02.102Z",
-//                district: ";mfknjk",
-//                id: "5587a642fecc3ff81bd1a435",
-//                name: "aksljdbhk;NKDNLK FSM",
-//                pincode: "45742",
-//                state: "ak;dnlfdng",
-//                updatedAt: "2015-06-22T06:08:02.102Z",
-//                user: "55752e5dfda25b7c09de7c14"    
-//            },{
-//                address: ";MKGLNDG",
-//                country: "5572b34c9c0d63cc03245a7a",
-//                createdAt: "2015-06-22T06:08:02.102Z",
-//                district: ";mfknjk",
-//                id: "5587a642fecc3ff81bd1a435",
-//                name: "Thakurli",
-//                pincode: "45742",
-//                state: "ak;dnlfdng",
-//                updatedAt: "2015-06-22T06:08:02.102Z",
-//                user: "55752e5dfda25b7c09de7c14"    
-//            }
-//        ];
-    
+        //        $scope.appliance.userlocation = [
+        //            {
+        //                address: ";MKGLNDG",
+        //                country: "5572b34c9c0d63cc03245a7a",
+        //                createdAt: "2015-06-22T06:08:02.102Z",
+        //                district: ";mfknjk",
+        //                id: "5587a642fecc3ff81bd1a435",
+        //                name: "aksljdbhk;NKDNLK FSM",
+        //                pincode: "45742",
+        //                state: "ak;dnlfdng",
+        //                updatedAt: "2015-06-22T06:08:02.102Z",
+        //                user: "55752e5dfda25b7c09de7c14"    
+        //            },{
+        //                address: ";MKGLNDG",
+        //                country: "5572b34c9c0d63cc03245a7a",
+        //                createdAt: "2015-06-22T06:08:02.102Z",
+        //                district: ";mfknjk",
+        //                id: "5587a642fecc3ff81bd1a435",
+        //                name: "Thakurli",
+        //                pincode: "45742",
+        //                state: "ak;dnlfdng",
+        //                updatedAt: "2015-06-22T06:08:02.102Z",
+        //                user: "55752e5dfda25b7c09de7c14"    
+        //            }
+        //        ];
+
         //validate user
         $scope.user = Chats.getUser();
-    
+
         // ONE USER
-        var userCallback = function(data, status){
+        var userCallback = function (data, status) {
             console.log("before");
             console.log(data.userlocation);
             $scope.userlocation = data.userlocation;
             console.log("after");
             console.log($scope.appliance.userlocation);
         }
-        Chats.getWholeUser($scope.user.id,userCallback);
-    
+        Chats.getWholeUser($scope.user.id, userCallback);
+
         // ONE APPLIANCE    
-    
-        var getProduct = function (data, status){
+
+        var getProduct = function (data, status) {
             console.log("product");
             console.log(data);
             $scope.appliancetype = data;
         }
-    
-        var getOneSuccess = function (data, status){
+
+        var getOneSuccess = function (data, status) {
             console.log("all appliance");
             console.log(data);
             $scope.appliance = data;
         }
         Chats.getOneAppliance($stateParams.id, getOneSuccess, getProduct);
-    
+
         //ON PRODUCT CLICK
-        $scope.toProduct = function(product){
+        $scope.toProduct = function (product) {
             console.log(product);
             $scope.appliance.appliancetype = product;
         }
-        
+
         //ON LOCATION CLICK
-        $scope.selectLocation = function(location){
-            for(var i = 0 ; i < $scope.userlocation.length ; i++){
+        $scope.selectLocation = function (location) {
+            for (var i = 0; i < $scope.userlocation.length; i++) {
                 $scope.userlocation[i].tabactive = "";
             }
             location.tabactive = "activetab";
             $scope.tabvalue = 1;
             $scope.appliance.userlocation = location;
         }
-        
-        var locationSuccess = function (data, status){
+
+        var locationSuccess = function (data, status) {
             console.log(data);
         }
-        $scope.addLocation = function(){
+        $scope.addLocation = function () {
             $scope.location.user = $scope.user.id;
-            Chats.addUserLocation($scope.location,locationSuccess);
+            Chats.addUserLocation($scope.location, locationSuccess);
         }
-        
-        var updateLocationSuccess = function(data, status){
+
+        var updateLocationSuccess = function (data, status) {
             console.log(data);
         }
-        $scope.updateLocation = function(){
+        $scope.updateLocation = function () {
             delete $scope.appliance.userlocation["$$hashKey"];
             delete $scope.appliance.userlocation["tabactive"];
             console.log($scope.appliance.userlocation);
-            
+
             Chats.updateUserLocation($scope.appliance.userlocation, updateLocationSuccess)
         }
-    
+
         // TAB/HOME/EDIT PAGE END
-    
+
 
         //toggle
-        $scope.changetab = function(tab) {
+        $scope.changetab = function (tab) {
             $scope.tabvalue = tab;
         }
-        var applianceUpdate = function(data, status){
+        var applianceUpdate = function (data, status) {
             console.log(data);
         }
-        $scope.changetab2 = function(tab) {
+        $scope.changetab2 = function (tab) {
             $scope.tabvalue = tab;
             $scope.appliance.appliancetype = $scope.appliance.appliancetype.id;
             $scope.appliance.brand = $scope.appliance.brand.id;
@@ -669,14 +677,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         }
 
         $scope.custom = false;
-        $scope.toggleCustom = function() {
+        $scope.toggleCustom = function () {
             $scope.custom = $scope.custom === false ? true : false;
         };
 
         $scope.tabvalue = 1;
         $scope.showreport = 1;
 
-        $scope.sendtowebsite = function(website) {
+        $scope.sendtowebsite = function (website) {
             console.log(website);
             window.open('http://applions.blogspot.in/?m=1', '_blank');
         }
@@ -706,15 +714,15 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '1',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal1 = modal;
         });
-//jagruti
-        $scope.openedit = function() {
+        //jagruti
+        $scope.openedit = function () {
             $scope.oModal1.show();
         };
 
-        $scope.closeModalss = function() {
+        $scope.closeModalss = function () {
             $scope.oModal1.hide();
         };
 
@@ -723,15 +731,15 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '2',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal2 = modal;
         });
 
-        $scope.openpswd = function() {
+        $scope.openpswd = function () {
             $scope.oModal2.show();
         };
 
-        $scope.closeModal = function() {
+        $scope.closeModal = function () {
             $scope.oModal2.hide();
         };
 
@@ -739,14 +747,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '3',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal3 = modal;
         });
 
-        $scope.openfilter = function() {
+        $scope.openfilter = function () {
             $scope.oModal3.show();
         }
-        $scope.closefilter = function() {
+        $scope.closefilter = function () {
             $scope.oModal3.hide();
         };
 
@@ -754,14 +762,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '4',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal4 = modal;
         });
 
-        $scope.opensort = function() {
+        $scope.opensort = function () {
             $scope.oModal4.show();
         }
-        $scope.closesort = function() {
+        $scope.closesort = function () {
             $scope.oModal4.hide();
         };
 
@@ -769,14 +777,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '5',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal5 = modal;
         });
 
-        $scope.openarchive = function() {
+        $scope.openarchive = function () {
             $scope.oModal5.show();
         }
-        $scope.closearchive = function() {
+        $scope.closearchive = function () {
             $scope.oModal5.hide();
         };
 
@@ -784,14 +792,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '6',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal6 = modal;
         });
 
-        $scope.opentransfer = function() {
+        $scope.opentransfer = function () {
             $scope.oModal6.show();
         }
-        $scope.closetransfer = function() {
+        $scope.closetransfer = function () {
             $scope.oModal6.hide();
         };
 
@@ -799,14 +807,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '7',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal7 = modal;
         });
 
-        $scope.opendelete = function() {
+        $scope.opendelete = function () {
             $scope.oModal7.show();
         }
-        $scope.closedelete = function() {
+        $scope.closedelete = function () {
             $scope.oModal7.hide();
         };
 
@@ -814,14 +822,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '8',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal8 = modal;
         });
 
-        $scope.openreport = function() {
+        $scope.openreport = function () {
             $scope.oModal8.show();
         }
-        $scope.closereport = function() {
+        $scope.closereport = function () {
             $scope.oModal8.hide();
         };
 
@@ -829,14 +837,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '9',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal9 = modal;
         });
 
-        $scope.opencomponent = function() {
+        $scope.opencomponent = function () {
             $scope.oModal9.show();
         }
-        $scope.closecomponent = function() {
+        $scope.closecomponent = function () {
             $scope.oModal9.hide();
         };
 
@@ -844,150 +852,165 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '10',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal10 = modal;
         });
 
-        $scope.openprevreports = function() {
+        $scope.openprevreports = function () {
             $scope.oModal10.show();
         }
-        $scope.closeprevreports = function() {
+        $scope.closeprevreports = function () {
             $scope.oModal10.hide();
         };
-    
-    $ionicModal.fromTemplateUrl('templates/modal-addservice.html', {
-        id: '11',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal11 = modal;
-    });
 
-    $scope.openaddservice = function () {
-        $scope.oModal11.show();
-    }
-    $scope.closeaddservice = function () {
-        $scope.oModal11.hide();
-    };
-
-    $ionicModal.fromTemplateUrl('templates/modal-viewdetail.html', {
-        id: '12',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal12 = modal;
-    });
-
-    $scope.openviewdetails = function () {
-        $scope.oModal12.show();
-    }
-    $scope.closeviewdetails = function () {
-        $scope.oModal12.hide();
-    };
-
-
-    $ionicModal.fromTemplateUrl('templates/modal-prevreports.html', {
-        id: '12',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal12 = modal;
-    });
-
-    $scope.openprevreports = function () {
-        $scope.oModal12.show();
-    }
-    $scope.closeprevreports = function () {
-        $scope.oModal12.hide();
-    };
-
-    $ionicModal.fromTemplateUrl('templates/modal-sortbyservice.html', {
-        id: '13',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal13 = modal;
-    });
-
-    $scope.opensortservice = function () {
-        $scope.oModal13.show();
-    }
-    $scope.closesortservice = function () {
-        $scope.oModal13.hide();
-    };
-    $ionicModal.fromTemplateUrl('templates/modal-filterservice.html', {
-        id: '14',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal14 = modal;
-    });
-
-    $scope.openfilterservice = function () {
-        $scope.oModal14.show();
-    }
-    $scope.closefilterservice = function () {
-        $scope.oModal14.hide();
-    };
-    $ionicModal.fromTemplateUrl('templates/modal-brand.html', {
-        id: '15',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal15 = modal;
-    });
-
-    $scope.openbrandsearch = function () {
-        $scope.oModal15.show();
-    }
-    $scope.closebrandsearch = function () {
-        $scope.oModal15.hide();
-    };
-    $ionicModal.fromTemplateUrl('templates/modal-product.html', {
-        id: '16',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal16 = modal;
-    });
-
-    $scope.openproductsearch = function () {
-        $scope.oModal16.show();
-    }
-    $scope.closeproductsearch = function () {
-        $scope.oModal16.hide();
-    };
-    $ionicModal.fromTemplateUrl('templates/notification.html', {
-        id: '17',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.oModal17 = modal;
-    });
-
-    $scope.opennotification = function () {
-        $scope.oModal17.show();
-    }
-    $scope.closenotification = function () {
-        $scope.oModal17.hide();
-    };
-
-
-    function save() {
-        var myPopup = $ionicPopup.show({
-            template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Appliance has been update successfully!!</p>',
-            title: 'Alert!',
+        $ionicModal.fromTemplateUrl('templates/modal-addservice.html', {
+            id: '11',
             scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal11 = modal;
         });
-        $timeout(function () {
-            myPopup.close(); //close the popup after 3 seconds for some reason
-        }, 2000);
-    }
-})
 
-    
+        $scope.openaddservice = function () {
+            $scope.oModal11.show();
+        }
+        $scope.closeaddservice = function () {
+            $scope.oModal11.hide();
+        };
+
+        $ionicModal.fromTemplateUrl('templates/modal-viewdetail.html', {
+            id: '12',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal12 = modal;
+        });
+
+        $scope.openviewdetails = function () {
+            $scope.oModal12.show();
+        }
+        $scope.closeviewdetails = function () {
+            $scope.oModal12.hide();
+        };
+
+
+        $ionicModal.fromTemplateUrl('templates/modal-prevreports.html', {
+            id: '12',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal12 = modal;
+        });
+
+        $scope.openprevreports = function () {
+            $scope.oModal12.show();
+        }
+        $scope.closeprevreports = function () {
+            $scope.oModal12.hide();
+        };
+
+        $ionicModal.fromTemplateUrl('templates/modal-sortbyservice.html', {
+            id: '13',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal13 = modal;
+        });
+
+        $scope.opensortservice = function () {
+            $scope.oModal13.show();
+        }
+        $scope.closesortservice = function () {
+            $scope.oModal13.hide();
+        };
+        $ionicModal.fromTemplateUrl('templates/modal-filterservice.html', {
+            id: '14',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal14 = modal;
+        });
+
+        $scope.openfilterservice = function () {
+            $scope.oModal14.show();
+        }
+        $scope.closefilterservice = function () {
+            $scope.oModal14.hide();
+        };
+        $ionicModal.fromTemplateUrl('templates/modal-brand.html', {
+            id: '15',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal15 = modal;
+        });
+
+        $scope.openbrandsearch = function () {
+            $scope.oModal15.show();
+        }
+        $scope.closebrandsearch = function () {
+            $scope.oModal15.hide();
+        };
+        $ionicModal.fromTemplateUrl('templates/modal-product.html', {
+            id: '16',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal16 = modal;
+        });
+
+        $scope.openproductsearch = function () {
+            $scope.oModal16.show();
+        }
+        $scope.closeproductsearch = function () {
+            $scope.oModal16.hide();
+        };
+        $ionicModal.fromTemplateUrl('templates/notification.html', {
+            id: '17',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal17 = modal;
+        });
+
+        $scope.opennotification = function () {
+            $scope.oModal17.show();
+        }
+        $scope.closenotification = function () {
+            $scope.oModal17.hide();
+        };
+
+        $ionicModal.fromTemplateUrl('templates/showwarranty.html', {
+            id: '20',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal20 = modal;
+        });
+
+        $scope.openwarranty = function () {
+            $scope.oModal20.show();
+        };
+
+        $scope.closewarranty = function () {
+            $scope.oModal20.hide();
+        };
+
+        function save() {
+            var myPopup = $ionicPopup.show({
+                template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Appliance has been update successfully!!</p>',
+                title: 'Alert!',
+                scope: $scope,
+            });
+            $timeout(function () {
+                myPopup.close(); //close the popup after 3 seconds for some reason
+            }, 2000);
+        }
+    })
+
+
 .controller('LoginCtrl', function ($scope, $ionicModal, $ionicPopup, $ionicPopup, $timeout, Chats, $location, $cordovaDevice) {
-    
+
 
     $scope.user = [];
 
@@ -1113,8 +1136,8 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     }
     $scope.closefeedback = function () {
         $scope.oModal4.hide();
-    };  
-    
+    };
+
     $ionicModal.fromTemplateUrl('templates/modal-existing.html', {
         id: '5',
         scope: $scope,
