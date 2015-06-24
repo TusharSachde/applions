@@ -1,27 +1,56 @@
 <ion-modal-view class="bg-transfer">
     <ion-header-bar class="bar-balanced" align-title="center">
         <h1 class="title">Call Report</h1>
+        <div class="buttons button-right">
+            <button class="button button-clear" ng-click="closecallreport();">Close</button>
+        </div>
     </ion-header-bar>
     <ion-content>
-        <div class="card">
-closecallreport
+        <div class="row">
+            <div class="col head">Call Date</div>
+            <div class="col">29th Janauary 2015</div>
         </div>
-
-        <div class="cont-archive">
-            <p> You can transfer this appliance to other user through this process. Once you transfer this applicance will move from your account to the transferee's account.</p>
-            <div class="list">
-                <label class="item item-input">
-                    <span class="input-label">Transfer To*</span>
-                    <input type="text" placeholder="Name of transferee" required>
-                </label>
-                <label class="item item-input">
-                    <span class="input-label">Email Id*</span>
-                    <input type="text" placeholder="Transferee's Email Id" requried>
-                </label>
-            </div>
-            <div class="button-bar">
-                <button class="button button-balanced button-outline" ng-click="closetransfer();">Transfer</button>
-            </div>
+        <div class="row">
+            <div class="col head">Call Time</div>
+            <div class="col">6.15 pm</div>
+        </div>
+        <div class="row">
+            <div class="col head">Call Duration</div>
+            <div class="col">23 Minutes</div>
+        </div>
+        <div class="row">
+            <div class="col head">Call Type</div>
+            <div class="col">Phone Call</div>
+        </div>
+        <div class="row">
+            <div class="col head">Called To</div>
+            <div class="col">Samsung Call Center</div>
+        </div>
+        <div class="list">
+            <label class="item item-input">
+                <span class="input-label">Spoken To</span>
+                <input type="email" placeholder="Name of Person">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Discussions</span>
+                <textarea placeholder="Enter your call Details">
+                </textarea>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Rating</span>
+                <div class="stars">
+                    <i class="ion-android-star actived"></i>
+                    <i class="ion-android-star"></i>
+                    <i class="ion-android-star"></i>
+                    <i class="ion-android-star"></i>
+                    <i class="ion-android-star"></i>
+                </div>
+            </label>
+        </div>
+        <div class="padding-horizontal">
+            <button class="button button-balanced button-block">
+                Submit
+            </button>
         </div>
     </ion-content>
 </ion-modal-view>

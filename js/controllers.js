@@ -32,7 +32,21 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         Chats.getAppliance(applianceSuccess);
 
         // TAB/HOME PAGE END
+        $ionicModal.fromTemplateUrl('templates/modal-callreport.html', {
+            id: '18',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal18 = modal;
+        });
 
+        $scope.opencallreport = function () {
+            $scope.oModal18.show();
+        };
+
+        $scope.closecallreport = function () {
+            $scope.oModal18.hide();
+        };
         $ionicModal.fromTemplateUrl('templates/modal-sortby.html', {
             id: '4',
             scope: $scope,
@@ -108,7 +122,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.closesortservice = function () {
             $scope.oModal13.hide();
         };
-    
+
         $ionicModal.fromTemplateUrl('templates/modal-addservice.html', {
             id: '11',
             scope: $scope,
@@ -545,8 +559,8 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.closenotification = function () {
             $scope.oModal17.hide();
         };
-    
-     $ionicModal.fromTemplateUrl('templates/modal-callreport.html', {
+
+        $ionicModal.fromTemplateUrl('templates/modal-callreport.html', {
             id: '18',
             scope: $scope,
             animation: 'slide-in-up'

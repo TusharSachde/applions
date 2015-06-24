@@ -1049,3 +1049,11 @@ ion-item.item label.checkboxs {
 {
     margin-bottom: 10px;
 }
+.col.head {
+  padding-left: 10px;
+  font-weight: 600;
+}
+.stars {
+  font-size: 20px;
+  color: #C1C1C1;
+}
