@@ -61,21 +61,21 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     $scope.closefilter = function() {
         $scope.oModal3.hide();
     };
-      $ionicModal.fromTemplateUrl('templates/modal-callreport.html', {
-            id: '18',
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function (modal) {
-            $scope.oModal18 = modal;
-        });
+    $ionicModal.fromTemplateUrl('templates/modal-callreport.html', {
+        id: '18',
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.oModal18 = modal;
+    });
 
-        $scope.opencallreport = function () {
-            $scope.oModal18.show();
-        };
+    $scope.opencallreport = function() {
+        $scope.oModal18.show();
+    };
 
-        $scope.closecallreport = function () {
-            $scope.oModal18.hide();
-        };
+    $scope.closecallreport = function() {
+        $scope.oModal18.hide();
+    };
 
 })
     .controller('HomeEditCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams, $cordovaImagePicker, $cordovaFileTransfer) {
@@ -123,9 +123,6 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.user = Chats.getUser();
 
         // ONE USERa.userlocation;
-            console.log("after");
-            console.log($scope.appliance.userlocation);
-        }
         Chats.getWholeUser(function(data, status) {
             console.log("before");
             console.log(data.userlocation);
@@ -226,7 +223,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 }
             });
         }
-        
+
         $scope.saveAdditionalWarranty = function() {
             $scope.additionalwarranty.appliance = $scope.appliance.id;
             console.log($scope.additionalwarranty);
@@ -252,7 +249,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             Chats.updateComponentWarranty($scope.componentobj, function(data, status) {
                 if (data) {
                     $scope.oModal21.hide();
-                }else{
+                } else {
                     var myPopup = $ionicPopup.show({
                         title: "Fail to Update Component Warranty",
                         scope: $scope,
@@ -263,14 +260,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 }
             });
         }
-        
-        $scope.editAdditionalWarranty = function () {
+
+        $scope.editAdditionalWarranty = function() {
             $scope.warrantyobj.appliance = $scope.appliance.id;
-            Chats.updateAddtionalWarranty($scope.warrantyobj, function (data, status){
+            Chats.updateAddtionalWarranty($scope.warrantyobj, function(data, status) {
                 console.log(data);
-                if(data){
+                if (data) {
                     $scope.oModal20.hide();
-                }else{
+                } else {
                     var myPopup = $ionicPopup.show({
                         title: "Fail to Update Component Warranty",
                         scope: $scope,
@@ -440,7 +437,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         $scope.openwarranty = function(warranty) {
             $scope.warrantyobj = warranty;
-//            $scope.warrantyobj.end = moment('2014-11-30 ').subtract(1, 'months').endOf('month').format('YYYY-MM-DD');
+            //            $scope.warrantyobj.end = moment('2014-11-30 ').subtract(1, 'months').endOf('month').format('YYYY-MM-DD');
             $scope.oModal20.show();
         };
 
@@ -1262,13 +1259,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     }
 })
 
-.controller('ProfileCtrl', function($scope, $ionicPopover, $ionicModal, Chats) {
+.controller('ProfileCtrl', function($scope, $ionicPopover, $ionicModal, Chats, $ionicPopup, $timeout) {
 
     //DEVELOPMENT STARTS
 
     $scope.profile = [];
     $scope.password = [];
     $scope.country = [];
+    $scope.feedback = [];
 
     //GETCOUNTRY-------------------------
 
@@ -1281,14 +1279,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     Chats.getProfileJson(function(data, status) {
         console.log(data);
         $scope.profile = data;
+        $scope.feedback.email = data.email;
+        $scope.feedback.name = data.name;
+        $scope.feedback.id = data.id;
         $scope.profile.dob = new Date($scope.profile.dob);
     });
 
     //UPDATE PROFILE-----------------------
 
-    var userUpdateSuccess = function(data, status) {
-        console.log(data);
-    }
     $scope.updateProfile = function() {
         $scope.allvalidation = [{
             field: $scope.profile.email,
@@ -1297,7 +1295,25 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         var check = formvalidation($scope.allvalidation);
         if (check) {
             console.log("validate");
-            Chats.updateUser($scope.profile, userUpdateSuccess);
+            Chats.updateUser($scope.profile, function(data, status) {
+                if (data) {
+                    var myPopup = $ionicPopup.show({
+                        title: "Profile Updated",
+                        scope: $scope,
+                    });
+                    $timeout(function() {
+                        myPopup.close(); //close the popup after 3 seconds for some reason
+                    }, 1500);
+                } else {
+                    var myPopup = $ionicPopup.show({
+                        title: "Enable To Update",
+                        scope: $scope,
+                    });
+                    $timeout(function() {
+                        myPopup.close(); //close the popup after 3 seconds for some reason
+                    }, 1500);
+                }
+            });
 
         }
     }
@@ -1320,19 +1336,66 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             if ($scope.password.editpassword === $scope.password.confpassword) {
                 $scope.password.id = Chats.getUser().id;
                 Chats.changePassword($scope.password, function(data, status) {
-                    console.log(data);
+                    if (data) {
+                        var myPopup = $ionicPopup.show({
+                            title: "Feedback send Successfully",
+                            scope: $scope,
+                        });
+                    } else {
+                        var myPopup = $ionicPopup.show({
+                            title: "Enable to Send",
+                            scope: $scope,
+                        });
+                    }
+                    $timeout(function() {
+                        myPopup.close(); //close the popup after 3 seconds for some reason
+                    }, 1500);
                 });
-            } else {
+            }else{
                 var myPopup = $ionicPopup.show({
-                    title: "",
-                    scope: $scope,
-                });
-                $timeout(function() {
-                    myPopup.close(); //close the popup after 3 seconds for some reason
-                }, 1500);
+                        title: "New password And Retype Password Should Be same",
+                        scope: $scope,
+                    });
+                    $timeout(function() {
+                        myPopup.close(); //close the popup after 3 seconds for some reason
+                    }, 1500);
             }
-
         }
+    }
+
+    //SEND FEED BACK----------------------
+    $scope.sendFeedback = function() {
+
+        $scope.allvalidation = [{
+            field: $scope.feedback.name,
+            validation: ""
+        }, {
+            field: $scope.feedback.feedback,
+            validation: ""
+        }];
+        var check = formvalidation($scope.allvalidation);
+        if (check) {
+            Chats.sendFeedback($scope.feedback, function(data, status) {
+                if (data) {
+                    var myPopup = $ionicPopup.show({
+                        title: "Feedback send Successfully",
+                        scope: $scope,
+                    });
+                    $timeout(function() {
+                        myPopup.close(); //close the popup after 3 seconds for some reason
+                    }, 1500);
+                } else {
+                    var myPopup = $ionicPopup.show({
+                        title: "Enable to Send",
+                        scope: $scope,
+                    });
+                    $timeout(function() {
+                        myPopup.close(); //close the popup after 3 seconds for some reason
+                    }, 1500);
+                }
+            });
+        }
+
     }
 
     //DEVELOPMENT ENDS

@@ -149,6 +149,19 @@ angular.module('starter.services', [])
             }).success(callback);
             
         },
+        sendFeedback: function(data, callback) {
+            $http({
+                url: adminurl + "feedback/createfeed",
+                method: "POST",
+                data: {
+                    "id":data.id,
+                    "name":data.name,
+                    "email":data.email,
+                    "feedback":data.feedback
+                }
+            }).success(callback);
+            
+        },
         updateUserLocation: function(data, callback) {
             $http.get(adminurl + "userlocation/updatelocation", {
                 params: data
@@ -186,7 +199,11 @@ angular.module('starter.services', [])
             $http.get(adminurl + "user?id=" + $.jStorage.get('user').id, {}).success(callback);
         },
         updateUser: function(data,callback) {
-            $http.post("json/profile.json", data).success(callback);
+            delete data.userlocation;
+            delete data.password;
+            data.country = data.country.id;
+            console.log(data);
+            $http.post(adminurl + "user/updateuser", data).success(callback);
         },
         getCountry: function(callback) {
             $http.post("json/country.json").success(callback);

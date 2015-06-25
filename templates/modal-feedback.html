@@ -8,20 +8,20 @@
     <ion-content>
         <div class="list">
             <label class="item item-input">
-                <span class="input-label">Email Id</span>
-                <input type="text" value="applions@gmail.com" disabled>
+                <span class="input-label">Email Id *</span>
+                <input type="text" value="applions@gmail.com" ng-model="feedback.email" disabled>
             </label>
-            <label class="item item-input">
-                <span class="input-label">Name</span>
-                <input type="text">
+            <label class="item item-input" ng-class="allvalidation[0].validation">
+                <span class="input-label">Name *</span>
+                <input type="text" ng-model="feedback.name">
             </label>
-            <label class="item item-input">
-                <span class="input-label">Feedback</span>
-                <textarea>
+            <label class="item item-input" ng-class="allvalidation[1].validation">
+                <span class="input-label">Feedback *</span>
+                <textarea ng-model="feedback.feedback">
                 </textarea>
             </label>
         </div>
-        <div class="padding-horizontal">
+        <div class="padding-horizontal" ng-click="sendFeedback()">
             <button class="button button-assertive button-block">Submit</button>
         </div>
     </ion-content>
