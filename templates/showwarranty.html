@@ -20,29 +20,28 @@
             </label>
             <label class="item item-input">
                 <span class="input-label">Start Date*</span>
-                <input type="date" required>
+                <input type="date" ng-model="warrantyobj.purchasedate" required>
             </label>
             <label class="item item-input">
-                <span class="input-label">Cover Period*</span>
-                <input type="text" required>
-            </label>
-                 <label class="item item-input">
                 <span class="input-label">Cover Period* (months)</span>
-                <input type="text" required="">
+                <input type="text" ng-model="warrantyobj.period" required>
+            </label>
+            <label class="item item-divider">
+                Cover Includes
             </label>
             <ion-item class="item">
                 <label class="checkboxs pad-btm">
-                    <input type="checkbox" value="on"> Visit Fees
+                    <input type="checkbox" value="visit free"> Visit Free
                 </label>
                 <label class="checkboxs pad-btm">
-                    <input type="checkbox" value="on"> Services
+                    <input type="checkbox" value="services"> Services
                 </label>
 
                 <label class="checkboxs">
-                    <input type="checkbox" value="on"> Parts
+                    <input type="checkbox" value="parts"> Parts
                 </label>
                 <label class="checkboxs">
-                    <input type="checkbox" value="on"> Others
+                    <input type="checkbox" value="others"> Others
                 </label>
             </ion-item>
             <label class="item item-input">

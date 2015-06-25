@@ -76,7 +76,8 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.componentobj = [];
         $scope.componentobj.startdate = new Date();
         $scope.compwarranty = [];
-    
+        $scope.warrantyobj = [];
+
         //        $scope.appliance.userlocation = [
         //            {
         //                address: ";MKGLNDG",
@@ -129,7 +130,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             console.log(data);
             $scope.appliance = data;
             $scope.warranty = data.warranty[data.warranty.length - 1];
-//            console.log($scope.warranty);
+            //            console.log($scope.warranty);
             $scope.warranty.purchasedate = new Date($scope.warranty.purchasedate);
             $scope.store.appliance = data.id;
             $scope.store = data.store;
@@ -190,15 +191,45 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         }
 
-        var componentSuccess = function(data, status){
-            console.log(data);
-        }
-        $scope.saveComponentWarranty = function(){
+
+        $scope.saveComponentWarranty = function() {
             console.log($scope.compwarranty);
             $scope.compwarranty.startdate = new Date($scope.compwarranty.startdate);
-            Chats.addComponentWarranty($scope.compwarranty,componentSuccess);
+            Chats.addComponentWarranty($scope.compwarranty, function(data, status) {
+                if (data) {
+                    $scope.oModal9.hide();
+                } else {
+                    var myPopup = $ionicPopup.show({
+                        title: "Fail to Add Component Warranty",
+                        scope: $scope,
+                    });
+                    $timeout(function() {
+                        myPopup.close(); //close the popup after 3 seconds for some reason
+                    }, 1500);
+                }
+            });
         }
-        
+
+
+        //EDIT COMPONENT WARRANTY
+        $scope.editComponentWarranty = function() {
+            $scope.componentobj.appliance = $scope.appliance.id;
+            Chats.updateComponentWarranty($scope.componentobj, function(data, status) {
+                console.log(data);
+                if (data) {
+                    $scope.oModal21.hide();
+                }else{
+                    var myPopup = $ionicPopup.show({
+                        title: "Fail to Update Component Warranty",
+                        scope: $scope,
+                    });
+                    $timeout(function() {
+                        myPopup.close(); //close the popup after 3 seconds for some reason
+                    }, 1500);
+                }
+            });
+        }
+
         // TAB/HOME/EDIT PAGE END
 
 
@@ -355,7 +386,9 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             $scope.oModal20 = modal;
         });
 
-        $scope.openwarranty = function() {
+        $scope.openwarranty = function(warranty) {
+            $scope.warrantyobj = warranty;
+            console.log(warranty);
             $scope.oModal20.show();
         };
 
@@ -1178,33 +1211,33 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 })
 
 .controller('ProfileCtrl', function($scope, $ionicPopover, $ionicModal, Chats) {
-    
-//DEVELOPMENT STARTS
-    
+
+    //DEVELOPMENT STARTS
+
     $scope.profile = [];
     $scope.password = [];
     $scope.country = [];
-    
+
     //GETCOUNTRY-------------------------
-    
-    Chats.getCountry(function(data, status){
+
+    Chats.getCountry(function(data, status) {
         $scope.country = data;
     });
-    
+
     //GET USER DATA-----------------------);
-    
-    Chats.getProfileJson(3,function(data, status){
+
+    Chats.getProfileJson(function(data, status) {
         console.log(data);
         $scope.profile = data;
         $scope.profile.dob = new Date($scope.profile.dob);
     });
-    
+
     //UPDATE PROFILE-----------------------
-    
-    var userUpdateSuccess = function (data, status){
+
+    var userUpdateSuccess = function(data, status) {
         console.log(data);
     }
-    $scope.updateProfile = function(){
+    $scope.updateProfile = function() {
         $scope.allvalidation = [{
             field: $scope.profile.email,
             validation: ""
@@ -1216,32 +1249,31 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         }
     }
-    
+
     //CHANGE PASSWORD--------------------
-    
-    $scope.changePassword = function () {
+
+    $scope.changePassword = function() {
         $scope.allvalidation = [{
             field: $scope.password.password,
             validation: ""
-        },{
+        }, {
             field: $scope.password.editpassword,
             validation: ""
-        },{
+        }, {
             field: $scope.password.confpassword,
             validation: ""
         }];
         var check = formvalidation($scope.allvalidation);
         if (check) {
-            if($scope.password.editpassword === $scope.password.confpassword)
-            {
+            if ($scope.password.editpassword === $scope.password.confpassword) {
                 $scope.password.id = Chats.getUser().id;
-                Chats.changePassword($scope.password, function(data, status){
+                Chats.changePassword($scope.password, function(data, status) {
                     console.log(data);
                 });
-            }else{
+            } else {
                 var myPopup = $ionicPopup.show({
-                title: "",
-                scope: $scope,
+                    title: "",
+                    scope: $scope,
                 });
                 $timeout(function() {
                     myPopup.close(); //close the popup after 3 seconds for some reason
@@ -1250,10 +1282,10 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         }
     }
-    
-//DEVELOPMENT ENDS
-    
-    
+
+    //DEVELOPMENT ENDS
+
+
     $ionicPopover.fromTemplateUrl('templates/profile-popover.html', {
         scope: $scope
     }).then(function(popover) {

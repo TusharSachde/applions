@@ -70,6 +70,7 @@ angular.module('starter.services', [])
             $http.get(adminurl + "user/login?email=" + user.email + "&password=" + user.password, {}).success(callback);
         },
         getOneAppliance: function(id, callback, callback2) {
+//            $http.post("json/appliance.json").success(callback);
             $http.get(adminurl + "appliance?id=" + id, {}).success(callback);
             $http.get(adminurl + "appliancetype", {}).success(callback2);
         },
@@ -77,8 +78,7 @@ angular.module('starter.services', [])
             $http.get(adminurl + "user?id=" + id, {}).success(callback);
         },
         updateAppliance: function(data, callback) {
-
-            $http.put(adminurl + "appliance/" + data.id, data).success(callback);
+            $http.post(adminurl + "appliance/updateappliance", data).success(callback);
         },
         searchProduct: function(data, callback) {
             $http.post(adminurl + "appliancetype/searchproduct", {
@@ -98,23 +98,33 @@ angular.module('starter.services', [])
                 "id": data.id
             }).success(callback);
         },
+        updateComponentWarranty: function(data, callback) {
+            delete data.$$hashKey;
+            delete data.createdAt;
+            delete data.updatedAt;
+            console.log(data);
+            $http.post(adminurl + "componentwarranty/updatecomponent", data).success(callback);
+        },
         addUserLocation: function(data, callback) {
             $http.get(adminurl + "userlocation/addlocation", {
                 params: data
             }).success(callback);
         },
         addComponentWarranty: function(data, callback) {
-            console.log(data);
-            $http.get(adminurl + "componentwarranty/createcw", {
-                params: data
+            $http({
+                url: adminurl + "componentwarranty/createcw",
+                method: "POST",
+                data: {
+                    "appliance":data.appliance,
+                    "component":data.component,
+                    "serial":data.serial,
+                    "startdate":data.startdate,
+                    "warrantyperiod":data.warrantyperiod
+                }
             }).success(callback);
+            
         },
         updateUserLocation: function(data, callback) {
-            $http.get(adminurl + "userlocation/updatelocation", {
-                params: data
-            }).success(callback);
-        },
-        updateComponentWarranty: function(data, callback) {
             $http.get(adminurl + "userlocation/updatelocation", {
                 params: data
             }).success(callback);
@@ -146,8 +156,9 @@ angular.module('starter.services', [])
         getmybrands: function(data,callback) {
             $http.post("json/brands.json", data).success(callback);
         },
-        getProfileJson: function(data,callback) {
-            $http.post("json/profile.json", data).success(callback);
+        getProfileJson: function(callback) {
+//            $http.get("json/profile.json", data).success(callback);
+            $http.get(adminurl + "user?id=" + $.jStorage.get('user').id, {}).success(callback);
         },
         updateUser: function(data,callback) {
             $http.post("json/profile.json", data).success(callback);

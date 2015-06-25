@@ -234,22 +234,10 @@
                 <div class="item product-wrnnty">
                     Additional Warranty / AMC
                 </div>
-                <ion-item ng-click="openwarranty()">
-                    Bill No Form
+                <ion-item ng-click="openwarranty(warranty)" ng-repeat="warranty in appliance.warranty">
+                    {{warranty.billno}}
                     <span class="item-note">
-                      13456
-                    </span>
-                </ion-item>
-                <ion-item ng-click="openwarranty()">
-                    Bill No Form
-                    <span class="item-note">
-                      13456
-                    </span>
-                </ion-item>
-                <ion-item ng-click="openwarranty()">
-                    Bill No Form
-                    <span class="item-note">
-                      13456
+                      
                     </span>
                 </ion-item>
                 <!--            </div>-->
