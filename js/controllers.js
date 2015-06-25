@@ -61,7 +61,21 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     $scope.closefilter = function() {
         $scope.oModal3.hide();
     };
+      $ionicModal.fromTemplateUrl('templates/modal-callreport.html', {
+            id: '18',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal18 = modal;
+        });
 
+        $scope.opencallreport = function () {
+            $scope.oModal18.show();
+        };
+
+        $scope.closecallreport = function () {
+            $scope.oModal18.hide();
+        };
 
 })
     .controller('HomeEditCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams, $cordovaImagePicker, $cordovaFileTransfer) {
