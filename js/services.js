@@ -86,9 +86,11 @@ angular.module('starter.services', [])
             }).success(callback);
         },
         applianceStore: function(data, callback) {
-            delete data.createdAt;
-            delete data.updatedAt;
-            delete data.id;
+//            if(data.createdAt){
+//                delete data.createdAt;
+//                delete data.updatedAt;
+//                delete data.id;
+//            }
             $http.post(adminurl + "store/createstore", data).success(callback);
         },
         updateWarranty: function(data, callback) {
@@ -105,6 +107,13 @@ angular.module('starter.services', [])
             console.log(data);
             $http.post(adminurl + "componentwarranty/updatecomponent", data).success(callback);
         },
+        updateAddtionalWarranty: function(data, callback) {
+            delete data.$$hashKey;
+            delete data.createdAt;
+            delete data.updatedAt;
+            console.log(data);
+            $http.post(adminurl + "warranty/updatewarranty", data).success(callback);
+        },
         addUserLocation: function(data, callback) {
             $http.get(adminurl + "userlocation/addlocation", {
                 params: data
@@ -120,6 +129,22 @@ angular.module('starter.services', [])
                     "serial":data.serial,
                     "startdate":data.startdate,
                     "warrantyperiod":data.warrantyperiod
+                }
+            }).success(callback);
+            
+        },
+        addAdditionalWarranty: function(data, callback) {
+            $http({
+                url: adminurl + "warranty/createwarranty",
+                method: "POST",
+                data: {
+                    "appliance":data.appliance,
+                    "billno":data.billno,
+                    "contact":data.contact,
+                    "period":data.period,
+                    "purchasedate":data.purchasedate,
+                    "purchasedfrom":data.purchasedfrom,
+                    "purchaseprice":data.purchaseprice
                 }
             }).success(callback);
             

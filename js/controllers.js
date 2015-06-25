@@ -77,6 +77,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.componentobj.startdate = new Date();
         $scope.compwarranty = [];
         $scope.warrantyobj = [];
+        $scope.additionalwarranty = [];
 
         //        $scope.appliance.userlocation = [
         //            {
@@ -209,15 +210,50 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 }
             });
         }
+        
+        $scope.saveAdditionalWarranty = function() {
+            $scope.additionalwarranty.appliance = $scope.appliance.id;
+            console.log($scope.additionalwarranty);
+            Chats.addAdditionalWarranty($scope.additionalwarranty, function(data, status) {
+                if (data) {
+                    $scope.oModal9.hide();
+                } else {
+                    var myPopup = $ionicPopup.show({
+                        title: "Fail to Add Component Warranty",
+                        scope: $scope,
+                    });
+                    $timeout(function() {
+                        myPopup.close(); //close the popup after 3 seconds for some reason
+                    }, 1500);
+                }
+            });
+        }
 
 
         //EDIT COMPONENT WARRANTY
         $scope.editComponentWarranty = function() {
             $scope.componentobj.appliance = $scope.appliance.id;
             Chats.updateComponentWarranty($scope.componentobj, function(data, status) {
-                console.log(data);
                 if (data) {
                     $scope.oModal21.hide();
+                }else{
+                    var myPopup = $ionicPopup.show({
+                        title: "Fail to Update Component Warranty",
+                        scope: $scope,
+                    });
+                    $timeout(function() {
+                        myPopup.close(); //close the popup after 3 seconds for some reason
+                    }, 1500);
+                }
+            });
+        }
+        
+        $scope.editAdditionalWarranty = function () {
+            $scope.warrantyobj.appliance = $scope.appliance.id;
+            Chats.updateAddtionalWarranty($scope.warrantyobj, function (data, status){
+                console.log(data);
+                if(data){
+                    $scope.oModal20.hide();
                 }else{
                     var myPopup = $ionicPopup.show({
                         title: "Fail to Update Component Warranty",
@@ -388,7 +424,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         $scope.openwarranty = function(warranty) {
             $scope.warrantyobj = warranty;
-            console.log(warranty);
+//            $scope.warrantyobj.end = moment('2014-11-30 ').subtract(1, 'months').endOf('month').format('YYYY-MM-DD');
             $scope.oModal20.show();
         };
 
