@@ -133,7 +133,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         // ONE APPLIANCE    
 
-        var getProduct = function(data, status) {
+        var getProductSuccess = function(data, status) {
             console.log("product");
             console.log(data);
             $scope.appliancetype = data;
@@ -152,7 +152,13 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             console.log($scope.compwarranty);
             $scope.store.purchaseprice = data.purchaseprice;
         }
-        Chats.getOneAppliance($stateParams.id, getOneSuccess, getProduct);
+        Chats.getOneAppliance($stateParams.id, getOneSuccess);
+    
+        function updateApp(){
+            Chats.getOneAppliance($stateParams.id, getOneSuccess);
+        }
+    
+        Chats.getProduct(getProductSuccess);
 
         //ON PRODUCT CLICK
         $scope.toProduct = function(product) {
@@ -193,6 +199,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         //UPDATE PURCHASE DETAILS
         var warrantySuccess = function(data, status) {
             console.log(data);
+            updateApp();
         }
 
         var storeSuccess = function(data, status) {
@@ -211,6 +218,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             $scope.compwarranty.startdate = new Date($scope.compwarranty.startdate);
             Chats.addComponentWarranty($scope.compwarranty, function(data, status) {
                 if (data) {
+                    updateApp();
                     $scope.oModal9.hide();
                 } else {
                     var myPopup = $ionicPopup.show({
@@ -229,6 +237,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             console.log($scope.additionalwarranty);
             Chats.addAdditionalWarranty($scope.additionalwarranty, function(data, status) {
                 if (data) {
+                    updateApp();
                     $scope.oModal9.hide();
                 } else {
                     var myPopup = $ionicPopup.show({
@@ -248,6 +257,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             $scope.componentobj.appliance = $scope.appliance.id;
             Chats.updateComponentWarranty($scope.componentobj, function(data, status) {
                 if (data) {
+                    updateApp();
                     $scope.oModal21.hide();
                 } else {
                     var myPopup = $ionicPopup.show({
@@ -266,6 +276,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             Chats.updateAddtionalWarranty($scope.warrantyobj, function(data, status) {
                 console.log(data);
                 if (data) {
+                    updateApp();
                     $scope.oModal20.hide();
                 } else {
                     var myPopup = $ionicPopup.show({
@@ -298,6 +309,44 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             $scope.appliance.userlocation = $scope.appliance.userlocation.id;
             $scope.appliance.warranty = $scope.appliance.warranty.id;
             console.log($scope.appliance);
+
+//            $scope.allvalidation = [{
+//                field: $scope.appliance.appliancetype.name,
+//                validation: ""
+//            }, {
+//                field: $scope.appliance.name,
+//                validation: ""
+//            }, {
+//                field: $scope.appliance.userlocation.name,
+//                validation: ""
+//            }];
+//            var check = formvalidation($scope.allvalidation);
+//            if (check) {
+//                console.log("validate");
+//                Chats.updateAppliance($scope.appliance, function(data, status) {
+//                    if (data) {
+//                        var myPopup = $ionicPopup.show({
+//                            title: "Appliance Updated",
+//                            scope: $scope,
+//                        });
+//                        $timeout(function() {
+//                            myPopup.close(); //close the popup after 3 seconds for some reason
+//                        }, 1500);
+////                        $scope.tabvalue = tab;
+//                    } else {
+//                        var myPopup = $ionicPopup.show({
+//                            title: "Enable To Update",
+//                            scope: $scope,
+//                        });
+//                        $timeout(function() {
+//                            myPopup.close(); //close the popup after 3 seconds for some reason
+//                        }, 1500);
+//                    }
+//                });
+//
+//            }
+
+
             Chats.updateAppliance($scope.appliance, applianceUpdate);
         }
 
@@ -1351,14 +1400,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                         myPopup.close(); //close the popup after 3 seconds for some reason
                     }, 1500);
                 });
-            }else{
+            } else {
                 var myPopup = $ionicPopup.show({
-                        title: "New password And Retype Password Should Be same",
-                        scope: $scope,
-                    });
-                    $timeout(function() {
-                        myPopup.close(); //close the popup after 3 seconds for some reason
-                    }, 1500);
+                    title: "New password And Retype Password Should Be same",
+                    scope: $scope,
+                });
+                $timeout(function() {
+                    myPopup.close(); //close the popup after 3 seconds for some reason
+                }, 1500);
             }
         }
     }

@@ -6,35 +6,38 @@
     </ion-nav-buttons>
     <ion-scroll zooming="false" direction="x" class="light-bg stickyScroll">
         <div class="flex-block">
-            <div class="blocks text-center" ng-click="openarchive();">
+            <div class="blocks text-center" ng-click="openarchive();" ng-if="appliance.status!='archive'">
                 <h3 class="icon ln-archive"></h3> Archive
             </div>
-            <div class="blocks text-center" ng-click="opentransfer();">
+            <div class="blocks text-center" ng-click="openarchive();" ng-if="appliance.status='archive'">
+                <h3 class="icon ln-archive"></h3> Un-Archive
+            </div>
+            <div class="blocks text-center" ng-click="opentransfer();" ng-if="appliance.status!='archive'">
                 <h3 class="icon ln-tab"></h3> Transfer
             </div>
             <div class="blocks text-center" ng-click="opendelete();">
                 <h3 class="icon ln-trash2"></h3> Delete
             </div>
             <!--            <div class="blocks text-center" ng-click="openservice();">-->
-            <a class="blocks text-center" ng-href="#/tab/home/services">
+            <a class="blocks text-center" ng-href="#/tab/home/services" ng-if="appliance.status!='archive'">
                 <h3 class="icon ln-wrench"></h3> Service
             </a>
-            <div class="blocks text-center" ng-click="openreport();">
+            <div class="blocks text-center" ng-click="openreport();" ng-if="appliance.status!='archive'">
                 <h3 class="icon ln-papers"></h3> Report
             </div>
-            <div class="blocks text-center" ng-click="sendtowebsite();">
+            <div class="blocks text-center" ng-click="sendtowebsite();" ng-if="appliance.status!='archive'">
                 <h3 class="icon ln-circle-exclamation"></h3> Info
             </div>
-            <div class="blocks text-center">
+            <div class="blocks text-center" ng-if="appliance.status!='archive'">
                 <h3 class="icon ln-cart"></h3> Buy
             </div>
-            <div class="blocks text-center">
+            <div class="blocks text-center" ng-if="appliance.status!='archive'">
                 <h3 class="icon ln-tag"></h3> Sell
             </div>
-            <div class="blocks text-center">
+            <div class="blocks text-center" ng-if="appliance.status!='archive'">
                 <h3 class="icon ln-register"></h3> Review
             </div>
-            <div class="blocks text-center">
+            <div class="blocks text-center" ng-if="appliance.status!='archive'">
                 <h3 class="icon ln-users"></h3> Forum
             </div>
         </div>
@@ -73,11 +76,11 @@
 -->
             <div class="wish wishs">
                 <div class="picturess  assertive-bg" style="background-image: url('img/icons/Mobile.png');"></div>
-                <label class="item item-input input-up" ng-click="openproductsearch();">
+                <label class="item item-input input-up" ng-click="openproductsearch();" ng-class="allvalidation[0].validation">
                     <span class="input-label">Product*</span>
                     <input type="text" ng-model="appliance.appliancetype.name" readonly>
                 </label>
-                <label class="item item-input input-btm">
+                <label class="item item-input input-btm" ng-class="allvalidation[1].validation">
                     <span class="input-label">Name As*</span>
                     <input type="text" ng-model="appliance.name" required>
                 </label>
@@ -99,7 +102,7 @@
                     <input type="text" ng-model="appliance.serialnumber">
                 </label>
 
-                <label class="item item-input" ng-click="openedit();">
+                <label class="item item-input" ng-click="openedit();" ng-class="allvalidation[2].validation">
                     <span class="input-label">Location</span>
                     <input type="text" ng-model="appliance.userlocation.name" readonly>
                 </label>

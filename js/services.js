@@ -69,9 +69,11 @@ angular.module('starter.services', [])
         login: function(user, callback) {
             $http.get(adminurl + "user/login?email=" + user.email + "&password=" + user.password, {}).success(callback);
         },
-        getOneAppliance: function(id, callback, callback2) {
+        getOneAppliance: function(id, callback) {
 //            $http.post("json/appliance.json").success(callback);
             $http.get(adminurl + "appliance?id=" + id, {}).success(callback);
+        },
+        getProduct: function(callback2) {
             $http.get(adminurl + "appliancetype", {}).success(callback2);
         },
         getWholeUser: function(callback) {
