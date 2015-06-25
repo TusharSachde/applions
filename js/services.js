@@ -207,6 +207,18 @@ angular.module('starter.services', [])
             console.log(data);
             $http.post(adminurl + "user/updateuser", data).success(callback);
         },
+        changeArchive: function(data,callback) {
+            console.log(data);
+//            $http.get(adminurl + "appliance/updateappliance", {params:data}).success(callback);
+            $http({
+                url: adminurl + "appliance/updateappliance",
+                method: "POST",
+                data: {
+                    "id":data.id,
+                    "status":data.status
+                }
+            }).success(callback);
+        },
         getCountry: function(callback) {
             $http.post("json/country.json").success(callback);
         },

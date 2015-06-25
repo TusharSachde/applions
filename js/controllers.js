@@ -92,6 +92,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.compwarranty = [];
         $scope.warrantyobj = [];
         $scope.additionalwarranty = [];
+        $scope.archive = [];
 
         //        $scope.appliance.userlocation = [
         //            {
@@ -287,6 +288,15 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                         myPopup.close(); //close the popup after 3 seconds for some reason
                     }, 1500);
                 }
+            });
+        }
+        
+        //ARCHIVE APPLIANCE
+        $scope.applianceArchived = function (state){
+            $scope.archive.status = state;
+            $scope.archive.id = $scope.appliance.id;
+            Chats.changeArchive($scope.archive,function(data, status){
+                console.log(data);
             });
         }
 

@@ -2,13 +2,14 @@
     <ion-header-bar class="bar-balanced" align-title="center">
         <h1 class="title">Confirm Archive</h1>
     </ion-header-bar>
+    
     <ion-content>
         <div class="cont-archive">
             <p> This appliance will be archived.You can view this appliance by selecting "Archived" in Status tab of filter.You can also Un-Archived this appliance from there.</p>
-            <p class="cont-que"> Do you want to archive this appliance?</p>
+            <p class="cont-que"> Do you want to Un-archive this appliance?</p>
         </div>
         <div class="padding-horizontal">
-               <button class="button button-balanced button-outline button-block">Yes</button>
+               <button class="button button-balanced button-outline button-block" ng-click="applianceArchived('normal')">Yes</button>
             <button class="button button-assertive button-outline button-block" ng-click="closearchive();">No</button>
         </div>
     </ion-content>
