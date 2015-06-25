@@ -122,15 +122,17 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         //validate user
         $scope.user = Chats.getUser();
 
-        // ONE USER
-        var userCallback = function(data, status) {
+        // ONE USERa.userlocation;
+            console.log("after");
+            console.log($scope.appliance.userlocation);
+        }
+        Chats.getWholeUser(function(data, status) {
             console.log("before");
             console.log(data.userlocation);
             $scope.userlocation = data.userlocation;
             console.log("after");
             console.log($scope.appliance.userlocation);
-        }
-        Chats.getWholeUser($scope.user.id, userCallback);
+        });
 
         // ONE APPLIANCE    
 

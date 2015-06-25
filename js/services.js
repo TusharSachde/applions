@@ -74,8 +74,8 @@ angular.module('starter.services', [])
             $http.get(adminurl + "appliance?id=" + id, {}).success(callback);
             $http.get(adminurl + "appliancetype", {}).success(callback2);
         },
-        getWholeUser: function(id, callback) {
-            $http.get(adminurl + "user?id=" + id, {}).success(callback);
+        getWholeUser: function(callback) {
+            $http.get(adminurl + "user?id=" + $.jStorage.get("user").id, {}).success(callback);
         },
         updateAppliance: function(data, callback) {
             $http.post(adminurl + "appliance/updateappliance", data).success(callback);
