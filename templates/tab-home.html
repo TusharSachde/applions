@@ -1,5 +1,5 @@
 <ion-view view-title="AppLions">
-  <ion-nav-buttons side="left">
+    <ion-nav-buttons side="left">
         <button class="button button-icon button-clear small-icon ln-bell" ng-click="opennotification();">
         </button>
     </ion-nav-buttons>
@@ -13,7 +13,7 @@
     <ion-content>
         <ion-list class="slide-option">
 
-<!--
+            <!--
             <ion-item class="item-picture light-bg tem-remove-animate item-avatar2" href="#/tab/home/edit/{{app.id}}" ng-repeat="app in appliance">
                 <div class="picture assertive-bg" style="background-image: url('img/icons/Mobile.png');"></div>
                 <h2>{{app.name}}</h2>
@@ -37,8 +37,8 @@
                 <ion-option-button class="button-large button-balanced slide-home">
                     <i class="icon ln-wrench"></i> Services
                 </ion-option-button>
-                <ion-option-button class="button-large button-balanced slide-home">
-                   <i class="icon ln-trash2"></i> Delete
+                <ion-option-button class="button-large button-balanced slide-home" ng-click="deleteappliance(app.id);">
+                    <i class="icon ln-trash2"></i> Delete
                 </ion-option-button>
             </ion-item>
 

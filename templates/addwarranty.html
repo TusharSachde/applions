@@ -11,11 +11,10 @@
                 <div class="input-label">
                     Cover Type*
                 </div>
-                <select>
+                <select ng-model="additionalwarranty.covertype">
                     <option></option>
                     <option>AMC</option>
                     <option>Extended Warranty</option>
-                    <option>Component Warranty</option>
                 </select>
             </label>
             <label class="item item-input">
@@ -31,17 +30,17 @@
             </label>
             <ion-item class="item">
                 <label class="checkboxs pad-btm">
-                    <input type="checkbox" value="visit free"> Visit Free
+                    <input type="checkbox" value="visit free" ng-model="cover.free" ng-change="pushorpop(cover.free,'visit free');"> Visit Free
                 </label>
                 <label class="checkboxs pad-btm">
-                    <input type="checkbox" value="services"> Services
+                    <input type="checkbox" value="services" ng-model="cover.service" ng-change="pushorpop(cover.service,'services');"> Services
                 </label>
 
                 <label class="checkboxs">
-                    <input type="checkbox" value="parts"> Parts
+                    <input type="checkbox" value="parts" ng-model="cover.parts" ng-change="pushorpop(cover.parts,'parts');"> Parts
                 </label>
                 <label class="checkboxs">
-                    <input type="checkbox" value="others"> Others
+                    <input type="checkbox" value="others" ng-model="cover.others" ng-change="pushorpop(cover.others,'others');"> Others
                 </label>
             </ion-item>
             <label class="item item-input">
@@ -62,10 +61,7 @@
             </label>
         </div>
         <div class="padding-horizontal" ng-click="saveAdditionalWarranty()">
-<!--            <button class="button button-balanced button-block button-outline">Save &#38; Add More</button>-->
+            <!--            <button class="button button-balanced button-block button-outline">Save &#38; Add More</button>-->
             <button class="button button-balanced button-block button-outline">Save &#38; Exit</button>
         </div>
     </ion-content>
-   
-
-  

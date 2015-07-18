@@ -5,17 +5,17 @@
             <button class="button button-clear" ng-click="closeModalss()">Close</button>
         </div>
     </ion-header-bar>
-       <ion-scroll zooming="false" direction="x" class="light-bg stickyScroll">
-            <div class="flex-block">
-                <div class="blocks1 text-center" ng-repeat="location in userlocation" ng-click="selectLocation(location)" ng-class="location.tabactive">
-                    {{location.name}}
-                </div>
-                <div class="blocks1 text-center"  ng-click="changetab(3)" ng-class="{'activetab': tabvalue == 3}">
-                    Add New
-                </div>
+    <ion-scroll zooming="false" direction="x" class="light-bg stickyScroll">
+        <div class="flex-block">
+            <div class="blocks1 text-center" ng-repeat="location in userlocation" ng-click="selectLocation(location)" ng-class="location.tabactive">
+                {{location.name}}
             </div>
-        </ion-scroll>
-    <ion-content class="tabs-conts">     
+            <div class="blocks1 text-center" ng-click="changetab(3)" ng-class="{'activetab': tabvalue == 3}">
+                Add New
+            </div>
+        </div>
+    </ion-scroll>
+    <ion-content class="tabs-conts">
         <div class="list" ng-if="tabvalue!=3">
             <label class="item item-input">
                 <span class="input-label">Name*</span>
@@ -28,11 +28,12 @@
             <label class="item item-input">
                 <span class="input-label">District/City*</span>
                 <input type="text" ng-model="appliance.userlocation.district" required>
-            </label><label class="item item-input">
+            </label>
+            <label class="item item-input">
                 <span class="input-label">State*</span>
                 <input type="text" ng-model="appliance.userlocation.state" required>
             </label>
-<!--
+            <!--
             <label class="item item-input item-select">
                 <div class="input-label">
                     District/City*
@@ -45,7 +46,7 @@
                 </select>
             </label>
 -->
-<!--
+            <!--
             <label class="item item-input item-select">
                 <div class="input-label">
                     State*
@@ -63,7 +64,7 @@
                 <textarea ng-model="appliance.userlocation.address" required>
                 </textarea>
             </label>
-        </div>    
+        </div>
         <div class="list" ng-if="tabvalue==3">
             <label class="item item-input">
                 <span class="input-label">Name*</span>
@@ -76,11 +77,12 @@
             <label class="item item-input">
                 <span class="input-label">District/City*</span>
                 <input type="text" ng-model="location.district" required>
-            </label><label class="item item-input">
+            </label>
+            <label class="item item-input">
                 <span class="input-label">State*</span>
                 <input type="text" ng-model="location.state" required>
             </label>
-<!--
+            <!--
             <label class="item item-input item-select">
                 <div class="input-label">
                     District/City*
@@ -93,7 +95,7 @@
                 </select>
             </label>
 -->
-<!--
+            <!--
             <label class="item item-input item-select">
                 <div class="input-label">
                     State*
@@ -114,7 +116,7 @@
         </div>
         <div class="button-bar padding">
             <button class="button button-outline button-balanced" ng-click="updateLocation()" ng-if="tabvalue!=3">Select</button>
-            <button class="button button-outline button-balanced" ng-click="addLocation()" ng-if="tabvalue==3">Add</button>
+            <button class="button button-outline button-balanced" ng-click="addLocation();closeModalss()" ng-if="tabvalue==3">Add</button>
         </div>
     </ion-content>
 </ion-modal-view>

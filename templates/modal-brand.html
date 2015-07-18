@@ -14,7 +14,7 @@
                 <button class="button button-icon ion-search" type="submit"></button>
             </form>
 
-            <ion-item class="item">Sony</ion-item>
+            <ion-item class="item" ng-repeat="brand in brands" ng-click="toBrand(brand);">{{brand.name}}</ion-item>
 
         </div>
     </ion-content>

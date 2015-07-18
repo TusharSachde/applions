@@ -26,38 +26,38 @@
                 <!--                <div class="picturess  assertive-bg" style="background-image: url('img/icons/Mobile.png');"></div>-->
                 <label class="item item-input" ng-click="openproductsearch();">
                     <span class="input-label">Product*</span>
-                    <input type="text" readonly>
+                    <input type="text" ng-model="appliance.appliancetype.name" readonly>
                 </label>
                 <label class="item item-input" ng-click="openbrandsearch();">
                     <span class="input-label">Brand*</span>
-                    <input type="text" readonly>
+                    <input type="text" readonly ng-model="appliance.brand">
                 </label>
                 <label class="item item-input">
                     <span class="input-label">Model No.</span>
-                    <input type="text">
+                    <input type="text" ng-model="appliance.modelnumber">
                 </label>
 
                 <label class="item item-input">
                     <span class="input-label">Serial No.</span>
-                    <input type="text">
+                    <input type="text" ng-model="appliance.serialnumber">
                 </label>
                 <label class="item item-input">
                     <span class="input-label">Name As*</span>
-                    <input type="text" required>
+                    <input type="text" required ng-model="appliance.name">
                 </label>
                 <label class="item item-input" ng-click="openedit();">
                     <span class="input-label">Location</span>
-                    <input type="text" readonly>
+                    <input type="text" ng-model="appliance.userlocation.name" readonly>
                 </label>
 
                 <label class="item item-input item-select">
                     <div class="input-label">
                         Warranty/AMC
                     </div>
-                    <select>
-                        <option></option>
-                        <option>Yes</option>
-                        <option>No</option>
+                    <select ng-model="appliance.warrantyoramc">
+                        <option value="">Choose</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
                     </select>
                 </label>
 
@@ -73,64 +73,59 @@
 
             <label class="item item-input">
                 <span class="input-label">Purchase Date</span>
-                <input type="date">
+                <input type="date" ng-model="warranty.purchasedate">
             </label>
 
             <label class="item item-input">
                 <span class="input-label">Bill No*</span>
-                <input type="text" required>
-            </label>
-
-            <label class="item item-input">
-                <span class="input-label">Store Pincode</span>
-                <input type="text">
+                <input type="text" ng-model="warranty.billno" required>
             </label>
 
             <label class="item item-input">
                 <span class="input-label">Store Name</span>
-                <input type="text">
+                <input type="text" ng-model="store.name">
             </label>
 
             <label class="item item-input">
                 <span class="input-label">Store Pincode</span>
-                <input type="text">
+                <input type="text" ng-model="store.pincode">
             </label>
 
             <label class="item item-input" ng-click="openedit();">
                 <span class="input-label">Store District</span>
-                <input type="text">
+                <input type="text" ng-model="store.district">
             </label>
 
             <label class="item item-input">
                 <div class="input-label">
                     Store State
                 </div>
-                <input type="text">
+                <input type="text" ng-model="store.state">
             </label>
 
             <label class="item item-input">
                 <span class="input-label">Store Address</span>
-                <input type="text">
+                <input type="text" ng-model="store.address">
             </label>
 
             <label class="item item-input">
                 <span class="input-label">Contact No.</span>
-                <input type="text">
+                <input type="text" ng-model="store.contact">
             </label>
 
             <label class="item item-input">
                 <span class="input-label">Sale Person</span>
-                <input type="text">
+                <input type="text" ng-model="store.saleperson">
             </label>
 
             <label class="item item-input">
                 <span class="input-label">Purchase Price</span>
-                <input type="text">
+                <input type="text" ng-model="purchaseprice.purchaseprice">
             </label>
 
             <div class="button-bar">
                 <button class="button button-outline icon-left ion-chevron-left button-balanced" ng-click="changetab(1)">Previous</button>
-                <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-click="changetab(3)">Next</button>
+                <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-click="purchaseDetails();changetab(3);">Next</button>
             </div>
         </div>
         </div>
@@ -141,13 +136,13 @@
                 </div>
                 <label class="item item-input">
                     <span class="input-label">Warranty Period</span>
-                    <input type="text">
+                    <input type="text" ng-model="warranty.period">
                 </label>
                 <label class="item item-input item-select">
                     <div class="input-label">
                         Warranty Type
                     </div>
-                    <select>
+                    <select ng-model="warranty.type">
                         <option></option>
                         <option>On Site</option>
                         <option>Off Site</option>
@@ -159,54 +154,22 @@
                 <div class="item product-wrnnty">
                     Component Warranty
                 </div>
-                <ion-item ng-click="opencompntwarranty()">
-                    Component
+                <ion-item ng-click="opencompntwarranty(component)" ng-repeat="component in appliance.componentwarranty">
+                   {{component.component}}
                     <span class="item-note">
-                    Back Cover
                     </span>
                 </ion-item>
 
-                <!--
-                <label class="item item-input">
-                    <span class="input-label">Component</span>
-                    <input type="text">
-                </label>
-                <label class="item item-input">
-                    <span class="input-label">Serial No</span>
-                    <input type="text">
-                </label>
-                <label class="item item-input">
-                    <span class="input-label">Purchase Date</span>
-                    <input type="date">
-                </label>
-                <label class="item item-input">
-                    <span class="input-label">Warranty Period</span>
-                    <input type="text">
-                </label>
--->
-                <!--            <div class="row">-->
                 <ion-item ng-click="openpswd()">
                     <span class="balanced"> Add Additional Warranty / AMC</span>
                 </ion-item>
                 <div class="item product-wrnnty">
                     Additional Warranty / AMC
                 </div>
-                <ion-item ng-click="openwarranty()">
-                    Bill No Form
+                <ion-item ng-click="openwarranty(warranty)" ng-repeat="warranty in appliance.warranty">
+                    {{warranty.billno}}
                     <span class="item-note">
-                      13456
-                    </span>
-                </ion-item>
-                <ion-item ng-click="openwarranty()">
-                    Bill No Form
-                    <span class="item-note">
-                      13456
-                    </span>
-                </ion-item>
-                <ion-item ng-click="openwarranty()">
-                    Bill No Form
-                    <span class="item-note">
-                      13456
+                      
                     </span>
                 </ion-item>
                 <!--            </div>-->

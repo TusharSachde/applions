@@ -2,7 +2,7 @@ var adminurl = "http://192.168.2.22:1337/";
 
 angular.module('starter.services', [])
 
-.factory('Chats', function($http) {
+.factory('Chats', function ($http) {
     // Might use a resource here that returns a JSON array
 
 
@@ -60,132 +60,148 @@ angular.module('starter.services', [])
     }];
 
     return {
-        all: function() {
+        all: function () {
             return chats;
         },
-        remove: function(chat) {
+        remove: function (chat) {
             chats.splice(chats.indexOf(chat), 1);
         },
-        login: function(user, callback) {
+        login: function (user, callback) {
             $http.get(adminurl + "user/login?email=" + user.email + "&password=" + user.password, {}).success(callback);
         },
-        getOneAppliance: function(id, callback) {
-//            $http.post("json/appliance.json").success(callback);
+        getOneAppliance: function (id, callback) {
+            //            $http.post("json/appliance.json").success(callback);
             $http.get(adminurl + "appliance?id=" + id, {}).success(callback);
         },
-        getProduct: function(callback2) {
+        getProduct: function (callback2) {
             $http.get(adminurl + "appliancetype", {}).success(callback2);
         },
-        getWholeUser: function(callback) {
+        getWholeUser: function (callback) {
             $http.get(adminurl + "user?id=" + $.jStorage.get("user").id, {}).success(callback);
         },
-        updateAppliance: function(data, callback) {
+        createAppliance: function (data, callback) {
+            console.log(data);
+            $http.post(adminurl + "appliance/createappliance", data).success(callback);
+        },
+        updateAppliance: function (data, callback) {
             $http.post(adminurl + "appliance/updateappliance", data).success(callback);
         },
-        searchProduct: function(data, callback) {
+        deleteAppliance: function (data, callback) {
+            $http.delete(adminurl + "appliance/"+data).success(callback);
+        },
+        searchProduct: function (data, callback) {
             $http.post(adminurl + "appliancetype/searchproduct", {
                 params: data
             }).success(callback);
         },
-        applianceStore: function(data, callback) {
-//            if(data.createdAt){
-//                delete data.createdAt;
-//                delete data.updatedAt;
-//                delete data.id;
-//            }
+        applianceStore: function (data, callback) {
+            //            if(data.createdAt){
+            //                delete data.createdAt;
+            //                delete data.updatedAt;
+            //                delete data.id;
+            //            }
             $http.post(adminurl + "store/createstore", data).success(callback);
         },
-        updateWarranty: function(data, callback) {
+        createWarranty: function (data, callback) {
+            $http.post(adminurl + "warranty/createwarranty", {
+                "appliance": data.appliance,
+                "purchasedate": data.purchasedate,
+                "billno": data.billno
+            }).success(callback);
+        },
+        updateWarranty: function (data, callback) {
             $http.post(adminurl + "warranty/updatewarranty", {
                 "purchasedate": data.purchasedate,
                 "billno": data.billno,
                 "id": data.id
             }).success(callback);
         },
-        updateComponentWarranty: function(data, callback) {
+        updateComponentWarranty: function (data, callback) {
             delete data.$$hashKey;
             delete data.createdAt;
             delete data.updatedAt;
             console.log(data);
             $http.post(adminurl + "componentwarranty/updatecomponent", data).success(callback);
         },
-        updateAddtionalWarranty: function(data, callback) {
+        updateAddtionalWarranty: function (data, callback) {
             delete data.$$hashKey;
             delete data.createdAt;
             delete data.updatedAt;
             console.log(data);
             $http.post(adminurl + "warranty/updatewarranty", data).success(callback);
         },
-        addUserLocation: function(data, callback) {
+        addUserLocation: function (data, callback) {
             $http.get(adminurl + "userlocation/addlocation", {
                 params: data
             }).success(callback);
         },
-        addComponentWarranty: function(data, callback) {
+        addComponentWarranty: function (data, callback) {
             $http({
                 url: adminurl + "componentwarranty/createcw",
                 method: "POST",
                 data: {
-                    "appliance":data.appliance,
-                    "component":data.component,
-                    "serial":data.serial,
-                    "startdate":data.startdate,
-                    "warrantyperiod":data.warrantyperiod
+                    "appliance": data.appliance,
+                    "component": data.component,
+                    "serial": data.serial,
+                    "startdate": data.startdate,
+                    "warrantyperiod": data.warrantyperiod
                 }
             }).success(callback);
-            
+
         },
-        addAdditionalWarranty: function(data, callback) {
+        addAdditionalWarranty: function (data, callback) {
             $http({
                 url: adminurl + "warranty/createwarranty",
                 method: "POST",
                 data: {
-                    "appliance":data.appliance,
-                    "billno":data.billno,
-                    "contact":data.contact,
-                    "period":data.period,
-                    "purchasedate":data.purchasedate,
-                    "purchasedfrom":data.purchasedfrom,
-                    "purchaseprice":data.purchaseprice
+                    "appliance": data.appliance,
+                    "billno": data.billno,
+                    "contact": data.contact,
+                    "period": data.period,
+                    "purchasedate": data.purchasedate,
+                    "purchasedfrom": data.purchasedfrom,
+                    "purchaseprice": data.purchaseprice,
+                    "includes": data.includes,
+                    "iswarrantyoramc": data.covertype
                 }
             }).success(callback);
-            
+
         },
-        sendFeedback: function(data, callback) {
+        sendFeedback: function (data, callback) {
             $http({
                 url: adminurl + "feedback/createfeed",
                 method: "POST",
                 data: {
-                    "id":data.id,
-                    "name":data.name,
-                    "email":data.email,
-                    "feedback":data.feedback
+                    "id": data.id,
+                    "name": data.name,
+                    "email": data.email,
+                    "feedback": data.feedback
                 }
             }).success(callback);
-            
+
         },
-        updateUserLocation: function(data, callback) {
+        updateUserLocation: function (data, callback) {
             $http.get(adminurl + "userlocation/updatelocation", {
                 params: data
             }).success(callback);
         },
-        getAppliance: function(callback) {
+        getAppliance: function (callback) {
             $http.get(adminurl + "appliance", {}).success(callback);
         },
-        jstorageUser: function(user) {
+        jstorageUser: function (user) {
             $.jStorage.set("user", user);
         },
-        getUser: function() {
+        getUser: function () {
             return $.jStorage.get("user");
         },
-        authenticate: function() {
+        authenticate: function () {
             if ($.jStorage.get("user") != null) {
                 return "true";
             } else {
                 return "false";
             }
         },
-        get: function(chatId) {
+        get: function (chatId) {
             for (var i = 0; i < chats.length; i++) {
                 if (chats[i].id === parseInt(chatId)) {
                     return chats[i];
@@ -193,38 +209,68 @@ angular.module('starter.services', [])
             }
             return null;
         },
-        getmybrands: function(data,callback) {
+        getmybrands: function (data, callback) {
             $http.post("json/brands.json", data).success(callback);
         },
-        getProfileJson: function(callback) {
-//            $http.get("json/profile.json", data).success(callback);
+        getProfileJson: function (callback) {
+            //            $http.get("json/profile.json", data).success(callback);
             $http.get(adminurl + "user?id=" + $.jStorage.get('user').id, {}).success(callback);
         },
-        updateUser: function(data,callback) {
+        updateUser: function (data, callback) {
             delete data.userlocation;
             delete data.password;
             data.country = data.country.id;
             console.log(data);
             $http.post(adminurl + "user/updateuser", data).success(callback);
         },
-        changeArchive: function(data,callback) {
+        changeArchive: function (data, callback) {
             console.log(data);
-//            $http.get(adminurl + "appliance/updateappliance", {params:data}).success(callback);
+            //            $http.get(adminurl + "appliance/updateappliance", {params:data}).success(callback);
             $http({
                 url: adminurl + "appliance/updateappliance",
                 method: "POST",
                 data: {
-                    "id":data.id,
-                    "status":data.status
+                    "id": data.id,
+                    "status": data.status
                 }
             }).success(callback);
         },
-        getCountry: function(callback) {
+        getCountry: function (callback) {
             $http.post("json/country.json").success(callback);
         },
-        changePassword: function(data, callback) {
+        changePassword: function (data, callback) {
             delete data.confpassword;
-            $http.get(adminurl + "user/changepassword",{params:data}).success(callback);
+            $http.get(adminurl + "user/changepassword", {
+                params: data
+            }).success(callback);
+        },
+        searchProduct: function (data, callback) {
+            $http({
+                url: adminurl + "appliancetype/searchproduct",
+                method: "POST",
+                data: {
+                    "name": data
+                }
+            }).success(callback);
+        },
+        findBrand: function (data, callback) {
+            $http({
+                url: adminurl + "brand/findbrand",
+                method: "POST",
+                data: {
+                    "appliancetype": data
+                }
+            }).success(callback);
+        },
+        updatePurchasePrice: function (data, callback) {
+            $http({
+                url: adminurl + "appliance/updateappliance",
+                method: "POST",
+                data: {
+                    "id": data.appliance,
+                    "purchaseprice": data.purchaseprice
+                }
+            }).success(callback);
         }
     };
 });
