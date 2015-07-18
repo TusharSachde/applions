@@ -323,12 +323,6 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         }
         $scope.changetab2 = function (tab) {
             $scope.tabvalue = tab;
-            $scope.appliance.appliancetype = $scope.appliance.appliancetype.id;
-            $scope.appliance.brand = $scope.appliance.brand.id;
-            $scope.appliance.store = $scope.appliance.store.id;
-            $scope.appliance.user = $scope.appliance.user.id;
-            $scope.appliance.userlocation = $scope.appliance.userlocation.id;
-            $scope.appliance.warranty = $scope.appliance.warranty.id;
             console.log($scope.appliance);
 
             //            $scope.allvalidation = [{

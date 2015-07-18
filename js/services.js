@@ -1,4 +1,4 @@
-var adminurl = "http://192.168.2.22:1337/";
+var adminurl = "http://192.168.2.6:1337/";
 
 angular.module('starter.services', [])
 
@@ -84,7 +84,12 @@ angular.module('starter.services', [])
             $http.post(adminurl + "appliance/createappliance", data).success(callback);
         },
         updateAppliance: function (data, callback) {
-            $http.post(adminurl + "appliance/updateappliance", data).success(callback);
+		   console.log(data);
+            $http.post(adminurl + "appliance/updateappliance", {
+			  "appliancetype":data.id,
+			  "brand":data.brand.id,
+			  ""
+		  }).success(callback);
         },
         deleteAppliance: function (data, callback) {
             $http.delete(adminurl + "appliance/"+data).success(callback);
