@@ -86,9 +86,13 @@ angular.module('starter.services', [])
         updateAppliance: function (data, callback) {
 		   console.log(data);
             $http.post(adminurl + "appliance/updateappliance", {
-			  "appliancetype":data.id,
+			  "id":data.id,
+			  "appliancetype":data.appliancetype.id,
 			  "brand":data.brand.id,
-			  ""
+			  "name":data.name,
+			  "modelnumber":data.modelnumber,
+			  "serialnumber":data.serialnumber,
+			  "userlocation":data.userlocation.id
 		  }).success(callback);
         },
         deleteAppliance: function (data, callback) {
