@@ -1740,11 +1740,13 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     }
 
     $scope.deviceinfo = $.jStorage.get("deviceinfo");
+    $scope.deviceinfo.covered = false;
     console.log($scope.deviceinfo);
-    
+
     if ($scope.deviceinfo && $scope.deviceinfo.manufacturer) {
         Chats.searchbrand($scope.deviceinfo.manufacturer, function (data, status) {
             console.log(data);
+            $scope.deviceinfo.brandid = data[0].id;
         });
     }
 
@@ -1757,7 +1759,8 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     });
 
     $scope.iscreated = 0;
-    $scope.tobecreated = 0;
+    $scope.tobecreated = 1;
+
     var applianceCreate = function (data, status) {
         console.log(data);
         if (data.value == "true")
@@ -1774,16 +1777,12 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             }
         }
         console.log($scope.tobecreated);
-        console.log($scope.deviceinfo);
-        $scope.makeappliances = {
-            "name": "Mobile 2",
-            "appliancetype": "55acad90a775c5d0c9ad618c",
-            "brand": ""
-        };
+
         console.log($scope.allapplions);
         for (var i = 0; i < $scope.allapplions.length; i++) {
             if ($scope.allapplions[i].brandname) {
                 $scope.makeappliances = {
+                    "user": $.jStorage.get("user").id,
                     "name": $scope.allapplions[i].name,
                     "appliancetype": $scope.allapplions[i].id,
                     "brand": $scope.allapplions[i].brandid,
@@ -1791,6 +1790,19 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 };
                 Chats.firstAppliance($scope.makeappliances, applianceCreate);
             }
+        }
+
+        console.log($scope.deviceinfo);
+        if ($scope.deviceinfo) {
+            $scope.makeappliances = {
+                "user": $.jStorage.get("user").id,
+                "name": "This Mobile",
+                "appliancetype": "55acad90a775c5d0c9ad618c",
+                "brand": $scope.deviceinfo.brandid,
+                "iscovered": $scope.deviceinfo.covered
+            };
+            console.log($scope.makeappliances);
+            Chats.firstAppliance($scope.makeappliances, applianceCreate);
         }
     };
 

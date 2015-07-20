@@ -131,7 +131,6 @@ angular.module('starter.services', [])
             $http.get(adminurl + "user/login?email=" + user.email + "&password=" + user.password, {}).success(callback);
         },
         getOneAppliance: function (id, callback) {
-            //            $http.post("json/appliance.json").success(callback);
             $http.get(adminurl + "appliance?id=" + id, {}).success(callback);
         },
         getProduct: function (callback2) {
@@ -256,7 +255,9 @@ angular.module('starter.services', [])
             }).success(callback);
         },
         getAppliance: function (callback) {
-            $http.get(adminurl + "appliance", {}).success(callback);
+            $http.post(adminurl + "appliance/getappliance", {
+                "user": $.jStorage.get("user").id
+            }).success(callback);
         },
         jstorageUser: function (user) {
             $.jStorage.set("user", user);
@@ -312,8 +313,10 @@ angular.module('starter.services', [])
         },
         changePassword: function (data, callback) {
             delete data.confpassword;
-            $http.get(adminurl + "user/changepassword", {
-                params: data
+            $http.post(adminurl + "user/changepassword", {
+                "id": $.jStorage.get("user").id,
+                "password": data.password,
+                "editpassword": data.editpassword
             }).success(callback);
         },
         searchProduct: function (data, callback) {
