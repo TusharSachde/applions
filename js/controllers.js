@@ -957,7 +957,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         var updateLocationSuccess = function(data, status) {
             updateApp();
             console.log(data);
-		   $scope.oModal1.hide();
+            $scope.oModal1.hide();
         }
         $scope.updateLocation = function() {
             delete $scope.appliance.userlocation["$$hashKey"];
