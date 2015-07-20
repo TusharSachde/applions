@@ -1,4 +1,4 @@
-var adminurl = "http://192.168.2.6:1337/";
+var adminurl = "http://192.168.2.22:1337/";
 
 angular.module('starter.services', [])
 
@@ -59,9 +59,70 @@ angular.module('starter.services', [])
         face: 'https://pbs.twimg.com/profile_images/578237281384841216/R3ae1n61.png'
     }];
 
+    var allapplion = [{
+        appliance: "Mobile 2",
+        brandname: "",
+        covered: false
+    }, {
+        appliance: "Television",
+        brandname: "",
+        covered: false
+    }, {
+        appliance: "Music System",
+        brandname: "",
+        covered: false
+    }, {
+        appliance: "DVD Player",
+        brandname: "",
+        covered: false
+    }, {
+        appliance: "Camera",
+        brandname: "",
+        covered: false
+    }, {
+        appliance: "Laptop",
+        brandname: "",
+        covered: false
+    }, {
+        appliance: "Computer",
+        brandname: "",
+        covered: false
+    }, {
+        appliance: "AC",
+        brandname: "",
+        covered: false
+    }, {
+        appliance: "Refrigerator",
+        brandname: "",
+        covered: false
+    }, {
+        appliance: "Washing M/C",
+        brandname: "",
+        covered: false
+    }, {
+        appliance: "Microwave",
+        brandname: "",
+        covered: false
+    }, {
+        appliance: "Mixer Grinder",
+        brandname: "",
+        covered: false
+    }, {
+        appliance: "Gyser",
+        brandname: "",
+        covered: false
+    }, {
+        appliance: "Fan",
+        brandname: "",
+        covered: false
+    }];
+
     return {
         all: function () {
             return chats;
+        },
+        allapplions: function (callback) {
+            $http.get(adminurl + "appliancetype/findallproducts", {}).success(callback);
         },
         remove: function (chat) {
             chats.splice(chats.indexOf(chat), 1);
@@ -84,19 +145,19 @@ angular.module('starter.services', [])
             $http.post(adminurl + "appliance/createappliance", data).success(callback);
         },
         updateAppliance: function (data, callback) {
-		   console.log(data);
+            console.log(data);
             $http.post(adminurl + "appliance/updateappliance", {
-			  "id":data.id,
-			  "appliancetype":data.appliancetype.id,
-			  "brand":data.brand.id,
-			  "name":data.name,
-			  "modelnumber":data.modelnumber,
-			  "serialnumber":data.serialnumber,
-			  "userlocation":data.userlocation.id
-		  }).success(callback);
+                "id": data.id,
+                "appliancetype": data.appliancetype.id,
+                "brand": data.brand.id,
+                "name": data.name,
+                "modelnumber": data.modelnumber,
+                "serialnumber": data.serialnumber,
+                "userlocation": data.userlocation.id
+            }).success(callback);
         },
         deleteAppliance: function (data, callback) {
-            $http.delete(adminurl + "appliance/"+data).success(callback);
+            $http.delete(adminurl + "appliance/" + data).success(callback);
         },
         searchProduct: function (data, callback) {
             $http.post(adminurl + "appliancetype/searchproduct", {
@@ -219,7 +280,9 @@ angular.module('starter.services', [])
             return null;
         },
         getmybrands: function (data, callback) {
-            $http.post("json/brands.json", data).success(callback);
+            $http.post(adminurl + "brand/findname", {
+                "name": data
+            }).success(callback);
         },
         getProfileJson: function (callback) {
             //            $http.get("json/profile.json", data).success(callback);
@@ -280,6 +343,19 @@ angular.module('starter.services', [])
                     "purchaseprice": data.purchaseprice
                 }
             }).success(callback);
+        },
+        searchbrand: function (data, callback) {
+            $http({
+                url: adminurl + "brand/searchbrand",
+                method: "POST",
+                data: {
+                    "name": data
+                }
+            }).success(callback);
+        },
+        firstAppliance: function (data, callback) {
+            console.log(data);
+            $http.post(adminurl + "appliance/firstappliance", data).success(callback);
         }
     };
 });

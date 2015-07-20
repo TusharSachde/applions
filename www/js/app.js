@@ -7,7 +7,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
         if (device.platform == 'Android') {
             console.log("android");
-            console.log(device.cordova);
+            console.log(device);
         }
         if (window.StatusBar) {
             // org.apache.cordova.statusbar required

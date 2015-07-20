@@ -1,0 +1,47 @@
+<ion-view class="light-bg" title="AppLions">
+    <ion-content class="has-header">
+        <div class="content">
+            One Last Step to make the application more meaningful for you. Let's add the brand and whether the appliance is covered under warranty / AMC.
+        </div>
+        <div class="row header">
+            <div class="col">Appliance</div>
+            <div class="col">Brand</div>
+            <div class="col">Covered</div>
+        </div>
+
+        <div class="row table">
+            <div class="col">This Mobile</div>
+            <div class="col">{{deviceinfo.manufacturer}}</div>
+            <div class="col">
+                <div class="item item-toggle wizardli">
+                    <label class="toggle toggle-balanced">
+                        <input type="checkbox" ng-model="deviceinfo.covered">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row table" collection-repeat="all in allapplions">
+            <div class="col">{{all.name}}</div>
+            <div class="col" ng-click="openbrandsearch(all.name, $index);">
+                <input type="text" placeholder="Enter Brand" ng-model="all.brandname" disabled>
+            </div>
+            <div class="col">
+                <div class="item item-toggle wizardli">
+                    <label class="toggle toggle-balanced">
+                        <input type="checkbox" ng-model="all.covered">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="padding">
+            <a class="button button-block button-assertive" ng-click="makeappliances();">Save</a>
+        </div>
+    </ion-content>
+</ion-view>
