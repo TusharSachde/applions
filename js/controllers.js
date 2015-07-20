@@ -101,6 +101,10 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.warrantyobj = [];
         $scope.additionalwarranty = [];
         $scope.archive = [];
+        $scope.locationtb = 0;
+        $scope.locationtab = function(tb) {
+            $scope.locationtb = tb;
+        };
 
         //        $scope.appliance.userlocation = [
         //            {
@@ -132,13 +136,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.user = Chats.getUser();
 
         // ONE USERa.userlocation;
-        Chats.getWholeUser(function(data, status) {
+        var userLocationSuccess = function(data, status) {
             console.log("before");
             console.log(data.userlocation);
             $scope.userlocation = data.userlocation;
             console.log("after");
             console.log($scope.appliance.userlocation);
-        });
+        }
+        Chats.getWholeUser(userLocationSuccess);
 
         // ONE APPLIANCE    
 
@@ -188,6 +193,8 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         var locationSuccess = function(data, status) {
             console.log(data);
+            Chats.getWholeUser(userLocationSuccess);
+
             $scope.location = [];
         }
         $scope.addLocation = function() {
@@ -341,7 +348,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         //toggle
         $scope.changetab = function(tab) {
-		   console.log(tab);
+            console.log(tab);
             $scope.tabvalue = tab;
         }
         var applianceUpdate = function(data, status) {
@@ -950,6 +957,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         var updateLocationSuccess = function(data, status) {
             updateApp();
             console.log(data);
+		   $scope.oModal1.hide();
         }
         $scope.updateLocation = function() {
             delete $scope.appliance.userlocation["$$hashKey"];
