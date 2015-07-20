@@ -1,15 +1,24 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
-.run(function($ionicPlatform) {
-    $ionicPlatform.ready(function() {
+.run(function ($ionicPlatform) {
+    $ionicPlatform.ready(function () {
         if (device.platform == 'iOS') {
             navigator.splashscreen.hide();
+        }
+        if (device.platform == 'Android') {
+            console.log("android");
+            console.log(device.cordova);
         }
         if (window.StatusBar) {
             // org.apache.cordova.statusbar required
             StatusBar.overlaysWebView(true);
             StatusBar.styleLightContent();
         }
+//        document.addEventListener("deviceready", onDeviceReady, false);
+//
+//        function onDeviceReady() {
+//            console.log(device.cordova);
+//        }
     });
 })
 
@@ -155,7 +164,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 //};
 
 
-var formvalidation = function(allvalidation) {
+var formvalidation = function (allvalidation) {
     var isvalid2 = true;
     for (var i = 0; i < allvalidation.length; i++) {
         console.log("checking");
