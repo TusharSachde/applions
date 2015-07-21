@@ -800,7 +800,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         }
     })
 
-.controller('AddappCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams, $cordovaImagePicker, $cordovaFileTransfer) {
+.controller('AddappCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams, $cordovaImagePicker, $cordovaFileTransfer, $ionicLoading) {
 
     $scope.appliance = {};
     $scope.appliancetype = {};
@@ -814,6 +814,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     $scope.warrantyobj = {};
     $scope.additionalwarranty = {};
     $scope.archive = {};
+    $scope.documents = {};
 
     // TAB/HOME/EDIT PAGE STARt
     //        $scope.appliance = [];
@@ -1047,6 +1048,88 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         }
         console.log($scope.additionalwarranty.includes);
     }
+
+
+    //UPLOAD DOCUMENTS
+    //    var options = {
+    //        maximumImagesCount: 1,
+    //        width: 800,
+    //        height: 800,
+    //        quality: 80
+    //    };
+
+    var options = {
+        quality: 20,
+        destinationType: Camera.DestinationType.FILE_URI,
+        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+        allowEdit: true,
+        encodingType: Camera.EncodingType.JPEG,
+        saveToPhotoAlbum: false
+    };
+
+    $scope.cameraimage = '';
+    var uploadBillSuccess = function (result) {
+        console.log(result);
+        $scope.documents.bill = result.value;
+    }
+    $scope.uploadBill = function () {
+        console.log("take picture");
+        $cordovaImagePicker.getPictures(options).then(function (resultImage) {
+            // Success! Image data is here
+            console.log("here in upload image");
+            console.log(resultImage);
+            $scope.cameraimage = resultImage[0];
+            $scope.uploadPhoto(adminurl + "user/uploadfile", uploadBillSuccess);
+
+        }, function (err) {
+            // An error occured. Show a message to the user
+        });
+    };
+
+    var uploadWarrantySuccess = function (result) {
+        console.log(result);
+        $scope.documents.warrantycard = result.value;
+    }
+    $scope.uploadwarrantycard = function () {
+        console.log("take picture");
+        $cordovaImagePicker.getPictures(options).then(function (resultImage) {
+            // Success! Image data is here
+            console.log("here in upload image");
+            console.log(resultImage);
+            $scope.cameraimage = resultImage[0];
+            $scope.uploadPhoto(adminurl + "user/uploadfile", uploadWarrantySuccess);
+
+        }, function (err) {
+            // An error occured. Show a message to the user
+        });
+    };
+
+    $scope.uploadPhoto = function (serverpath, callback) {
+
+        //        console.log("function called");
+        $cordovaFileTransfer.upload(serverpath, $scope.cameraimage, options)
+            .then(function (result) {
+                console.log(result);
+                var data = JSON.parse(result.response);
+                callback(data);
+                $ionicLoading.hide();
+                //$scope.addretailer.store_image = $scope.filename2;
+            }, function (err) {
+                // Error
+                console.log(err);
+            }, function (progress) {
+                // constant progress updates
+                $ionicLoading.show({
+                    //        template: 'We are fetching the best rates for you.',
+
+                    content: 'Uploading Image',
+                    animation: 'fade-in',
+                    showBackdrop: true,
+                    maxWidth: 200,
+                    showDelay: '0'
+                });
+            });
+    };
 
     $ionicModal.fromTemplateUrl('templates/location.html', {
         id: '1',

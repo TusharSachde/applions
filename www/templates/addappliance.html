@@ -155,7 +155,7 @@
                     Component Warranty
                 </div>
                 <ion-item ng-click="opencompntwarranty(component)" ng-repeat="component in appliance.componentwarranty">
-                   {{component.component}}
+                    {{component.component}}
                     <span class="item-note">
                     </span>
                 </ion-item>
@@ -201,10 +201,10 @@
             <label class="item" style="padding:0;">
                 <div class="row">
                     <div class="col text-center">
-                        <button class="button button-outline button-balanced button-block button-small" ng-class="warranty">Upload Bill</button>
+                        <button class="button button-outline button-balanced button-block button-small" ng-class="warranty" ng-click="uploadbill();">Upload Bill</button>
                     </div>
                     <div class="col text-center">
-                        <button class="button button-outline button-balanced button-block button-small" ng-class="warranty">Upload Warranty Card</button>
+                        <button class="button button-outline button-balanced button-block button-small" ng-class="warranty" ng-click="uploadwarrantycard();">Upload Warranty Card</button>
                     </div>
                 </div>
             </label>
