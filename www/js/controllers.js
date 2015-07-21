@@ -873,29 +873,11 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
     // ONE USER
     var userCallback = function (data, status) {
-        console.log("before");
-        console.log(data.userlocation);
-        $scope.userlocation = data.userlocation;
-        console.log("after");
-        console.log($scope.appliance.userlocation);
+	    $scope.userlocation = data.userlocation;
     }
-    Chats.getWholeUser($scope.user.id, userCallback);
+    Chats.getWholeUser(userCallback);
 
-    // ONE APPLIANCE    
-
-    var getProduct = function (data, status) {
-        console.log("product");
-        console.log(data);
-        $scope.appliancetype = data;
-    }
-
-    var getOneSuccess = function (data, status) {
-        console.log("all appliance");
-        console.log(data);
-        $scope.appliance = data;
-    }
-    Chats.getOneAppliance($stateParams.id, getOneSuccess, getProduct);
-
+   
     //ON PRODUCT CLICK
     $scope.toProduct = function (product) {
         console.log(product);
