@@ -345,6 +345,13 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         }
 
         // TAB/HOME/EDIT PAGE END
+        $scope.getproductbrands = function (brandname) {
+            console.log(brandname);
+            Chats.searchbrandbyid(brandname, $scope.appliance.appliancetype.appliancetypeid, function (data, status) {
+                console.log(data);
+                $scope.brands = data;
+            })
+        }
 
 
         //toggle
@@ -1844,7 +1851,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     }
 
     $scope.deviceinfo = $.jStorage.get("deviceinfo");
-    //    $scope.deviceinfo.covered = false;
+    $scope.deviceinfo.covered = false;
     console.log($scope.deviceinfo);
 
     if ($scope.deviceinfo && $scope.deviceinfo.manufacturer) {

@@ -29,7 +29,7 @@
             </ion-item>
 -->
             <ion-item class="item-picture light-bg tem-remove-animate item-avatar2" href="#/tab/home/edit/{{app._id}}" ng-repeat="app in appliance">
-                <div class="picture assertive-bg" style="background-image: url('img/icons/Mobile.png');"></div>
+                <div class="picture assertive-bg" style="background-image: url('img/icons/{{app.icon}}');"></div>
                 <h2>{{app.name}}</h2>
                 <p>Make: {{app.brandname}}</p>
                 <p ng-if="app.warranty[0].period!='' && app.warranty[0]">Warranty: {{app.warranty[0].period}}</p>
