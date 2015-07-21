@@ -359,6 +359,16 @@ angular.module('starter.services', [])
         firstAppliance: function (data, callback) {
             console.log(data);
             $http.post(adminurl + "appliance/firstappliance", data).success(callback);
+        },
+        searchbrandbyid: function (name, id, callback) {
+            $http({
+                url: adminurl + "brand/findlikebrand",
+                method: "POST",
+                data: {
+                    "name": name,
+                    "appliancetype": id
+                }
+            }).success(callback);
         }
     };
 });

@@ -1822,6 +1822,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
     $scope.brandindex = '';
     $scope.openbrandsearch = function (appname, index) {
+        $.jStorage.set("prodid", appname);
         $scope.brandindex = index;
         Chats.getmybrands(appname, function (data, status) {
             console.log(data);
@@ -1836,14 +1837,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
     $scope.getproductbrands = function (brandname) {
         console.log(brandname);
-        Chats.searchbrand(brandname, function (data, status) {
+        Chats.searchbrandbyid(brandname, $.jStorage.get("prodid"), function (data, status) {
             console.log(data);
             $scope.brands = data;
         })
     }
 
     $scope.deviceinfo = $.jStorage.get("deviceinfo");
-    $scope.deviceinfo.covered = false;
+    //    $scope.deviceinfo.covered = false;
     console.log($scope.deviceinfo);
 
     if ($scope.deviceinfo && $scope.deviceinfo.manufacturer) {
