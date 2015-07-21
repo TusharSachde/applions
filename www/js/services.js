@@ -1,4 +1,4 @@
-var adminurl = "http://192.168.2.9:1337/";
+var adminurl = "http://192.168.2.22:1337/";
 
 angular.module('starter.services', [])
 

@@ -23,9 +23,9 @@
                 </div>
             </div>
         </div>
-        <div class="row table" collection-repeat="all in allapplions">
+        <div class="row table" ng-repeat="all in allapplions">
             <div class="col">{{all.name}}</div>
-            <div class="col" ng-click="openbrandsearch(all.name, $index);">
+            <div class="col" ng-click="openbrandsearch(all.appliancetypeid, $index);">
                 <input type="text" placeholder="Enter Brand" ng-model="all.brandname" disabled>
             </div>
             <div class="col">
