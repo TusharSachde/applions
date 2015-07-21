@@ -442,6 +442,24 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             });
         };
 
+        var uploadWarrantySuccess = function (result) {
+            console.log(result);
+            $scope.documents.warrantycard = result.value;
+        }
+        $scope.uploadwarrantycard = function () {
+            console.log("take picture");
+            $cordovaImagePicker.getPictures(options).then(function (resultImage) {
+                // Success! Image data is here
+                console.log("here in upload image");
+                console.log(resultImage);
+                $scope.cameraimage = resultImage[0];
+                $scope.uploadPhoto(adminurl + "user/uploadfile", uploadWarrantySuccess);
+
+            }, function (err) {
+                // An error occured. Show a message to the user
+            });
+        };
+
         $scope.uploadPhoto = function (serverpath, callback) {
 
             //        console.log("function called");
@@ -1051,21 +1069,21 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
 
     //UPLOAD DOCUMENTS
-    //    var options = {
-    //        maximumImagesCount: 1,
-    //        width: 800,
-    //        height: 800,
-    //        quality: 80
-    //    };
-
     var options = {
-        quality: 20,
-        destinationType: Camera.DestinationType.FILE_URI,
-        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-        allowEdit: true,
-        encodingType: Camera.EncodingType.JPEG,
-        saveToPhotoAlbum: false
+        maximumImagesCount: 1,
+        width: 800,
+        height: 800,
+        quality: 80
     };
+
+    //    var options = {
+    //        quality: 20,
+    //        destinationType: Camera.DestinationType.FILE_URI,
+    //        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+    //        allowEdit: true,
+    //        encodingType: Camera.EncodingType.JPEG,
+    //        saveToPhotoAlbum: false
+    //    };
 
     $scope.cameraimage = '';
     var uploadBillSuccess = function (result) {
