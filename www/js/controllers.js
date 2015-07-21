@@ -101,6 +101,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.warrantyobj = [];
         $scope.additionalwarranty = [];
         $scope.archive = [];
+        $scope.documents = {};
         $scope.locationtb = 0;
         $scope.locationtab = function (tb) {
             $scope.locationtb = tb;
@@ -421,9 +422,10 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             quality: 80
         };
 
-        var changeproflogo = function (result) {
+        var uploadBillSuccess = function (result) {
             console.log(result);
-            $scope.mycard.profilelogo = result.value;
+            $scope.documents.bill = result.files[0].fd;
+            console.log($scope.documents.bill);
         }
         $scope.uploadBill = function () {
             console.log("take picture");
@@ -435,7 +437,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 console.log(resultImage);
 
                 $scope.cameraimage = resultImage[0];
-                $scope.uploadPhoto("http://wohlig.co.in/powerforone/index.php/json/imageuploadprofile", changeproflogo);
+                $scope.uploadPhoto(adminurl + "user/uploadfile", uploadBillSuccess);
 
             }, function (err) {
                 // An error occured. Show a message to the user
@@ -444,7 +446,8 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         var uploadWarrantySuccess = function (result) {
             console.log(result);
-            $scope.documents.warrantycard = result.value;
+            $scope.documents.warrantycard = result.files[0].fd;
+            console.log($scope.documents.warrantycard);
         }
         $scope.uploadwarrantycard = function () {
             console.log("take picture");
@@ -1088,7 +1091,8 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     $scope.cameraimage = '';
     var uploadBillSuccess = function (result) {
         console.log(result);
-        $scope.documents.bill = result.value;
+        $scope.documents.bill = result.files[0].fd;
+        console.log($scope.documents.bill);
     }
     $scope.uploadBill = function () {
         console.log("take picture");
@@ -1106,7 +1110,8 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
     var uploadWarrantySuccess = function (result) {
         console.log(result);
-        $scope.documents.warrantycard = result.value;
+        $scope.documents.warrantycard = result.files[0].fd;
+        console.log($scope.documents.warrantycard);
     }
     $scope.uploadwarrantycard = function () {
         console.log("take picture");
