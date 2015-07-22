@@ -211,7 +211,7 @@
                     </select>
                 </label>
             </label>
-            <div class="row">
+            <div class="row" ng-if="showimages==1">
                 <div class="col text-center">
                     <img style="width: 100px;height: 100px;" ng-src="{{documents.bill | serverimage}}" ng-click="uploadBill();">
                 </div>
@@ -219,7 +219,7 @@
                     <img style="width: 100px;height: 100px;" ng-src="{{documents.warrantycard | serverimage}}" ng-click="uploadwarrantycard();">
                 </div>
             </div>
-            <div class="row">
+            <div class="row" ng-if="showimages==1">
                 <div class="col text-center" ng-click="uploadBill();">
                     <button class="button button-outline button-balanced button-block button-small" ng-class="warranty">Upload Bill</button>
                 </div>

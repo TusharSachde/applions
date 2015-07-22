@@ -1,5 +1,5 @@
 var adminurl = "http://192.168.2.22:1337/";
-var imgpath = adminurl + "uploads/";
+var imgpath = adminurl + "user/resize?file=";
 angular.module('starter.services', [])
 
 .factory('Chats', function ($http) {
