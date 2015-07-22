@@ -1,6 +1,6 @@
 <ion-view view-title="Manage Appliance" class="light-bg">
     <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear small-icon">
+        <button class="button button-icon button-clear small-icon" ng-click="saveAll()">
             Save
         </button>
     </ion-nav-buttons>
@@ -114,7 +114,7 @@
 
                 <label class="item item-input">
                     <span class="input-label">Expiry</span>
-                    <input type="text" ng-model="appliance.warranty[0].expiry">
+                    <input type="text" ng-model="appliance.warranty[0].expiry" readonly>
                 </label>
 
 
@@ -125,15 +125,15 @@
         </div>
 
         <div class="list" ng-if="tabvalue == 2">
-            <label class="item item-input">
+            <label class="item item-input" ng-class="allvalidation[0].validation">
                 <span class="input-label">Purchase Date</span>
                 <input type="date" ng-model="warranty.purchasedate">
             </label>
-            <label class="item item-input">
+            <label class="item item-input" ng-class="allvalidation[1].validation">
                 <span class="input-label">Bill No*</span>
-                <input type="text" ng-model="warranty.billno" required>
+                <input type="text" ng-model="warranty.billno">
             </label>
-            <label class="item item-input">
+            <label class="item item-input" ng-class="allvalidation[2].validation">
                 <span class="input-label">Store Name</span>
                 <input type="text" ng-model="store.name">
             </label>
@@ -170,7 +170,7 @@
                 <span class="input-label">Sale Person</span>
                 <input type="text" ng-model="store.saleperson">
             </label>
-            <label class="item item-input">
+            <label class="item item-input" ng-class="allvalidation[3].validation">
                 <span class="input-label">Purchase Price</span>
                 <input type="text" ng-model="store.purchaseprice">
             </label>
@@ -259,7 +259,7 @@
 
             <div class="button-bar">
                 <button class="button button-outline icon-left ion-chevron-left button-balanced" ng-click="changetab(2)">Previous</button>
-                <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-click="changetab(4)">Next</button>
+                <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-click="updateWarrantytab(4)">Next</button>
             </div>
         </div>
 

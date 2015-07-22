@@ -2,7 +2,7 @@ var adminurl = "http://192.168.2.22:1337/";
 
 angular.module('starter.services', [])
 
-.factory('Chats', function ($http) {
+.factory('Chats', function($http) {
     // Might use a resource here that returns a JSON array
 
 
@@ -118,52 +118,52 @@ angular.module('starter.services', [])
     }];
 
     return {
-        all: function () {
+        all: function() {
             return chats;
         },
-        allapplions: function (callback) {
+        allapplions: function(callback) {
             $http.get(adminurl + "appliancetype/findallproducts", {}).success(callback);
         },
-        remove: function (chat) {
+        remove: function(chat) {
             chats.splice(chats.indexOf(chat), 1);
         },
-        login: function (user, callback) {
+        login: function(user, callback) {
             $http.get(adminurl + "user/login?email=" + user.email + "&password=" + user.password, {}).success(callback);
         },
-        getOneAppliance: function (id, callback) {
-            $http.get(adminurl + "appliance?id=" + id, {}).success(callback);
+        getOneAppliance: function(id, callback) {
+            $http.post(adminurl + "appliance/findbyid", {"id":id}).success(callback);
         },
-        getProduct: function (callback2) {
+        getProduct: function(callback2) {
             $http.get(adminurl + "appliancetype", {}).success(callback2);
         },
-        getWholeUser: function (callback) {
+        getWholeUser: function(callback) {
             $http.get(adminurl + "user?id=" + $.jStorage.get("user").id, {}).success(callback);
         },
-        createAppliance: function (data, callback) {
+        createAppliance: function(data, callback) {
             console.log(data);
             $http.post(adminurl + "appliance/createappliance", data).success(callback);
         },
-        updateAppliance: function (data, callback) {
+        updateAppliance: function(data, callback) {
             console.log(data);
             $http.post(adminurl + "appliance/updateappliance", {
                 "id": data.id,
                 "appliancetype": data.appliancetype.id,
-                "brand": data.brand.id,
+                "brand": data.brand._id,
                 "name": data.name,
                 "modelnumber": data.modelnumber,
                 "serialnumber": data.serialnumber,
                 "userlocation": data.userlocation.id
             }).success(callback);
         },
-        deleteAppliance: function (data, callback) {
+        deleteAppliance: function(data, callback) {
             $http.delete(adminurl + "appliance/" + data).success(callback);
         },
-        searchProduct: function (data, callback) {
+        searchProduct: function(data, callback) {
             $http.post(adminurl + "appliancetype/searchproduct", {
                 params: data
             }).success(callback);
         },
-        applianceStore: function (data, callback) {
+        applianceStore: function(data, callback) {
             //            if(data.createdAt){
             //                delete data.createdAt;
             //                delete data.updatedAt;
@@ -171,40 +171,68 @@ angular.module('starter.services', [])
             //            }
             $http.post(adminurl + "store/createstore", data).success(callback);
         },
-        createWarranty: function (data, callback) {
+        createWarranty: function(data, callback) {
             $http.post(adminurl + "warranty/createwarranty", {
                 "appliance": data.appliance,
                 "purchasedate": data.purchasedate,
                 "billno": data.billno
             }).success(callback);
         },
-        updateWarranty: function (data, callback) {
-            $http.post(adminurl + "warranty/updatewarranty", {
-                "purchasedate": data.purchasedate,
-                "billno": data.billno,
-                "id": data.id
-            }).success(callback);
+        updateWarranty: function(data, callback) {
+            if (data.id) {
+                console.log("updated");
+                $http.post(adminurl + "warranty/updatewarranty", {
+                    "purchasedate": data.purchasedate,
+                    "billno": data.billno,
+                    "id": data.id
+                }).success(callback);
+            } else {
+                console.log("created");
+                $http.post(adminurl + "warranty/createwarranty", {
+                    "purchasedate": data.purchasedate,
+                    "billno": data.billno,
+                    "appliance": $.jStorage.get("applianceid")
+                }).success(callback);
+            }
         },
-        updateComponentWarranty: function (data, callback) {
+        updateWarrantyWar: function(data, callback) {
+            if (data.id) {
+                console.log("updated");
+                $http.post(adminurl + "warranty/updatewarranty", {
+                    "period": data.period,
+                    "type": data.type,
+                    "id": data.id
+                }).success(callback);
+            } else {
+                console.log("created");
+                $http.post(adminurl + "warranty/createwarranty", {
+                    "period": data.period,
+                    "type": data.type,
+                    "appliance": $.jStorage.get("applianceid")
+                }).success(callback);
+            }
+
+        },
+        updateComponentWarranty: function(data, callback) {
             delete data.$$hashKey;
             delete data.createdAt;
             delete data.updatedAt;
             console.log(data);
             $http.post(adminurl + "componentwarranty/updatecomponent", data).success(callback);
         },
-        updateAddtionalWarranty: function (data, callback) {
+        updateAddtionalWarranty: function(data, callback) {
             delete data.$$hashKey;
             delete data.createdAt;
             delete data.updatedAt;
             console.log(data);
             $http.post(adminurl + "warranty/updatewarranty", data).success(callback);
         },
-        addUserLocation: function (data, callback) {
+        addUserLocation: function(data, callback) {
             $http.get(adminurl + "userlocation/addlocation", {
                 params: data
             }).success(callback);
         },
-        addComponentWarranty: function (data, callback) {
+        addComponentWarranty: function(data, callback) {
             $http({
                 url: adminurl + "componentwarranty/createcw",
                 method: "POST",
@@ -218,7 +246,7 @@ angular.module('starter.services', [])
             }).success(callback);
 
         },
-        addAdditionalWarranty: function (data, callback) {
+        addAdditionalWarranty: function(data, callback) {
             $http({
                 url: adminurl + "warranty/createwarranty",
                 method: "POST",
@@ -236,7 +264,7 @@ angular.module('starter.services', [])
             }).success(callback);
 
         },
-        sendFeedback: function (data, callback) {
+        sendFeedback: function(data, callback) {
             $http({
                 url: adminurl + "feedback/createfeed",
                 method: "POST",
@@ -249,30 +277,30 @@ angular.module('starter.services', [])
             }).success(callback);
 
         },
-        updateUserLocation: function (data, callback) {
+        updateUserLocation: function(data, callback) {
             $http.get(adminurl + "userlocation/updatelocation", {
                 params: data
             }).success(callback);
         },
-        getAppliance: function (callback) {
+        getAppliance: function(callback) {
             $http.post(adminurl + "appliance/getappliance", {
                 "user": $.jStorage.get("user").id
             }).success(callback);
         },
-        jstorageUser: function (user) {
+        jstorageUser: function(user) {
             $.jStorage.set("user", user);
         },
-        getUser: function () {
+        getUser: function() {
             return $.jStorage.get("user");
         },
-        authenticate: function () {
+        authenticate: function() {
             if ($.jStorage.get("user") != null) {
                 return "true";
             } else {
                 return "false";
             }
         },
-        get: function (chatId) {
+        get: function(chatId) {
             for (var i = 0; i < chats.length; i++) {
                 if (chats[i].id === parseInt(chatId)) {
                     return chats[i];
@@ -280,23 +308,23 @@ angular.module('starter.services', [])
             }
             return null;
         },
-        getmybrands: function (data, callback) {
+        getmybrands: function(data, callback) {
             $http.post(adminurl + "brand/findname", {
                 "name": data
             }).success(callback);
         },
-        getProfileJson: function (callback) {
+        getProfileJson: function(callback) {
             //            $http.get("json/profile.json", data).success(callback);
             $http.get(adminurl + "user?id=" + $.jStorage.get('user').id, {}).success(callback);
         },
-        updateUser: function (data, callback) {
+        updateUser: function(data, callback) {
             delete data.userlocation;
             delete data.password;
             data.country = data.country.id;
             console.log(data);
             $http.post(adminurl + "user/updateuser", data).success(callback);
         },
-        changeArchive: function (data, callback) {
+        changeArchive: function(data, callback) {
             console.log(data);
             //            $http.get(adminurl + "appliance/updateappliance", {params:data}).success(callback);
             $http({
@@ -308,10 +336,10 @@ angular.module('starter.services', [])
                 }
             }).success(callback);
         },
-        getCountry: function (callback) {
+        getCountry: function(callback) {
             $http.post("json/country.json").success(callback);
         },
-        changePassword: function (data, callback) {
+        changePassword: function(data, callback) {
             delete data.confpassword;
             $http.post(adminurl + "user/changepassword", {
                 "id": $.jStorage.get("user").id,
@@ -319,7 +347,7 @@ angular.module('starter.services', [])
                 "editpassword": data.editpassword
             }).success(callback);
         },
-        searchProduct: function (data, callback) {
+        searchProduct: function(data, callback) {
             $http({
                 url: adminurl + "appliancetype/searchproduct",
                 method: "POST",
@@ -328,7 +356,7 @@ angular.module('starter.services', [])
                 }
             }).success(callback);
         },
-        findBrand: function (data, callback) {
+        findBrand: function(data, callback) {
             $http({
                 url: adminurl + "brand/findbrand",
                 method: "POST",
@@ -337,7 +365,7 @@ angular.module('starter.services', [])
                 }
             }).success(callback);
         },
-        updatePurchasePrice: function (data, callback) {
+        updatePurchasePrice: function(data, callback) {
             $http({
                 url: adminurl + "appliance/updateappliance",
                 method: "POST",
@@ -347,7 +375,7 @@ angular.module('starter.services', [])
                 }
             }).success(callback);
         },
-        searchbrand: function (data, callback) {
+        searchbrand: function(data, callback) {
             $http({
                 url: adminurl + "brand/searchbrand",
                 method: "POST",
@@ -356,11 +384,11 @@ angular.module('starter.services', [])
                 }
             }).success(callback);
         },
-        firstAppliance: function (data, callback) {
+        firstAppliance: function(data, callback) {
             console.log(data);
             $http.post(adminurl + "appliance/firstappliance", data).success(callback);
         },
-        searchbrandbyid: function (name, id, callback) {
+        searchbrandbyid: function(name, id, callback) {
             $http({
                 url: adminurl + "brand/findlikebrand",
                 method: "POST",
