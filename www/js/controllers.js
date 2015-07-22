@@ -505,6 +505,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             Chats.deleteAppliance($stateParams.id, applianceDelete);
         }
 
+
+        $scope.toBrand = function (brand) {
+            console.log(brand);
+            $scope.appliance.brand = brand.name;
+            $scope.appliance.brandid = brand._id;
+            $scope.closebrandsearch();
+        }
+
         //UPLOAD DOCUMENTS
 
 
@@ -847,36 +855,6 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     $scope.locationtab = function (tb) {
         $scope.locationtb = tb;
     };
-    // TAB/HOME/EDIT PAGE STARt
-    //        $scope.appliance = [];
-    //        $scope.appliancetype = [];
-    //        $scope.userlocation = [];
-    //        $scope.location = [];
-    //        $scope.appliance.userlocation = [
-    //            {
-    //                address: ";MKGLNDG",
-    //                country: "5572b34c9c0d63cc03245a7a",
-    //                createdAt: "2015-06-22T06:08:02.102Z",
-    //                district: ";mfknjk",
-    //                id: "5587a642fecc3ff81bd1a435",
-    //                name: "aksljdbhk;NKDNLK FSM",
-    //                pincode: "45742",
-    //                state: "ak;dnlfdng",
-    //                updatedAt: "2015-06-22T06:08:02.102Z",
-    //                user: "55752e5dfda25b7c09de7c14"    
-    //            },{
-    //                address: ";MKGLNDG",
-    //                country: "5572b34c9c0d63cc03245a7a",
-    //                createdAt: "2015-06-22T06:08:02.102Z",
-    //                district: ";mfknjk",
-    //                id: "5587a642fecc3ff81bd1a435",
-    //                name: "Thakurli",
-    //                pincode: "45742",
-    //                state: "ak;dnlfdng",
-    //                updatedAt: "2015-06-22T06:08:02.102Z",
-    //                user: "55752e5dfda25b7c09de7c14"    
-    //            }
-    //        ];
 
     //validate user
     $scope.user = Chats.getUser();
@@ -889,7 +867,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
     $scope.getproductbrands = function (brandname) {
         console.log(brandname);
-        Chats.searchbrand(brandname, function (data, status) {
+        Chats.searchbrandbyid(brandname, $scope.appliance.appliancetype.appliancetypeid, function (data, status) {
             console.log(data);
             $scope.brands = data;
         })
@@ -1442,16 +1420,19 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     };
 
     $scope.searchproduct = function (productkeyword) {
-            console.log(productkeyword);
-            Chats.searchProduct(productkeyword, function (data, status) {
-                console.log(data);
-                if (data.value != "false") {
-                    $scope.appliancetype = data;
-                } else
-                    $scope.appliancetype = {};
-            });
-        }
-        //ON PRODUCT CLICK
+        console.log(productkeyword);
+        Chats.searchProduct(productkeyword, function (data, status) {
+            console.log(data);
+            if (data.value != "false") {
+                $scope.appliancetype = data;
+            } else
+                $scope.appliancetype = {};
+        });
+    }
+
+    $scope.searchproduct("");
+
+    //ON PRODUCT CLICK
     $scope.brands = {};
     $scope.toProduct = function (product) {
         console.log(product);

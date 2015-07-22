@@ -66,8 +66,6 @@
                 </div>
             </div>
         </div>
-        </div>
-
 
         <div class="list" ng-if="tabvalue == 2">
 
@@ -167,9 +165,9 @@
                     Additional Warranty / AMC
                 </div>
                 <ion-item ng-click="openwarranty(warranty)" ng-repeat="warranty in appliance.warranty">
-                    {{warranty.billno}}
+                    Bill No
                     <span class="item-note">
-                      
+                      {{warranty.billno}}
                     </span>
                 </ion-item>
                 <!--            </div>-->
