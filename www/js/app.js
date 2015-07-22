@@ -24,6 +24,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.tabs.position('bottom');
+	  $ionicConfigProvider.views.maxCache(0);
     //    $ionicConfigProvider.scrolling.jsScrolling(false);
 
     $stateProvider
