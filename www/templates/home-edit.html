@@ -114,7 +114,8 @@
 
                 <label class="item item-input">
                     <span class="input-label">Expiry</span>
-                    <input type="text" ng-model="appliance.warranty[0].expiry" readonly>
+                    <input type="text" ng-model="warranty.expiry" readonly>
+                    <input type="text" ng-model="appliance.days" readonly>
                 </label>
 
 
@@ -268,15 +269,36 @@
                 Product Documents
             </div>
             <label class="item" style="padding:0;">
-                <div class="row">
-                    <div class="col text-center" ng-click="uploadBill();">
-                        <button class="button button-outline button-balanced button-block button-small">Upload Bill</button>
+                <label class="item item-input item-select">
+                   
+                    <div class="input-label">
+                        Select Component
                     </div>
-                    <div class="col text-center" ng-click="uploadwarrantycard();">
-                        <button class="button button-outline button-balanced button-block button-small">Upload Warranty Card</button>
-                    </div>
-                </div>
+                    <select ng-model="compwarid" ng-change="storewarid(compwarid);" style="color: rgb(46, 204, 113);">
+                        <option value="{{war.id}}" ng-repeat="war in appliance.componentwarranty">{{war.component}}</option>
+                        <!--
+                        <option selected>Green</option>
+                        <option>Red</option>
+-->
+                    </select>
+                </label>
             </label>
+            <div class="row">
+                <div class="col text-center">
+                    <img style="width: 100px;height: 100px;" ng-src="{{documents.bill | serverimage}}" ng-click="uploadBill();">
+                </div>
+                <div class="col text-center">
+                    <img style="width: 100px;height: 100px;" ng-src="{{documents.warrantycard | serverimage}}" ng-click="uploadwarrantycard();">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center" ng-click="uploadBill();">
+                    <button class="button button-outline button-balanced button-block button-small" ng-class="warranty">Upload Bill</button>
+                </div>
+                <div class="col text-center" ng-click="uploadwarrantycard();">
+                    <button class="button button-outline button-balanced button-block button-small" ng-class="warranty">Upload Warranty Card</button>
+                </div>
+            </div>
             <div class="item product-wrnnty">
                 Add Notes
             </div>
