@@ -14,11 +14,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             StatusBar.overlaysWebView(true);
             StatusBar.styleLightContent();
         }
-//        document.addEventListener("deviceready", onDeviceReady, false);
-//
-//        function onDeviceReady() {
-//            console.log(device.cordova);
-//        }
+        //        document.addEventListener("deviceready", onDeviceReady, false);
+        //
+        //        function onDeviceReady() {
+        //            console.log(device.cordova);
+        //        }
     });
 })
 
@@ -143,12 +143,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 controller: 'AboutCtrl'
             }
         }
-    });
+    })
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/tab/home');
-});
+})
 
+.filter('serverimage', function () {
+
+    return function (image) {
+        if (image && image != "") {
+            return imgpath + image;
+        } else {
+            return "img/logo.jpeg";
+        }
+
+    };
+});
 
 //var formvalidation = function (allvalidation) {
 //    var isvalid2 = true;
