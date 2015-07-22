@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordova'])
 
-.controller('AppCtrl', function($scope, $ionicPopup, $location, applianceStore) {
+.controller('AppCtrl', function ($scope, $ionicPopup, $location, applianceStore) {
     //    var readsmsCallback = function (otp) {
     //        if (!otp) {
     //            conole.log("No Otp");
@@ -17,76 +17,76 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
 })
 
-.controller('HomeCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams) {
+.controller('HomeCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams) {
 
-    // TAB/HOME PAGE START
+        // TAB/HOME PAGE START
 
-    $scope.appliance = [];
+        $scope.appliance = [];
 
-    console.log("in home ctrl");
+        console.log("in home ctrl");
 
-    var applianceSuccess = function(data, status) {
-        console.log(data);
-        $scope.appliance = data;
-    }
-    Chats.getAppliance(applianceSuccess);
-
-    // TAB/HOME PAGE END
-    $ionicModal.fromTemplateUrl('templates/modal-sortby.html', {
-        id: '4',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.oModal4 = modal;
-    });
-
-    $scope.opensort = function() {
-        $scope.oModal4.show();
-    }
-    $scope.closesort = function() {
-        $scope.oModal4.hide();
-    };
-
-    $ionicModal.fromTemplateUrl('templates/modal-filter.html', {
-        id: '3',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.oModal3 = modal;
-    });
-
-    $scope.openfilter = function() {
-        $scope.oModal3.show();
-    }
-    $scope.closefilter = function() {
-        $scope.oModal3.hide();
-    };
-    $ionicModal.fromTemplateUrl('templates/modal-callreport.html', {
-        id: '18',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.oModal18 = modal;
-    });
-
-    $scope.opencallreport = function() {
-        $scope.oModal18.show();
-    };
-
-    $scope.closecallreport = function() {
-        $scope.oModal18.hide();
-    };
-
-    var applianceDelete = function(data, status) {
+        var applianceSuccess = function (data, status) {
+            console.log(data);
+            $scope.appliance = data;
+        }
         Chats.getAppliance(applianceSuccess);
-        console.log(data);
-    }
-    $scope.deleteappliance = function(appid) {
-        Chats.deleteAppliance(appid, applianceDelete);
-    }
 
-})
-    .controller('HomeEditCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams, $cordovaImagePicker, $cordovaFileTransfer) {
+        // TAB/HOME PAGE END
+        $ionicModal.fromTemplateUrl('templates/modal-sortby.html', {
+            id: '4',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal4 = modal;
+        });
+
+        $scope.opensort = function () {
+            $scope.oModal4.show();
+        }
+        $scope.closesort = function () {
+            $scope.oModal4.hide();
+        };
+
+        $ionicModal.fromTemplateUrl('templates/modal-filter.html', {
+            id: '3',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal3 = modal;
+        });
+
+        $scope.openfilter = function () {
+            $scope.oModal3.show();
+        }
+        $scope.closefilter = function () {
+            $scope.oModal3.hide();
+        };
+        $ionicModal.fromTemplateUrl('templates/modal-callreport.html', {
+            id: '18',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal18 = modal;
+        });
+
+        $scope.opencallreport = function () {
+            $scope.oModal18.show();
+        };
+
+        $scope.closecallreport = function () {
+            $scope.oModal18.hide();
+        };
+
+        var applianceDelete = function (data, status) {
+            Chats.getAppliance(applianceSuccess);
+            console.log(data);
+        }
+        $scope.deleteappliance = function (appid) {
+            Chats.deleteAppliance(appid, applianceDelete);
+        }
+
+    })
+    .controller('HomeEditCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams, $cordovaImagePicker, $cordovaFileTransfer) {
 
         // TAB/HOME/EDIT PAGE STARt
         $scope.appliance = [];
@@ -106,24 +106,24 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.documents = {};
         $scope.locationtb = 0;
         $scope.cover = [];
-        $scope.locationtab = function(tb) {
+        $scope.locationtab = function (tb) {
             $scope.locationtb = tb;
         };
 
-	
-	// SAVE ALL
-	$scope.saveAll = function(){
-		if($scope.tabvalue == 1){
-			$scope.changetab2(2);
-		}
-	}
-	
-	
+
+        // SAVE ALL
+        $scope.saveAll = function () {
+            if ($scope.tabvalue == 1) {
+                $scope.changetab2(2);
+            }
+        }
+
+
         //validate user
         $scope.user = Chats.getUser();
 
         // ONE USERa.userlocation;
-        var userLocationSuccess = function(data, status) {
+        var userLocationSuccess = function (data, status) {
             console.log("before");
             console.log(data.userlocation);
             $scope.userlocation = data.userlocation;
@@ -134,13 +134,13 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         // ONE APPLIANCE    
 
-        var getProductSuccess = function(data, status) {
+        var getProductSuccess = function (data, status) {
             console.log("product");
             console.log(data);
             $scope.appliancetype = data;
         }
 
-        var getOneSuccess = function(data, status) {
+        var getOneSuccess = function (data, status) {
             console.log("all appliance");
             console.log(data);
             $scope.appliance = data;
@@ -167,12 +167,12 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         //ON PRODUCT CLICK
         $scope.brands = [];
-        $scope.toProduct = function(product) {
+        $scope.toProduct = function (product) {
             console.log(product);
             $scope.appliance.appliancetype = product;
             $scope.appliance.appliancetype.id = product.id;
             $scope.closeproductsearch();
-            Chats.findBrand(product.appliancetypeid, function(data, status) {
+            Chats.findBrand(product.appliancetypeid, function (data, status) {
                 console.log(data);
                 if (data.value != "false")
                     $scope.brands = data;
@@ -182,7 +182,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         }
 
         //ON LOCATION CLICK
-        $scope.selectLocation = function(location) {
+        $scope.selectLocation = function (location) {
             for (var i = 0; i < $scope.userlocation.length; i++) {
                 $scope.userlocation[i].tabactive = "";
             }
@@ -191,21 +191,21 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             $scope.appliance.userlocation = location;
         }
 
-        var locationSuccess = function(data, status) {
+        var locationSuccess = function (data, status) {
             console.log(data);
             Chats.getWholeUser(userLocationSuccess);
 
             $scope.location = [];
         }
-        $scope.addLocation = function() {
+        $scope.addLocation = function () {
             $scope.location.user = $scope.user.id;
             Chats.addUserLocation($scope.location, locationSuccess);
         }
 
-        var updateLocationSuccess = function(data, status) {
+        var updateLocationSuccess = function (data, status) {
             console.log(data);
         }
-        $scope.updateLocation = function() {
+        $scope.updateLocation = function () {
             delete $scope.appliance.userlocation["$$hashKey"];
             delete $scope.appliance.userlocation["tabactive"];
             console.log($scope.appliance.userlocation);
@@ -215,18 +215,18 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
 
         //UPDATE PURCHASE DETAILS
-        var warrantySuccess = function(data, status) {
+        var warrantySuccess = function (data, status) {
             console.log(data);
             $scope.changetab(3);
             updateApp();
         }
 
-        var storeSuccess = function(data, status) {
+        var storeSuccess = function (data, status) {
             console.log(data);
         }
 
         $scope.purchaseprice = {};
-        $scope.purchaseDetails = function() {
+        $scope.purchaseDetails = function () {
             console.log($scope.warranty);
             $scope.allvalidation = [{
                 field: $scope.warranty.purchasedate,
@@ -245,7 +245,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             if (check) {
                 $scope.purchaseprice.appliance = $stateParams.id;
                 $scope.purchaseprice.purchaseprice = $scope.store.purchaseprice;
-                Chats.updatePurchasePrice($scope.purchaseprice, function(data, status) {
+                Chats.updatePurchasePrice($scope.purchaseprice, function (data, status) {
                     updateApp();
                 });
 
@@ -255,18 +255,18 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         }
 
 
-        $scope.updateWarrantytab = function(tab) {
+        $scope.updateWarrantytab = function (tab) {
             console.log($scope.warranty);
-            Chats.updateWarrantyWar($scope.warranty, function(data, status) {
+            Chats.updateWarrantyWar($scope.warranty, function (data, status) {
                 console.log(data);
             });
             $scope.changetab(4);
         }
 
-        $scope.saveComponentWarranty = function() {
+        $scope.saveComponentWarranty = function () {
             $scope.compwarranty.appliance = $stateParams.id;
             console.log($scope.compwarranty);
-            Chats.addComponentWarranty($scope.compwarranty, function(data, status) {
+            Chats.addComponentWarranty($scope.compwarranty, function (data, status) {
                 if (data) {
                     $scope.oModal21.hide();
                     $scope.closecomponent();
@@ -277,17 +277,17 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                         title: "Fail to Update Component Warranty",
                         scope: $scope,
                     });
-                    $timeout(function() {
+                    $timeout(function () {
                         myPopup.close(); //close the popup after 3 seconds for some reason
                     }, 1500);
                 }
             });
         }
 
-        $scope.saveAdditionalWarranty = function() {
+        $scope.saveAdditionalWarranty = function () {
             $scope.additionalwarranty.appliance = $stateParams.id;
             console.log($scope.additionalwarranty);
-            Chats.addAdditionalWarranty($scope.additionalwarranty, function(data, status) {
+            Chats.addAdditionalWarranty($scope.additionalwarranty, function (data, status) {
                 console.log(data);
                 if (data) {
                     $scope.closeModal();
@@ -298,7 +298,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                         title: "Fail to Update Component Warranty",
                         scope: $scope,
                     });
-                    $timeout(function() {
+                    $timeout(function () {
                         myPopup.close(); //close the popup after 3 seconds for some reason
                     }, 1500);
                 }
@@ -307,9 +307,9 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
 
         //EDIT COMPONENT WARRANTY
-        $scope.editComponentWarranty = function() {
+        $scope.editComponentWarranty = function () {
             $scope.componentobj.appliance = $scope.appliance.id;
-            Chats.updateComponentWarranty($scope.componentobj, function(data, status) {
+            Chats.updateComponentWarranty($scope.componentobj, function (data, status) {
                 if (data) {
                     updateApp();
                     $scope.oModal21.hide();
@@ -318,17 +318,17 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                         title: "Fail to Update Component Warranty",
                         scope: $scope,
                     });
-                    $timeout(function() {
+                    $timeout(function () {
                         myPopup.close(); //close the popup after 3 seconds for some reason
                     }, 1500);
                 }
             });
         }
 
-        $scope.editAdditionalWarranty = function() {
-		   $scope.cover = [];
+        $scope.editAdditionalWarranty = function () {
+            $scope.cover = [];
             $scope.additionalwarranty.appliance = $scope.appliance.id;
-            Chats.updateAddtionalWarranty($scope.additionalwarranty, function(data, status) {
+            Chats.updateAddtionalWarranty($scope.additionalwarranty, function (data, status) {
                 console.log(data);
                 if (data) {
                     updateApp();
@@ -338,7 +338,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                         title: "Fail to Update Component Warranty",
                         scope: $scope,
                     });
-                    $timeout(function() {
+                    $timeout(function () {
                         myPopup.close(); //close the popup after 3 seconds for some reason
                     }, 1500);
                 }
@@ -346,7 +346,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         }
 
         //        
-        $scope.pushorpop = function(status, value) {
+        $scope.pushorpop = function (status, value) {
             console.log(status);
             console.log(value);
             console.log($scope.cover);
@@ -360,10 +360,10 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         }
 
         //ARCHIVE APPLIANCE
-        $scope.applianceArchived = function(state) {
+        $scope.applianceArchived = function (state) {
             $scope.archive.status = state;
             $scope.archive.id = $scope.appliance.id;
-            Chats.changeArchive($scope.archive, function(data, status) {
+            Chats.changeArchive($scope.archive, function (data, status) {
                 console.log(data);
                 $scope.closearchive();
                 updateApp();
@@ -371,9 +371,9 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         }
 
         // TAB/HOME/EDIT PAGE END
-        $scope.getproductbrands = function(brandname) {
+        $scope.getproductbrands = function (brandname) {
             console.log(brandname);
-            Chats.searchbrandbyid(brandname, $scope.appliance.appliancetype.appliancetypeid, function(data, status) {
+            Chats.searchbrandbyid(brandname, $scope.appliance.appliancetype.appliancetypeid, function (data, status) {
                 console.log(data);
                 $scope.brands = data;
             })
@@ -381,14 +381,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
 
         //toggle
-        $scope.changetab = function(tab) {
+        $scope.changetab = function (tab) {
             console.log(tab);
             $scope.tabvalue = tab;
         }
-        var applianceUpdate = function(data, status) {
+        var applianceUpdate = function (data, status) {
             console.log(data);
         }
-        $scope.changetab2 = function(tab) {
+        $scope.changetab2 = function (tab) {
 
             $scope.allvalidation = [{
                 field: $scope.appliance.appliancetype.name,
@@ -403,13 +403,13 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             var check = formvalidation($scope.allvalidation);
             if (check) {
                 console.log("validate");
-                Chats.updateAppliance($scope.appliance, function(data, status) {
+                Chats.updateAppliance($scope.appliance, function (data, status) {
                     if (data) {
                         var myPopup = $ionicPopup.show({
                             title: "Appliance Updated",
                             scope: $scope,
                         });
-                        $timeout(function() {
+                        $timeout(function () {
                             myPopup.close(); //close the popup after 3 seconds for some reason
                         }, 1500);
                         $scope.tabvalue = tab;
@@ -418,7 +418,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                             title: "Enable To Update",
                             scope: $scope,
                         });
-                        $timeout(function() {
+                        $timeout(function () {
                             myPopup.close(); //close the popup after 3 seconds for some reason
                         }, 1500);
                     }
@@ -429,14 +429,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         }
 
         $scope.custom = false;
-        $scope.toggleCustom = function() {
+        $scope.toggleCustom = function () {
             $scope.custom = $scope.custom === false ? true : false;
         };
 
         $scope.tabvalue = 1;
         $scope.showreport = 1;
 
-        $scope.sendtowebsite = function(website) {
+        $scope.sendtowebsite = function (website) {
             console.log(website);
             window.open('http://applions.blogspot.in/?m=1', '_blank');
         }
@@ -451,15 +451,15 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             quality: 80
         };
 
-        var uploadBillSuccess = function(result) {
+        var uploadBillSuccess = function (result) {
             console.log(result);
             $scope.documents.bill = result.files[0].fd;
             console.log($scope.documents.bill);
         }
-        $scope.uploadBill = function() {
+        $scope.uploadBill = function () {
             console.log("take picture");
 
-            $cordovaImagePicker.getPictures(options).then(function(resultImage) {
+            $cordovaImagePicker.getPictures(options).then(function (resultImage) {
                 // Success! Image data is here
                 console.log("here in upload image");
 
@@ -468,44 +468,44 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 $scope.cameraimage = resultImage[0];
                 $scope.uploadPhoto(adminurl + "user/uploadfile", uploadBillSuccess);
 
-            }, function(err) {
+            }, function (err) {
                 // An error occured. Show a message to the user
             });
         };
 
-        var uploadWarrantySuccess = function(result) {
+        var uploadWarrantySuccess = function (result) {
             console.log(result);
             $scope.documents.warrantycard = result.files[0].fd;
             console.log($scope.documents.warrantycard);
         }
-        $scope.uploadwarrantycard = function() {
+        $scope.uploadwarrantycard = function () {
             console.log("take picture");
-            $cordovaImagePicker.getPictures(options).then(function(resultImage) {
+            $cordovaImagePicker.getPictures(options).then(function (resultImage) {
                 // Success! Image data is here
                 console.log("here in upload image");
                 console.log(resultImage);
                 $scope.cameraimage = resultImage[0];
                 $scope.uploadPhoto(adminurl + "user/uploadfile", uploadWarrantySuccess);
 
-            }, function(err) {
+            }, function (err) {
                 // An error occured. Show a message to the user
             });
         };
 
-        $scope.uploadPhoto = function(serverpath, callback) {
+        $scope.uploadPhoto = function (serverpath, callback) {
 
             //        console.log("function called");
             $cordovaFileTransfer.upload(serverpath, $scope.cameraimage, options)
-                .then(function(result) {
+                .then(function (result) {
                     console.log(result);
                     var data = JSON.parse(result.response);
                     callback(data);
                     $ionicLoading.hide();
                     //$scope.addretailer.store_image = $scope.filename2;
-                }, function(err) {
+                }, function (err) {
                     // Error
                     console.log(err);
-                }, function(progress) {
+                }, function (progress) {
                     // constant progress updates
                     $ionicLoading.show({
                         //        template: 'We are fetching the best rates for you.',
@@ -519,16 +519,16 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 });
         };
 
-        var applianceDelete = function(data, status) {
+        var applianceDelete = function (data, status) {
             console.log(data);
             $scope.closedelete();
         }
-        $scope.deleteappliance = function() {
+        $scope.deleteappliance = function () {
             Chats.deleteAppliance($stateParams.id, applianceDelete);
         }
 
 
-        $scope.toBrand = function(brand) {
+        $scope.toBrand = function (brand) {
             console.log(brand);
             $scope.appliance.brand = brand;
             $scope.closebrandsearch();
@@ -561,15 +561,15 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '1',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal1 = modal;
         });
         //jagruti
-        $scope.openedit = function() {
+        $scope.openedit = function () {
             $scope.oModal1.show();
         };
 
-        $scope.closeModalss = function() {
+        $scope.closeModalss = function () {
             $scope.oModal1.hide();
         };
 
@@ -577,15 +577,15 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '2',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal2 = modal;
         });
 
-        $scope.openpswd = function() {
+        $scope.openpswd = function () {
             $scope.oModal2.show();
         };
 
-        $scope.closeModal = function() {
+        $scope.closeModal = function () {
             $scope.oModal2.hide();
         };
 
@@ -593,28 +593,28 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '20',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal20 = modal;
         });
 
-        $scope.openwarranty = function(warranty) {
+        $scope.openwarranty = function (warranty) {
             console.log($scope.cover);
             console.log(warranty.includes);
-            _.forEach(warranty.includes, function(n, key) {
+            _.forEach(warranty.includes, function (n, key) {
                 switch (n) {
-                    case "services":
-					 $scope.cover.service = true;
-					 break;
-                    case "others":
-					 $scope.cover.others = true;
-					 break;
-                    case "parts":
-					 $scope.cover.parts = true;
-					 break;
-                    case "visit free":
-					 $scope.cover.free = true;
-					 break;
-                    default:
+                case "services":
+                    $scope.cover.service = true;
+                    break;
+                case "others":
+                    $scope.cover.others = true;
+                    break;
+                case "parts":
+                    $scope.cover.parts = true;
+                    break;
+                case "visit free":
+                    $scope.cover.free = true;
+                    break;
+                default:
                 }
             });
             $scope.additionalwarranty = warranty;
@@ -625,8 +625,8 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             $scope.oModal20.show();
         };
 
-        $scope.closewarranty = function() {
-		   $scope.cover = [];
+        $scope.closewarranty = function () {
+            $scope.cover = [];
             $scope.oModal20.hide();
         };
 
@@ -635,14 +635,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '4',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal4 = modal;
         });
 
-        $scope.opensort = function() {
+        $scope.opensort = function () {
             $scope.oModal4.show();
         }
-        $scope.closesort = function() {
+        $scope.closesort = function () {
             $scope.oModal4.hide();
         };
 
@@ -650,14 +650,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '5',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal5 = modal;
         });
 
-        $scope.openarchive = function() {
+        $scope.openarchive = function () {
             $scope.oModal5.show();
         }
-        $scope.closearchive = function() {
+        $scope.closearchive = function () {
             $scope.oModal5.hide();
         };
 
@@ -665,14 +665,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '6',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal6 = modal;
         });
 
-        $scope.opentransfer = function() {
+        $scope.opentransfer = function () {
             $scope.oModal6.show();
         }
-        $scope.closetransfer = function() {
+        $scope.closetransfer = function () {
             $scope.oModal6.hide();
         };
 
@@ -680,14 +680,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '7',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal7 = modal;
         });
 
-        $scope.opendelete = function() {
+        $scope.opendelete = function () {
             $scope.oModal7.show();
         }
-        $scope.closedelete = function() {
+        $scope.closedelete = function () {
             $scope.oModal7.hide();
         };
 
@@ -695,14 +695,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '8',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal8 = modal;
         });
 
-        $scope.openreport = function() {
+        $scope.openreport = function () {
             $scope.oModal8.show();
         }
-        $scope.closereport = function() {
+        $scope.closereport = function () {
             $scope.oModal8.hide();
         };
 
@@ -710,14 +710,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '9',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal9 = modal;
         });
 
-        $scope.opencomponent = function() {
+        $scope.opencomponent = function () {
             $scope.oModal9.show();
         }
-        $scope.closecomponent = function() {
+        $scope.closecomponent = function () {
             $scope.oModal9.hide();
         };
 
@@ -725,14 +725,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '10',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal10 = modal;
         });
 
-        $scope.openprevreports = function() {
+        $scope.openprevreports = function () {
             $scope.oModal10.show();
         }
-        $scope.closeprevreports = function() {
+        $scope.closeprevreports = function () {
             $scope.oModal10.hide();
         };
 
@@ -740,14 +740,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '11',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal11 = modal;
         });
 
-        $scope.openaddservice = function() {
+        $scope.openaddservice = function () {
             $scope.oModal11.show();
         }
-        $scope.closeaddservice = function() {
+        $scope.closeaddservice = function () {
             $scope.oModal11.hide();
         };
 
@@ -755,14 +755,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '12',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal12 = modal;
         });
 
-        $scope.openviewdetails = function() {
+        $scope.openviewdetails = function () {
             $scope.oModal12.show();
         }
-        $scope.closeviewdetails = function() {
+        $scope.closeviewdetails = function () {
             $scope.oModal12.hide();
         };
 
@@ -771,14 +771,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '12',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal12 = modal;
         });
 
-        $scope.openprevreports = function() {
+        $scope.openprevreports = function () {
             $scope.oModal12.show();
         }
-        $scope.closeprevreports = function() {
+        $scope.closeprevreports = function () {
             $scope.oModal12.hide();
         };
 
@@ -786,85 +786,85 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             id: '13',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal13 = modal;
         });
 
-        $scope.opensortservice = function() {
+        $scope.opensortservice = function () {
             $scope.oModal13.show();
         }
-        $scope.closesortservice = function() {
+        $scope.closesortservice = function () {
             $scope.oModal13.hide();
         };
         $ionicModal.fromTemplateUrl('templates/modal-filterservice.html', {
             id: '14',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal14 = modal;
         });
 
-        $scope.openfilterservice = function() {
+        $scope.openfilterservice = function () {
             $scope.oModal14.show();
         }
-        $scope.closefilterservice = function() {
+        $scope.closefilterservice = function () {
             $scope.oModal14.hide();
         };
         $ionicModal.fromTemplateUrl('templates/modal-brand.html', {
             id: '15',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal15 = modal;
         });
 
-        $scope.openbrandsearch = function() {
+        $scope.openbrandsearch = function () {
             $scope.oModal15.show();
         }
-        $scope.closebrandsearch = function() {
+        $scope.closebrandsearch = function () {
             $scope.oModal15.hide();
         };
         $ionicModal.fromTemplateUrl('templates/modal-product.html', {
             id: '16',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal16 = modal;
         });
 
-        $scope.openproductsearch = function() {
+        $scope.openproductsearch = function () {
             $scope.oModal16.show();
         }
-        $scope.closeproductsearch = function() {
+        $scope.closeproductsearch = function () {
             $scope.oModal16.hide();
         };
         $ionicModal.fromTemplateUrl('templates/notification.html', {
             id: '17',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal17 = modal;
         });
 
-        $scope.opennotification = function() {
+        $scope.opennotification = function () {
             $scope.oModal17.show();
         }
-        $scope.closenotification = function() {
+        $scope.closenotification = function () {
             $scope.oModal17.hide();
         };
         $ionicModal.fromTemplateUrl('templates/modal-compntwarranty.html', {
             id: '21',
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.oModal21 = modal;
         });
 
-        $scope.opencompntwarranty = function(component) {
+        $scope.opencompntwarranty = function (component) {
             $scope.componentobj = component;
             $scope.oModal21.show();
         }
-        $scope.closecompntwarranty = function() {
+        $scope.closecompntwarranty = function () {
             $scope.oModal21.hide();
         };
 
@@ -874,13 +874,15 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 title: 'Alert!',
                 scope: $scope,
             });
-            $timeout(function() {
+            $timeout(function () {
                 myPopup.close(); //close the popup after 3 seconds for some reason
             }, 2000);
         }
     })
 
-.controller('AddappCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams, $cordovaImagePicker, $cordovaFileTransfer, $ionicLoading) {
+.controller('AddappCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams, $cordovaImagePicker,
+
+    $cordovaFileTransfer, $ionicLoading) {
 
     $scope.appliance = {};
     $scope.appliancetype = {};
@@ -896,7 +898,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     $scope.archive = {};
     $scope.documents = {};
 
-    $scope.locationtab = function(tb) {
+    $scope.locationtab = function (tb) {
         $scope.locationtb = tb;
     };
 
@@ -904,27 +906,27 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     $scope.user = Chats.getUser();
 
     // ONE USER
-    var userCallback = function(data, status) {
+    var userCallback = function (data, status) {
         $scope.userlocation = data.userlocation;
     }
     Chats.getWholeUser(userCallback);
 
-    $scope.getproductbrands = function(brandname) {
+    $scope.getproductbrands = function (brandname) {
         console.log(brandname);
-        Chats.searchbrandbyid(brandname, $scope.appliance.appliancetype.appliancetypeid, function(data, status) {
+        Chats.searchbrandbyid(brandname, $scope.appliance.appliancetype.appliancetypeid, function (data, status) {
             console.log(data);
             $scope.brands = data;
         })
     }
 
     //ON PRODUCT CLICK
-    $scope.toProduct = function(product) {
+    $scope.toProduct = function (product) {
         console.log(product);
         $scope.appliance.appliancetype = product;
     }
 
     //ON LOCATION CLICK
-    $scope.selectLocation = function(location) {
+    $scope.selectLocation = function (location) {
         for (var i = 0; i < $scope.userlocation.length; i++) {
             $scope.userlocation[i].tabactive = "";
         }
@@ -933,21 +935,21 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.appliance.userlocation = location;
     }
 
-    var locationSuccess = function(data, status) {
+    var locationSuccess = function (data, status) {
         console.log(data);
         Chats.getWholeUser(userCallback);
     }
-    $scope.addLocation = function() {
+    $scope.addLocation = function () {
         $scope.location.user = $scope.user.id;
         Chats.addUserLocation($scope.location, locationSuccess);
     }
 
-    var updateLocationSuccess = function(data, status) {
+    var updateLocationSuccess = function (data, status) {
         //        updateApp();
         console.log(data);
         $scope.oModal1.hide();
     }
-    $scope.updateLocation = function() {
+    $scope.updateLocation = function () {
         delete $scope.appliance.userlocation["$$hashKey"];
         delete $scope.appliance.userlocation["tabactive"];
         console.log($scope.appliance);
@@ -957,50 +959,121 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
     // TAB/HOME/EDIT PAGE END
     //UPDATE PURCHASE DETAILS
-    var warrantySuccess = function(data, status) {
+    var warrantySuccess = function (data, status) {
         console.log(data);
+        $.jStorage.set("productwarranty", data.id);
+        updateApp();
     }
 
-    var storeSuccess = function(data, status) {
+    var storeSuccess = function (data, status) {
         console.log(data);
     }
-    var purchasePriceSuccess = function(data, status) {
+    var purchasePriceSuccess = function (data, status) {
         console.log(data);
         $scope.changetab(3);
         updateApp();
     }
     $scope.purchaseprice = {};
-    $scope.purchaseDetails = function() {
-        $scope.store.appliance = $.jStorage.get("applianceid");
-        $scope.store.id = $.jStorage.get("storeid");
-        $scope.warranty.appliance = $.jStorage.get("applianceid");
-        $scope.purchaseprice.appliance = $.jStorage.get("applianceid");
-        Chats.createWarranty($scope.warranty, warrantySuccess);
-        Chats.applianceStore($scope.store, storeSuccess);
-        Chats.updatePurchasePrice($scope.purchaseprice, purchasePriceSuccess)
+    $scope.purchaseDetails = function () {
+        var check = false;
+        $scope.allvalidation = [{
+            field: $scope.warranty.purchasedate,
+            validation: ""
+                }, {
+            field: $scope.warranty.billno,
+            validation: ""
+                }, {
+            field: $scope.store.name,
+            validation: ""
+                }, {
+            field: $scope.purchaseprice.purchaseprice,
+            validation: ""
+                }];
+
+        var check = formvalidation($scope.allvalidation);
+
+        if (check) {
+            $scope.store.appliance = $.jStorage.get("applianceid");
+            $scope.store.id = $.jStorage.get("storeid");
+            console.log($scope.store);
+            $scope.warranty.appliance = $.jStorage.get("applianceid");
+            console.log($scope.warranty);
+            $scope.purchaseprice.appliance = $.jStorage.get("applianceid");
+            console.log($scope.purchaseprice);
+            Chats.createWarranty($scope.warranty, warrantySuccess);
+            Chats.applianceStore($scope.store, storeSuccess);
+            Chats.updatePurchasePrice($scope.purchaseprice, purchasePriceSuccess)
+        }
     }
 
     //toggle
-    $scope.updateWarrantytab = function(tab) {
-
-    }
-    $scope.changetab = function(tab) {
-        $scope.tabvalue = tab;
+    $scope.appliance.appliancetype = [];
+    $scope.appliance.appliancetype.name = '';
+    $scope.appliance.userlocation = [];
+    $scope.appliance.userlocation.name = '';
+    $scope.changetab = function (tab) {
         if (tab == 2) {
-            $scope.appliance.appliancetype = $scope.appliance.appliancetype.id;
-            $scope.appliance.brand = $scope.appliance.brandid;
-            $scope.appliance.user = $.jStorage.get("user").id;
-            $scope.appliance.userlocation = $scope.appliance.userlocation.id;
-            console.log($scope.appliance);
-            Chats.createAppliance($scope.appliance, applianceCreate);
+            var check = false;
+            $scope.allvalidation = [{
+                field: $scope.appliance.appliancetype.name,
+                validation: ""
+                }, {
+                field: $scope.appliance.brand,
+                validation: ""
+                }, {
+                field: $scope.appliance.name,
+                validation: ""
+                }, {
+                field: $scope.appliance.userlocation.name,
+                validation: ""
+                }];
+
+            var check = formvalidation($scope.allvalidation);
+            if (check) {
+                $scope.appliance.appliancetype = $scope.appliance.appliancetype.id;
+                $scope.appliance.brand = $scope.appliance.brandid;
+                $scope.appliance.user = $.jStorage.get("user").id;
+                $scope.appliance.userlocation = $scope.appliance.userlocation.id;
+                console.log($scope.appliance);
+                Chats.createAppliance($scope.appliance, applianceCreate);
+                $scope.tabvalue = tab;
+            }
+        } else if (tab == 4) {
+            updateApp();
+        } else {
+            $scope.tabvalue = tab;
         }
     }
-    var applianceCreate = function(data, status) {
+    $scope.productwarranty = {};
+    $scope.updateProductWarranty = function (productwarranty) {
+        var check = false;
+        $scope.allvalidation = [{
+            field: $scope.productwarranty.period,
+            validation: ""
+                }, {
+            field: $scope.productwarranty.type,
+            validation: ""
+                }];
+
+        var check = formvalidation($scope.allvalidation);
+
+        if (check) {
+            console.log(productwarranty);
+            $scope.productwarranty.id = $.jStorage.get("productwarranty");
+            $scope.productwarranty.appliance = $.jStorage.get("applianceid");
+            Chats.updateProductWarranty($scope.productwarranty, function (data, status) {
+                console.log(data);
+                $scope.changetab(4);
+            })
+        }
+    }
+
+    var applianceCreate = function (data, status) {
         console.log(data);
         $.jStorage.set("applianceid", data[0]._id);
         $.jStorage.set("storeid", data[0].store);
     }
-    $scope.changetab2 = function(tab) {
+    $scope.changetab2 = function (tab) {
         $scope.tabvalue = tab;
         $scope.appliance.appliancetype = $scope.appliance.appliancetype.id;
         $scope.appliance.brand = $scope.appliance.brand.id;
@@ -1013,24 +1086,24 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     }
 
     $scope.custom = false;
-    $scope.toggleCustom = function() {
+    $scope.toggleCustom = function () {
         $scope.custom = $scope.custom === false ? true : false;
     };
 
     $scope.tabvalue = 1;
     $scope.showreport = 1;
 
-    $scope.sendtowebsite = function(website) {
+    $scope.sendtowebsite = function (website) {
         console.log(website);
         window.open('http://applions.blogspot.in/?m=1', '_blank');
     }
 
     $scope.compwarranty = {};
     //EDIT COMPONENT WARRANTY
-    $scope.saveComponentWarranty = function() {
+    $scope.saveComponentWarranty = function () {
         $scope.compwarranty.appliance = $.jStorage.get("applianceid");
         console.log($scope.compwarranty);
-        Chats.addComponentWarranty($scope.compwarranty, function(data, status) {
+        Chats.addComponentWarranty($scope.compwarranty, function (data, status) {
             if (data) {
                 $scope.oModal21.hide();
                 $scope.closecomponent();
@@ -1041,7 +1114,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                     title: "Fail to Update Component Warranty",
                     scope: $scope,
                 });
-                $timeout(function() {
+                $timeout(function () {
                     myPopup.close(); //close the popup after 3 seconds for some reason
                 }, 1500);
             }
@@ -1049,10 +1122,10 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     }
 
     $scope.additionalwarranty = {};
-    $scope.saveAdditionalWarranty = function() {
+    $scope.saveAdditionalWarranty = function () {
         $scope.additionalwarranty.appliance = $.jStorage.get("applianceid");
         console.log($scope.additionalwarranty);
-        Chats.addAdditionalWarranty($scope.additionalwarranty, function(data, status) {
+        Chats.addAdditionalWarranty($scope.additionalwarranty, function (data, status) {
             if (data) {
                 $scope.closeModal();
                 $scope.additionalwarranty = {};
@@ -1062,14 +1135,33 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                     title: "Fail to Update Component Warranty",
                     scope: $scope,
                 });
-                $timeout(function() {
+                $timeout(function () {
+                    myPopup.close(); //close the popup after 3 seconds for some reason
+                }, 1500);
+            }
+        });
+    }
+    $scope.editAdditionalWarranty = function () {
+        $scope.additionalwarranty.appliance = $scope.appliance.id;
+        Chats.updateAddtionalWarranty($scope.additionalwarranty, function (data, status) {
+            console.log(data);
+            if (data) {
+                updateApp();
+                $scope.closewarranty();
+            } else {
+                var myPopup = $ionicPopup.show({
+                    title: "Fail to Update Component Warranty",
+                    scope: $scope,
+                });
+                $timeout(function () {
                     myPopup.close(); //close the popup after 3 seconds for some reason
                 }, 1500);
             }
         });
     }
 
-    var getOneSuccess = function(data, status) {
+    var getOneSuccess = function (data, status) {
+        console.log(data);
         $scope.appliance = data;
         $scope.warranty = data.warranty[data.warranty.length - 1];
         $scope.store.appliance = data.id;
@@ -1078,12 +1170,12 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.store.purchaseprice = data.purchaseprice;
     }
 
-        function updateApp() {
-            Chats.getOneAppliance($.jStorage.get("applianceid"), getOneSuccess);
-        }
+    function updateApp() {
+        Chats.getOneAppliance($.jStorage.get("applianceid"), getOneSuccess);
+    }
 
     $scope.additionalwarranty.includes = [];
-    $scope.pushorpop = function(status, value) {
+    $scope.pushorpop = function (status, value) {
         console.log(status);
         console.log(value);
         if (status == true) {
@@ -1104,68 +1196,73 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         quality: 80
     };
 
-    //    var options = {
-    //        quality: 20,
-    //        destinationType: Camera.DestinationType.FILE_URI,
-    //        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-    //        allowEdit: true,
-    //        encodingType: Camera.EncodingType.JPEG,
-    //        saveToPhotoAlbum: false
-    //    };
+    $scope.compwarid = '';
+
 
     $scope.cameraimage = '';
-    var uploadBillSuccess = function(result) {
+    var uploadBillSuccess = function (result) {
         console.log(result);
+        console.log($scope.compwarid);
+        $scope.documents.appliance = $.jStorage.get("applianceid");
+        $scope.documents.id = $.jStorage.get("compwarid");
         $scope.documents.bill = result.files[0].fd;
-        console.log($scope.documents.bill);
+        console.log($scope.documents);
+        Chats.updateComponentWarranty($scope.documents, function (data, status) {
+            console.log(data);
+        })
     }
-    $scope.uploadBill = function() {
+    $scope.uploadBill = function () {
         console.log("take picture");
-        $cordovaImagePicker.getPictures(options).then(function(resultImage) {
+        $cordovaImagePicker.getPictures(options).then(function (resultImage) {
             // Success! Image data is here
             console.log("here in upload image");
             console.log(resultImage);
             $scope.cameraimage = resultImage[0];
             $scope.uploadPhoto(adminurl + "user/uploadfile", uploadBillSuccess);
 
-        }, function(err) {
+        }, function (err) {
             // An error occured. Show a message to the user
         });
     };
 
-    var uploadWarrantySuccess = function(result) {
+    var uploadWarrantySuccess = function (result) {
         console.log(result);
+        $scope.documents.appliance = $.jStorage.get("applianceid");
+        $scope.documents.id = $.jStorage.get("compwarid");
         $scope.documents.warrantycard = result.files[0].fd;
-        console.log($scope.documents.warrantycard);
+        console.log($scope.documents);
+        Chats.updateComponentWarranty($scope.documents, function (data, status) {
+            console.log(data);
+        })
     }
-    $scope.uploadwarrantycard = function() {
+    $scope.uploadwarrantycard = function () {
         console.log("take picture");
-        $cordovaImagePicker.getPictures(options).then(function(resultImage) {
+        $cordovaImagePicker.getPictures(options).then(function (resultImage) {
             // Success! Image data is here
             console.log("here in upload image");
             console.log(resultImage);
             $scope.cameraimage = resultImage[0];
             $scope.uploadPhoto(adminurl + "user/uploadfile", uploadWarrantySuccess);
 
-        }, function(err) {
+        }, function (err) {
             // An error occured. Show a message to the user
         });
     };
 
-    $scope.uploadPhoto = function(serverpath, callback) {
+    $scope.uploadPhoto = function (serverpath, callback) {
 
         //        console.log("function called");
         $cordovaFileTransfer.upload(serverpath, $scope.cameraimage, options)
-            .then(function(result) {
+            .then(function (result) {
                 console.log(result);
                 var data = JSON.parse(result.response);
                 callback(data);
                 $ionicLoading.hide();
                 //$scope.addretailer.store_image = $scope.filename2;
-            }, function(err) {
+            }, function (err) {
                 // Error
                 console.log(err);
-            }, function(progress) {
+            }, function (progress) {
                 // constant progress updates
                 $ionicLoading.show({
                     //        template: 'We are fetching the best rates for you.',
@@ -1179,19 +1276,24 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             });
     };
 
+    $scope.storewarid = function (warid) {
+        console.log(warid);
+        $.jStorage.set("compwarid", warid);
+    }
+
     $ionicModal.fromTemplateUrl('templates/location.html', {
         id: '1',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal1 = modal;
     });
     //jagruti
-    $scope.openedit = function() {
+    $scope.openedit = function () {
         $scope.oModal1.show();
     };
 
-    $scope.closeModalss = function() {
+    $scope.closeModalss = function () {
         $scope.oModal1.hide();
     };
 
@@ -1199,15 +1301,15 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         id: '2',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal2 = modal;
     });
 
-    $scope.openpswd = function() {
+    $scope.openpswd = function () {
         $scope.oModal2.show();
     };
 
-    $scope.closeModal = function() {
+    $scope.closeModal = function () {
         $scope.oModal2.hide();
     };
 
@@ -1215,14 +1317,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         id: '3',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal3 = modal;
     });
 
-    $scope.openfilter = function() {
+    $scope.openfilter = function () {
         $scope.oModal3.show();
     }
-    $scope.closefilter = function() {
+    $scope.closefilter = function () {
         $scope.oModal3.hide();
     };
 
@@ -1230,14 +1332,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         id: '5',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal5 = modal;
     });
 
-    $scope.openarchive = function() {
+    $scope.openarchive = function () {
         $scope.oModal5.show();
     }
-    $scope.closearchive = function() {
+    $scope.closearchive = function () {
         $scope.oModal5.hide();
     };
 
@@ -1245,14 +1347,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         id: '6',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal6 = modal;
     });
 
-    $scope.opentransfer = function() {
+    $scope.opentransfer = function () {
         $scope.oModal6.show();
     }
-    $scope.closetransfer = function() {
+    $scope.closetransfer = function () {
         $scope.oModal6.hide();
     };
 
@@ -1260,14 +1362,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         id: '7',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal7 = modal;
     });
 
-    $scope.opendelete = function() {
+    $scope.opendelete = function () {
         $scope.oModal7.show();
     }
-    $scope.closedelete = function() {
+    $scope.closedelete = function () {
         $scope.oModal7.hide();
     };
 
@@ -1275,14 +1377,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         id: '8',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal8 = modal;
     });
 
-    $scope.openreport = function() {
+    $scope.openreport = function () {
         $scope.oModal8.show();
     }
-    $scope.closereport = function() {
+    $scope.closereport = function () {
         $scope.oModal8.hide();
     };
 
@@ -1290,28 +1392,28 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         id: '9',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal9 = modal;
     });
 
-    $scope.opencomponent = function() {
+    $scope.opencomponent = function () {
         $scope.oModal9.show();
     }
-    $scope.closecomponent = function() {
+    $scope.closecomponent = function () {
         $scope.oModal9.hide();
     };
     $ionicModal.fromTemplateUrl('templates/modal-compntwarranty.html', {
         id: '21',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal21 = modal;
     });
 
-    $scope.opencompntwarranty = function() {
+    $scope.opencompntwarranty = function () {
         $scope.oModal21.show();
     }
-    $scope.closecompntwarranty = function() {
+    $scope.closecompntwarranty = function () {
         $scope.oModal21.hide();
     };
 
@@ -1319,14 +1421,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         id: '10',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal10 = modal;
     });
 
-    $scope.openprevreports = function() {
+    $scope.openprevreports = function () {
         $scope.oModal10.show();
     }
-    $scope.closeprevreports = function() {
+    $scope.closeprevreports = function () {
         $scope.oModal10.hide();
     };
 
@@ -1334,14 +1436,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         id: '11',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal11 = modal;
     });
 
-    $scope.openaddservice = function() {
+    $scope.openaddservice = function () {
         $scope.oModal11.show();
     }
-    $scope.closeaddservice = function() {
+    $scope.closeaddservice = function () {
         $scope.oModal11.hide();
     };
 
@@ -1349,14 +1451,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         id: '12',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal12 = modal;
     });
 
-    $scope.openviewdetails = function() {
+    $scope.openviewdetails = function () {
         $scope.oModal12.show();
     }
-    $scope.closeviewdetails = function() {
+    $scope.closeviewdetails = function () {
         $scope.oModal12.hide();
     };
 
@@ -1365,14 +1467,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         id: '12',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal12 = modal;
     });
 
-    $scope.openprevreports = function() {
+    $scope.openprevreports = function () {
         $scope.oModal12.show();
     }
-    $scope.closeprevreports = function() {
+    $scope.closeprevreports = function () {
         $scope.oModal12.hide();
     };
 
@@ -1380,70 +1482,70 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         id: '13',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal13 = modal;
     });
 
-    $scope.opensortservice = function() {
+    $scope.opensortservice = function () {
         $scope.oModal13.show();
     }
-    $scope.closesortservice = function() {
+    $scope.closesortservice = function () {
         $scope.oModal13.hide();
     };
     $ionicModal.fromTemplateUrl('templates/modal-filterservice.html', {
         id: '14',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal14 = modal;
     });
 
-    $scope.openfilterservice = function() {
+    $scope.openfilterservice = function () {
         $scope.oModal14.show();
     }
-    $scope.closefilterservice = function() {
+    $scope.closefilterservice = function () {
         $scope.oModal14.hide();
     };
     $ionicModal.fromTemplateUrl('templates/modal-brand.html', {
         id: '15',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal15 = modal;
     });
 
-    $scope.openbrandsearch = function() {
+    $scope.openbrandsearch = function () {
         $scope.oModal15.show();
     }
-    $scope.closebrandsearch = function() {
+    $scope.closebrandsearch = function () {
         $scope.oModal15.hide();
     };
     $ionicModal.fromTemplateUrl('templates/modal-product.html', {
         id: '16',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal16 = modal;
     });
 
-    $scope.openproductsearch = function() {
+    $scope.openproductsearch = function () {
         $scope.oModal16.show();
     }
-    $scope.closeproductsearch = function() {
+    $scope.closeproductsearch = function () {
         $scope.oModal16.hide();
     };
     $ionicModal.fromTemplateUrl('templates/notification.html', {
         id: '17',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal17 = modal;
     });
 
-    $scope.opennotification = function() {
+    $scope.opennotification = function () {
         $scope.oModal17.show();
     }
-    $scope.closenotification = function() {
+    $scope.closenotification = function () {
         $scope.oModal17.hide();
     };
 
@@ -1451,21 +1553,22 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         id: '20',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal20 = modal;
     });
 
-    $scope.openwarranty = function() {
+    $scope.openwarranty = function (warranty) {
+        $scope.additionalwarranty = warranty;
         $scope.oModal20.show();
     };
 
-    $scope.closewarranty = function() {
+    $scope.closewarranty = function () {
         $scope.oModal20.hide();
     };
 
-    $scope.searchproduct = function(productkeyword) {
+    $scope.searchproduct = function (productkeyword) {
         console.log(productkeyword);
-        Chats.searchProduct(productkeyword, function(data, status) {
+        Chats.searchProduct(productkeyword, function (data, status) {
             console.log(data);
             if (data.value != "false") {
                 $scope.appliancetype = data;
@@ -1478,12 +1581,12 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
     //ON PRODUCT CLICK
     $scope.brands = {};
-    $scope.toProduct = function(product) {
+    $scope.toProduct = function (product) {
         console.log(product);
         $scope.appliance.appliancetype = product;
         $scope.appliance.appliancetype.id = product.id;
         $scope.closeproductsearch();
-        Chats.findBrand(product.appliancetypeid, function(data, status) {
+        Chats.findBrand(product.appliancetypeid, function (data, status) {
             console.log(data);
             if (data.value != "false")
                 $scope.brands = data;
@@ -1492,7 +1595,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         });
     }
 
-    $scope.toBrand = function(brand) {
+    $scope.toBrand = function (brand) {
         console.log(brand);
         $scope.appliance.brand = brand.name;
         $scope.appliance.brandid = brand._id;
@@ -1501,18 +1604,18 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
     function save() {
         var myPopup = $ionicPopup.show({
-            template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Appliance has been update successfully!!</p>',
+            template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Appliance has been update successfully!! < /p>',
             title: 'Alert!',
             scope: $scope,
         });
-        $timeout(function() {
+        $timeout(function () {
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     }
 })
 
 
-.controller('LoginCtrl', function($scope, $ionicModal, $ionicPopup, $ionicPopup, $timeout, Chats, $location, $cordovaDevice) {
+.controller('LoginCtrl', function ($scope, $ionicModal, $ionicPopup, $ionicPopup, $timeout, Chats, $location, $cordovaDevice) {
 
 
     $scope.user = [];
@@ -1550,7 +1653,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     //            $location.url("tab/home");
     //        }
 
-    var loginsuccess = function(data, status) {
+    var loginsuccess = function (data, status) {
         if (angular.isObject(data)) {
             console.log(data);
             Chats.jstorageUser(data);
@@ -1560,20 +1663,20 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 title: data,
                 scope: $scope,
             });
-            $timeout(function() {
+            $timeout(function () {
                 myPopup.close(); //close the popup after 3 seconds for some reason
             }, 1500);
         }
     }
 
-    $scope.userLogin = function() {
+    $scope.userLogin = function () {
         console.log($scope.user);
         Chats.login($scope.user, loginsuccess);
 
     }
 })
 
-.controller('ProfileCtrl', function($scope, $ionicPopover, $ionicModal, Chats, $ionicPopup, $timeout) {
+.controller('ProfileCtrl', function ($scope, $ionicPopover, $ionicModal, Chats, $ionicPopup, $timeout) {
 
     //DEVELOPMENT STARTS
 
@@ -1584,13 +1687,13 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
     //GETCOUNTRY-------------------------
 
-    Chats.getCountry(function(data, status) {
+    Chats.getCountry(function (data, status) {
         $scope.country = data;
     });
 
     //GET USER DATA-----------------------);
 
-    Chats.getProfileJson(function(data, status) {
+    Chats.getProfileJson(function (data, status) {
         console.log(data);
         $scope.profile = data;
         $scope.feedback.email = data.email;
@@ -1601,7 +1704,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
     //UPDATE PROFILE-----------------------
 
-    $scope.updateProfile = function() {
+    $scope.updateProfile = function () {
         $scope.allvalidation = [{
             field: $scope.profile.email,
             validation: ""
@@ -1609,13 +1712,13 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         var check = formvalidation($scope.allvalidation);
         if (check) {
             console.log("validate");
-            Chats.updateUser($scope.profile, function(data, status) {
+            Chats.updateUser($scope.profile, function (data, status) {
                 if (data) {
                     var myPopup = $ionicPopup.show({
                         title: "Profile Updated",
                         scope: $scope,
                     });
-                    $timeout(function() {
+                    $timeout(function () {
                         myPopup.close(); //close the popup after 3 seconds for some reason
                     }, 1500);
                 } else {
@@ -1623,7 +1726,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                         title: "Enable To Update",
                         scope: $scope,
                     });
-                    $timeout(function() {
+                    $timeout(function () {
                         myPopup.close(); //close the popup after 3 seconds for some reason
                     }, 1500);
                 }
@@ -1634,7 +1737,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
     //CHANGE PASSWORD--------------------
 
-    $scope.changePassword = function() {
+    $scope.changePassword = function () {
         $scope.allvalidation = [{
             field: $scope.password.password,
             validation: ""
@@ -1649,7 +1752,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         if (check) {
             if ($scope.password.editpassword === $scope.password.confpassword) {
                 $scope.password.id = Chats.getUser().id;
-                Chats.changePassword($scope.password, function(data, status) {
+                Chats.changePassword($scope.password, function (data, status) {
                     if (data) {
                         var myPopup = $ionicPopup.show({
                             title: "Feedback send Successfully",
@@ -1661,7 +1764,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                             scope: $scope,
                         });
                     }
-                    $timeout(function() {
+                    $timeout(function () {
                         myPopup.close(); //close the popup after 3 seconds for some reason
                     }, 1500);
                 });
@@ -1670,7 +1773,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                     title: "New password And Retype Password Should Be same",
                     scope: $scope,
                 });
-                $timeout(function() {
+                $timeout(function () {
                     myPopup.close(); //close the popup after 3 seconds for some reason
                 }, 1500);
             }
@@ -1678,7 +1781,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     }
 
     //SEND FEED BACK----------------------
-    $scope.sendFeedback = function() {
+    $scope.sendFeedback = function () {
 
         $scope.allvalidation = [{
             field: $scope.feedback.name,
@@ -1689,13 +1792,13 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         }];
         var check = formvalidation($scope.allvalidation);
         if (check) {
-            Chats.sendFeedback($scope.feedback, function(data, status) {
+            Chats.sendFeedback($scope.feedback, function (data, status) {
                 if (data) {
                     var myPopup = $ionicPopup.show({
                         title: "Feedback send Successfully",
                         scope: $scope,
                     });
-                    $timeout(function() {
+                    $timeout(function () {
                         myPopup.close(); //close the popup after 3 seconds for some reason
                     }, 1500);
                 } else {
@@ -1703,7 +1806,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                         title: "Enable to Send",
                         scope: $scope,
                     });
-                    $timeout(function() {
+                    $timeout(function () {
                         myPopup.close(); //close the popup after 3 seconds for some reason
                     }, 1500);
                 }
@@ -1717,14 +1820,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
     $ionicPopover.fromTemplateUrl('templates/profile-popover.html', {
         scope: $scope
-    }).then(function(popover) {
+    }).then(function (popover) {
         $scope.popover = popover;
     });
 
-    $scope.openPopover = function($event) {
+    $scope.openPopover = function ($event) {
         $scope.popover.show($event);
     };
-    $scope.closePopover = function() {
+    $scope.closePopover = function () {
         $scope.popover.hide();
     };
 
@@ -1733,14 +1836,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         id: '1',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal1 = modal;
     });
 
-    $scope.openchngpswd = function() {
+    $scope.openchngpswd = function () {
         $scope.oModal1.show();
     }
-    $scope.closechngpswd = function() {
+    $scope.closechngpswd = function () {
         $scope.oModal1.hide();
     };
 
@@ -1763,14 +1866,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         id: '3',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal3 = modal;
     });
 
-    $scope.openstat = function() {
+    $scope.openstat = function () {
         $scope.oModal3.show();
     }
-    $scope.closestat = function() {
+    $scope.closestat = function () {
         $scope.oModal3.hide();
     };
 
@@ -1778,14 +1881,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         id: '4',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal4 = modal;
     });
 
-    $scope.openfeedback = function() {
+    $scope.openfeedback = function () {
         $scope.oModal4.show();
     }
-    $scope.closefeedback = function() {
+    $scope.closefeedback = function () {
         $scope.oModal4.hide();
     };
 
@@ -1793,28 +1896,28 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         id: '5',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal5 = modal;
     });
 
-    $scope.openexisting = function() {
+    $scope.openexisting = function () {
         $scope.oModal5.show();
     }
-    $scope.closeexisting = function() {
+    $scope.closeexisting = function () {
         $scope.oModal5.hide();
     };
 })
 
-.controller('StoreCtrl', function($scope) {})
+.controller('StoreCtrl', function ($scope) {})
 
-.controller('AboutCtrl', function($scope) {})
+.controller('AboutCtrl', function ($scope) {})
 
-.controller('RegisterCtrl', function($scope, $ionicSlideBoxDelegate, $ionicPopup) {
+.controller('RegisterCtrl', function ($scope, $ionicSlideBoxDelegate, $ionicPopup) {
 
     $scope.user = [];
 
     console.log("login ctrl");
-    $scope.userLogin = function() {
+    $scope.userLogin = function () {
         console.log($scope.user);
         console.log("login ctrl");
     }
@@ -1844,32 +1947,32 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 })
 
 
-.controller('AppwizardCtrl', function($scope, $ionicModal, Chats, $location) {
+.controller('AppwizardCtrl', function ($scope, $ionicModal, Chats, $location) {
     $ionicModal.fromTemplateUrl('templates/modal-brand.html', {
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.Modal = modal;
     });
 
     $scope.brandindex = '';
-    $scope.openbrandsearch = function(appname, index) {
+    $scope.openbrandsearch = function (appname, index) {
         $.jStorage.set("prodid", appname);
         $scope.brandindex = index;
-        Chats.getmybrands(appname, function(data, status) {
+        Chats.getmybrands(appname, function (data, status) {
             console.log(data);
             $scope.brands = data;
         })
         console.log("in ctrl");
         $scope.Modal.show();
     }
-    $scope.closebrandsearch = function() {
+    $scope.closebrandsearch = function () {
         $scope.Modal.hide();
     };
 
-    $scope.getproductbrands = function(brandname) {
+    $scope.getproductbrands = function (brandname) {
         console.log(brandname);
-        Chats.searchbrandbyid(brandname, $.jStorage.get("prodid"), function(data, status) {
+        Chats.searchbrandbyid(brandname, $.jStorage.get("prodid"), function (data, status) {
             console.log(data);
             $scope.brands = data;
         })
@@ -1880,14 +1983,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     console.log($scope.deviceinfo);
 
     if ($scope.deviceinfo && $scope.deviceinfo.manufacturer) {
-        Chats.searchbrand($scope.deviceinfo.manufacturer, function(data, status) {
+        Chats.searchbrand($scope.deviceinfo.manufacturer, function (data, status) {
             console.log(data);
             $scope.deviceinfo.brandid = data[0].id;
         });
     }
 
 
-    Chats.allapplions(function(data, status) {
+    Chats.allapplions(function (data, status) {
         $scope.allapplions = data;
         for (var i = 0; i < $scope.allapplions.length; i++) {
             $scope.allapplions[i].covered = false;
@@ -1897,7 +2000,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     $scope.iscreated = 0;
     $scope.tobecreated = 1;
 
-    var applianceCreate = function(data, status) {
+    var applianceCreate = function (data, status) {
         console.log(data);
         if (data.value == "true")
             $scope.iscreated++;
@@ -1906,7 +2009,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             $location.url("/tab/home");
         }
     }
-    $scope.makeappliances = function() {
+    $scope.makeappliances = function () {
         for (var i = 0; i < $scope.allapplions.length; i++) {
             if ($scope.allapplions[i].brandname) {
                 $scope.tobecreated++;
@@ -1942,7 +2045,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         }
     };
 
-    $scope.toBrand = function(brand) {
+    $scope.toBrand = function (brand) {
         console.log(brand);
         $scope.allapplions[$scope.brandindex].brandname = brand.name;
         $scope.allapplions[$scope.brandindex].brandid = brand._id;
