@@ -187,11 +187,11 @@
                 <div class="item product-wrnnty">
                     Product Warranty
                 </div>
-                <label class="item item-input">
+                <label class="item item-input" ng-if="readonly==false">
                     <span class="input-label">Warranty Period</span>
                     <input type="text" ng-model="warranty.period">
                 </label>
-                <label class="item item-input item-select">
+                <label class="item item-input item-select" ng-if="readonly==false">
                     <div class="input-label">
                         Warranty Type
                     </div>
@@ -275,7 +275,7 @@
                         Select Component
                     </div>
                     <select ng-model="compwarid" ng-change="storewarid(compwarid);" style="color: rgb(46, 204, 113);">
-                        <option value="{{war.id}}" ng-repeat="war in appliance.componentwarranty">{{war.component}}</option>
+                        <option value="{{war}}" ng-repeat="war in appliance.componentwarranty">{{war.component}}</option>
                         <!--
                         <option selected>Green</option>
                         <option>Red</option>
