@@ -5,21 +5,21 @@
             <h4>App Lions</h4>
         </div>
         <div class="list login-text">
-            <label class="item item-input login-i">
+            <label class="item item-input login-i" ng-class="allvalidation[0].validation">
                <i class="icon ln-envelope"></i>
-                <input type="email" placeholder="Email Id">
+                <input type="email" ng-model="user.email" placeholder="Email Id">
             </label>
-            <label class="item item-input login-i">
+            <label class="item item-input login-i" ng-class="allvalidation[1].validation">
                <i class="icon ln-lock"></i>
-                <input type="password" placeholder="Password">
+                <input type="password" ng-model="user.password" placeholder="Password">
             </label>
-               <label class="item item-input login-i">
+               <label class="item item-input login-i" ng-class="allvalidation[2].validation">
                <i class="icon ln-lock"></i>
-                <input type="password" placeholder="Confirm Password">
+                <input type="password" ng-model="user.cpassword" placeholder="Confirm Password">
             </label>
         </div>
-                   <div class="padding-horizontal btn-signin">
-                    <a class="button button-block button-balanced" href="#/tab/home">
+                   <div class="padding-horizontal btn-signin" ng-click="register()">
+                    <a class="button button-block button-balanced">
 Sign Up
             </a>
         </div>

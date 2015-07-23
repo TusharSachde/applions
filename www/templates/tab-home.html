@@ -11,8 +11,11 @@
     </ion-nav-buttons>
 
     <ion-content>
-        <ion-list class="slide-option">
 
+        <ion-list class="slide-option">
+            <div class="no-connect" ng-if="appliance==''">
+                <h3>No appliance yet...</h3>
+            </div>
             <!--
             <ion-item class="item-picture light-bg tem-remove-animate item-avatar2" href="#/tab/home/edit/{{app.id}}" ng-repeat="app in appliance">
                 <div class="picture assertive-bg" style="background-image: url('img/icons/Mobile.png');"></div>

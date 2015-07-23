@@ -158,6 +158,14 @@ angular.module('starter.services', [])
                 "userlocation": data.userlocation.id
             }).success(callback);
         },
+        createUser: function (data, callback) {
+            console.log(data);
+            $http.post(adminurl + "user/createuser", data).success(callback);
+        },
+        searchmail: function (data, callback) {
+            console.log(data);
+            $http.post(adminurl + "user/searchmail", {"email":data}).success(callback);
+        },
         deleteAppliance: function (data, callback) {
             $http.delete(adminurl + "appliance/" + data).success(callback);
         },

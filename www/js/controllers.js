@@ -17,7 +17,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
 })
 
-.controller('HomeCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams, $location) {
+.controller('HomeCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams, $location, $ionicLoading) {
 
     // TAB/HOME PAGE START
     if (!$.jStorage.get("user")) {
@@ -83,13 +83,21 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     var applianceDelete = function(data, status) {
         Chats.getAppliance(applianceSuccess);
         console.log(data);
+        $ionicLoading.hide();
     }
     $scope.deleteappliance = function(appid) {
         Chats.deleteAppliance(appid, applianceDelete);
+        $ionicLoading.show({
+            content: 'Deleting Applions',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: '0'
+        });
     }
 
 })
-    .controller('HomeEditCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams, $cordovaImagePicker, $cordovaFileTransfer) {
+    .controller('HomeEditCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams, $cordovaImagePicker, $cordovaFileTransfer, $ionicLoading) {
 
         // TAB/HOME/EDIT PAGE STARt
         $scope.appliance = [];
@@ -99,6 +107,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.warranty = [];
         $scope.warranty.purchasedate = new Date();
         $scope.store = [];
+        $scope.store.purchasedate = new Date();
         $scope.componentobj = [];
         $scope.componentobj.startdate = new Date();
         $scope.compwarranty = [];
@@ -113,6 +122,21 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             $scope.locationtb = tb;
         };
 
+        $.jStorage.set("applianceid", $stateParams.id);
+
+        var startLoading = function() {
+            $ionicLoading.show({
+                content: 'Deleting Applions',
+                animation: 'fade-in',
+                showBackdrop: true,
+                maxWidth: 200,
+                showDelay: '0'
+            });
+        }
+
+        var stopLoading = function() {
+            $ionicLoading.hide();
+        }
 
         // SAVE ALL
         $scope.saveAll = function() {
@@ -120,6 +144,8 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 $scope.changetab2(2);
             }
         }
+
+        startLoading();
 
 
         //validate user
@@ -147,7 +173,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             console.log("all appliance");
             console.log(data);
             $scope.appliance = data;
-
+            stopLoading();
+            $scope.store.appliance = data.id;
+            $scope.store = data.store;
+            $scope.compwarranty.appliance = data.id;
+            console.log($scope.compwarranty);
+            if (data.store) {
+                $scope.store.purchaseprice = data.store.purchaseprice;
+            }
             if (!$scope.appliance.userlocation) {
                 $scope.appliance.userlocation.name = '';
             }
@@ -167,25 +200,24 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 $scope.appliancecolor = "assertive-bg";
             }
 
+            if (data.store) {
+                $scope.store.purchasedate = new Date($scope.store.purchasedate);
+            }
             //            console.log($scope.warranty);
             if (data.warranty.length != 0) {
                 $scope.warranty = data.warranty[data.warranty.length - 1];
-                $scope.warranty.purchasedate = new Date($scope.warranty.purchasedate);
+                //                $scope.warranty.purchasedate = new Date($scope.warranty.purchasedate);
                 if ($scope.warranty.expiry) {
                     $scope.warranty.expiry = new Date($scope.warranty.expiry);
                 }
                 console.log($scope.warranty);
             }
-            $scope.store.appliance = data.id;
-            $scope.store = data.store;
-            $scope.compwarranty.appliance = data.id;
-            console.log($scope.compwarranty);
-            $scope.store.purchaseprice = data.purchaseprice;
         }
         Chats.getOneAppliance($stateParams.id, getOneSuccess);
 
         function updateApp() {
             Chats.getOneAppliance($stateParams.id, getOneSuccess);
+            startLoading();
         }
 
         Chats.getProduct(getProductSuccess);
@@ -255,10 +287,10 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.purchaseDetails = function() {
             console.log($scope.warranty);
             $scope.allvalidation = [{
-                field: $scope.warranty.purchasedate,
+                field: $scope.store.purchasedate,
                 validation: ""
             }, {
-                field: $scope.warranty.billno,
+                field: $scope.store.billno,
                 validation: ""
             }, {
                 field: $scope.store.name,
@@ -273,9 +305,10 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 $scope.purchaseprice.purchaseprice = $scope.store.purchaseprice;
                 Chats.updatePurchasePrice($scope.purchaseprice, function(data, status) {
                     updateApp();
+                    $scope.changetab(3);
                 });
 
-                Chats.updateWarranty($scope.warranty, warrantySuccess);
+                //                Chats.updateWarranty($scope.warranty, warrantySuccess);
                 Chats.applianceStore($scope.store, storeSuccess);
             }
         }
@@ -309,15 +342,16 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 }
             });
         }
+        $scope.additionalwarrantyadd = {};
+        $scope.additionalwarrantyadd.includes = [];
 
         $scope.saveAdditionalWarranty = function() {
-            $scope.additionalwarranty.appliance = $stateParams.id;
-            console.log($scope.additionalwarranty);
-            Chats.addAdditionalWarranty($scope.additionalwarranty, function(data, status) {
+            $scope.additionalwarrantyadd.appliance = $stateParams.id;
+            console.log($scope.additionalwarrantyadd);
+            Chats.addAdditionalWarranty($scope.additionalwarrantyadd, function(data, status) {
                 console.log(data);
                 if (data) {
                     $scope.closeModal();
-                    $scope.additionalwarranty = {};
                     updateApp();
                 } else {
                     var myPopup = $ionicPopup.show({
@@ -377,12 +411,29 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             console.log(value);
             console.log($scope.cover);
             if (status == true) {
+                //			  if(!$scope.additionalwarranty.includes){
+                //				  $scope.additionalwarranty.includes=[];
                 $scope.additionalwarranty.includes.push(value);
+                //			  }else{
+                //                $scope.additionalwarranty.includes.push(value);
+                //			  }
             } else if (status == false) {
                 var popindex = $scope.additionalwarranty.includes.indexOf(value);
                 $scope.additionalwarranty.includes.splice(popindex, 1);
             }
             console.log($scope.additionalwarranty.includes);
+        }
+        $scope.pushorpopadd = function(status, value) {
+            console.log(status);
+            console.log(value);
+            console.log($scope.cover);
+            if (status == true) {
+                $scope.additionalwarrantyadd.includes.push(value);
+            } else if (status == false) {
+                var popindex = $scope.additionalwarrantyadd.includes.indexOf(value);
+                $scope.additionalwarrantyadd.includes.splice(popindex, 1);
+            }
+            console.log($scope.additionalwarrantyadd.includes);
         }
 
         //ARCHIVE APPLIANCE
@@ -608,6 +659,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         });
 
         $scope.openpswd = function() {
+            $scope.additionalwarranty = {};
             $scope.oModal2.show();
         };
 
@@ -1004,10 +1056,10 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     $scope.purchaseDetails = function() {
         var check = false;
         $scope.allvalidation = [{
-            field: $scope.warranty.purchasedate,
+            field: $scope.store.purchasedate,
             validation: ""
         }, {
-            field: $scope.warranty.billno,
+            field: $scope.store.billno,
             validation: ""
         }, {
             field: $scope.store.name,
@@ -1022,12 +1074,9 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         if (check) {
             $scope.store.appliance = $.jStorage.get("applianceid");
             $scope.store.id = $.jStorage.get("storeid");
-            console.log($scope.store);
             $scope.warranty.appliance = $.jStorage.get("applianceid");
-            console.log($scope.warranty);
             $scope.purchaseprice.appliance = $.jStorage.get("applianceid");
-            console.log($scope.purchaseprice);
-            Chats.createWarranty($scope.warranty, warrantySuccess);
+            //            Chats.createWarranty($scope.warranty, warrantySuccess);
             Chats.applianceStore($scope.store, storeSuccess);
             Chats.updatePurchasePrice($scope.purchaseprice, purchasePriceSuccess)
         }
@@ -1150,13 +1199,13 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     }
 
     $scope.additionalwarranty = {};
+    $scope.additionalwarranty.includes = [];
     $scope.saveAdditionalWarranty = function() {
         $scope.additionalwarranty.appliance = $.jStorage.get("applianceid");
         console.log($scope.additionalwarranty);
         Chats.addAdditionalWarranty($scope.additionalwarranty, function(data, status) {
             if (data) {
                 $scope.closeModal();
-                $scope.additionalwarranty = {};
                 updateApp();
             } else {
                 var myPopup = $ionicPopup.show({
@@ -1941,14 +1990,64 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
 .controller('AboutCtrl', function($scope) {})
 
-.controller('RegisterCtrl', function($scope, $ionicSlideBoxDelegate, $ionicPopup) {
+.controller('RegisterCtrl', function($scope, $ionicSlideBoxDelegate, $ionicPopup, Chats, $timeout, $location) {
 
-    $scope.user = [];
+    $scope.user = {};
 
     console.log("login ctrl");
-    $scope.userLogin = function() {
-        console.log($scope.user);
-        console.log("login ctrl");
+    $scope.register = function() {
+        $scope.allvalidation = [{
+            field: $scope.user.email,
+            validation: ""
+        }, {
+            field: $scope.user.password,
+            validation: ""
+        }, {
+            field: $scope.user.cpassword,
+            validation: ""
+        }];
+        var check = formvalidation($scope.allvalidation);
+        if (check) {
+            if ($scope.user.password != $scope.user.cpassword) {
+                var myPopup = $ionicPopup.show({
+                    title: "Password Didn't Match",
+                    scope: $scope,
+                });
+                $timeout(function() {
+                    myPopup.close(); //close the popup after 3 seconds for some reason
+                }, 1500);
+            } else {
+                Chats.searchmail($scope.user.email, function(data, status) {
+                    console.log(data);
+                    if (data.value == false) {
+                        delete $scope.user.cpassword;
+                        Chats.createUser($scope.user, function(data, status) {
+                            if (data.id) {
+                                Chats.jstorageUser(data);
+                                $location.url("/appwizards");
+                            } else {
+                                var myPopup = $ionicPopup.show({
+                                    title: "User Was Not Created",
+                                    scope: $scope,
+                                });
+                                $timeout(function() {
+                                    myPopup.close(); //close the popup after 3 seconds for some reason
+                                }, 1500);
+                            }
+                        });
+                    } else {
+                        var myPopup = $ionicPopup.show({
+                            title: "User With Same Email Already Exist",
+                            scope: $scope,
+                        });
+                        $timeout(function() {
+                            myPopup.close(); //close the popup after 3 seconds for some reason
+                        }, 1500);
+                    }
+                });
+
+            }
+        }
     }
 
 
@@ -2008,7 +2107,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     }
 
     $scope.deviceinfo = $.jStorage.get("deviceinfo");
-        $scope.deviceinfo.covered = false;
+    $scope.deviceinfo.covered = false;
     console.log($scope.deviceinfo);
 
     if ($scope.deviceinfo && $scope.deviceinfo.manufacturer) {
