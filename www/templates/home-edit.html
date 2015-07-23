@@ -187,11 +187,11 @@
                 <div class="item product-wrnnty">
                     Product Warranty
                 </div>
-                <label class="item item-input" ng-if="readonly==false">
+                <label class="item item-input" ng-if="readonly==false" ng-class="allvalidation[0].validation">
                     <span class="input-label">Warranty Period</span>
                     <input type="text" ng-model="warranty.period">
                 </label>
-                <label class="item item-input item-select" ng-if="readonly==false">
+                <label class="item item-input item-select" ng-if="readonly==false" ng-class="allvalidation[1].validation">
                     <div class="input-label">
                         Warranty Type
                     </div>

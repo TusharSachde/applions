@@ -340,10 +340,21 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         $scope.updateWarrantytab = function(tab) {
             console.log($scope.warranty);
-            Chats.updateWarrantyWar($scope.warranty, function(data, status) {
-                console.log(data);
-            });
-            $scope.changetab(4);
+            $scope.allvalidation = [{
+                field: $scope.warranty.period,
+                validation: ""
+            }, {
+                field: $scope.warranty.type,
+                validation: ""
+            }];
+            var check = formvalidation($scope.allvalidation);
+            if (check) {
+                Chats.updateWarrantyWar($scope.warranty, function(data, status) {
+                    console.log(data);
+                });
+                $scope.changetab(4);
+            }
+
         }
 
         $scope.saveComponentWarranty = function() {
