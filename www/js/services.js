@@ -1,5 +1,5 @@
-//var adminurl = "http://192.168.2.22:1337/";
-var adminurl = "http://104.154.90.138/";
+var adminurl = "http://192.168.2.22:1337/";
+//var adminurl = "http://104.154.90.138/";
 var imgpath = adminurl + "user/resize?file=";
 angular.module('starter.services', [])
 
