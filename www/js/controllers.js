@@ -182,6 +182,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 $scope.store.purchaseprice = data.store.purchaseprice;
             }
             if (!$scope.appliance.userlocation) {
+                $scope.appliance.userlocation = [];
                 $scope.appliance.userlocation.name = '';
             }
             if (!$scope.appliance.appliancetype) {
@@ -212,6 +213,8 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 }
                 console.log($scope.warranty);
             }
+		   
+		   $scope.toProduct($scope.appliance.appliancetype);
         }
         Chats.getOneAppliance($stateParams.id, getOneSuccess);
 
@@ -220,7 +223,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             startLoading();
         }
 
-        Chats.getProduct(getProductSuccess);
+        Chats.allapplions(getProductSuccess);
 
         //ON PRODUCT CLICK
         $scope.brands = [];
@@ -945,6 +948,29 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.closecompntwarranty = function() {
             $scope.oModal21.hide();
         };
+
+        $scope.getproductbrands = function(brandname) {
+            console.log(brandname);
+            Chats.searchbrandbyid(brandname, $scope.appliance.appliancetype.appliancetypeid, function(data, status) {
+                console.log(data);
+                $scope.brands = data;
+            })
+        }
+
+
+        $scope.searchproduct = function(productkeyword) {
+            console.log(productkeyword);
+            Chats.searchProduct(productkeyword, function(data, status) {
+                console.log(data);
+                if (data.value != "false") {
+                    $scope.appliancetype = data;
+                } else
+                    $scope.appliancetype = {};
+            });
+        }
+
+        $scope.searchproduct("");
+
 
         function save() {
             var myPopup = $ionicPopup.show({
