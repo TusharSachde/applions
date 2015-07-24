@@ -95,8 +95,8 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     };
 
     var applianceDelete = function(data, status) {
-        $scope.appliance = [];
-        $scope.newappliance = [];
+//        $scope.appliance = [];
+//        $scope.newappliance = [];
         Chats.getAppliance(applianceSuccess);
         console.log(data);
         $ionicLoading.hide();
