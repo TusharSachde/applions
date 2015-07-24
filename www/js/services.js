@@ -161,14 +161,14 @@ angular.module('starter.services', [])
         updateBill: function (data, callback) {
             console.log(data);
             $http.post(adminurl + "appliance/updateappliance", {
-                "id": data.applions,
+                "id": data.appliance,
                 "bill": data.bill
             }).success(callback);
         },
         updateWarrantycard: function (data, callback) {
             console.log(data);
             $http.post(adminurl + "appliance/updateappliance", {
-                "id": data.applions,
+                "id": data.appliance,
                 "warrantycard": data.warrantycard
             }).success(callback);
         },
