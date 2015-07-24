@@ -31,24 +31,19 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
     var applianceSuccess = function(data, status) {
         console.log(data);
-        $scope.appliance = data;
-        _.forEach($scope.appliance, function(n, key) {
-            Chats.getOneAppliance(n._id, function(data, status) {
-                console.log(data);
-                if (data.days) {
-                    if (data.days <= 0) {
-                        data.appliancecolor = "assertive-bg";
-                    } else if (data.days <= 300) {
-                        data.appliancecolor = "yellow-bg";
-                    } else {
-                        data.appliancecolor = "balanced-bg";
-                    }
+        $scope.newappliance = data;
+        _.forEach($scope.newappliance, function(n, key) {
+            if (n.days) {
+                if (n.days <= 0) {
+                    n.appliancecolor = "assertive-bg";
+                } else if (n.days <= 300) {
+                    n.appliancecolor = "yellow-bg";
                 } else {
-                    data.appliancecolor = "assertive-bg";
+                    n.appliancecolor = "balanced-bg";
                 }
-                $scope.newappliance.push(data);
-                console.log($scope.newappliance);
-            });
+            } else {
+                n.appliancecolor = "assertive-bg";
+            }
         });
     }
     Chats.getAppliance(applianceSuccess);
@@ -139,8 +134,15 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.documents = {};
         $scope.locationtb = 0;
         $scope.cover = [];
+        $scope.productwarranty = [];
         $scope.readonly = true;
+	$scope.componentwarranty = [];
         $scope.locationtab = function(tb) {
+            if ($scope.userlocation) {
+                _.forEach($scope.userlocation, function(n, key) {
+                    n.tabactive = "";
+                });
+            }
             $scope.locationtb = tb;
         };
 
@@ -175,11 +177,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         // ONE USERa.userlocation;
         var userLocationSuccess = function(data, status) {
-            console.log("before");
-            console.log(data.userlocation);
             $scope.userlocation = data.userlocation;
-            console.log("after");
-            console.log($scope.appliance.userlocation);
         }
         Chats.getWholeUser(userLocationSuccess);
 
@@ -187,7 +185,6 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         var getProductSuccess = function(data, status) {
             console.log("product");
-            console.log(data);
             $scope.appliancetype = data;
         }
 
@@ -199,13 +196,31 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             $scope.store.appliance = data.id;
             $scope.store = data.store;
             $scope.compwarranty.appliance = data.id;
-            console.log($scope.compwarranty);
+		   if(data.componentwarranty){
+			   $scope.componentwarranty = data.componentwarranty;
+		   }
+		   if(data.bill){
+			   $scope.productwarranty.bill = data.bill;
+		   }
+		   if(data.warrantycard){
+			   $scope.productwarranty.warrantycard = data.warrantycard;
+		   }
             if (data.store) {
                 $scope.store.purchaseprice = data.store.purchaseprice;
             }
             if (!$scope.appliance.userlocation) {
                 $scope.appliance.userlocation = [];
                 $scope.appliance.userlocation.name = '';
+                $scope.locationtb = 3;
+            } else {
+                $scope.locationtb = 0;
+                if ($scope.userlocation) {
+                    _.forEach($scope.userlocation, function(n, key) {
+                        if ($scope.appliance.userlocation.id == n.id) {
+                            n.tabactive = "activetab";
+                        }
+                    });
+                }
             }
             if (!$scope.appliance.appliancetype) {
                 $scope.appliance.appliancetype.name = '';
@@ -251,12 +266,10 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         //ON PRODUCT CLICK
         $scope.brands = [];
         $scope.toProduct = function(product) {
-            console.log(product);
             $scope.appliance.appliancetype = product;
             $scope.appliance.appliancetype.id = product.id;
             $scope.closeproductsearch();
             Chats.findBrand(product.appliancetypeid, function(data, status) {
-                console.log(data);
                 if (data.value != "false")
                     $scope.brands = data;
                 else
@@ -266,6 +279,9 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         //ON LOCATION CLICK
         $scope.selectLocation = function(location) {
+            _.forEach($scope.allvalidation, function(n, key) {
+                n.validation = '';
+            });
             $scope.locationtb = 0;
             for (var i = 0; i < $scope.userlocation.length; i++) {
                 $scope.userlocation[i].tabactive = "";
@@ -275,26 +291,71 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         }
 
         var locationSuccess = function(data, status) {
-            console.log(data);
-            Chats.getWholeUser(userLocationSuccess);
+            Chats.getWholeUser(function(data, status) {
+                $scope.appliance.userlocation = data.userlocation[data.userlocation.length - 1];
+
+                $scope.userlocation = data.userlocation;
+                //				 updateApp();
+            });
+            $scope.oModal1.hide();
 
             $scope.location = [];
         }
+        $scope.allvalidation2 = [];
         $scope.addLocation = function() {
-            $scope.location.user = $scope.user.id;
-            Chats.addUserLocation($scope.location, locationSuccess);
+            $scope.allvalidation2 = [{
+                field: $scope.location.name,
+                validation: ""
+            }, {
+                field: $scope.location.pincode,
+                validation: ""
+            }, {
+                field: $scope.location.district,
+                validation: ""
+            }, {
+                field: $scope.location.state,
+                validation: ""
+            }, {
+                field: $scope.location.address,
+                validation: ""
+            }];
+            var check = formvalidation($scope.allvalidation2);
+            if (check) {
+                $scope.location.user = $scope.user.id;
+                Chats.addUserLocation($scope.location, locationSuccess);
+            }
         }
 
         var updateLocationSuccess = function(data, status) {
             console.log(data);
             $scope.oModal1.hide();
         }
+        $scope.allvalidation3 = [];
         $scope.updateLocation = function() {
-            delete $scope.appliance.userlocation["$$hashKey"];
-            delete $scope.appliance.userlocation["tabactive"];
-            console.log($scope.appliance.userlocation);
+            $scope.allvalidation3 = [{
+                field: $scope.appliance.userlocation.name,
+                validation: ""
+            }, {
+                field: $scope.appliance.userlocation.pincode,
+                validation: ""
+            }, {
+                field: $scope.appliance.userlocation.district,
+                validation: ""
+            }, {
+                field: $scope.appliance.userlocation.state,
+                validation: ""
+            }, {
+                field: $scope.appliance.userlocation.address,
+                validation: ""
+            }];
+            var check = formvalidation($scope.allvalidation3);
+            if (check) {
+                delete $scope.appliance.userlocation["$$hashKey"];
+                delete $scope.appliance.userlocation["tabactive"];
+                console.log($scope.appliance.userlocation);
 
-            Chats.updateUserLocation($scope.appliance.userlocation, updateLocationSuccess)
+                Chats.updateUserLocation($scope.appliance.userlocation, updateLocationSuccess);
+            }
         }
 
 
@@ -310,9 +371,10 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         }
 
         $scope.purchaseprice = {};
+        $scope.allvalidation4 = [];
         $scope.purchaseDetails = function() {
             console.log($scope.warranty);
-            $scope.allvalidation = [{
+            $scope.allvalidation4 = [{
                 field: $scope.store.purchasedate,
                 validation: ""
             }, {
@@ -325,7 +387,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 field: $scope.store.purchaseprice,
                 validation: ""
             }];
-            var check = formvalidation($scope.allvalidation);
+            var check = formvalidation($scope.allvalidation4);
             if (check) {
                 $scope.purchaseprice.appliance = $stateParams.id;
                 $scope.purchaseprice.purchaseprice = $scope.store.purchaseprice;
@@ -359,87 +421,147 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         }
 
+        $scope.allvalidation1 = [];
         $scope.saveComponentWarranty = function() {
-            $scope.compwarranty.appliance = $stateParams.id;
-            console.log($scope.compwarranty);
-            Chats.addComponentWarranty($scope.compwarranty, function(data, status) {
-                if (data) {
-                    $scope.oModal21.hide();
-                    $scope.closecomponent();
-                    $scope.compwarranty = {};
-                    updateApp();
-                } else {
-                    var myPopup = $ionicPopup.show({
-                        title: "Fail to Update Component Warranty",
-                        scope: $scope,
-                    });
-                    $timeout(function() {
-                        myPopup.close(); //close the popup after 3 seconds for some reason
-                    }, 1500);
-                }
-            });
+            $scope.allvalidation1 = [{
+                field: $scope.compwarranty.component,
+                validation: ""
+            }, {
+                field: $scope.compwarranty.startdate,
+                validation: ""
+            }, {
+                field: $scope.compwarranty.warrantyperiod,
+                validation: ""
+            }];
+            var check = formvalidation($scope.allvalidation1);
+            if (check) {
+                $scope.compwarranty.appliance = $stateParams.id;
+                Chats.addComponentWarranty($scope.compwarranty, function(data, status) {
+                    if (data) {
+                        clearValidation($scope.compwarranty);
+                        $scope.oModal21.hide();
+                        $scope.closecomponent();
+                        $scope.compwarranty = {};
+                        updateApp();
+                    } else {
+                        var myPopup = $ionicPopup.show({
+                            title: "Fail to Update Component Warranty",
+                            scope: $scope,
+                        });
+                        $timeout(function() {
+                            myPopup.close(); //close the popup after 3 seconds for some reason
+                        }, 1500);
+                    }
+                });
+            }
         }
         $scope.additionalwarrantyadd = {};
         $scope.additionalwarrantyadd.includes = [];
 
+		$scope.allvalidation5 = [];
         $scope.saveAdditionalWarranty = function() {
-            $scope.additionalwarrantyadd.appliance = $stateParams.id;
-            console.log($scope.additionalwarrantyadd);
-            Chats.addAdditionalWarranty($scope.additionalwarrantyadd, function(data, status) {
-                console.log(data);
-                if (data) {
-                    $scope.closeModal();
-                    updateApp();
-                } else {
-                    var myPopup = $ionicPopup.show({
-                        title: "Fail to Update Component Warranty",
-                        scope: $scope,
-                    });
-                    $timeout(function() {
-                        myPopup.close(); //close the popup after 3 seconds for some reason
-                    }, 1500);
-                }
-            });
+            $scope.allvalidation5 = [{
+                field: $scope.additionalwarrantyadd.purchasedate,
+                validation: ""
+            }, {
+                field: $scope.additionalwarrantyadd.period,
+                validation: ""
+            }, {
+                field: $scope.additionalwarrantyadd.billno,
+                validation: ""
+            }, {
+                field: $scope.additionalwarrantyadd.purchaseprice,
+                validation: ""
+            }];
+            var check = formvalidation($scope.allvalidation5);
+            if (check) {
+                $scope.additionalwarrantyadd.appliance = $stateParams.id;
+                Chats.addAdditionalWarranty($scope.additionalwarrantyadd, function(data, status) {
+                    if (data) {
+					$scope.additionalwarrantyadd = [];
+                        $scope.closeModal();
+                        updateApp();
+                    } else {
+                        var myPopup = $ionicPopup.show({
+                            title: "Fail to Update Component Warranty",
+                            scope: $scope,
+                        });
+                        $timeout(function() {
+                            myPopup.close(); //close the popup after 3 seconds for some reason
+                        }, 1500);
+                    }
+                });
+            }
         }
 
 
         //EDIT COMPONENT WARRANTY
+	   $scope.allvalidation6 = [];
         $scope.editComponentWarranty = function() {
-            $scope.componentobj.appliance = $scope.appliance.id;
-            Chats.updateComponentWarranty($scope.componentobj, function(data, status) {
-                if (data) {
-                    updateApp();
-                    $scope.oModal21.hide();
-                } else {
-                    var myPopup = $ionicPopup.show({
-                        title: "Fail to Update Component Warranty",
-                        scope: $scope,
-                    });
-                    $timeout(function() {
-                        myPopup.close(); //close the popup after 3 seconds for some reason
-                    }, 1500);
-                }
-            });
+            $scope.allvalidation6 = [{
+                field: $scope.componentobj.component,
+                validation: ""
+            }, {
+                field: $scope.componentobj.startdate,
+                validation: ""
+            }, {
+                field: $scope.componentobj.warrantyperiod,
+                validation: ""
+            }];
+            var check = formvalidation($scope.allvalidation6);
+            if (check) {
+                $scope.componentobj.appliance = $scope.appliance.id;
+                Chats.updateComponentWarranty($scope.componentobj, function(data, status) {
+                    if (data) {
+                        updateApp();
+                        $scope.oModal21.hide();
+                    } else {
+                        var myPopup = $ionicPopup.show({
+                            title: "Fail to Update Component Warranty",
+                            scope: $scope,
+                        });
+                        $timeout(function() {
+                            myPopup.close(); //close the popup after 3 seconds for some reason
+                        }, 1500);
+                    }
+                });
+            }
         }
 
+	   $scope.allvalidation7 = [];
         $scope.editAdditionalWarranty = function() {
             $scope.cover = [];
-            $scope.additionalwarranty.appliance = $scope.appliance.id;
-            Chats.updateAddtionalWarranty($scope.additionalwarranty, function(data, status) {
-                console.log(data);
-                if (data) {
-                    updateApp();
-                    $scope.oModal20.hide();
-                } else {
-                    var myPopup = $ionicPopup.show({
-                        title: "Fail to Update Component Warranty",
-                        scope: $scope,
-                    });
-                    $timeout(function() {
-                        myPopup.close(); //close the popup after 3 seconds for some reason
-                    }, 1500);
-                }
-            });
+            $scope.allvalidation7 = [{
+                field: $scope.additionalwarranty.purchasedate,
+                validation: ""
+            }, {
+                field: $scope.additionalwarranty.period,
+                validation: ""
+            }, {
+                field: $scope.additionalwarranty.billno,
+                validation: ""
+            }, {
+                field: $scope.additionalwarranty.purchaseprice,
+                validation: ""
+            }];
+            var check = formvalidation($scope.allvalidation7);
+            if (check) {
+                $scope.additionalwarranty.appliance = $scope.appliance.id;
+                Chats.updateAddtionalWarranty($scope.additionalwarranty, function(data, status) {
+                    if (data) {
+                        updateApp();
+                        $scope.oModal20.hide();
+                    } else {
+                        var myPopup = $ionicPopup.show({
+                            title: "Fail to Update Component Warranty",
+                            scope: $scope,
+                        });
+                        $timeout(function() {
+                            myPopup.close(); //close the popup after 3 seconds for some reason
+                        }, 1500);
+                    }
+                });
+            }
         }
 
         //        
@@ -502,9 +624,10 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         var applianceUpdate = function(data, status) {
             console.log(data);
         }
+	   $scope.allvalidation8 = [];
         $scope.changetab2 = function(tab) {
 
-            $scope.allvalidation = [{
+            $scope.allvalidation8 = [{
                 field: $scope.appliance.appliancetype.name,
                 validation: ""
             }, {
@@ -514,7 +637,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 field: $scope.appliance.userlocation.name,
                 validation: ""
             }];
-            var check = formvalidation($scope.allvalidation);
+            var check = formvalidation($scope.allvalidation8);
             if (check) {
                 console.log("validate");
                 Chats.updateAppliance($scope.appliance, function(data, status) {
@@ -567,6 +690,30 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         $scope.compwarid = '';
         $scope.cameraimage = '';
+	
+        $scope.uploadProductBill = function() {
+            console.log("take picture");
+            $cordovaImagePicker.getPictures(options).then(function(resultImage) {
+                // Success! Image data is here
+                console.log("here in upload image");
+                console.log(resultImage);
+                $scope.cameraimage = resultImage[0];
+                $scope.uploadPhoto(adminurl + "user/uploadfile", function(result) {
+            console.log(result);
+            console.log($scope.compwarid);
+            $scope.productwarranty.appliance = $.jStorage.get("applianceid");
+            $scope.productwarranty.bill = result.files[0].fd;
+            console.log($scope.productwarranty);
+            Chats.updateBill($scope.productwarranty, function(data, status) {
+                console.log(data);
+            })
+        });
+
+            }, function(err) {
+                // An error occured. Show a message to the user
+            });
+        };
+	
         var uploadBillSuccess = function(result) {
             console.log(result);
             console.log($scope.compwarid);
@@ -591,6 +738,31 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 // An error occured. Show a message to the user
             });
         };
+	
+	
+        var uploadWarrantySuccess = 
+        $scope.uploadProductWarrantycard = function() {
+            console.log("take picture");
+            $cordovaImagePicker.getPictures(options).then(function(resultImage) {
+                // Success! Image data is here
+                console.log("here in upload image");
+                console.log(resultImage);
+                $scope.cameraimage = resultImage[0];
+                $scope.uploadPhoto(adminurl + "user/uploadfile", function(result) {
+            console.log(result);
+            $scope.productwarranty.appliance = $.jStorage.get("applianceid");
+            $scope.productwarranty.warrantycard = result.files[0].fd;
+            console.log($scope.documents);
+            Chats.updateWarrantycard($scope.documents, function(data, status) {
+                console.log(data);
+            })
+        });
+
+            }, function(err) {
+                // An error occured. Show a message to the user
+            });
+        };
+
         var uploadWarrantySuccess = function(result) {
             console.log(result);
             $scope.documents.appliance = $.jStorage.get("applianceid");
@@ -667,6 +839,8 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             $scope.closebrandsearch();
         }
 
+	   
+	   
         //UPLOAD DOCUMENTS
 
 
@@ -698,7 +872,17 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             $scope.oModal1 = modal;
         });
         //jagruti
-        $scope.openedit = function() {
+        $scope.openedit = function(location) {
+            if ($scope.userlocation && $scope.userlocation.length != 0) {
+                $scope.locationtb = 0;
+                _.forEach($scope.userlocation, function(n, key) {
+                    if (location.id == n.id) {
+                        n.tabactive = "activetab";
+                    }
+                });
+            } else {
+                $scope.locationtb = 3;
+            }
             $scope.oModal1.show();
         };
 
@@ -1003,7 +1187,6 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         };
 
         $scope.getproductbrands = function(brandname) {
-            console.log(brandname);
             Chats.searchbrandbyid(brandname, $scope.appliance.appliancetype.appliancetypeid, function(data, status) {
                 console.log(data);
                 $scope.brands = data;
@@ -1014,7 +1197,6 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.searchproduct = function(productkeyword) {
             console.log(productkeyword);
             Chats.searchProduct(productkeyword, function(data, status) {
-                console.log(data);
                 if (data.value != "false") {
                     $scope.appliancetype = data;
                 } else
@@ -1084,7 +1266,10 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
     //ON LOCATION CLICK
     $scope.selectLocation = function(location) {
-
+        console.log($scope.allvalidation);
+        _.forEach($scope.allvalidation, function(n, key) {
+            n.validation = '';
+        });
         $scope.locationtb = 0;
         for (var i = 0; i < $scope.userlocation.length; i++) {
             $scope.userlocation[i].tabactive = "";
@@ -1097,9 +1282,29 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         console.log(data);
         Chats.getWholeUser(userCallback);
     }
+    $scope.allvalidation2 = [];
     $scope.addLocation = function() {
-        $scope.location.user = $scope.user.id;
-        Chats.addUserLocation($scope.location, locationSuccess);
+        $scope.allvalidation2 = [{
+            field: $scope.location.name,
+            validation: ""
+        }, {
+            field: $scope.location.pincode,
+            validation: ""
+        }, {
+            field: $scope.location.district,
+            validation: ""
+        }, {
+            field: $scope.location.state,
+            validation: ""
+        }, {
+            field: $scope.location.address,
+            validation: ""
+        }];
+        var check = formvalidation($scope.allvalidation2);
+        if (check) {
+            $scope.location.user = $scope.user.id;
+            Chats.addUserLocation($scope.location, locationSuccess);
+        }
     }
 
     var updateLocationSuccess = function(data, status) {
@@ -1107,12 +1312,32 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         console.log(data);
         $scope.oModal1.hide();
     }
+    $scope.allvalidation3 = [];
     $scope.updateLocation = function() {
-        delete $scope.appliance.userlocation["$$hashKey"];
-        delete $scope.appliance.userlocation["tabactive"];
-        console.log($scope.appliance);
+        $scope.allvalidation3 = [{
+            field: $scope.appliance.userlocation.name,
+            validation: ""
+        }, {
+            field: $scope.appliance.userlocation.pincode,
+            validation: ""
+        }, {
+            field: $scope.appliance.userlocation.district,
+            validation: ""
+        }, {
+            field: $scope.appliance.userlocation.state,
+            validation: ""
+        }, {
+            field: $scope.appliance.userlocation.address,
+            validation: ""
+        }];
+        var check = formvalidation($scope.allvalidation3);
+        if (check) {
+            delete $scope.appliance.userlocation["$$hashKey"];
+            delete $scope.appliance.userlocation["tabactive"];
+            console.log($scope.appliance);
 
-        Chats.updateUserLocation($scope.appliance.userlocation, updateLocationSuccess)
+            Chats.updateUserLocation($scope.appliance.userlocation, updateLocationSuccess);
+        }
     }
 
     // TAB/HOME/EDIT PAGE END
@@ -1132,9 +1357,10 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         updateApp();
     }
     $scope.purchaseprice = {};
+    $scope.allvalidation4 = [];
     $scope.purchaseDetails = function() {
         var check = false;
-        $scope.allvalidation = [{
+        $scope.allvalidation4 = [{
             field: $scope.store.purchasedate,
             validation: ""
         }, {
@@ -1148,7 +1374,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             validation: ""
         }];
 
-        var check = formvalidation($scope.allvalidation);
+        var check = formvalidation($scope.allvalidation4);
 
         if (check) {
             $scope.store.appliance = $.jStorage.get("applianceid");
@@ -1255,65 +1481,167 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     }
 
     $scope.compwarranty = {};
-    //EDIT COMPONENT WARRANTY
-    $scope.saveComponentWarranty = function() {
-        $scope.compwarranty.appliance = $.jStorage.get("applianceid");
-        console.log($scope.compwarranty);
-        Chats.addComponentWarranty($scope.compwarranty, function(data, status) {
-            if (data) {
-                $scope.oModal21.hide();
-                $scope.closecomponent();
-                $scope.compwarranty = {};
-                updateApp();
-            } else {
-                var myPopup = $ionicPopup.show({
-                    title: "Fail to Update Component Warranty",
-                    scope: $scope,
-                });
-                $timeout(function() {
-                    myPopup.close(); //close the popup after 3 seconds for some reason
-                }, 1500);
-            }
-        });
+
+
+    $scope.updateWarrantytab = function(tab) {
+        console.log($scope.warranty);
+        $scope.allvalidation = [{
+            field: $scope.warranty.period,
+            validation: ""
+        }, {
+            field: $scope.warranty.type,
+            validation: ""
+        }];
+        var check = formvalidation($scope.allvalidation);
+        if (check) {
+            Chats.updateWarrantyWar($scope.warranty, function(data, status) {
+                console.log(data);
+            });
+            $scope.changetab(4);
+        }
+
     }
 
-    $scope.additionalwarranty = {};
-    $scope.additionalwarranty.includes = [];
-    $scope.saveAdditionalWarranty = function() {
-        $scope.additionalwarranty.appliance = $.jStorage.get("applianceid");
-        console.log($scope.additionalwarranty);
-        Chats.addAdditionalWarranty($scope.additionalwarranty, function(data, status) {
-            if (data) {
-                $scope.closeModal();
-                updateApp();
-            } else {
-                var myPopup = $ionicPopup.show({
-                    title: "Fail to Update Component Warranty",
-                    scope: $scope,
-                });
-                $timeout(function() {
-                    myPopup.close(); //close the popup after 3 seconds for some reason
-                }, 1500);
-            }
-        });
+    //EDIT COMPONENT WARRANTY
+    $scope.allvalidation1 = [];
+    $scope.saveComponentWarranty = function() {
+        $scope.allvalidation1 = [{
+            field: $scope.compwarranty.component,
+            validation: ""
+        }, {
+            field: $scope.compwarranty.startdate,
+            validation: ""
+        }, {
+            field: $scope.compwarranty.warrantyperiod,
+            validation: ""
+        }];
+        var check = formvalidation($scope.allvalidation1);
+        if (check) {
+            $scope.compwarranty.appliance = $.jStorage.get("applianceid");
+            Chats.addComponentWarranty($scope.compwarranty, function(data, status) {
+                if (data) {
+                    $scope.oModal21.hide();
+                    $scope.closecomponent();
+                    $scope.compwarranty = {};
+                    updateApp();
+                } else {
+                    var myPopup = $ionicPopup.show({
+                        title: "Fail to Update Component Warranty",
+                        scope: $scope,
+                    });
+                    $timeout(function() {
+                        myPopup.close(); //close the popup after 3 seconds for some reason
+                    }, 1500);
+                }
+            });
+        }
     }
+
+    $scope.additionalwarrantyadd = {};
+    $scope.additionalwarrantyadd.includes = [];
+	$scope.allvalidation5 = [];
+    $scope.saveAdditionalWarranty = function() {
+        $scope.allvalidation5 = [{
+            field: $scope.additionalwarrantyadd.purchasedate,
+            validation: ""
+        }, {
+            field: $scope.additionalwarrantyadd.period,
+            validation: ""
+        }, {
+            field: $scope.additionalwarrantyadd.billno,
+            validation: ""
+        }, {
+            field: $scope.additionalwarrantyadd.purchaseprice,
+            validation: ""
+        }];
+        var check = formvalidation($scope.allvalidation5);
+        if (check) {
+            $scope.additionalwarrantyadd.appliance = $.jStorage.get("applianceid");
+            Chats.addAdditionalWarranty($scope.additionalwarrantyadd, function(data, status) {
+                if (data) {
+                    $scope.closeModal();
+                    updateApp();
+                } else {
+                    var myPopup = $ionicPopup.show({
+                        title: "Fail to Update Component Warranty",
+                        scope: $scope,
+                    });
+                    $timeout(function() {
+                        myPopup.close(); //close the popup after 3 seconds for some reason
+                    }, 1500);
+                }
+            });
+        }
+    }
+
+    //EDIT COMPONENT WARRANTY
+    $scope.allvalidation6 = [];
+    $scope.editComponentWarranty = function() {
+        $scope.allvalidation6 = [{
+            field: $scope.componentobj.component,
+            validation: ""
+        }, {
+            field: $scope.componentobj.startdate,
+            validation: ""
+        }, {
+            field: $scope.componentobj.warrantyperiod,
+            validation: ""
+        }];
+        var check = formvalidation($scope.allvalidation6);
+        if (check) {
+            $scope.componentobj.appliance = $scope.appliance.id;
+            Chats.updateComponentWarranty($scope.componentobj, function(data, status) {
+                if (data) {
+                    updateApp();
+                    $scope.oModal21.hide();
+                } else {
+                    var myPopup = $ionicPopup.show({
+                        title: "Fail to Update Component Warranty",
+                        scope: $scope,
+                    });
+                    $timeout(function() {
+                        myPopup.close(); //close the popup after 3 seconds for some reason
+                    }, 1500);
+                }
+            });
+        }
+    }
+
+    $scope.allvalidation7 = [];
     $scope.editAdditionalWarranty = function() {
-        $scope.additionalwarranty.appliance = $scope.appliance.id;
-        Chats.updateAddtionalWarranty($scope.additionalwarranty, function(data, status) {
-            console.log(data);
-            if (data) {
-                updateApp();
-                $scope.closewarranty();
-            } else {
-                var myPopup = $ionicPopup.show({
-                    title: "Fail to Update Component Warranty",
-                    scope: $scope,
-                });
-                $timeout(function() {
-                    myPopup.close(); //close the popup after 3 seconds for some reason
-                }, 1500);
-            }
-        });
+
+        $scope.allvalidation7 = [{
+            field: $scope.additionalwarranty.purchasedate,
+            validation: ""
+        }, {
+            field: $scope.additionalwarranty.period,
+            validation: ""
+        }, {
+            field: $scope.additionalwarranty.billno,
+            validation: ""
+        }, {
+            field: $scope.additionalwarranty.purchaseprice,
+            validation: ""
+        }];
+        var check = formvalidation($scope.allvalidation7);
+        if (check) {
+            $scope.additionalwarranty.appliance = $scope.appliance.id;
+            Chats.updateAddtionalWarranty($scope.additionalwarranty, function(data, status) {
+                console.log(data);
+                if (data) {
+                    updateApp();
+                    $scope.closewarranty();
+                } else {
+                    var myPopup = $ionicPopup.show({
+                        title: "Fail to Update Component Warranty",
+                        scope: $scope,
+                    });
+                    $timeout(function() {
+                        myPopup.close(); //close the popup after 3 seconds for some reason
+                    }, 1500);
+                }
+            });
+        }
     }
 
     var getOneSuccess = function(data, status) {

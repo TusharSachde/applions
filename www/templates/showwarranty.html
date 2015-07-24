@@ -1,6 +1,6 @@
 <ion-modal-view>
     <ion-header-bar class="bar-balanced bar-header" align-title="center">
-        <h1 class="title">Add Additional Warranty / AMC</h1>
+        <h1 class="title">Additional Warranty / AMC</h1>
         <div class="buttons">
             <button class="button button-clear" ng-click="closewarranty()">Skip</button>
         </div>
@@ -16,13 +16,13 @@
                     <option value="Extended Warranty">Extended Warranty</option>
                 </select>
             </label>
-            <label class="item item-input">
+            <label class="item item-input" ng-class="allvalidation[0].validation">
                 <span class="input-label">Start Date*</span>
                 <input type="date" ng-model="additionalwarranty.purchasedate" required>
             </label>
-            <label class="item item-input">
+            <label class="item item-input" ng-class="allvalidation[1].validation">
                 <span class="input-label">Cover Period* (months)</span>
-                <input type="text" ng-model="additionalwarranty.period" required>
+                <input type="text" ng-model="additionalwarranty.period" ng-pattern="/^[0-9]+$/" required>
             </label>
             <label class="item item-divider">
                 Cover Includes
@@ -42,8 +42,8 @@
                     <input type="checkbox" value="others" ng-model="cover.others" ng-change="pushorpop(cover.others,'others');"> Others
                 </label>
             </ion-item>
-            <label class="item item-input">
-                <span class="input-label">Bill No From{{warranty.end}}</span>
+            <label class="item item-input" ng-class="allvalidation[2].validation">
+                <span class="input-label">Bill No From</span>
                 <input type="text" ng-model="additionalwarranty.billno" placeholder="Bill No">
             </label>
             <label class="item item-input">
@@ -54,9 +54,9 @@
                 <span class="input-label">Contact No.</span>
                 <input type="text" ng-model="additionalwarranty.contact" placeholder="Contact No. of Seller">
             </label>
-            <label class="item item-input">
+            <label class="item item-input" ng-class="allvalidation[3].validation">
                 <span class="input-label">Purchase Price</span>
-                <input type="text" ng-model="additionalwarranty.purchaseprice" placeholder="Purchase Price">
+                <input type="text" ng-model="additionalwarranty.purchaseprice" ng-pattern="/^[0-9]+$/" placeholder="Purchase Price">
             </label>
         </div>
         <div class="padding-horizontal" ng-click="editAdditionalWarranty()">

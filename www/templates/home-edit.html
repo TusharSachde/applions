@@ -82,7 +82,7 @@
                 </label>
                 <label class="item item-input input-btm" ng-class="allvalidation[1].validation">
                     <span class="input-label">Name As*</span>
-                    <input type="text" ng-model="appliance.name" required>
+                    <input type="text" ng-model="appliance.name">
                 </label>
             </div>
 
@@ -99,10 +99,10 @@
 
                 <label class="item item-input">
                     <span class="input-label">Serial No.</span>
-                    <input type="text" ng-model="appliance.serialnumber">
+                    <input type="text" ng-model="appliance.serialnumber" ng-pattern="/^[0-9]+$/">
                 </label>
 
-                <label class="item item-input" ng-click="openedit();" ng-class="allvalidation[2].validation">
+                <label class="item item-input" ng-click="openedit(appliance.userlocation);" ng-class="allvalidation[2].validation">
                     <span class="input-label">Location</span>
                     <input type="text" ng-model="appliance.userlocation.name" readonly>
                 </label>
@@ -126,31 +126,31 @@
         </div>
 
         <div class="list" ng-if="tabvalue == 2">
-            <label class="item item-input" ng-class="allvalidation[0].validation">
+            <label class="item item-input" ng-class="allvalidation4[0].validation">
                 <span class="input-label">Purchase Date</span>
                 <input type="date" ng-model="store.purchasedate">
             </label>
-            <label class="item item-input" ng-class="allvalidation[1].validation">
+            <label class="item item-input" ng-class="allvalidation4[1].validation">
                 <span class="input-label">Bill No*</span>
                 <input type="text" ng-model="store.billno">
             </label>
-            <label class="item item-input" ng-class="allvalidation[2].validation">
+            <label class="item item-input" ng-class="allvalidation4[2].validation">
                 <span class="input-label">Store Name</span>
                 <input type="text" ng-model="store.name">
             </label>
             <label class="item item-input">
                 <span class="input-label">Store Pincode</span>
-                <input type="text" ng-model="store.pincode">
+                <input type="text" ng-model="store.pincode" ng-pattern="/^[0-9]+$/">
             </label>
             <label class="item item-input">
                 <span class="input-label">Store District</span>
-                <input type="text" ng-model="store.district">
+                <input type="text" ng-model="store.district" ng-pattern="/^(\D)+$/">
             </label>
             <label class="item item-input">
                 <div class="input-label">
                     Store State
                 </div>
-                <input type="text" ng-model="store.state">
+                <input type="text" ng-model="store.state" ng-pattern="/^(\D)+$/">
                 <!--
                 <select>
                     <option></option>
@@ -165,15 +165,15 @@
             </label>
             <label class="item item-input">
                 <span class="input-label">Contact No.</span>
-                <input type="text" ng-model="store.contact">
+                <input type="text" ng-model="store.contact" ng-pattern="/^[0-9]+$/" ng-minlength="10" ng-maxlength="15">
             </label>
             <label class="item item-input">
                 <span class="input-label">Sale Person</span>
                 <input type="text" ng-model="store.saleperson">
             </label>
-            <label class="item item-input" ng-class="allvalidation[3].validation">
+            <label class="item item-input" ng-class="allvalidation4[3].validation">
                 <span class="input-label">Purchase Price</span>
-                <input type="text" ng-model="store.purchaseprice">
+                <input type="text" ng-model="store.purchaseprice" ng-pattern="/^[0-9]+$/">
             </label>
 
             <div class="button-bar">
@@ -185,8 +185,12 @@
         <div class="warranty" ng-if="tabvalue == 3">
             <div class="list">
                 <div class="item product-wrnnty">
-                    Product Warranty{{readonly}}
+                    Product Warranty
                 </div>
+                <label class="item item-input" ng-if="readonly==true">
+                    <span class="input-label" style="color:#BABAAC;">For Product Warranty Please Create AdditionalWarranty.</span>
+                </label>
+
                 <label class="item item-input" ng-if="readonly==false" ng-class="allvalidation[0].validation">
                     <span class="input-label">Warranty Period</span>
                     <input type="text" ng-model="warranty.period">
@@ -268,9 +272,36 @@
             <div class="item product-wrnnty">
                 Product Documents
             </div>
-            <label class="item" style="padding:0;">
+
+
+            <div class="row" ng-if="warranty!=''">
+                <div class="col text-center">
+                    <img style="width: 100px;height: 100px;" ng-src="{{productwarranty.bill | serverimage}}" ng-click="uploadBill();">
+                </div>
+                <div class="col text-center">
+                    <img style="width: 100px;height: 100px;" ng-src="{{productwarranty.warrantycard | serverimage}}" ng-click="uploadwarrantycard();">
+                </div>
+            </div>
+            <div class="row" ng-if="warranty!=''">
+                <div class="col text-center" ng-click="uploadProductBill();">
+                    <button class="button button-outline button-balanced button-block button-small" ng-class="warranty">Upload Bill</button>
+                </div>
+                <div class="col text-center" ng-click="uploadProductWarrantycard();">
+                    <button class="button button-outline button-balanced button-block button-small" ng-class="warranty">Upload Warranty Card</button>
+                </div>
+            </div>
+            <label class="item item-input" ng-if="warranty==''">
+                    <span class="input-label" style="color:#BABAAC;">No Warranty Yet..</span>
+                </label>
+
+
+            <div class="item product-wrnnty">
+                Componenet Warranty Documents
+            </div>
+
+            <label class="item" style="padding:0;" ng-if="componentwarranty!=''">
                 <label class="item item-input item-select">
-                   
+
                     <div class="input-label">
                         Select Component
                     </div>
@@ -283,7 +314,7 @@
                     </select>
                 </label>
             </label>
-            <div class="row">
+            <div class="row" ng-if="componentwarranty!=''">
                 <div class="col text-center">
                     <img style="width: 100px;height: 100px;" ng-src="{{documents.bill | serverimage}}" ng-click="uploadBill();">
                 </div>
@@ -291,7 +322,7 @@
                     <img style="width: 100px;height: 100px;" ng-src="{{documents.warrantycard | serverimage}}" ng-click="uploadwarrantycard();">
                 </div>
             </div>
-            <div class="row">
+            <div class="row" ng-if="componentwarranty!=''">
                 <div class="col text-center" ng-click="uploadBill();">
                     <button class="button button-outline button-balanced button-block button-small" ng-class="warranty">Upload Bill</button>
                 </div>
@@ -299,6 +330,11 @@
                     <button class="button button-outline button-balanced button-block button-small" ng-class="warranty">Upload Warranty Card</button>
                 </div>
             </div>
+               
+                <label class="item item-input" ng-if="componentwarranty==''">
+                    <span class="input-label" style="color:#BABAAC;">No Component Warranty Yet..</span>
+                </label>
+            
             <div class="item product-wrnnty">
                 Add Notes
             </div>

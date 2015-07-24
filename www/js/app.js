@@ -175,6 +175,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 //    return isvalid2;
 //};
 
+var clearValidation = function(validarray) {
+	_.forEach(validarray, function(n, key){
+		n.validation = "";
+	});
+}
 
 var formvalidation = function (allvalidation) {
     var isvalid2 = true;

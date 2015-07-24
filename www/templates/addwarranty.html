@@ -16,13 +16,13 @@
                     <option>Extended Warranty</option>
                 </select>
             </label>
-            <label class="item item-input">
+            <label class="item item-input" ng-class="allvalidation5[0].validation">
                 <span class="input-label">Start Date*</span>
                 <input type="date" ng-model="additionalwarrantyadd.purchasedate" required>
             </label>
-            <label class="item item-input">
+            <label class="item item-input" ng-class="allvalidation5[1].validation">
                 <span class="input-label">Cover Period* (months)</span>
-                <input type="text" ng-model="additionalwarrantyadd.period" required>
+                <input type="text" ng-model="additionalwarrantyadd.period" ng-pattern="/^[0-9]+$/" required>
             </label>
             <label class="item item-divider">
                 Cover Includes
@@ -42,7 +42,7 @@
                     <input type="checkbox" value="others" ng-model="cover.others" ng-change="pushorpopadd(cover.others,'others');"> Others
                 </label>
             </ion-item>
-            <label class="item item-input">
+            <label class="item item-input" ng-class="allvalidation5[2].validation">
                 <span class="input-label">Bill No From{{warranty.end}}</span>
                 <input type="text" ng-model="additionalwarrantyadd.billno" placeholder="Bill No">
             </label>
@@ -54,9 +54,9 @@
                 <span class="input-label">Contact No.</span>
                 <input type="text" ng-model="additionalwarrantyadd.contact" placeholder="Contact No. of Seller">
             </label>
-            <label class="item item-input">
+            <label class="item item-input" ng-class="allvalidation5[3].validation">
                 <span class="input-label">Purchase Price</span>
-                <input type="text" ng-model="additionalwarrantyadd.purchaseprice" placeholder="Purchase Price">
+                <input type="text" ng-model="additionalwarrantyadd.purchaseprice" ng-pattern="/^[0-9]+$/" placeholder="Purchase Price">
             </label>
         </div>
         <div class="padding-horizontal" ng-click="saveAdditionalWarranty()">

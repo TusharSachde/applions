@@ -1,5 +1,5 @@
-//var adminurl = "http://192.168.2.22:1337/";
-var adminurl = "http://104.154.90.138/";
+var adminurl = "http://192.168.2.11:1337/";
+//var adminurl = "http://104.154.90.138/";
 var imgpath = adminurl + "user/resize?file=";
 angular.module('starter.services', [])
 
@@ -156,6 +156,20 @@ angular.module('starter.services', [])
                 "modelnumber": data.modelnumber,
                 "serialnumber": data.serialnumber,
                 "userlocation": data.userlocation.id
+            }).success(callback);
+        },
+        updateBill: function (data, callback) {
+            console.log(data);
+            $http.post(adminurl + "appliance/updateappliance", {
+                "id": data.applions,
+                "bill": data.bill
+            }).success(callback);
+        },
+        updateWarrantycard: function (data, callback) {
+            console.log(data);
+            $http.post(adminurl + "appliance/updateappliance", {
+                "id": data.applions,
+                "warrantycard": data.warrantycard
             }).success(callback);
         },
         createUser: function (data, callback) {
