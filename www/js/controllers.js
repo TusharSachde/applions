@@ -136,7 +136,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.cover = [];
         $scope.productwarranty = [];
         $scope.readonly = true;
-	$scope.componentwarranty = [];
+        $scope.componentwarranty = [];
         $scope.locationtab = function(tb) {
             if ($scope.userlocation) {
                 _.forEach($scope.userlocation, function(n, key) {
@@ -196,15 +196,15 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             $scope.store.appliance = data.id;
             $scope.store = data.store;
             $scope.compwarranty.appliance = data.id;
-		   if(data.componentwarranty){
-			   $scope.componentwarranty = data.componentwarranty;
-		   }
-		   if(data.bill){
-			   $scope.productwarranty.bill = data.bill;
-		   }
-		   if(data.warrantycard){
-			   $scope.productwarranty.warrantycard = data.warrantycard;
-		   }
+            if (data.componentwarranty) {
+                $scope.componentwarranty = data.componentwarranty;
+            }
+            if (data.bill) {
+                $scope.productwarranty.bill = data.bill;
+            }
+            if (data.warrantycard) {
+                $scope.productwarranty.warrantycard = data.warrantycard;
+            }
             if (data.store) {
                 $scope.store.purchaseprice = data.store.purchaseprice;
             }
@@ -458,7 +458,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.additionalwarrantyadd = {};
         $scope.additionalwarrantyadd.includes = [];
 
-		$scope.allvalidation5 = [];
+        $scope.allvalidation5 = [];
         $scope.saveAdditionalWarranty = function() {
             $scope.allvalidation5 = [{
                 field: $scope.additionalwarrantyadd.purchasedate,
@@ -478,7 +478,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 $scope.additionalwarrantyadd.appliance = $stateParams.id;
                 Chats.addAdditionalWarranty($scope.additionalwarrantyadd, function(data, status) {
                     if (data) {
-					$scope.additionalwarrantyadd = [];
+                        $scope.additionalwarrantyadd = [];
                         $scope.closeModal();
                         updateApp();
                     } else {
@@ -496,7 +496,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
 
         //EDIT COMPONENT WARRANTY
-	   $scope.allvalidation6 = [];
+        $scope.allvalidation6 = [];
         $scope.editComponentWarranty = function() {
             $scope.allvalidation6 = [{
                 field: $scope.componentobj.component,
@@ -528,7 +528,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             }
         }
 
-	   $scope.allvalidation7 = [];
+        $scope.allvalidation7 = [];
         $scope.editAdditionalWarranty = function() {
             $scope.cover = [];
             $scope.allvalidation7 = [{
@@ -624,7 +624,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         var applianceUpdate = function(data, status) {
             console.log(data);
         }
-	   $scope.allvalidation8 = [];
+        $scope.allvalidation8 = [];
         $scope.changetab2 = function(tab) {
 
             $scope.allvalidation8 = [{
@@ -690,7 +690,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         $scope.compwarid = '';
         $scope.cameraimage = '';
-	
+
         $scope.uploadProductBill = function() {
             console.log("take picture");
             $cordovaImagePicker.getPictures(options).then(function(resultImage) {
@@ -699,21 +699,21 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 console.log(resultImage);
                 $scope.cameraimage = resultImage[0];
                 $scope.uploadPhoto(adminurl + "user/uploadfile", function(result) {
-            console.log(result);
-            console.log($scope.compwarid);
-            $scope.productwarranty.appliance = $.jStorage.get("applianceid");
-            $scope.productwarranty.bill = result.files[0].fd;
-            console.log($scope.productwarranty);
-            Chats.updateBill($scope.productwarranty, function(data, status) {
-                console.log(data);
-            })
-        });
+                    console.log(result);
+                    console.log($scope.compwarid);
+                    $scope.productwarranty.appliance = $.jStorage.get("applianceid");
+                    $scope.productwarranty.bill = result.files[0].fd;
+                    console.log($scope.productwarranty);
+                    Chats.updateBill($scope.productwarranty, function(data, status) {
+                        console.log(data);
+                    })
+                });
 
             }, function(err) {
                 // An error occured. Show a message to the user
             });
         };
-	
+
         var uploadBillSuccess = function(result) {
             console.log(result);
             console.log($scope.compwarid);
@@ -738,29 +738,29 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 // An error occured. Show a message to the user
             });
         };
-	
-	
-        var uploadWarrantySuccess = 
-        $scope.uploadProductWarrantycard = function() {
-            console.log("take picture");
-            $cordovaImagePicker.getPictures(options).then(function(resultImage) {
-                // Success! Image data is here
-                console.log("here in upload image");
-                console.log(resultImage);
-                $scope.cameraimage = resultImage[0];
-                $scope.uploadPhoto(adminurl + "user/uploadfile", function(result) {
-            console.log(result);
-            $scope.productwarranty.appliance = $.jStorage.get("applianceid");
-            $scope.productwarranty.warrantycard = result.files[0].fd;
-            console.log($scope.documents);
-            Chats.updateWarrantycard($scope.documents, function(data, status) {
-                console.log(data);
-            })
-        });
 
-            }, function(err) {
-                // An error occured. Show a message to the user
-            });
+
+        var uploadWarrantySuccess =
+            $scope.uploadProductWarrantycard = function() {
+                console.log("take picture");
+                $cordovaImagePicker.getPictures(options).then(function(resultImage) {
+                    // Success! Image data is here
+                    console.log("here in upload image");
+                    console.log(resultImage);
+                    $scope.cameraimage = resultImage[0];
+                    $scope.uploadPhoto(adminurl + "user/uploadfile", function(result) {
+                        console.log(result);
+                        $scope.productwarranty.appliance = $.jStorage.get("applianceid");
+                        $scope.productwarranty.warrantycard = result.files[0].fd;
+                        console.log($scope.documents);
+                        Chats.updateWarrantycard($scope.documents, function(data, status) {
+                            console.log(data);
+                        })
+                    });
+
+                }, function(err) {
+                    // An error occured. Show a message to the user
+                });
         };
 
         var uploadWarrantySuccess = function(result) {
@@ -839,8 +839,8 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             $scope.closebrandsearch();
         }
 
-	   
-	   
+
+
         //UPLOAD DOCUMENTS
 
 
@@ -1236,9 +1236,15 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     $scope.additionalwarranty = {};
     $scope.archive = {};
     $scope.documents = {};
+	$scope.locationtb = 3;
 
     $scope.locationtab = function(tb) {
-        $scope.locationtb = tb;
+	    if ($scope.userlocation) {
+                _.forEach($scope.userlocation, function(n, key) {
+                    n.tabactive = "";
+                });
+            }
+            $scope.locationtb = tb;
     };
 
     //validate user
@@ -1246,7 +1252,22 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
     // ONE USER
     var userCallback = function(data, status) {
+	    console.log(data);
         $scope.userlocation = data.userlocation;
+	    if (!$scope.userlocation) {
+                $scope.userlocation = [];
+                $scope.userlocation.name = '';
+                $scope.locationtb = 3;
+            } else {
+                $scope.locationtb = 3;
+                if ($scope.userlocation) {
+                    _.forEach($scope.userlocation, function(n, key) {
+                        if ($scope.userlocation.id == n.id) {
+                            n.tabactive = "activetab";
+                        }
+                    });
+                }
+            }
     }
     Chats.getWholeUser(userCallback);
 
@@ -1279,8 +1300,15 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     }
 
     var locationSuccess = function(data, status) {
-        console.log(data);
-        Chats.getWholeUser(userCallback);
+	    Chats.getWholeUser(function(data, status) {
+                $scope.appliance.userlocation = data.userlocation[data.userlocation.length - 1];
+
+                $scope.userlocation = data.userlocation;
+                //				 updateApp();
+            });
+            $scope.oModal1.hide();
+
+            $scope.location = [];
     }
     $scope.allvalidation2 = [];
     $scope.addLocation = function() {
@@ -1539,7 +1567,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
     $scope.additionalwarrantyadd = {};
     $scope.additionalwarrantyadd.includes = [];
-	$scope.allvalidation5 = [];
+    $scope.allvalidation5 = [];
     $scope.saveAdditionalWarranty = function() {
         $scope.allvalidation5 = [{
             field: $scope.additionalwarrantyadd.purchasedate,
@@ -1774,7 +1802,18 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.oModal1 = modal;
     });
     //jagruti
-    $scope.openedit = function() {
+    $scope.openedit = function(location) {
+	    if ($scope.userlocation && $scope.userlocation.length != 0) {
+                $scope.locationtb = 0;
+                _.forEach($scope.userlocation, function(n, key) {
+                    if (location.id == n.id) {
+                        n.tabactive = "activetab";
+                    }
+                });
+            } else {
+                $scope.locationtb = 3;
+            }
+            $scope.oModal1.show();
         $scope.oModal1.show();
     };
 
