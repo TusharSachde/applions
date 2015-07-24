@@ -701,7 +701,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 $scope.uploadPhoto(adminurl + "user/uploadfile", function(result) {
                     console.log(result);
                     console.log($scope.compwarid);
-                    $scope.productwarranty.appliance = $.jStorage.get("applianceid");
+                    $scope.productwarranty.appliance = $stateParams.id;
                     $scope.productwarranty.bill = result.files[0].fd;
                     console.log($scope.productwarranty);
                     Chats.updateBill($scope.productwarranty, function(data, status) {
@@ -740,7 +740,6 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         };
 
 
-        var uploadWarrantySuccess =
             $scope.uploadProductWarrantycard = function() {
                 console.log("take picture");
                 $cordovaImagePicker.getPictures(options).then(function(resultImage) {
@@ -750,10 +749,10 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                     $scope.cameraimage = resultImage[0];
                     $scope.uploadPhoto(adminurl + "user/uploadfile", function(result) {
                         console.log(result);
-                        $scope.productwarranty.appliance = $.jStorage.get("applianceid");
+                        $scope.productwarranty.appliance = $stateParams.id;
                         $scope.productwarranty.warrantycard = result.files[0].fd;
                         console.log($scope.documents);
-                        Chats.updateWarrantycard($scope.documents, function(data, status) {
+                        Chats.updateWarrantycard($scope.productwarranty, function(data, status) {
                             console.log(data);
                         })
                     });
