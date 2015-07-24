@@ -1802,8 +1802,13 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     });
     //jagruti
     $scope.openedit = function(location) {
+	    console.log(location);
 	    if ($scope.userlocation && $scope.userlocation.length != 0) {
+		    if(location.name==""){
+			    $scope.locationtb = 3;
+		    }else{
                 $scope.locationtb = 0;
+		    }
                 _.forEach($scope.userlocation, function(n, key) {
                     if (location.id == n.id) {
                         n.tabactive = "activetab";
