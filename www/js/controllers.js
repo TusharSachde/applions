@@ -618,7 +618,6 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         //toggle
         $scope.changetab = function(tab) {
-            console.log(tab);
             $scope.tabvalue = tab;
         }
         var applianceUpdate = function(data, status) {
@@ -1420,38 +1419,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     $scope.appliance.userlocation = [];
     $scope.appliance.userlocation.name = '';
     $scope.changetab = function(tab) {
-        if (tab == 2) {
-            var check = false;
-            $scope.allvalidation = [{
-                field: $scope.appliance.appliancetype.name,
-                validation: ""
-            }, {
-                field: $scope.appliance.brand,
-                validation: ""
-            }, {
-                field: $scope.appliance.name,
-                validation: ""
-            }, {
-                field: $scope.appliance.userlocation.name,
-                validation: ""
-            }];
-
-            var check = formvalidation($scope.allvalidation);
-            if (check) {
-                $scope.appliance.appliancetype = $scope.appliance.appliancetype.id;
-                $scope.appliance.brand = $scope.appliance.brandid;
-                $scope.appliance.user = $.jStorage.get("user").id;
-                $scope.appliance.userlocation = $scope.appliance.userlocation.id;
-                console.log($scope.appliance);
-                Chats.createAppliance($scope.appliance, applianceCreate);
                 $scope.tabvalue = tab;
-            }
-        } else if (tab == 4) {
-            updateApp();
-            $scope.tabvalue = tab;
-        } else {
-            $scope.tabvalue = tab;
-        }
     }
     $scope.productwarranty = {};
     $scope.updateProductWarranty = function(productwarranty) {
