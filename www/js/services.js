@@ -144,7 +144,15 @@ angular.module('starter.services', [])
         },
         createAppliance: function (data, callback) {
             console.log(data);
-            $http.post(adminurl + "appliance/createappliance", data).success(callback);
+            $http.post(adminurl + "appliance/createappliance", {
+                "appliancetype": data.appliancetype.id,
+                "brand": data.brand._id,
+                "name": data.name,
+                "modelnumber": data.modelnumber,
+                "serialnumber": data.serialnumber,
+                "userlocation": data.userlocation.id,
+			  "user": $.jStorage.get("user").id
+            }).success(callback);
         },
         updateAppliance: function (data, callback) {
             console.log(data);
@@ -345,7 +353,9 @@ angular.module('starter.services', [])
         updateUser: function (data, callback) {
             delete data.userlocation;
             delete data.password;
+		   if(data.country){
             data.country = data.country.id;
+		   }
             console.log(data);
             $http.post(adminurl + "user/updateuser", data).success(callback);
         },
