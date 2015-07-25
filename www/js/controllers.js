@@ -198,8 +198,10 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             $scope.compwarranty.appliance = data.id;
             if (data.componentwarranty) {
                 $scope.componentwarranty = data.componentwarranty;
+			  $.jStorage.set("compwarid", data.componentwarranty[0].id);
                 $scope.documents.bill = data.componentwarranty[0].bill;
                 $scope.documents.warrantycard = data.componentwarranty[0].warrantycard;
+			  
 			  $scope.showimages = 1;
 
             }
@@ -1730,6 +1732,7 @@ $scope.allvalidation0 = [];
         if (data.componentwarranty) {
 		   if(data.componentwarranty.length !=0){
             $scope.componentwarranty = data.componentwarranty;
+			  $.jStorage.set("compwarid", data.componentwarranty[0].id);
             $scope.documents.bill = data.componentwarranty[0].bill;
             $scope.documents.warrantycard = data.componentwarranty[0].warrantycard;
 			   $scope.showimages = 1;
@@ -1828,7 +1831,7 @@ $scope.allvalidation0 = [];
             $scope.cameraimage = resultImage[0];
             $scope.uploadPhoto(adminurl + "user/uploadfile", function(result) {
                 console.log(result);
-                $scope.productwarranty.id = $.jStorage.get("applianceid");
+                $scope.productwarranty.appliance = $.jStorage.get("applianceid");
                 $scope.productwarranty.bill = result.files[0].fd;
                 console.log($scope.productwarranty);
                 Chats.updateBill($scope.productwarranty, function(data, status) {
@@ -1850,7 +1853,7 @@ $scope.allvalidation0 = [];
             $scope.cameraimage = resultImage[0];
             $scope.uploadPhoto(adminurl + "user/uploadfile", function(result) {
                 console.log(result);
-                $scope.productwarranty.id = $.jStorage.get("applianceid");
+                $scope.productwarranty.appliance = $.jStorage.get("applianceid");
                 $scope.productwarranty.warrantycard = result.files[0].fd;
                 console.log($scope.documents);
                 Chats.updateWarrantycard($scope.productwarranty, function(data, status) {
