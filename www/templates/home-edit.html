@@ -284,8 +284,8 @@
                     <div class="input-label">
                         Select Component
                     </div>
-                    <select ng-model="compwarid" ng-change="storewarid(compwarid);" style="color: rgb(46, 204, 113);">
-                        <option value="{{war}}" ng-repeat="war in appliance.componentwarranty">{{war.component}}</option>
+                    <select ng-model="compwarid" ng-init="compwarid=0" ng-change="storewarid(compwarid);" style="color: rgb(46, 204, 113);">
+                        <option value="{{$index}}" ng-repeat="war in appliance.componentwarranty">{{war.component}}</option>
                         <!--
                         <option selected>Green</option>
                         <option>Red</option>

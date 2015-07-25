@@ -70,7 +70,7 @@
         <div class="list" ng-if="tabvalue == 2">
 
             <label class="item item-input" ng-class="allvalidation4[0].validation">
-                <span class="input-label">Purchase Date</span>
+                <span class="input-label">Purchase Date*</span>
                 <input type="date" ng-model="store.purchasedate">
             </label>
 
@@ -80,7 +80,7 @@
             </label>
 
             <label class="item item-input" ng-class="allvalidation4[2].validation">
-                <span class="input-label">Store Name</span>
+                <span class="input-label">Store Name*</span>
                 <input type="text" ng-model="store.name">
             </label>
 
@@ -117,7 +117,7 @@
             </label>
 
             <label class="item item-input" ng-class="allvalidation4[3].validation">
-                <span class="input-label">Purchase Price</span>
+                <span class="input-label">Purchase Price*</span>
                 <input type="text" ng-model="purchaseprice.purchaseprice">
             </label>
 
@@ -219,7 +219,7 @@
                     <div class="input-label">
                         Select Component
                     </div>
-                    <select ng-model="compwarid" ng-change="storewarid(compwarid);" style="color: rgb(46, 204, 113);" ng-repeat="war in appliance.componentwarranty">
+                    <select ng-model="compwarid" init="compwarid =  appliance.componentwarranty[0].id" ng-change="storewarid(compwarid);" style="color: rgb(46, 204, 113);" ng-repeat="war in appliance.componentwarranty">
                         <option ng-repeat="war in appliance.componentwarranty" value="{{war.id}}">{{war.component}}</option>
                         <!--
                         <option selected>Green</option>
