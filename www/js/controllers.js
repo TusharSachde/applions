@@ -200,6 +200,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 $scope.componentwarranty = data.componentwarranty;
                 $scope.documents.bill = data.componentwarranty[0].bill;
                 $scope.documents.warrantycard = data.componentwarranty[0].warrantycard;
+			  $scope.showimages = 1;
 
             }
             if (data.bill) {
@@ -1731,6 +1732,7 @@ $scope.allvalidation0 = [];
             $scope.componentwarranty = data.componentwarranty;
             $scope.documents.bill = data.componentwarranty[0].bill;
             $scope.documents.warrantycard = data.componentwarranty[0].warrantycard;
+			   $scope.showimages = 1;
 		   }
         }
         if (data.bill) {
