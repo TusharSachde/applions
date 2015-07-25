@@ -135,15 +135,15 @@
                 <label class="item item-input" ng-if="readonly==true">
                     <span class="input-label" style="color:#BABAAC;">For Product Warranty Please Create AdditionalWarranty.</span>
                 </label>
-                <label class="item item-input" ng-class="allvalidation[0].validation" ng-if="readonly==false">
+                <label class="item item-input" ng-class="allvalidation0[0].validation" ng-if="readonly==false">
                     <span class="input-label">Warranty Period (Months)</span>
-                    <input type="text" ng-model="productwarranty.period">
+                    <input type="text" ng-model="warranty.period">
                 </label>
-                <label class="item item-input item-select" ng-class="allvalidation[1].validation" ng-if="readonly==false">
+                <label class="item item-input item-select" ng-class="allvalidation0[1].validation" ng-if="readonly==false">
                     <div class="input-label">
                         Warranty Type
                     </div>
-                    <select ng-model="productwarranty.type">
+                    <select ng-model="warranty.type">
                         <option value=""></option>
                         <option value="onsite">On Site</option>
                         <option value="offsite">Off Site</option>
@@ -179,7 +179,7 @@
 
             <div class="button-bar">
                 <button class="button button-outline icon-left ion-chevron-left button-balanced" ng-click="changetab(2)">Previous</button>
-                <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-click="updateProductWarranty(productwarranty);">Next</button>
+                <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-click="updateWarrantytab(3);">Next</button>
             </div>
         </div>
 
@@ -219,12 +219,17 @@
                     <div class="input-label">
                         Select Component
                     </div>
-                    <select ng-model="compwarid" init="compwarid =  appliance.componentwarranty[0].id" ng-change="storewarid(compwarid);" style="color: rgb(46, 204, 113);" ng-repeat="war in appliance.componentwarranty">
-                        <option ng-repeat="war in appliance.componentwarranty" value="{{war.id}}">{{war.component}}</option>
-                        <!--
-                        <option selected>Green</option>
-                        <option>Red</option>
+<!--
+                    <select ng-model="compwarid" ng-init="compwarid =  appliance.componentwarranty[0]" ng-change="storewarid(compwarid);" style="color: rgb(46, 204, 113);" ng-repeat="war in appliance.componentwarranty">
+                        <option ng-repeat="war in appliance.componentwarranty" value="{{war}}">{{war.component}}</option>
+                        
+                    </select>
 -->
+                    
+                    
+                    <select ng-model="compwarid" ng-init="compwarid=0" ng-change="storewarid(compwarid);" style="color: rgb(46, 204, 113);">
+                        <option value="{{$index}}" ng-repeat="war in appliance.componentwarranty">{{war.component}}</option>
+                       
                     </select>
                 </label>
             </label>
