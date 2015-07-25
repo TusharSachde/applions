@@ -1484,7 +1484,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 "modelnumber": $scope.appliance.modelnumber,
                 "serialnumber": $scope.appliance.serialnumber,
                 "userlocation": $scope.appliance.userlocation.id
-            }
+            };
             console.log($scope.appliance);
             console.log($scope.makeappliance);
             Chats.createAppliance($scope.makeappliance, applianceCreate);
@@ -1786,8 +1786,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             $scope.cameraimage = resultImage[0];
             $scope.uploadPhoto(adminurl + "user/uploadfile", function (result) {
                 console.log(result);
-                console.log($scope.compwarid);
-                $scope.productwarranty.appliance = $stateParams.id;
+                $scope.productwarranty.id = $.jStorage.get("applianceid");
                 $scope.productwarranty.bill = result.files[0].fd;
                 console.log($scope.productwarranty);
                 Chats.updateBill($scope.productwarranty, function (data, status) {
@@ -1809,7 +1808,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             $scope.cameraimage = resultImage[0];
             $scope.uploadPhoto(adminurl + "user/uploadfile", function (result) {
                 console.log(result);
-                $scope.productwarranty.appliance = $stateParams.id;
+                $scope.productwarranty.id = $.jStorage.get("applianceid");
                 $scope.productwarranty.warrantycard = result.files[0].fd;
                 console.log($scope.documents);
                 Chats.updateWarrantycard($scope.productwarranty, function (data, status) {
