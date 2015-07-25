@@ -812,18 +812,18 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 });
         };
 
-    $scope.onclick = function(data){
-        console.log(data);
-    }
+        $scope.onclick = function (data) {
+            console.log(data);
+        }
         $scope.storewarid = function (warid) {
             console.log($scope.appliance.componentwarranty[warid]);
-//            console.log(JSON.parse(warid));
-//            warid = JSON.parse(warid);
-//            $scope.documents.bill = warid.bill;
-//            $scope.documents.warrantycard = warid.warrantycard;
-//            console.log($scope.documents);
-//            $.jStorage.set("compwarid", warid.id);
-//            $scope.showimages = 1;
+            console.log(JSON.parse(warid));
+            warid = JSON.parse(warid);
+            $scope.documents.bill = warid.bill;
+            $scope.documents.warrantycard = warid.warrantycard;
+            console.log($scope.documents);
+            $.jStorage.set("compwarid", warid.id);
+            $scope.showimages = 1;
         }
 
         var applianceDelete = function (data, status) {
