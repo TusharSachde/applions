@@ -46,7 +46,7 @@
                     <input type="text" required ng-model="appliance.name">
                 </label>
                 <label class="item item-input" ng-click="openedit(appliance.userlocation);" ng-class="allvalidation[3].validation">
-                    <span class="input-label">Location</span>
+                    <span class="input-label">Location*</span>
                     <input type="text" ng-model="appliance.userlocation.name" readonly>
                 </label>
 
@@ -132,11 +132,14 @@
                 <div class="item product-wrnnty">
                     Product Warranty
                 </div>
-                <label class="item item-input" ng-class="allvalidation[0].validation">
+                <label class="item item-input" ng-if="readonly==true">
+                    <span class="input-label" style="color:#BABAAC;">For Product Warranty Please Create AdditionalWarranty.</span>
+                </label>
+                <label class="item item-input" ng-class="allvalidation[0].validation" ng-if="readonly==false">
                     <span class="input-label">Warranty Period (Months)</span>
                     <input type="text" ng-model="productwarranty.period">
                 </label>
-                <label class="item item-input item-select" ng-class="allvalidation[1].validation">
+                <label class="item item-input item-select" ng-class="allvalidation[1].validation" ng-if="readonly==false">
                     <div class="input-label">
                         Warranty Type
                     </div>
@@ -170,16 +173,6 @@
                       {{warranty.billno}}
                     </span>
                 </ion-item>
-                <!--            </div>-->
-                <!--
-            <div class="" ng-click="opencomponent();">
-               Component Warranty
-            </div>   
-               
-                     <div class="add-warnty" ng-click="openpswd();">
-                Additional Warranty / AMC
-            </div>
--->
             </div>
 
 
@@ -193,7 +186,31 @@
 
         <div class="list" ng-if="tabvalue == 4">
             <div class="item product-wrnnty">
-                Product Documents
+                Product Warranty Documents
+            </div>
+
+
+            <div class="row" ng-if="warranty!=''">
+                <div class="col text-center">
+                    <img style="width: 100px;height: 100px;" ng-src="{{productwarranty.bill | serverimage}}" ng-click="uploadProductBill();">
+                </div>
+                <div class="col text-center">
+                    <img style="width: 100px;height: 100px;" ng-src="{{productwarranty.warrantycard | serverimage}}" ng-click="uploadProductWarrantycard();">
+                </div>
+            </div>
+            <div class="row" ng-if="warranty!=''">
+                <div class="col text-center" ng-click="uploadProductBill();">
+                    <button class="button button-outline button-balanced button-block button-small" ng-class="warranty">Upload Bill</button>
+                </div>
+                <div class="col text-center" ng-click="uploadProductWarrantycard();">
+                    <button class="button button-outline button-balanced button-block button-small" ng-class="warranty">Upload Warranty Card</button>
+                </div>
+            </div>
+            <label class="item item-input" ng-if="warranty==''">
+                <span class="input-label" style="color:#BABAAC;">No Warranty Yet..</span>
+            </label>
+            <div class="item product-wrnnty">
+                Components Warranty Documents
             </div>
 
             <label class="item" style="padding:0;">

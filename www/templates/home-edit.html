@@ -217,25 +217,6 @@
                     </span>
                 </ion-item>
 
-                <!--
-                <label class="item item-input">
-                    <span class="input-label">Component</span>
-                    <input type="text">
-                </label>
-                <label class="item item-input">
-                    <span class="input-label">Serial No</span>
-                    <input type="text">
-                </label>
-                <label class="item item-input">
-                    <span class="input-label">Purchase Date</span>
-                    <input type="date">
-                </label>
-                <label class="item item-input">
-                    <span class="input-label">Warranty Period</span>
-                    <input type="text">
-                </label>
--->
-                <!--            <div class="row">-->
                 <ion-item ng-click="openpswd()">
                     <span class="balanced"> Add Additional Warranty / AMC</span>
                 </ion-item>
@@ -260,8 +241,6 @@
 -->
             </div>
 
-
-
             <div class="button-bar">
                 <button class="button button-outline icon-left ion-chevron-left button-balanced" ng-click="changetab(2)">Previous</button>
                 <button class="button button-outline icon-right ion-chevron-right button-balanced" ng-click="updateWarrantytab(4)">Next</button>
@@ -270,16 +249,16 @@
 
         <div class="list" ng-if="tabvalue == 4;">
             <div class="item product-wrnnty">
-                Product Documents
+                Product Warranty Documents
             </div>
 
 
             <div class="row" ng-if="warranty!=''">
                 <div class="col text-center">
-                    <img style="width: 100px;height: 100px;" ng-src="{{productwarranty.bill | serverimage}}" ng-click="uploadBill();">
+                    <img style="width: 100px;height: 100px;" ng-src="{{productwarranty.bill | serverimage}}" ng-click="uploadProductBill();">
                 </div>
                 <div class="col text-center">
-                    <img style="width: 100px;height: 100px;" ng-src="{{productwarranty.warrantycard | serverimage}}" ng-click="uploadwarrantycard();">
+                    <img style="width: 100px;height: 100px;" ng-src="{{productwarranty.warrantycard | serverimage}}" ng-click="uploadProductWarrantycard();">
                 </div>
             </div>
             <div class="row" ng-if="warranty!=''">
@@ -291,12 +270,12 @@
                 </div>
             </div>
             <label class="item item-input" ng-if="warranty==''">
-                    <span class="input-label" style="color:#BABAAC;">No Warranty Yet..</span>
-                </label>
+                <span class="input-label" style="color:#BABAAC;">No Warranty Yet..</span>
+            </label>
 
 
             <div class="item product-wrnnty">
-                Componenet Warranty Documents
+                Components Warranty Documents
             </div>
 
             <label class="item" style="padding:0;" ng-if="componentwarranty!=''">
@@ -330,11 +309,11 @@
                     <button class="button button-outline button-balanced button-block button-small" ng-class="warranty">Upload Warranty Card</button>
                 </div>
             </div>
-               
-                <label class="item item-input" ng-if="componentwarranty==''">
-                    <span class="input-label" style="color:#BABAAC;">No Component Warranty Yet..</span>
-                </label>
-            
+
+            <label class="item item-input" ng-if="componentwarranty==''">
+                <span class="input-label" style="color:#BABAAC;">No Component Warranty Yet..</span>
+            </label>
+
             <div class="item product-wrnnty">
                 Add Notes
             </div>
