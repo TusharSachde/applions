@@ -13,8 +13,11 @@
     <ion-content>
 
         <ion-list class="slide-option">
-            <div class="no-connect" ng-if="newappliance==''">
+            <div class="no-connect" ng-show="shownoappliance">
                 <h3>No appliance yet...</h3>
+            </div>
+            <div class="no-connect" ng-show="showloading">
+                <h3>Loading...</h3>
             </div>
             <!--
             <ion-item class="item-picture light-bg tem-remove-animate item-avatar2" href="#/tab/home/edit/{{app.id}}" ng-repeat="app in appliance">
@@ -37,11 +40,11 @@
                 <p>Make: {{app.brandname}}</p>
                 <p ng-if="app.isdays == 'true'">Warranty: {{app.days}} Days</p>
                 <p ng-if="app.isdays == 'false'">Warranty: N/A</p>
-                
+
                 <ion-option-button class="button-large button-balanced slide-home">
                     <i class="icon ln-wrench"></i> Services
                 </ion-option-button>
-                
+
                 <ion-option-button class="button-large button-balanced slide-home" ng-click="deleteappliance(app._id);">
                     <i class="icon ln-trash2"></i> Delete
                 </ion-option-button>
