@@ -166,22 +166,22 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         }
 
         $scope.$watch('checkstatus', function() {
-		   console.log("watch status");
-		   console.log($scope.checkstatus);
+            console.log("watch status");
+            console.log($scope.checkstatus);
         });
 
         // SAVE ALL
         $scope.saveAll = function() {
             if ($scope.tabvalue == 1) {
-                $scope.changetab2(2);
                 $scope.checkstatus = true;
+                $scope.changetab2(2);
 
             } else if ($scope.tabvalue == 2) {
+                $scope.checkstatus = true;
                 $scope.purchaseDetails();
-                $scope.checkstatus = true;
             } else if ($scope.tabvalue == 3) {
-                $scope.updateWarrantytab(3);
                 $scope.checkstatus = true;
+                $scope.updateWarrantytab(3);
             } else {
 
                 if ($scope.appliance.note != "") {
@@ -715,13 +715,6 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 console.log("validate");
                 Chats.updateAppliance($scope.appliance, function(data, status) {
                     if (data) {
-                        var myPopup = $ionicPopup.show({
-                            title: "Appliance Updated",
-                            scope: $scope,
-                        });
-                        $timeout(function() {
-                            myPopup.close(); //close the popup after 3 seconds for some reason
-                        }, 1500);
                         if ($scope.checkstatus == true) {
                             $location.url("/tab/home");
                         } else {
@@ -739,6 +732,8 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                     }
                 });
 
+            } else {
+                $scope.checkstatus = false;
             }
 
         }
@@ -1304,7 +1299,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
 .controller('AddappCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams, $cordovaImagePicker,
 
-    $cordovaFileTransfer, $ionicLoading) {
+    $cordovaFileTransfer, $ionicLoading, $location) {
 
     $scope.appliance = {};
     $scope.appliancetype = {};
@@ -1323,6 +1318,8 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     $scope.readonly = true;
     $scope.productwarranty = [];
     $scope.cover = [];
+    $scope.checkstatus = false;
+    $scope.applionsnewid = 0;
     $scope.locationtab = function(tb) {
         if ($scope.userlocation) {
             _.forEach($scope.userlocation, function(n, key) {
@@ -1333,9 +1330,38 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     };
 
     // SAVE ALL
+    // SAVE ALL
     $scope.saveAll = function() {
+        console.log($scope.tabvalue);
         if ($scope.tabvalue == 1) {
+            $scope.checkstatus = true;
             $scope.changetab2(2);
+
+        } else if ($scope.tabvalue == 2) {
+            $scope.checkstatus = true;
+            $scope.purchaseDetails();
+        } else if ($scope.tabvalue == 3) {
+            $scope.checkstatus = true;
+            $scope.updateWarrantytab(3);
+        } else {
+            if ($scope.applionsnewid != 0) {
+                if ($scope.appliance.note != "") {
+                    Chats.savenote($scope.appliance.note, function(data, status) {
+                        console.log(data);
+                        $location.url("/tab/home");
+                    });
+                } else {
+                    $location.url("/tab/home");
+                }
+            } else {
+                var myPopup = $ionicPopup.show({
+                    title: "Please Select product",
+                    scope: $scope,
+                });
+                $timeout(function() {
+                    myPopup.close(); //close the popup after 3 seconds for some reason
+                }, 1500);
+            }
         }
     }
 
@@ -1473,38 +1499,54 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         console.log(data);
     }
     var purchasePriceSuccess = function(data, status) {
-        console.log(data);
-        $scope.changetab(3);
+        if ($scope.checkstatus == true) {
+            $location.url("/tab/home");
+        } else {
+            $scope.tabvalue = 3;
+        }
         updateApp();
     }
     $scope.purchaseprice = {};
     $scope.allvalidation4 = [];
     $scope.purchaseDetails = function() {
         var check = false;
-        $scope.allvalidation4 = [{
-            field: $scope.store.purchasedate,
-            validation: ""
-        }, {
-            field: $scope.store.billno,
-            validation: ""
-        }, {
-            field: $scope.store.name,
-            validation: ""
-        }, {
-            field: $scope.purchaseprice.purchaseprice,
-            validation: ""
-        }];
 
-        var check = formvalidation($scope.allvalidation4);
+        if ($scope.applionsnewid != 0) {
+            $scope.allvalidation4 = [{
+                field: $scope.store.purchasedate,
+                validation: ""
+            }, {
+                field: $scope.store.billno,
+                validation: ""
+            }, {
+                field: $scope.store.name,
+                validation: ""
+            }, {
+                field: $scope.purchaseprice.purchaseprice,
+                validation: ""
+            }];
 
-        if (check) {
-            $scope.store.appliance = $.jStorage.get("applianceid");
-            $scope.store.id = $.jStorage.get("storeid");
-            $scope.warranty.appliance = $.jStorage.get("applianceid");
-            $scope.purchaseprice.appliance = $.jStorage.get("applianceid");
-            //            Chats.createWarranty($scope.warranty, warrantySuccess);
-            Chats.applianceStore($scope.store, storeSuccess);
-            Chats.updatePurchasePrice($scope.purchaseprice, purchasePriceSuccess)
+            var check = formvalidation($scope.allvalidation4);
+
+            if (check) {
+                $scope.store.appliance = $.jStorage.get("applianceid");
+                $scope.store.id = $.jStorage.get("storeid");
+                $scope.warranty.appliance = $.jStorage.get("applianceid");
+                $scope.purchaseprice.appliance = $.jStorage.get("applianceid");
+                //            Chats.createWarranty($scope.warranty, warrantySuccess);
+                Chats.applianceStore($scope.store, storeSuccess);
+                Chats.updatePurchasePrice($scope.purchaseprice, purchasePriceSuccess)
+            } else {
+                $scope.checkstatus = false;
+            }
+        } else {
+            var myPopup = $ionicPopup.show({
+                title: "Please Select product",
+                scope: $scope,
+            });
+            $timeout(function() {
+                myPopup.close(); //close the popup after 3 seconds for some reason
+            }, 1500);
         }
     }
 
@@ -1549,10 +1591,14 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     }
 
     var applianceCreate = function(data, status) {
-        console.log(data);
         $.jStorage.set("applianceid", data[0]._id);
+        $scope.applionsnewid = data[0]._id;
         $.jStorage.set("storeid", data[0].store);
-        $scope.changetab(2);
+        if ($scope.checkstatus == true) {
+            $location.url("/tab/home");
+        } else {
+            $scope.tabvalue = 2;
+        }
     }
     $scope.changetab2 = function(tab) {
         var check = false;
@@ -1572,18 +1618,9 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         var check = formvalidation($scope.allvalidation);
         if (check) {
-            $scope.makeappliance = {
-                "user": $.jStorage.get("user").id,
-                "appliancetype": $scope.appliance.appliancetype.id,
-                "brand": $scope.appliance.brandid,
-                "name": $scope.appliance.name,
-                "modelnumber": $scope.appliance.modelnumber,
-                "serialnumber": $scope.appliance.serialnumber,
-                "userlocation": $scope.appliance.userlocation.id
-            };
-            console.log($scope.appliance);
-            console.log($scope.makeappliance);
             Chats.createAppliance($scope.appliance, applianceCreate);
+        } else {
+            $scope.checkstatus = false;
         }
     }
 
@@ -1604,31 +1641,38 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
     $scope.allvalidation0 = [];
     $scope.updateWarrantytab = function(tab) {
-        console.log($scope.warranty);
-        $scope.allvalidation0 = [{
-            field: $scope.warranty.period,
-            validation: ""
-        }, {
-            field: $scope.warranty.type,
-            validation: ""
-        }];
-        var check = formvalidation($scope.allvalidation0);
+        if ($scope.applionsnewid != 0) {
+            $scope.allvalidation0 = [{
+                field: $scope.warranty.period,
+                validation: ""
+            }, {
+                field: $scope.warranty.type,
+                validation: ""
+            }];
+            var check = formvalidation($scope.allvalidation0);
 
 
-        if ($scope.appliance.warranty) {
-            console.log("first if");
-            if ($scope.appliance.warranty.length == 0) {
-                console.log("second if");
-                $scope.changetab(4);
-            } else {
-                if (check) {
-                    Chats.updateWarrantyWar($scope.warranty, function(data, status) {
-                        $scope.changetab(4);
-                    });
+            if ($scope.appliance.warranty) {
+                console.log("first if");
+                if ($scope.appliance.warranty.length == 0) {
+                    console.log("second if");
+                    $scope.changetab(4);
+                } else {
+                    if (check) {
+                        Chats.updateWarrantyWar($scope.warranty, function(data, status) {
+                            if ($scope.checkstatus == true) {
+                                $location.url("/tab/home");
+                            } else {
+                                $scope.tabvalue = 4;
+                            }
+                        });
+                    } else {
+                        $scope.checkstatus = false;
+                    }
                 }
+            } else {
+                $scope.changetab(4);
             }
-        } else {
-            $scope.changetab(4);
         }
 
     }
@@ -1899,47 +1943,68 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     $scope.cameraimage = '';
 
     $scope.uploadProductBill = function() {
-        console.log("take picture");
-        $cordovaImagePicker.getPictures(options).then(function(resultImage) {
-            // Success! Image data is here
-            console.log("here in upload image");
-            console.log(resultImage);
-            $scope.cameraimage = resultImage[0];
-            $scope.uploadPhoto(adminurl + "user/uploadfile", function(result) {
-                console.log(result);
-                $scope.productwarranty.appliance = $.jStorage.get("applianceid");
-                $scope.productwarranty.bill = result.files[0].fd;
-                console.log($scope.productwarranty);
-                Chats.updateBill($scope.productwarranty, function(data, status) {
-                    console.log(data);
-                })
-            });
 
-        }, function(err) {
-            // An error occured. Show a message to the user
-        });
+        if ($scope.applionsnewid != 0) {
+            $cordovaImagePicker.getPictures(options).then(function(resultImage) {
+                // Success! Image data is here
+                console.log("here in upload image");
+                console.log(resultImage);
+                $scope.cameraimage = resultImage[0];
+                $scope.uploadPhoto(adminurl + "user/uploadfile", function(result) {
+                    console.log(result);
+                    $scope.productwarranty.appliance = $.jStorage.get("applianceid");
+                    $scope.productwarranty.bill = result.files[0].fd;
+                    console.log($scope.productwarranty);
+                    Chats.updateBill($scope.productwarranty, function(data, status) {
+                        console.log(data);
+                    })
+                });
+
+            }, function(err) {
+                // An error occured. Show a message to the user
+            });
+        } else {
+            var myPopup = $ionicPopup.show({
+                title: "Please Select product",
+                scope: $scope,
+            });
+            $timeout(function() {
+                myPopup.close(); //close the popup after 3 seconds for some reason
+            }, 1500);
+        }
+
+
     };
 
     $scope.uploadProductWarrantycard = function() {
-        console.log("take picture");
-        $cordovaImagePicker.getPictures(options).then(function(resultImage) {
-            // Success! Image data is here
-            console.log("here in upload image");
-            console.log(resultImage);
-            $scope.cameraimage = resultImage[0];
-            $scope.uploadPhoto(adminurl + "user/uploadfile", function(result) {
-                console.log(result);
-                $scope.productwarranty.appliance = $.jStorage.get("applianceid");
-                $scope.productwarranty.warrantycard = result.files[0].fd;
-                console.log($scope.documents);
-                Chats.updateWarrantycard($scope.productwarranty, function(data, status) {
-                    console.log(data);
-                })
-            });
+        if ($scope.applionsnewid != 0) {
+            $cordovaImagePicker.getPictures(options).then(function(resultImage) {
+                // Success! Image data is here
+                console.log("here in upload image");
+                console.log(resultImage);
+                $scope.cameraimage = resultImage[0];
+                $scope.uploadPhoto(adminurl + "user/uploadfile", function(result) {
+                    console.log(result);
+                    $scope.productwarranty.appliance = $.jStorage.get("applianceid");
+                    $scope.productwarranty.warrantycard = result.files[0].fd;
+                    console.log($scope.documents);
+                    Chats.updateWarrantycard($scope.productwarranty, function(data, status) {
+                        console.log(data);
+                    })
+                });
 
-        }, function(err) {
-            // An error occured. Show a message to the user
-        });
+            }, function(err) {
+                // An error occured. Show a message to the user
+            });
+        } else {
+            var myPopup = $ionicPopup.show({
+                title: "Please Select product",
+                scope: $scope,
+            });
+            $timeout(function() {
+                myPopup.close(); //close the popup after 3 seconds for some reason
+            }, 1500);
+        }
     };
 
     var uploadBillSuccess = function(result) {
@@ -2067,7 +2132,19 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     });
 
     $scope.openpswd = function() {
-        $scope.oModal2.show();
+        if ($scope.applionsnewid != 0) {
+
+            $scope.oModal2.show();
+        } else {
+            var myPopup = $ionicPopup.show({
+                title: "Please Select product",
+                scope: $scope,
+            });
+            $timeout(function() {
+                myPopup.close(); //close the popup after 3 seconds for some reason
+            }, 1500);
+        }
+
     };
 
     $scope.closeModal = function() {
@@ -2158,7 +2235,18 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     });
 
     $scope.opencomponent = function() {
-        $scope.oModal9.show();
+        if ($scope.applionsnewid != 0) {
+
+            $scope.oModal9.show();
+        } else {
+            var myPopup = $ionicPopup.show({
+                title: "Please Select product",
+                scope: $scope,
+            });
+            $timeout(function() {
+                myPopup.close(); //close the popup after 3 seconds for some reason
+            }, 1500);
+        }
     }
     $scope.closecomponent = function() {
         $scope.oModal9.hide();
