@@ -11,10 +11,6 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     //        }
     //    };
     //    MyServices.readsms(readsmsCallback);
-
-
-
-
 })
 
 .controller('HomeCtrl', function ($scope, $ionicModal, $ionicPopup, $timeout, Chats, $stateParams, $location, $ionicLoading) {
@@ -32,8 +28,10 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         var applianceSuccess = function (data, status) {
             console.log(data);
-            if (data.length == 0)
+            if (data.length == 0){
                 $scope.shownoappliance = true;
+                $scope.showloading = false;
+            }
             else
                 $scope.showloading = false;
             $scope.newappliance = data;
