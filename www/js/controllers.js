@@ -140,6 +140,9 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.readonly = true;
         $scope.componentwarranty = [];
         $scope.checkstatus = false;
+	
+		$('#foc').focus();
+	
         $scope.locationtab = function(tb) {
             if ($scope.userlocation) {
                 _.forEach($scope.userlocation, function(n, key) {

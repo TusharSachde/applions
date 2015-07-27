@@ -132,7 +132,7 @@
         <div class="list" ng-if="tabvalue == 2">
             <label class="item item-input" ng-class="allvalidation4[0].validation">
                 <span class="input-label">Purchase Date *</span>
-                <input type="date" ng-model="store.purchasedate" required>
+                <input type="date" ng-model="store.purchasedate" ng-change="datevalidation()" required>
             </label>
             <label class="item item-input" ng-class="allvalidation4[1].validation">
                 <span class="input-label">Bill No *</span>
@@ -257,7 +257,7 @@
             </div>
 
 
-            <div class="row" ng-if="warranty!=''">
+            <div class="row">
                 <div class="col text-center">
                     <img style="width: 100px;height: 100px;" ng-src="{{productwarranty.bill | serverimage}}" ng-click="uploadProductBill();">
                 </div>
@@ -265,7 +265,7 @@
                     <img style="width: 100px;height: 100px;" ng-src="{{productwarranty.warrantycard | serverimage}}" ng-click="uploadProductWarrantycard();">
                 </div>
             </div>
-            <div class="row" ng-if="warranty!=''">
+            <div class="row">
                 <div class="col text-center" ng-click="uploadProductBill();">
                     <button class="button button-outline button-balanced button-block button-small" ng-class="warranty">Upload Bill</button>
                 </div>
@@ -273,9 +273,11 @@
                     <button class="button button-outline button-balanced button-block button-small" ng-class="warranty">Upload Warranty Card</button>
                 </div>
             </div>
+<!--
             <label class="item item-input" ng-if="warranty==''">
                 <span class="input-label" style="color:#BABAAC;">No Warranty Yet..</span>
             </label>
+-->
 
 
             <div class="item product-wrnnty">
