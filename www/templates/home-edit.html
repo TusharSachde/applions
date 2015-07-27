@@ -109,11 +109,11 @@
 
                 <label class="item item-input">
                     <span class="input-label">Cover</span>
-                    <input type="text">
+                    <input type="text" ng-model="warrantycover" readonly>
                 </label>
                 <label class="item items">
                     <span class="input-labels">Expiry</span>
-                    <span class="date-days {{expirydate}}">
+                    <span class="date-days {{expirydate}}" ng-if="warranty.expiry">
                     <span class="date">{{warranty.expiry}}</span>
                     <span class="days-main">{{appliance.days}}</span>
                     <span class="days">days</span>
