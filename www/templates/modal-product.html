@@ -1,19 +1,21 @@
 <ion-modal-view>
-       <ion-header-bar class="bar-balanced" align-title="center">
+    <ion-header-bar class="bar-balanced" align-title="center">
         <h1 class="title">Product Name</h1>
         <div class="buttons button-right">
             <button class="button button-clear" ng-click="closeproductsearch();">Close</button>
         </div>
     </ion-header-bar>
+    
+    <ion-header-bar class="bar bar-subheader item-input-inset">
+        <div class="item-input-wrapper">
+            <i class="icon ion-ios7-search placeholder-icon"></i>
+            <input type="text" id="foc" ng-model="productname" placeholder="Product" style="border: 0px;" class="ng-pristine ng-valid ng-touched" ng-change="searchproduct(productname);">
+            <button class="button button-icon ion-search" type="submit"></button>
+        </div>
+    </ion-header-bar>
+    
     <ion-content class="has-header">
-<div class="list">
-            <form class="item item-input-inset only-horizontal" ng-submit="search">
-                <label class="item-input-wrapper ">
-                    <input type="text" id="foc" ng-model="productname" placeholder="Product" style="border: 0px;" class="ng-pristine ng-valid ng-touched" ng-change="searchproduct(productname);">
-                </label>
-                <button class="button button-icon ion-search" type="submit"></button>
-            </form>
-
+        <div class="list">
             <ion-item class="item" ng-repeat="product in appliancetype" ng-click="toProduct(product)">{{product.name}}</ion-item>
 
         </div>
