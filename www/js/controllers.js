@@ -292,7 +292,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 $scope.readonly = false;
                 $scope.warranty = data.warranty[data.warranty.length - 1];
 
-                if (data.warranty[0].iscovered == "true") {
+                if (data.warranty[0].iscovered == true) {
                     $scope.warrantycover = "Yes";
                     if (data.warranty.length >= 1 && $scope.warranty.iswarrantyoramc) {
                         $scope.warrantycover = $scope.warranty.iswarrantyoramc;
