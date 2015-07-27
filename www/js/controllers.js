@@ -1360,7 +1360,8 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 });
                 $timeout(function() {
                     myPopup.close(); //close the popup after 3 seconds for some reason
-                }, 1500);
+				$scope.tabvalue = 1;
+                }, 1000);
             }
         }
     }
@@ -1546,6 +1547,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             });
             $timeout(function() {
                 myPopup.close(); //close the popup after 3 seconds for some reason
+			  $scope.tabvalue = 1;
             }, 1500);
         }
     }
@@ -1641,7 +1643,6 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
     $scope.allvalidation0 = [];
     $scope.updateWarrantytab = function(tab) {
-        if ($scope.applionsnewid != 0) {
             $scope.allvalidation0 = [{
                 field: $scope.warranty.period,
                 validation: ""
@@ -1673,7 +1674,6 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             } else {
                 $scope.changetab(4);
             }
-        }
 
     }
 
@@ -1970,6 +1970,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             });
             $timeout(function() {
                 myPopup.close(); //close the popup after 3 seconds for some reason
+			  $scope.tabvalue = 1;
             }, 1500);
         }
 
@@ -2003,6 +2004,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             });
             $timeout(function() {
                 myPopup.close(); //close the popup after 3 seconds for some reason
+			  $scope.tabvalue = 1;
             }, 1500);
         }
     };
@@ -2142,6 +2144,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             });
             $timeout(function() {
                 myPopup.close(); //close the popup after 3 seconds for some reason
+			  $scope.tabvalue = 1;
             }, 1500);
         }
 
@@ -2245,6 +2248,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             });
             $timeout(function() {
                 myPopup.close(); //close the popup after 3 seconds for some reason
+			  $scope.tabvalue = 1;
             }, 1500);
         }
     }
