@@ -41,12 +41,17 @@
 .picture {
     width: 70px;
     height: 70px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
     border-radius: 50%;
     overflow: hidden;
     background-position: center center;
     background-repeat: no-repeat;
     position: absolute;
     text-align: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
     top: 11.5px;
     left: 10px;
@@ -93,19 +98,24 @@
 .picturess.yellow-bg {
     height: 70px;
     width: 70px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
     border-radius: 50%;
     overflow: hidden;
     background-position: center center;
     background-repeat: no-repeat;
     position: absolute;
     text-align: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
     top: 13.5px;
     left: 10px;
 }
 
 .yellow-bg {
-	background-color: rgb(235, 235, 40);
+    background-color: rgb(235, 235, 40);
 }
 
 .no-connect h3 {
@@ -255,6 +265,8 @@ input[type="date"] {
 
 .bg-filter {
     background: -webkit-linear-gradient(0deg, white 49.5%, #ccc 50%, #EFEFEF 50%);
+    background: -moz-linear-gradient(0deg, white 49.5%, #ccc 50%, #EFEFEF 50%);
+    background: -o-linear-gradient(0deg, white 49.5%, #ccc 50%, #EFEFEF 50%);
     background: linear-gradient(90deg, white 49.5%, #ccc 50%, #EFEFEF 50%);
 }
 
@@ -297,6 +309,8 @@ input[type="date"] {
     content: '\f121';
     opacity: 0;
     -webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+    -moz-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+    -o-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
     transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
 }
 
@@ -332,6 +346,8 @@ input[type="date"] {
     background: none;
     -webkit-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
     transform: rotate(90deg);
 }
 
@@ -408,6 +424,8 @@ ion-modal-view.bg-archive.modal {
     left: 50%;
     -webkit-transform: translatex(-50%);
     -ms-transform: translatex(-50%);
+    -moz-transform: translatex(-50%);
+    -o-transform: translatex(-50%);
     transform: translatex(-50%);
 }
 
@@ -450,10 +468,15 @@ p.cont-que {
 .pictures {
     width: 70px;
     height: 70px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
     border-radius: 50%;
     overflow: hidden;
     background-position: center center;
     background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
     margin-right: 20px;
 }
@@ -520,12 +543,18 @@ i.ion-android-star.actived {
 }
 
 .button-round {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
     border-radius: 50%;
     height: 50px;
     width: 50px;
+    -webkit-box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.35);
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.35);
     font-size: 30px;
     -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
     transition: all 300ms ease;
 }
 
@@ -627,6 +656,8 @@ a.blocks {
 
 .list.req-services .button.button-balanced.button-outline.activated {
     background-color: #fff;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
     box-shadow: none;
     color: #2ecc71;
 }
@@ -661,6 +692,8 @@ a.blocks {
     /*  transform: translateX(-100%);*/
     
     -webkit-transition: 300ms ease;
+    -moz-transition: 300ms ease;
+    -o-transition: 300ms ease;
     transition: 300ms ease;
     min-height: 100%;
     background: #fff;
@@ -686,6 +719,8 @@ a.blocks {
 .menu-tab {
     -webkit-transform: translateX(-100%);
     -ms-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
     transform: translateX(-100%);
 }
 
@@ -716,6 +751,8 @@ a.blocks {
 .animate-show.ng-hide-add.ng-hide-add-active,
 .animate-show.ng-hide-remove.ng-hide-remove-active {
     -webkit-transition: all linear 0.3s;
+    -moz-transition: all linear 0.3s;
+    -o-transition: all linear 0.3s;
     transition: all linear 0.3s;
 }
 
@@ -731,6 +768,8 @@ i.icon-arrows {
     top: 50%;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
     transform: translateY(-50%);
 }
 
@@ -787,6 +826,8 @@ a.button.button-fb.button-outline {
     background-color: #4465ac;
     border-color: #4465ac;
     text-transform: uppercase;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
     border-radius: 0px;
     /*    padding: 6px 16px;*/
 }
@@ -803,6 +844,8 @@ a.button.button-google.button-outline {
     background-color: #dd4d3b;
     border-color: #dd4d3b;
     color: #fff;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
     border-radius: 0px;
     /*    padding: 6px 16px;*/
 }
@@ -895,6 +938,8 @@ input[readonly]:not(.cloned-text-input) {
 }
 
 .menus.animate-show {
+    -webkit-box-shadow: 0 0 5px #ddd;
+    -moz-box-shadow: 0 0 5px #ddd;
     box-shadow: 0 0 5px #ddd;
 }
 
@@ -1022,6 +1067,8 @@ ion-item.item label.checkboxs {
     content: '\f121';
     opacity: 0;
     -webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+    -moz-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+    -o-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
     transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
 }
 
@@ -1042,6 +1089,39 @@ ion-item.item label.checkboxs {
     font-size: 20px;
     color: #C1C1C1;
 }
+
 .expiry {
-	color: red !important;
+    color: red !important;
+}
+
+.input-labels {
+    display: inline-block;
+    padding: 7px 10px 7px 0px;
+    max-width: 200px;
+    width: 33%;
+    color: #444;
+    font-size: 16px;
+}
+
+span.date-days {
+    display: inline-block;
+    padding-top: 2px;
+    padding-left: 0;
+    height: 34px;
+    color: #111;
+    vertical-align: middle;
+    font-size: 14px;
+    line-height: 25px;
+}
+
+.items.item {
+    padding: 6px 0 5px 16px;
+}
+
+span.days-main {
+    padding-left: 18%;
+}
+
+span.days {
+    padding-left: 5px;
 }
