@@ -2,7 +2,7 @@ var adminurl = "http://192.168.2.11:1337/";
 //var adminurl = "http://104.154.90.138/";
 var imgpath = adminurl + "user/resize?file=";
 angular.module('starter.services', [])
-// testing sublime
+// testing
 .factory('Chats', function ($http) {
     // Might use a resource here that returns a JSON array
 
