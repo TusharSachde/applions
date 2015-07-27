@@ -173,6 +173,13 @@ angular.module('starter.services', [])
                 "bill": data.bill
             }).success(callback);
         },
+        savenote: function (data, callback) {
+            console.log(data);
+            $http.post(adminurl + "appliance/updateappliance", {
+                "id": $.jStorage.get("applianceid"),
+                "note": data
+            }).success(callback);
+        },
         updateWarrantycard: function (data, callback) {
             console.log(data);
             $http.post(adminurl + "appliance/updateappliance", {

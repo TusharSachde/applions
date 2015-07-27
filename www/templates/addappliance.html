@@ -25,11 +25,11 @@
             <div class="list">
                 <!--                <div class="picturess  assertive-bg" style="background-image: url('img/icons/Mobile.png');"></div>-->
                 <label class="item item-input" ng-click="openproductsearch();" ng-class="allvalidation[0].validation">
-                    <span class="input-label">Product*</span>
+                    <span class="input-label">Product *</span>
                     <input type="text" ng-model="appliance.appliancetype.name" readonly>
                 </label>
                 <label class="item item-input" ng-click="openbrandsearch();" ng-class="allvalidation[1].validation">
-                    <span class="input-label">Brand*</span>
+                    <span class="input-label">Brand *</span>
                     <input type="text" readonly ng-model="appliance.brand.name">
                 </label>
                 <label class="item item-input">
@@ -42,11 +42,11 @@
                     <input type="text" ng-model="appliance.serialnumber">
                 </label>
                 <label class="item item-input" ng-class="allvalidation[2].validation">
-                    <span class="input-label">Name As*</span>
+                    <span class="input-label">Name As *</span>
                     <input type="text" required ng-model="appliance.name">
                 </label>
                 <label class="item item-input" ng-click="openedit(appliance.userlocation);" ng-class="allvalidation[3].validation">
-                    <span class="input-label">Location*</span>
+                    <span class="input-label">Location *</span>
                     <input type="text" ng-model="appliance.userlocation.name" readonly>
                 </label>
 
@@ -70,17 +70,17 @@
         <div class="list" ng-if="tabvalue == 2">
 
             <label class="item item-input" ng-class="allvalidation4[0].validation">
-                <span class="input-label">Purchase Date*</span>
+                <span class="input-label">Purchase Date *</span>
                 <input type="date" ng-model="store.purchasedate">
             </label>
 
             <label class="item item-input" ng-class="allvalidation4[1].validation">
-                <span class="input-label">Bill No*</span>
+                <span class="input-label">Bill No *</span>
                 <input type="text" ng-model="store.billno" required>
             </label>
 
             <label class="item item-input" ng-class="allvalidation4[2].validation">
-                <span class="input-label">Store Name*</span>
+                <span class="input-label">Store Name *</span>
                 <input type="text" ng-model="store.name">
             </label>
 
@@ -117,7 +117,7 @@
             </label>
 
             <label class="item item-input" ng-class="allvalidation4[3].validation">
-                <span class="input-label">Purchase Price *</span>
+                <span class="input-label">Purchase Price  *</span>
                 <input type="text" ng-model="purchaseprice.purchaseprice">
             </label>
 
@@ -136,12 +136,12 @@
                     <span class="input-label" style="color:#BABAAC;">For Product Warranty Please Create AdditionalWarranty.</span>
                 </label>
                 <label class="item item-input" ng-class="allvalidation0[0].validation" ng-if="readonly==false">
-                    <span class="input-label">Warranty Period (Months) *</span>
+                    <span class="input-label">Warranty Period (Months)  *</span>
                     <input type="text" ng-model="warranty.period">
                 </label>
                 <label class="item item-input item-select" ng-class="allvalidation0[1].validation" ng-if="readonly==false">
                     <div class="input-label">
-                        Warranty Type *
+                        Warranty Type  *
                     </div>
                     <select ng-model="warranty.type">
                         <option value=""></option>
@@ -256,7 +256,7 @@
             </div>
 
             <label class="item item-input">
-                <input type="text" placeholder="Add Note">
+                <input type="text" ng-model="appliance.note" placeholder="Add Note">
             </label>
 
             <div class="padding">

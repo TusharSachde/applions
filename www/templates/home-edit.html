@@ -77,18 +77,18 @@
             <div class="wish wishs">
                 <div class="picturess  {{appliancecolor}}" style="background-image: url('img/icons/{{appliance.appliancetype.icon}}');"></div>
                 <label class="item item-input input-up" ng-click="openproductsearch();" ng-class="allvalidation[0].validation">
-                    <span class="input-label">Product*</span>
+                    <span class="input-label">Product *</span>
                     <input type="text" ng-model="appliance.appliancetype.name" readonly>
                 </label>
                 <label class="item item-input input-btm" ng-class="allvalidation[1].validation">
-                    <span class="input-label">Name As*</span>
+                    <span class="input-label">Name As *</span>
                     <input type="text" ng-model="appliance.name">
                 </label>
             </div>
 
             <div class="list" style="margin-top: 1px;">
                 <label class="item item-input" ng-click="openbrandsearch();" ng-class="allvalidation[2].validation">
-                    <span class="input-label">Brand*</span>
+                    <span class="input-label">Brand *</span>
                     <input type="text" ng-model="appliance.brand.name" readonly>
                 </label>
 
@@ -115,7 +115,7 @@
                 <label class="item item-input">
                     <span class="input-label">Expiry</span>
                     <input type="text" ng-model="warranty.expiry" readonly>
-                    <input type="text" ng-model="appliance.days" readonly>
+                    <input type="text" ng-model="appliance.days" readonly> Days
                 </label>
 
 
@@ -128,7 +128,7 @@
         <div class="list" ng-if="tabvalue == 2">
             <label class="item item-input" ng-class="allvalidation4[0].validation">
                 <span class="input-label">Purchase Date *</span>
-                <input type="date" ng-model="store.purchasedate">
+                <input type="date" ng-model="store.purchasedate" required>
             </label>
             <label class="item item-input" ng-class="allvalidation4[1].validation">
                 <span class="input-label">Bill No *</span>

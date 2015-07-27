@@ -7,21 +7,22 @@
     </ion-header-bar>
     <ion-content>
         <div class="list">
-            <label class="item item-input item-select">
+            <label class="item item-input item-select" ng-class="allvalidation[4].validation">
                 <div class="input-label">
-                    Cover Type*
+                    Cover Type *
                 </div>
                 <select ng-model="additionalwarranty.covertype">
+                    <option value="">Please Select</option>
                     <option value="AMC">AMC</option>
                     <option value="Extended Warranty">Extended Warranty</option>
                 </select>
             </label>
             <label class="item item-input" ng-class="allvalidation[0].validation">
-                <span class="input-label">Start Date*</span>
+                <span class="input-label">Start Date *</span>
                 <input type="date" ng-model="additionalwarranty.purchasedate" required>
             </label>
             <label class="item item-input" ng-class="allvalidation[1].validation">
-                <span class="input-label">Cover Period* (months)</span>
+                <span class="input-label">Cover Period * (months)</span>
                 <input type="text" ng-model="additionalwarranty.period" ng-pattern="/^[0-9]+$/" required>
             </label>
             <label class="item item-divider">
