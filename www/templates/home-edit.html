@@ -87,7 +87,7 @@
             </div>
 
             <div class="list" style="margin-top: 1px;">
-                <label class="item item-input" ng-click="openbrandsearch();">
+                <label class="item item-input" ng-click="openbrandsearch();" ng-class="allvalidation[2].validation">
                     <span class="input-label">Brand*</span>
                     <input type="text" ng-model="appliance.brand.name" readonly>
                 </label>
@@ -102,8 +102,8 @@
                     <input type="text" ng-model="appliance.serialnumber" ng-pattern="/^[0-9]+$/">
                 </label>
 
-                <label class="item item-input" ng-click="openedit(appliance.userlocation);" ng-class="allvalidation[2].validation">
-                    <span class="input-label">Location</span>
+                <label class="item item-input" ng-click="openedit(appliance.userlocation);" ng-class="allvalidation[3].validation">
+                    <span class="input-label">Location *</span>
                     <input type="text" ng-model="appliance.userlocation.name" readonly>
                 </label>
 
@@ -127,15 +127,15 @@
 
         <div class="list" ng-if="tabvalue == 2">
             <label class="item item-input" ng-class="allvalidation4[0].validation">
-                <span class="input-label">Purchase Date</span>
+                <span class="input-label">Purchase Date *</span>
                 <input type="date" ng-model="store.purchasedate">
             </label>
             <label class="item item-input" ng-class="allvalidation4[1].validation">
-                <span class="input-label">Bill No*</span>
+                <span class="input-label">Bill No *</span>
                 <input type="text" ng-model="store.billno">
             </label>
             <label class="item item-input" ng-class="allvalidation4[2].validation">
-                <span class="input-label">Store Name</span>
+                <span class="input-label">Store Name *</span>
                 <input type="text" ng-model="store.name">
             </label>
             <label class="item item-input">
@@ -172,7 +172,7 @@
                 <input type="text" ng-model="store.saleperson">
             </label>
             <label class="item item-input" ng-class="allvalidation4[3].validation">
-                <span class="input-label">Purchase Price</span>
+                <span class="input-label">Purchase Price *</span>
                 <input type="text" ng-model="store.purchaseprice" ng-pattern="/^[0-9]+$/">
             </label>
 
@@ -192,12 +192,12 @@
                 </label>
 
                 <label class="item item-input" ng-if="readonly==false" ng-class="allvalidation[0].validation">
-                    <span class="input-label">Warranty Period</span>
+                    <span class="input-label">Warranty Period *</span>
                     <input type="text" ng-model="warranty.period">
                 </label>
                 <label class="item item-input item-select" ng-if="readonly==false" ng-class="allvalidation[1].validation">
                     <div class="input-label">
-                        Warranty Type
+                        Warranty Type *
                     </div>
                     <select ng-model="warranty.type">
                         <option value="onsite">On Site</option>

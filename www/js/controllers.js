@@ -653,6 +653,9 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 field: $scope.appliance.name,
                 validation: ""
             }, {
+                field: $scope.appliance.brand.name,
+                validation: ""
+            }, {
                 field: $scope.appliance.userlocation.name,
                 validation: ""
             }];
