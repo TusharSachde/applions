@@ -216,7 +216,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         var getOneSuccess = function(data, status) {
             //console.log("all appliance");
-            //console.log(data);
+            console.log(data);
             $scope.appliance = data;
             stopLoading();
             $scope.store.appliance = data.id;
@@ -256,10 +256,11 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             if (!$scope.appliance.appliancetype) {
                 $scope.appliance.appliancetype.name = '';
             }
-
+$scope.expirydate = '';
             if ($scope.appliance.days) {
                 if ($scope.appliance.days <= 0) {
                     $scope.appliancecolor = "assertive-bg";
+				 $scope.expirydate = "expiry";
                 } else if ($scope.appliance.days <= 300) {
                     $scope.appliancecolor = "yellow-bg";
                 } else {
@@ -280,7 +281,8 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 $scope.warranty = data.warranty[data.warranty.length - 1];
                 //                $scope.warranty.purchasedate = new Date($scope.warranty.purchasedate);
                 if ($scope.warranty.expiry) {
-                    $scope.warranty.expiry = new Date($scope.warranty.expiry);
+				 
+                    $scope.warranty.expiry = moment(new Date($scope.warranty.expiry)).format('DD  MMM-YYYY');
                 }
                 //console.log($scope.warranty);
             }
