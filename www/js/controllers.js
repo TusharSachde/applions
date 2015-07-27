@@ -263,7 +263,7 @@ $scope.expirydate = '';
             if ($scope.appliance.days) {
                 if ($scope.appliance.days <= 0) {
                     $scope.appliancecolor = "assertive-bg";
-				 $scope.expirydate = "expiry";
+				 $scope.expirydate = "expirys";
                 } else if ($scope.appliance.days <= 300) {
                     $scope.appliancecolor = "yellow-bg";
                 } else {
