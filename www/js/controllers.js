@@ -297,8 +297,13 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             }
 
             if (data.store) {
-                //console.log("store he");
-                $scope.store.purchasedate = new Date($scope.store.purchasedate);
+                console.log($scope.store.purchasedate);
+			  
+//                $scope.store.purchasedate = moment($scope.store.purchasedate,'DD-MM-YYYY');
+			 $scope.store.purchasedate=new Date($scope.store.purchasedate);
+			  
+			  
+                console.log($scope.store.purchasedate);
                 $scope.store.purchaseprice = data.store.purchaseprice;
             }
             //            //console.log($scope.warranty);
@@ -446,6 +451,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.allvalidation4 = [];
         $scope.purchaseDetails = function() {
             //console.log($scope.warranty);
+//		   $scope.store.purchasedate = moment($scope.store.purchasedate).format("DD-MM-YYYY");
             $scope.allvalidation4 = [{
                 field: $scope.store.purchasedate,
                 validation: ""
@@ -461,8 +467,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             }];
             var check = formvalidation($scope.allvalidation4);
             if (check) {
-                //console.log("in if");
-                //console.log($scope.checkstatus);
+                
                 $scope.purchaseprice.appliance = $stateParams.id;
                 $scope.purchaseprice.purchaseprice = $scope.store.purchaseprice;
                 Chats.updatePurchasePrice($scope.purchaseprice, function(data, status) {
@@ -478,8 +483,6 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 //                Chats.updateWarranty($scope.warranty, warrantySuccess);
                 Chats.applianceStore($scope.store, storeSuccess);
             } else {
-                //console.log("in else");
-                //console.log($scope.checkstatus);
                 $scope.checkstatus = false;
             }
         }
@@ -564,6 +567,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         $scope.allvalidation5 = [];
         $scope.saveAdditionalWarranty = function() {
+//		   $scope.additionalwarrantyadd.purchasedate = moment($scope.additionalwarrantyadd.purchasedate).format("DD-MM-YYYY");
             $scope.allvalidation5 = [{
                 field: $scope.additionalwarrantyadd.purchasedate,
                 validation: ""
@@ -583,6 +587,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             var check = formvalidation($scope.allvalidation5);
             if (check) {
                 $scope.additionalwarrantyadd.appliance = $stateParams.id;
+//			  $scope.additionalwarrantyadd.purchasedate = moment($scope.additionalwarrantyadd.purchasedate)
                 Chats.addAdditionalWarranty($scope.additionalwarrantyadd, function(data, status) {
                     if (data) {
                         $scope.additionalwarrantyadd = [];
