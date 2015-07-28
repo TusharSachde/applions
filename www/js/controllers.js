@@ -147,8 +147,23 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.productwarranty = [];
         $scope.readonly = true;
         $scope.componentwarranty = [];
+	$scope.productname = [];
         $scope.checkstatus = false;
+		$scope.brand = [];
 
+	$scope.dateAfter = function(purcdate){
+		if(moment(purcdate).isBefore(new Date)==false){
+			$scope.store.purchasedate = new Date();
+			var myPopup = $ionicPopup.show({
+                    title: "Please Select Valid Date",
+                    scope: $scope,
+                });
+                $timeout(function() {
+                    myPopup.close(); //close the popup after 3 seconds for some reason
+                }, 1000);
+		}
+	}
+	
         $('#foc').focus();
 
         $scope.locationtab = function(tb) {
@@ -1238,7 +1253,8 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         });
 
         $scope.openbrandsearch = function() {
-            $scope.brand = "";
+            $scope.brand.name = "";
+		   $scope.getproductbrands($scope.brand.name);
             $scope.oModal15.show();
         }
         $scope.closebrandsearch = function() {
@@ -1253,7 +1269,8 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         });
 
         $scope.openproductsearch = function() {
-            $scope.productname = "";
+            $scope.productname.name = "";
+		   $scope.searchproduct($scope.productname.name);
             $scope.oModal16.show();
         }
         $scope.closeproductsearch = function() {
@@ -1346,6 +1363,22 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     $scope.cover = [];
     $scope.checkstatus = false;
     $scope.applionsnewid = 0;
+    $scope.brand = [];
+	$scope.productname = [];
+	
+	$scope.dateAfter = function(purcdate){
+		if(moment(purcdate).isBefore(new Date)==false){
+			$scope.store.purchasedate = new Date();
+			var myPopup = $ionicPopup.show({
+                    title: "Please Select Valid Date",
+                    scope: $scope,
+                });
+                $timeout(function() {
+                    myPopup.close(); //close the popup after 3 seconds for some reason
+                }, 1000);
+		}
+	}
+	
     $scope.locationtab = function(tb) {
         if ($scope.userlocation) {
             _.forEach($scope.userlocation, function(n, key) {
@@ -1524,14 +1557,15 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
     var storeSuccess = function(data, status) {
         //console.log(data);
-    }
-    var purchasePriceSuccess = function(data, status) {
-        if ($scope.checkstatus == true) {
+	    if ($scope.checkstatus == true) {
             $location.url("/tab/home");
         } else {
             $scope.tabvalue = 3;
         }
         updateApp();
+    }
+    var purchasePriceSuccess = function(data, status) {
+        
     }
     $scope.purchaseprice = {};
     $scope.allvalidation4 = [];
@@ -1549,7 +1583,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 field: $scope.store.name,
                 validation: ""
             }, {
-                field: $scope.purchaseprice.purchaseprice,
+                field: $scope.store.purchaseprice,
                 validation: ""
             }];
 
@@ -1562,7 +1596,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                 $scope.purchaseprice.appliance = $.jStorage.get("applianceid");
                 //            Chats.createWarranty($scope.warranty, warrantySuccess);
                 Chats.applianceStore($scope.store, storeSuccess);
-                Chats.updatePurchasePrice($scope.purchaseprice, purchasePriceSuccess)
+//                Chats.updatePurchasePrice($scope.purchaseprice, purchasePriceSuccess)
             } else {
                 $scope.checkstatus = false;
             }
@@ -2396,7 +2430,9 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     });
 
     $scope.openbrandsearch = function() {
-        $scope.brand = "";
+	    console.log($scope.brand);
+        $scope.brand.name = "";
+	    $scope.getproductbrands($scope.brand.name);
         $scope.oModal15.show();
     }
     $scope.closebrandsearch = function() {
@@ -2411,7 +2447,8 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     });
 
     $scope.openproductsearch = function() {
-        $scope.productname = "";
+	    $scope.productname.name = "";
+		   $scope.searchproduct($scope.productname.name);
         $scope.oModal16.show();
     }
     $scope.closeproductsearch = function() {
@@ -2904,6 +2941,9 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
 
 .controller('AppwizardCtrl', function($scope, $ionicModal, Chats, $location) {
+	
+	$scope.brand = [];
+	
     $ionicModal.fromTemplateUrl('templates/modal-brand.html', {
         scope: $scope,
         animation: 'slide-in-up'
@@ -2913,7 +2953,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
     $scope.brandindex = '';
     $scope.openbrandsearch = function(appname, index) {
-        $scope.brand = "";
+        $scope.brand.name = "";
         $.jStorage.set("prodid", appname);
         $scope.brandindex = index;
         Chats.getmybrands(appname, function(data, status) {

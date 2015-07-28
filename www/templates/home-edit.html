@@ -132,7 +132,7 @@
         <div class="list" ng-if="tabvalue == 2">
             <label class="item item-input" ng-class="allvalidation4[0].validation">
                 <span class="input-label">Purchase Date *</span>
-                <input type="date" ng-model="store.purchasedate" ng-change="datevalidation()" required>
+                <input type="date" ng-model="store.purchasedate" ng-change="dateAfter(store.purchasedate)" required>
             </label>
             <label class="item item-input" ng-class="allvalidation4[1].validation">
                 <span class="input-label">Bill No *</span>
