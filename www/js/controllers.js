@@ -453,9 +453,6 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
             //console.log($scope.warranty);
 //		   $scope.store.purchasedate = moment($scope.store.purchasedate).format("DD-MM-YYYY");
             $scope.allvalidation4 = [{
-                field: $scope.store.purchasedate,
-                validation: ""
-            }, {
                 field: $scope.store.billno,
                 validation: ""
             }, {
@@ -1579,9 +1576,6 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
         if ($scope.applionsnewid != 0) {
             $scope.allvalidation4 = [{
-                field: $scope.store.purchasedate,
-                validation: ""
-            }, {
                 field: $scope.store.billno,
                 validation: ""
             }, {

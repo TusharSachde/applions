@@ -69,17 +69,17 @@
 
         <div class="list" ng-if="tabvalue == 2">
 
-            <label class="item item-input" ng-class="allvalidation4[0].validation">
+            <label class="item item-input">
                 <span class="input-label">Purchase Date *</span>
                 <input type="date" ng-model="store.purchasedate" ng-change="dateAfter(store.purchasedate)">
             </label>
 
-            <label class="item item-input" ng-class="allvalidation4[1].validation">
+            <label class="item item-input" ng-class="allvalidation4[0].validation">
                 <span class="input-label">Bill No *</span>
                 <input type="text" ng-model="store.billno" required>
             </label>
 
-            <label class="item item-input" ng-class="allvalidation4[2].validation">
+            <label class="item item-input" ng-class="allvalidation4[1].validation">
                 <span class="input-label">Store Name *</span>
                 <input type="text" ng-model="store.name">
             </label>
@@ -116,7 +116,7 @@
                 <input type="text" ng-model="store.saleperson">
             </label>
 
-            <label class="item item-input" ng-class="allvalidation4[3].validation">
+            <label class="item item-input" ng-class="allvalidation4[2].validation">
                 <span class="input-label">Purchase Price  *</span>
                 <input type="text" ng-model="store.purchaseprice">
             </label>
