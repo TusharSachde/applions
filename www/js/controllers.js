@@ -298,12 +298,12 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
                     }
                 } else {
                     $scope.warrantycover = "No";
-				if (data.warranty.length >= 1 && $scope.warranty.iswarrantyoramc) {
+                    if (data.warranty.length >= 1 && $scope.warranty.iswarrantyoramc) {
                         $scope.warrantycover = $scope.warranty.iswarrantyoramc;
                     }
                 }
-                    //                $scope.warranty.purchasedate = new Date($scope.warranty.purchasedate);
-                if($scope.warranty.expiry) {
+                //                $scope.warranty.purchasedate = new Date($scope.warranty.purchasedate);
+                if ($scope.warranty.expiry) {
                     $scope.warranty.expiry = moment(new Date($scope.warranty.expiry)).format('DD  MMM-YYYY');
                 }
                 //console.log($scope.warranty);
@@ -1238,6 +1238,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         });
 
         $scope.openbrandsearch = function() {
+            $scope.brand = "";
             $scope.oModal15.show();
         }
         $scope.closebrandsearch = function() {
@@ -1252,6 +1253,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         });
 
         $scope.openproductsearch = function() {
+            $scope.productname = "";
             $scope.oModal16.show();
         }
         $scope.closeproductsearch = function() {
@@ -1939,9 +1941,9 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
         $scope.toProduct($scope.appliance.appliancetype);
     }
 
-        function updateApp() {
-            Chats.getOneAppliance($.jStorage.get("applianceid"), getOneSuccess);
-        }
+    function updateApp() {
+        Chats.getOneAppliance($.jStorage.get("applianceid"), getOneSuccess);
+    }
 
     $scope.pushorpopadd = function(status, value) {
         //console.log(status);
@@ -2394,6 +2396,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     });
 
     $scope.openbrandsearch = function() {
+        $scope.brand = "";
         $scope.oModal15.show();
     }
     $scope.closebrandsearch = function() {
@@ -2408,6 +2411,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     });
 
     $scope.openproductsearch = function() {
+        $scope.productname = "";
         $scope.oModal16.show();
     }
     $scope.closeproductsearch = function() {
@@ -2909,6 +2913,7 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
 
     $scope.brandindex = '';
     $scope.openbrandsearch = function(appname, index) {
+        $scope.brand = "";
         $.jStorage.set("prodid", appname);
         $scope.brandindex = index;
         Chats.getmybrands(appname, function(data, status) {
