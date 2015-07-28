@@ -2,7 +2,7 @@
 var adminurl = "http://104.154.90.138/";
 var imgpath = adminurl + "user/resize?file=";
 angular.module('starter.services', [])
-// testing
+// testing git gui
 .factory('Chats', function ($http) {
     // Might use a resource here that returns a JSON array
 

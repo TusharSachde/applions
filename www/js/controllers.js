@@ -19,7 +19,6 @@ angular.module('starter.controllers', ['ngAnimate', 'starter.services', 'ngCordo
     if (!$.jStorage.get("user")) {
         $location.url("/login");
     }
-
     console.log($state.current.name);
     $ionicPlatform.registerBackButtonAction(function(event) {
         if ($state.current.name == "tab.home") {
